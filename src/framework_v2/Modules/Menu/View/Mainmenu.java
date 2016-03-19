@@ -65,7 +65,8 @@ public class Mainmenu extends javax.swing.JFrame {
         btnReguser = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         btnAdmin = new javax.swing.JButton();
-        btnConfig = new javax.swing.JLabel();
+        Config = new javax.swing.JLabel();
+        btnConfig = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -133,20 +134,23 @@ public class Mainmenu extends javax.swing.JFrame {
         });
         getContentPane().add(btnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 240, 60));
 
-        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Menu/View/img/conf.png"))); // NOI18N
-        btnConfig.setToolTipText("Configuration");
-        btnConfig.addMouseListener(new java.awt.event.MouseAdapter() {
+        Config.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Menu/View/img/conf.png"))); // NOI18N
+        Config.setToolTipText("Configuration");
+        Config.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnConfigMouseClicked(evt);
+                ConfigMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnConfigMouseExited(evt);
+                ConfigMouseExited(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnConfigMouseEntered(evt);
+                ConfigMouseEntered(evt);
             }
         });
-        getContentPane().add(btnConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 80, 80));
+        getContentPane().add(Config, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 80, 80));
+
+        btnConfig.setText("jButton1");
+        getContentPane().add(btnConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -169,18 +173,18 @@ public class Mainmenu extends javax.swing.JFrame {
         new Pager_admin().setVisible(true);
     }//GEN-LAST:event_btnAdminActionPerformed
 
-    private void btnConfigMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfigMouseEntered
-        btnConfig.setIcon(configicon_over);
-    }//GEN-LAST:event_btnConfigMouseEntered
+    private void ConfigMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfigMouseEntered
+        Config.setIcon(configicon_over);
+    }//GEN-LAST:event_ConfigMouseEntered
 
-    private void btnConfigMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfigMouseExited
-        btnConfig.setIcon(configicon);
-    }//GEN-LAST:event_btnConfigMouseExited
+    private void ConfigMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfigMouseExited
+        Config.setIcon(configicon);
+    }//GEN-LAST:event_ConfigMouseExited
 
-    private void btnConfigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfigMouseClicked
+    private void ConfigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfigMouseClicked
         dispose();
         new Config().setVisible(true);
-    }//GEN-LAST:event_btnConfigMouseClicked
+    }//GEN-LAST:event_ConfigMouseClicked
 
     private void btnAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminMouseEntered
         btnAdmin.setIcon(adminicon_over);
@@ -207,10 +211,11 @@ public class Mainmenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReguserMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdmin;
-    private javax.swing.JButton btnClient;
-    private javax.swing.JLabel btnConfig;
-    private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnReguser;
+    public javax.swing.JLabel Config;
+    public static javax.swing.JButton btnAdmin;
+    public static javax.swing.JButton btnClient;
+    public static javax.swing.JButton btnConfig;
+    public static javax.swing.JButton btnExit;
+    public static javax.swing.JButton btnReguser;
     // End of variables declaration//GEN-END:variables
 }
