@@ -65,8 +65,10 @@ public class Config extends javax.swing.JFrame {
         jComboBox5 = new javax.swing.JComboBox<>();
         labelDecimals = new javax.swing.JLabel();
         jComboBox6 = new javax.swing.JComboBox<>();
+        btnResetConf = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         setSize(new java.awt.Dimension(400, 300));
         getContentPane().setLayout(null);
 
@@ -103,17 +105,19 @@ public class Config extends javax.swing.JFrame {
         jComboBox4.setBounds(170, 180, 120, 25);
 
         btnSaveConf.setText("Save");
+        btnSaveConf.setToolTipText("Save configuration");
         getContentPane().add(btnSaveConf);
-        btnSaveConf.setBounds(90, 340, 90, 29);
+        btnSaveConf.setBounds(40, 340, 90, 29);
 
         btnCancelConf.setText("Cancel");
+        btnCancelConf.setToolTipText("Cancel changes and return");
         btnCancelConf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelConfActionPerformed(evt);
             }
         });
         getContentPane().add(btnCancelConf);
-        btnCancelConf.setBounds(220, 340, 90, 29);
+        btnCancelConf.setBounds(270, 340, 90, 29);
 
         labelTheme.setText("Theme:");
         getContentPane().add(labelTheme);
@@ -130,6 +134,11 @@ public class Config extends javax.swing.JFrame {
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 decimal", "2 decimals", "3 decimals" }));
         getContentPane().add(jComboBox6);
         jComboBox6.setBounds(170, 280, 120, 25);
+
+        btnResetConf.setText("Reset");
+        btnResetConf.setToolTipText("Reset to defaults");
+        getContentPane().add(btnResetConf);
+        btnResetConf.setBounds(170, 340, 48, 29);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,8 +185,9 @@ public class Config extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelConf;
-    private javax.swing.JButton btnSaveConf;
+    public static javax.swing.JButton btnCancelConf;
+    public static javax.swing.JButton btnResetConf;
+    public static javax.swing.JButton btnSaveConf;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;

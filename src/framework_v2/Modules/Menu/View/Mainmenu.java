@@ -211,7 +211,7 @@ public class Mainmenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReguserMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel Config;
+    public static javax.swing.JLabel Config;
     public static javax.swing.JButton btnAdmin;
     public static javax.swing.JButton btnClient;
     public static javax.swing.JButton btnConfig;
