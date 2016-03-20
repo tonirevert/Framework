@@ -149,7 +149,7 @@ public class Mainmenu extends javax.swing.JFrame {
         });
         getContentPane().add(Config, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 80, 80));
 
-        btnConfig.setText("jButton1");
+        btnConfig.setText("Configuration");
         getContentPane().add(btnConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, -1, -1));
 
         pack();

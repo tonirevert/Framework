@@ -11,9 +11,12 @@ import framework_v2.Modules.Menu.View.Mainmenu;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -78,12 +81,22 @@ public class MenuController implements ActionListener{
                 main.btnClient.addActionListener(this);
                 main.btnReguser.setActionCommand("btnReguser");
                 main.btnReguser.addActionListener(this);
-                main.btnConfig.setActionCommand("btnReguser");
+                main.btnConfig.setActionCommand("btnConfig");
                 main.btnConfig.addActionListener(this);
                 
+                this.main.addWindowListener(new WindowAdapter(){
+                    public void windowClosing(WindowEvent e){
+                        JOptionPane.showMessageDialog(null, "Leaving the aplication...","Leaving",JOptionPane.INFORMATION_MESSAGE);
+                        System.exit(0);
+                    }
+                });
+                
                 break;
-            
-        }
+            case 1:
+                
+                break;
+                
+        }//End of switch case
         
     }
 }
