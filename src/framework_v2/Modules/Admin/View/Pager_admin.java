@@ -18,6 +18,7 @@ import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.xmlicon_o
 import framework_v2.Modules.Admin.Model.Utils.pager.AutocompleteJComboBox;
 import framework_v2.Modules.Admin.Model.Utils.pager.StringSearchable;
 import framework_v2.Modules.Admin.Model.Utils.pager.pagina;
+import framework_v2.Modules.Menu.Controller.MenuController;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -72,7 +73,7 @@ public class Pager_admin extends javax.swing.JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 dispose();
-                new Mainmenu().setVisible(true);
+                new MenuController(new Mainmenu(),0).Init(0);
             }
         });
           
@@ -497,7 +498,7 @@ public class Pager_admin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        new Mainmenu().setVisible(true);
+        new MenuController(new Mainmenu(),0).Init(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

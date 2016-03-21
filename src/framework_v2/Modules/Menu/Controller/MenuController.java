@@ -5,13 +5,27 @@
  */
 package framework_v2.Modules.Menu.Controller;
 
+import static framework_v2.Classes.Singleton_menus.adminicon;
+import static framework_v2.Classes.Singleton_menus.adminicon_over;
+import static framework_v2.Classes.Singleton_menus.clienticon;
+import static framework_v2.Classes.Singleton_menus.clienticon_over;
+import static framework_v2.Classes.Singleton_menus.configicon;
+import static framework_v2.Classes.Singleton_menus.configicon_over;
+import static framework_v2.Classes.Singleton_menus.rusericon;
+import static framework_v2.Classes.Singleton_menus.rusericon_over;
+import framework_v2.Modules.Admin.Model.BLL.BLL_admin;
 import framework_v2.Modules.Admin.View.Pager_admin;
 import framework_v2.Modules.Config.View.Config;
 import static framework_v2.Modules.Menu.Controller.MenuController.Action.btnAdmin;
+import static framework_v2.Modules.Menu.Controller.MenuController.Action.btnConfig;
+import static framework_v2.Modules.Menu.Controller.MenuController.main;
 import framework_v2.Modules.Menu.View.Mainmenu;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
@@ -23,7 +37,7 @@ import javax.swing.JOptionPane;
  *
  * @author antonio
  */
-public class MenuController implements ActionListener{
+public class MenuController implements ActionListener, MouseListener{
 
     public static Mainmenu main = new Mainmenu();
     public static Config conf= new Config();
@@ -40,6 +54,8 @@ public class MenuController implements ActionListener{
         }
                 
     }
+
+    
     
     public enum Action{
         
@@ -62,24 +78,35 @@ public class MenuController implements ActionListener{
             
             case 0:
                 
-                ImageIcon icon = new ImageIcon("src/framework_v2/Modules/Menu/View/img/back.jpg");
-                Image img=icon.getImage();
-                Image newimg = img.getScaledInstance(700, 460, java.awt.Image.SCALE_SMOOTH);
-        
+//                ImageIcon icon = new ImageIcon("src/framework_v2/Modules/Menu/View/img/back.jpg");
+//                Image img=icon.getImage();
+//                Image newimg = img.getScaledInstance(700, 460, java.awt.Image.SCALE_SMOOTH);
+//                main.setContentPane(new JLabel(new ImageIcon (newimg)));
                 
                 main.setVisible(true);
                 main.setLocationRelativeTo(null);
                 main.setTitle("Main Menu");
-                main.setContentPane(new JLabel(new ImageIcon (newimg)));
+                main.setSize(700,460);
+                
                 
                 main.btnAdmin.setActionCommand("btnAdmin");
+                main.btnAdmin.setName("btnAdmin");
+                main.btnAdmin.addMouseListener(this);
                 main.btnAdmin.addActionListener(this);
                 main.btnClient.setActionCommand("btnClient");
+                main.btnClient.setName("btnClient");
+                main.btnClient.addMouseListener(this);
                 main.btnClient.addActionListener(this);
                 main.btnReguser.setActionCommand("btnReguser");
+                main.btnReguser.setName("btnReguser");
+                main.btnReguser.addMouseListener(this);
                 main.btnReguser.addActionListener(this);
-                main.btnConfig.setActionCommand("btnConfig");
-                main.btnConfig.addActionListener(this);
+                main.btnConfig.setName("btnConfig");
+                main.btnConfig.addMouseListener(this);
+                main.btnExit.setActionCommand("btnExit");
+                main.btnExit.setName("btnExit");
+                main.btnExit.addMouseListener(this);
+                
                 
                 this.main.addWindowListener(new WindowAdapter(){
                     public void windowClosing(WindowEvent e){
@@ -94,7 +121,7 @@ public class MenuController implements ActionListener{
                 this.conf.setVisible(true);
                 this.conf.setTitle("Configuration");
                 this.conf.setLocationRelativeTo(null);
-                this.conf.setSize(400, 388);
+                this.conf.setSize(400, 450);
                                 
                 conf.btnSaveConf.setActionCommand("btnSaveConf");
                 conf.btnSaveConf.addActionListener(this);
@@ -106,8 +133,8 @@ public class MenuController implements ActionListener{
                 this.conf.addWindowListener(new WindowAdapter(){
                     
                     public void windowClosing(WindowEvent e){
-                         JOptionPane.showMessageDialog(null, "Leaving the aplication...","Leaving",JOptionPane.INFORMATION_MESSAGE);
-                        System.exit(0);
+                        conf.dispose();
+                        new MenuController(new Mainmenu(),0).Init(0);
                     }
                 });
                 
@@ -122,12 +149,7 @@ public class MenuController implements ActionListener{
         
         switch (Action.valueOf(ae.getActionCommand())){
             
-            case btnAdmin:
-                
-                new Pager_admin();
-                main.dispose();
-                
-                break;
+           
                 
             case btnClient:
                 
@@ -136,21 +158,7 @@ public class MenuController implements ActionListener{
             case btnReguser:
                 
                 break;
-                
-            case btnConfig:
-                
-                new MenuController(new Config(), 1).Init(1);
-                main.dispose();
-                
-                break;
-                
-            case btnExit:
-                
-                main.dispose();
-                System.exit(0);
-                
-                break;
-            
+                           
             case btnSaveConf:
                 
                 break;
@@ -161,12 +169,95 @@ public class MenuController implements ActionListener{
                 
             case btnCancelConf:
                 
-                new MenuController(new Config(), 1).Init(1);
                 conf.dispose();
-                
+                new MenuController(new Mainmenu(), 0).Init(0);
                 
                 break;
         }//End of switch case actionPerformed
         
     }
+    
+    @Override
+    public void mouseClicked(MouseEvent e) {
+       switch (Action.valueOf(e.getComponent().getName())){
+           
+                     
+           
+               
+          
+       }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+        switch (Action.valueOf(e.getComponent().getName())){
+                 case btnAdmin:
+                    new Pager_admin().setVisible(true);
+                    main.dispose();
+                break;
+                
+                case btnConfig:
+                    main.dispose(); 
+                    new MenuController(new Config(), 1).Init(1);
+               break;
+               
+               case btnExit:
+                    BLL_admin.autosaveAdmin();        
+                    JOptionPane.showMessageDialog(null,"Leaving application");
+                    main.dispose();
+                    System.exit(0);
+                break;
+         }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        switch (Action.valueOf(e.getComponent().getName())){
+            
+            case btnAdmin:
+                main.btnAdmin.setIcon(adminicon_over);
+                break;
+            
+            case btnClient:
+                main.btnClient.setIcon(clienticon_over);
+                break;
+                
+            case btnReguser:
+                main.btnReguser.setIcon(rusericon_over);
+                break;
+                
+            case btnConfig:
+                main.btnConfig.setIcon(configicon_over);
+            break;
+    }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+         switch (Action.valueOf(e.getComponent().getName())){
+            
+            case btnAdmin:
+                main.btnAdmin.setIcon(adminicon);
+                break;
+            
+            case btnClient:
+                main.btnClient.setIcon(clienticon);
+                break;
+                
+            case btnReguser:
+                main.btnReguser.setIcon(rusericon);
+                break;
+                
+            case btnConfig:
+                main.btnConfig.setIcon(configicon);
+            break;
+    }
+    }
+    
 }

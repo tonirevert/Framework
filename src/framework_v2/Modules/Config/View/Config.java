@@ -33,13 +33,7 @@ public class Config extends javax.swing.JFrame {
         this.setTitle("Configuration");
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                 new Mainmenu().setVisible(true);
-                 dispose();
-            }
-                });    
+		
     }
 
     /**
@@ -111,11 +105,6 @@ public class Config extends javax.swing.JFrame {
 
         btnCancelConf.setText("Cancel");
         btnCancelConf.setToolTipText("Cancel changes and return");
-        btnCancelConf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelConfActionPerformed(evt);
-            }
-        });
         getContentPane().add(btnCancelConf);
         btnCancelConf.setBounds(270, 340, 90, 29);
 
@@ -142,11 +131,6 @@ public class Config extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCancelConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelConfActionPerformed
-        this.dispose();
-        new Mainmenu().setVisible(true);
-    }//GEN-LAST:event_btnCancelConfActionPerformed
 
     
     /**
