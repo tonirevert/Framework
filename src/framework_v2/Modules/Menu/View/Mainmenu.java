@@ -28,20 +28,6 @@ public class Mainmenu extends javax.swing.JFrame {
         setContentPane(new JLabel(new ImageIcon (newimg)));
 
         initComponents();
-//        this.setResizable(false);
-//        this.setSize(700,460);
-//        this.setTitle("Main Menu");
-//        this.setLocationRelativeTo(null);
-//        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-//		addWindowListener(new WindowAdapter() {
-//            @Override
-//            public void windowClosing(WindowEvent e) {
-//                BLL_admin.autosaveAdmin();
-//                JOptionPane.showMessageDialog(null,"Leaving application");
-//                dispose();
-//                System.exit(0);
-//            }
-//        });
     }
 
     /**

@@ -20,7 +20,6 @@ public class Main {
     public static void main(String args[]) {
 
         Config_class.getinstance();
-//        new Mainmenu().setVisible(true);
         new MenuController(new Mainmenu(), 0).Init(0);
     }
 }

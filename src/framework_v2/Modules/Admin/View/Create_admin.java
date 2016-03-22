@@ -731,7 +731,7 @@ public class Create_admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextArea areaInfo;
     public static javax.swing.JLabel avatar;
-    private javax.swing.JButton btnSearch;
+    public static javax.swing.JButton btnSearch;
     private javax.swing.ButtonGroup buttonGroupState;
     private javax.swing.JButton cancelCreateadmin;
     public static javax.swing.JLabel checkActivity;
@@ -775,6 +775,6 @@ public class Create_admin extends javax.swing.JFrame {
     public static javax.swing.JRadioButton radioStateYes;
     private javax.swing.JButton resetCreateadmin;
     private javax.swing.JButton saveCreateadmin;
-    private javax.swing.JOptionPane saving;
+    public javax.swing.JOptionPane saving;
     // End of variables declaration//GEN-END:variables
 }

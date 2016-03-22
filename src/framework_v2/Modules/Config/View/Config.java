@@ -5,13 +5,9 @@
  */
 package framework_v2.Modules.Config.View;
 
-import framework_v2.Modules.Menu.View.Mainmenu;
 import java.awt.Image;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
  *
@@ -29,11 +25,7 @@ public class Config extends javax.swing.JFrame {
         setContentPane(new JLabel(new ImageIcon (newimg)));
         initComponents();
         
-        this.setSize(400,450);
-        this.setTitle("Configuration");
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		
+	
     }
 
     /**
@@ -71,6 +63,7 @@ public class Config extends javax.swing.JFrame {
         labelDateform.setBounds(60, 36, 110, 15);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dd/MM/yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "yyyy/MM/dd" }));
+        jComboBox1.setToolTipText("Choose the date format");
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(170, 30, 120, 25);
 
@@ -79,6 +72,7 @@ public class Config extends javax.swing.JFrame {
         labelCurrency.setBounds(60, 80, 110, 20);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Euro", "Dollar", "Pound" }));
+        jComboBox2.setToolTipText("Choose the currency type");
         getContentPane().add(jComboBox2);
         jComboBox2.setBounds(170, 79, 120, 25);
 
@@ -87,6 +81,7 @@ public class Config extends javax.swing.JFrame {
         labelLanguage.setBounds(60, 130, 110, 15);
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "English", "Spanish", "Valencian" }));
+        jComboBox3.setToolTipText("Choose the language");
         getContentPane().add(jComboBox3);
         jComboBox3.setBounds(170, 130, 120, 25);
 
@@ -95,6 +90,7 @@ public class Config extends javax.swing.JFrame {
         labelFileform.setBounds(60, 180, 110, 15);
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JSON", "TXT", "XML" }));
+        jComboBox4.setToolTipText("Choose the file format");
         getContentPane().add(jComboBox4);
         jComboBox4.setBounds(170, 180, 120, 25);
 
@@ -106,13 +102,14 @@ public class Config extends javax.swing.JFrame {
         btnCancelConf.setText("Cancel");
         btnCancelConf.setToolTipText("Cancel changes and return");
         getContentPane().add(btnCancelConf);
-        btnCancelConf.setBounds(270, 340, 90, 29);
+        btnCancelConf.setBounds(275, 340, 90, 29);
 
         labelTheme.setText("Theme:");
         getContentPane().add(labelTheme);
         labelTheme.setBounds(60, 230, 110, 15);
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nimbus", "Metal" }));
+        jComboBox5.setToolTipText("Choose the theme");
         getContentPane().add(jComboBox5);
         jComboBox5.setBounds(170, 230, 120, 25);
 
@@ -121,52 +118,17 @@ public class Config extends javax.swing.JFrame {
         labelDecimals.setBounds(60, 280, 110, 15);
 
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 decimal", "2 decimals", "3 decimals" }));
+        jComboBox6.setToolTipText("Choose the decimal format");
         getContentPane().add(jComboBox6);
         jComboBox6.setBounds(170, 280, 120, 25);
 
         btnResetConf.setText("Reset");
         btnResetConf.setToolTipText("Reset to defaults");
         getContentPane().add(btnResetConf);
-        btnResetConf.setBounds(170, 340, 48, 29);
+        btnResetConf.setBounds(160, 340, 90, 29);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Config.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Config.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Config.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Config.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Config().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnCancelConf;
@@ -178,11 +140,11 @@ public class Config extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JLabel labelCurrency;
-    private javax.swing.JLabel labelDateform;
-    private javax.swing.JLabel labelDecimals;
-    private javax.swing.JLabel labelFileform;
-    private javax.swing.JLabel labelLanguage;
-    private javax.swing.JLabel labelTheme;
+    public javax.swing.JLabel labelCurrency;
+    public javax.swing.JLabel labelDateform;
+    public javax.swing.JLabel labelDecimals;
+    public javax.swing.JLabel labelFileform;
+    public javax.swing.JLabel labelLanguage;
+    public javax.swing.JLabel labelTheme;
     // End of variables declaration//GEN-END:variables
 }

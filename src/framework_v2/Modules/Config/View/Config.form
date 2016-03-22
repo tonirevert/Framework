@@ -21,8 +21,8 @@
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-124,0,0,1,-112"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="1"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-88,0,0,1,-106"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -49,6 +49,7 @@
             <StringItem index="3" value="yyyy/MM/dd"/>
           </StringArray>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Choose the date format"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -78,6 +79,7 @@
             <StringItem index="2" value="Pound"/>
           </StringArray>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Choose the currency type"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -107,6 +109,7 @@
             <StringItem index="2" value="Valencian"/>
           </StringArray>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Choose the language"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -136,6 +139,7 @@
             <StringItem index="2" value="XML"/>
           </StringArray>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Choose the file format"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -170,7 +174,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="270" y="340" width="90" height="-1"/>
+          <AbsoluteConstraints x="275" y="340" width="90" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -192,6 +196,7 @@
             <StringItem index="1" value="Metal"/>
           </StringArray>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Choose the theme"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -221,6 +226,7 @@
             <StringItem index="2" value="3 decimals"/>
           </StringArray>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Choose the decimal format"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -241,7 +247,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="170" y="340" width="-1" height="-1"/>
+          <AbsoluteConstraints x="160" y="340" width="90" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -20,17 +20,13 @@ import static framework_v2.Modules.Menu.Controller.MenuController.Action.btnAdmi
 import static framework_v2.Modules.Menu.Controller.MenuController.Action.btnConfig;
 import static framework_v2.Modules.Menu.Controller.MenuController.main;
 import framework_v2.Modules.Menu.View.Mainmenu;
-import java.awt.Color;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -89,21 +85,14 @@ public class MenuController implements ActionListener, MouseListener{
                 main.setSize(700,460);
                 
                 
-                main.btnAdmin.setActionCommand("btnAdmin");
                 main.btnAdmin.setName("btnAdmin");
                 main.btnAdmin.addMouseListener(this);
-                main.btnAdmin.addActionListener(this);
-                main.btnClient.setActionCommand("btnClient");
                 main.btnClient.setName("btnClient");
                 main.btnClient.addMouseListener(this);
-                main.btnClient.addActionListener(this);
-                main.btnReguser.setActionCommand("btnReguser");
                 main.btnReguser.setName("btnReguser");
                 main.btnReguser.addMouseListener(this);
-                main.btnReguser.addActionListener(this);
                 main.btnConfig.setName("btnConfig");
                 main.btnConfig.addMouseListener(this);
-                main.btnExit.setActionCommand("btnExit");
                 main.btnExit.setName("btnExit");
                 main.btnExit.addMouseListener(this);
                 
@@ -118,23 +107,22 @@ public class MenuController implements ActionListener, MouseListener{
                 break;
             case 1:
                 
-                this.conf.setVisible(true);
                 this.conf.setTitle("Configuration");
-                this.conf.setLocationRelativeTo(null);
                 this.conf.setSize(400, 450);
-                                
-                conf.btnSaveConf.setActionCommand("btnSaveConf");
-                conf.btnSaveConf.addActionListener(this);
-                conf.btnResetConf.setActionCommand("btnResetConf");
-                conf.btnResetConf.addActionListener(this);
-                conf.btnCancelConf.setActionCommand("btnCancelConf");
-                conf.btnCancelConf.addActionListener(this);
+                this.conf.setLocationRelativeTo(null);
+                this.conf.setVisible(true);
+                
+                conf.btnSaveConf.setName("btnSaveConf");
+                conf.btnSaveConf.addMouseListener(this);
+                conf.btnResetConf.setName("btnResetConf");
+                conf.btnResetConf.addMouseListener(this);
+                conf.btnCancelConf.setName("btnCancelConf");
+                conf.btnCancelConf.addMouseListener(this);
                 
                 this.conf.addWindowListener(new WindowAdapter(){
-                    
                     public void windowClosing(WindowEvent e){
                         conf.dispose();
-                        new MenuController(new Mainmenu(),0).Init(0);
+                        new MenuController(new Mainmenu(), 0).Init(0);
                     }
                 });
                 
@@ -149,30 +137,7 @@ public class MenuController implements ActionListener, MouseListener{
         
         switch (Action.valueOf(ae.getActionCommand())){
             
-           
-                
-            case btnClient:
-                
-                break;
-                
-            case btnReguser:
-                
-                break;
-                           
-            case btnSaveConf:
-                
-                break;
-                
-            case btnResetConf:
-                
-                break;
-                
-            case btnCancelConf:
-                
-                conf.dispose();
-                new MenuController(new Mainmenu(), 0).Init(0);
-                
-                break;
+          
         }//End of switch case actionPerformed
         
     }
@@ -181,20 +146,17 @@ public class MenuController implements ActionListener, MouseListener{
     public void mouseClicked(MouseEvent e) {
        switch (Action.valueOf(e.getComponent().getName())){
            
-                     
-           
-               
-          
-       }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        
-        switch (Action.valueOf(e.getComponent().getName())){
-                 case btnAdmin:
+           case btnAdmin:
                     new Pager_admin().setVisible(true);
                     main.dispose();
+                break;
+                
+                case btnClient:
+                
+                break;
+                
+                case btnReguser:
+                
                 break;
                 
                 case btnConfig:
@@ -204,16 +166,40 @@ public class MenuController implements ActionListener, MouseListener{
                
                case btnExit:
                     BLL_admin.autosaveAdmin();        
-                    JOptionPane.showMessageDialog(null,"Leaving application");
+                    JOptionPane.showMessageDialog(null,"Leaving application...");
                     main.dispose();
                     System.exit(0);
                 break;
+                
+                case btnSaveConf:
+                
+                break;
+                
+                case btnResetConf:
+                
+                break;
+                
+                case btnCancelConf:
+                    conf.dispose();
+                    new MenuController(new Mainmenu(), 0).Init(0);
+                break;
+                
+       }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+        switch (Action.valueOf(e.getComponent().getName())){
+               
          }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch (Action.valueOf(e.getComponent().getName())){
+               
+         }
     }
 
     @Override
