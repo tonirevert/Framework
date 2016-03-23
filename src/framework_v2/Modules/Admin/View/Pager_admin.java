@@ -5,6 +5,7 @@
  */
 package framework_v2.Modules.Admin.View;
 
+import framework_v2.Modules.Admin.Controller.AdminController;
 import framework_v2.Modules.Admin.Model.Classes.miniSimpleTableModel_admin;
 import framework_v2.Modules.Admin.Model.BLL.BLL_admin;
 import framework_v2.Modules.Menu.View.Mainmenu;
@@ -509,7 +510,7 @@ public class Pager_admin extends javax.swing.JFrame {
 
     private void AddAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddAdminMouseClicked
         dispose();
-        new Create_admin().setVisible(true);
+        new AdminController(new Create_admin(),0).Init(0);
     }//GEN-LAST:event_AddAdminMouseClicked
 
     private void ModAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModAdminMouseClicked

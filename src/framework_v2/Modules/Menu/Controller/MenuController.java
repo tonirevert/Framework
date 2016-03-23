@@ -28,6 +28,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
  *
@@ -35,8 +37,9 @@ import javax.swing.JOptionPane;
  */
 public class MenuController implements ActionListener, MouseListener{
 
-    public static Mainmenu main = new Mainmenu();
-    public static Config conf= new Config();
+    public static Mainmenu main;// = new Mainmenu();
+    public static Config conf;//= new Config();
+    private JPanel panel;
     
     public MenuController(JFrame frame, int i){
         switch(i){
@@ -50,9 +53,10 @@ public class MenuController implements ActionListener, MouseListener{
         }
                 
     }
-
     
-    
+    /**
+     * 
+     */
     public enum Action{
         
         //Main menu buttons
@@ -68,23 +72,22 @@ public class MenuController implements ActionListener, MouseListener{
         btnCancelConf
     }
     
+    /**
+     * 
+     * @param i  0 for main menu, 1 for config menu
+     */
     public void Init(int i){
         
         switch(i){
             
             case 0:
-                
-//                ImageIcon icon = new ImageIcon("src/framework_v2/Modules/Menu/View/img/back.jpg");
-//                Image img=icon.getImage();
-//                Image newimg = img.getScaledInstance(700, 460, java.awt.Image.SCALE_SMOOTH);
-//                main.setContentPane(new JLabel(new ImageIcon (newimg)));
-                
+               
                 main.setVisible(true);
+                
                 main.setLocationRelativeTo(null);
                 main.setTitle("Main Menu");
                 main.setSize(700,460);
-                
-                
+                               
                 main.btnAdmin.setName("btnAdmin");
                 main.btnAdmin.addMouseListener(this);
                 main.btnClient.setName("btnClient");
@@ -96,8 +99,8 @@ public class MenuController implements ActionListener, MouseListener{
                 main.btnExit.setName("btnExit");
                 main.btnExit.addMouseListener(this);
                 
-                
-                this.main.addWindowListener(new WindowAdapter(){
+                main.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                main.addWindowListener(new WindowAdapter(){
                     public void windowClosing(WindowEvent e){
                         JOptionPane.showMessageDialog(null, "Leaving the aplication...","Leaving",JOptionPane.INFORMATION_MESSAGE);
                         System.exit(0);
@@ -107,10 +110,19 @@ public class MenuController implements ActionListener, MouseListener{
                 break;
             case 1:
                 
-                this.conf.setTitle("Configuration");
-                this.conf.setSize(400, 450);
-                this.conf.setLocationRelativeTo(null);
-                this.conf.setVisible(true);
+                
+                conf.setTitle("Configuration");
+                conf.setSize(400, 450);
+                conf.setLocationRelativeTo(null);
+                conf.setVisible(true);
+                
+                conf.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                conf.addWindowListener(new WindowAdapter(){
+                    public void windowClosing(WindowEvent e){
+                        conf.dispose();
+                        new MenuController(new Mainmenu(), 0).Init(0);
+                    }
+                });
                 
                 conf.btnSaveConf.setName("btnSaveConf");
                 conf.btnSaveConf.addMouseListener(this);
@@ -119,12 +131,7 @@ public class MenuController implements ActionListener, MouseListener{
                 conf.btnCancelConf.setName("btnCancelConf");
                 conf.btnCancelConf.addMouseListener(this);
                 
-                this.conf.addWindowListener(new WindowAdapter(){
-                    public void windowClosing(WindowEvent e){
-                        conf.dispose();
-                        new MenuController(new Mainmenu(), 0).Init(0);
-                    }
-                });
+                
                 
                 break;
                 
@@ -147,8 +154,9 @@ public class MenuController implements ActionListener, MouseListener{
        switch (Action.valueOf(e.getComponent().getName())){
            
            case btnAdmin:
-                    new Pager_admin().setVisible(true);
                     main.dispose();
+                    new Pager_admin().setVisible(true);
+//                    new AdminController(new Create_admin(),0).Init(0);//////////////////////////////////////////////////////////
                 break;
                 
                 case btnClient:

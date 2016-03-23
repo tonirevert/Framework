@@ -10,6 +10,7 @@ public class Singleton_admin {
 	public static ArrayList <Admin_class> adm;
 	public static Admin_class ad;
                 public static String DNI=" ";
+                public static String window="";
 	public static ImageIcon ok = new ImageIcon("src/framework_v2/Modules/Admin/View/img/ok.png");
                 public static ImageIcon no_ok = new ImageIcon("src/framework_v2/Modules/Admin/View/img/not_ok.png");
                 public static ImageIcon exclamation = new ImageIcon("src/framework_v2/Modules/Admin/View/img/excl.png");

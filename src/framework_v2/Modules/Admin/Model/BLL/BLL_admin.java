@@ -5,6 +5,7 @@
  */
 package framework_v2.Modules.Admin.Model.BLL;
 
+import framework_v2.Modules.Admin.Controller.AdminController;
 import framework_v2.Modules.Admin.Model.Utils.Files_lib.json;
 import framework_v2.Modules.Admin.Model.Classes.Admin_class;
 import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
@@ -371,7 +372,7 @@ public class BLL_admin {
                 dni = (String) Pager_admin.TABLA.getModel().getValueAt(selection1, 0);
 
                 Singleton_admin.ad = new Admin_class(dni);
-                  new Modify_admin().setVisible(true);
+                new AdminController(new Modify_admin(),1).Init(1);
                 correct = true;
 
             }

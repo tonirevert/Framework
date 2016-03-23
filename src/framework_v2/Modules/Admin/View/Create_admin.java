@@ -6,19 +6,9 @@
 package framework_v2.Modules.Admin.View;
 
 
-import framework_v2.Modules.Config.Classes.Config_class;
-import framework_v2.Modules.Admin.Model.BLL.BLL_admin;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.*;
-import java.awt.Color;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.Timer;
 
 /**
  *
@@ -28,22 +18,22 @@ public class Create_admin extends javax.swing.JFrame {
 
 
     
-    private void doPause() {
-        Timer delay = new Timer(3000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-        dispose();
-        new Pager_admin().setVisible(true);
-            }
-        });
-        
-              
-        saving.setVisible(true);
-        delay.setRepeats(false);
-        delay.start();
-        Create_admin.areaInfo.setText("User created correctly");
-        Create_admin.areaInfo.setBackground(Color.green);
-    }
+//    private void doPause() {
+//        Timer delay = new Timer(3000, new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//        dispose();
+//        new Pager_admin().setVisible(true);
+//            }
+//        });
+//        
+//              
+//        saving.setVisible(true);
+//        delay.setRepeats(false);
+//        delay.start();
+//        Create_admin.areaInfo.setText("User created correctly");
+//        Create_admin.areaInfo.setBackground(Color.green);
+//    }
     
     
     /**
@@ -56,26 +46,6 @@ public class Create_admin extends javax.swing.JFrame {
         setContentPane(new JLabel(new ImageIcon (newimg)));
         
         initComponents();
-        saving.setVisible(false);
-        this.setResizable(false);
-        this.setSize(600,500);//ancho x alto
-        dateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
-        dateContract.setDateFormatString(Config_class.getinstance().getDate_format());
-        Create_admin.dateContract.getDateEditor().setEnabled(false);
-        Create_admin.dateBirth.getDateEditor().setEnabled(false);
-        Create_admin.dateContract.setEnabled(false);
-        Create_admin.areaInfo.setEditable(false);
-        Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-                   addWindowListener(new WindowAdapter() {
-               @Override
-               public void windowClosing(WindowEvent e) {
-                    dispose();
-                    new Pager_admin().setVisible(true);
-               }
-           });
-        avatar.setIcon(defaultavatar);
     }
     
     
@@ -111,9 +81,9 @@ public class Create_admin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         fieldActivity = new javax.swing.JTextField();
-        saveCreateadmin = new javax.swing.JButton();
-        cancelCreateadmin = new javax.swing.JButton();
-        resetCreateadmin = new javax.swing.JButton();
+        btnsaveCreateadmin = new javax.swing.JButton();
+        btncancelCreateadmin = new javax.swing.JButton();
+        btnresetCreateadmin = new javax.swing.JButton();
         checkSurname = new javax.swing.JLabel();
         checkDNI = new javax.swing.JLabel();
         checkName = new javax.swing.JLabel();
@@ -137,33 +107,12 @@ public class Create_admin extends javax.swing.JFrame {
         saving = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Create Admin");
         setResizable(false);
         setSize(new java.awt.Dimension(800, 800));
         getContentPane().setLayout(null);
 
         fieldDNI.setBackground(java.awt.Color.yellow);
-        fieldDNI.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldDNIFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldDNIFocusLost(evt);
-            }
-        });
-        fieldDNI.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                fieldDNIMouseClicked(evt);
-            }
-        });
-        fieldDNI.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldDNIKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                fieldDNIKeyReleased(evt);
-            }
-        });
+        fieldDNI.setToolTipText("");
         getContentPane().add(fieldDNI);
         fieldDNI.setBounds(90, 10, 148, 25);
 
@@ -172,22 +121,6 @@ public class Create_admin extends javax.swing.JFrame {
         labelDNI.setBounds(10, 15, 70, 15);
 
         fieldName.setBackground(java.awt.Color.yellow);
-        fieldName.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldNameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldNameFocusLost(evt);
-            }
-        });
-        fieldName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldNameKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                fieldNameKeyReleased(evt);
-            }
-        });
         getContentPane().add(fieldName);
         fieldName.setBounds(90, 50, 148, 25);
 
@@ -200,22 +133,6 @@ public class Create_admin extends javax.swing.JFrame {
         labelSurname.setBounds(10, 90, 80, 15);
 
         fieldSurname.setBackground(java.awt.Color.yellow);
-        fieldSurname.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldSurnameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldSurnameFocusLost(evt);
-            }
-        });
-        fieldSurname.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldSurnameKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                fieldSurnameKeyReleased(evt);
-            }
-        });
         getContentPane().add(fieldSurname);
         fieldSurname.setBounds(90, 90, 150, 25);
 
@@ -224,22 +141,6 @@ public class Create_admin extends javax.swing.JFrame {
         labelEmail.setBounds(10, 130, 80, 15);
 
         fieldEmail.setBackground(java.awt.Color.yellow);
-        fieldEmail.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldEmailFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldEmailFocusLost(evt);
-            }
-        });
-        fieldEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldEmailKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                fieldEmailKeyReleased(evt);
-            }
-        });
         getContentPane().add(fieldEmail);
         fieldEmail.setBounds(90, 130, 150, 25);
 
@@ -248,22 +149,6 @@ public class Create_admin extends javax.swing.JFrame {
         jLabel5.setBounds(10, 170, 80, 15);
 
         fieldMobile.setBackground(java.awt.Color.yellow);
-        fieldMobile.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldMobileFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldMobileFocusLost(evt);
-            }
-        });
-        fieldMobile.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldMobileKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                fieldMobileKeyReleased(evt);
-            }
-        });
         getContentPane().add(fieldMobile);
         fieldMobile.setBounds(90, 170, 150, 25);
 
@@ -272,22 +157,6 @@ public class Create_admin extends javax.swing.JFrame {
         jLabel6.setBounds(10, 210, 80, 15);
 
         fieldUser.setBackground(java.awt.Color.yellow);
-        fieldUser.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldUserFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldUserFocusLost(evt);
-            }
-        });
-        fieldUser.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldUserKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                fieldUserKeyReleased(evt);
-            }
-        });
         getContentPane().add(fieldUser);
         fieldUser.setBounds(90, 210, 150, 25);
 
@@ -331,51 +200,20 @@ public class Create_admin extends javax.swing.JFrame {
         jLabel13.setBounds(290, 250, 90, 15);
 
         fieldActivity.setBackground(java.awt.Color.yellow);
-        fieldActivity.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldActivityFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldActivityFocusLost(evt);
-            }
-        });
-        fieldActivity.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldActivityKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                fieldActivityKeyReleased(evt);
-            }
-        });
         getContentPane().add(fieldActivity);
         fieldActivity.setBounds(400, 250, 114, 25);
 
-        saveCreateadmin.setText("Save");
-        saveCreateadmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveCreateadminActionPerformed(evt);
-            }
-        });
-        getContentPane().add(saveCreateadmin);
-        saveCreateadmin.setBounds(140, 400, 80, 29);
+        btnsaveCreateadmin.setText("Save");
+        getContentPane().add(btnsaveCreateadmin);
+        btnsaveCreateadmin.setBounds(140, 400, 80, 29);
 
-        cancelCreateadmin.setText("Cancel");
-        cancelCreateadmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelCreateadminActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cancelCreateadmin);
-        cancelCreateadmin.setBounds(360, 400, 90, 29);
+        btncancelCreateadmin.setText("Cancel");
+        getContentPane().add(btncancelCreateadmin);
+        btncancelCreateadmin.setBounds(360, 400, 90, 29);
 
-        resetCreateadmin.setText("Reset");
-        resetCreateadmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetCreateadminActionPerformed(evt);
-            }
-        });
-        getContentPane().add(resetCreateadmin);
-        resetCreateadmin.setBounds(250, 400, 90, 29);
+        btnresetCreateadmin.setText("Reset");
+        getContentPane().add(btnresetCreateadmin);
+        btnresetCreateadmin.setBounds(250, 400, 90, 29);
 
         checkSurname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkSurname);
@@ -402,22 +240,6 @@ public class Create_admin extends javax.swing.JFrame {
         checkUser.setBounds(250, 210, 23, 23);
 
         fieldPassword.setBackground(java.awt.Color.yellow);
-        fieldPassword.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldPasswordFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldPasswordFocusLost(evt);
-            }
-        });
-        fieldPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldPasswordKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                fieldPasswordKeyReleased(evt);
-            }
-        });
         getContentPane().add(fieldPassword);
         fieldPassword.setBounds(90, 250, 150, 25);
 
@@ -430,22 +252,6 @@ public class Create_admin extends javax.swing.JFrame {
         labelPassword2.setBounds(10, 290, 80, 15);
 
         fieldPassword2.setBackground(java.awt.Color.yellow);
-        fieldPassword2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldPassword2FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldPassword2FocusLost(evt);
-            }
-        });
-        fieldPassword2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldPassword2KeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                fieldPassword2KeyReleased(evt);
-            }
-        });
         getContentPane().add(fieldPassword2);
         fieldPassword2.setBounds(90, 290, 150, 25);
 
@@ -458,29 +264,20 @@ public class Create_admin extends javax.swing.JFrame {
         checkActivity.setBounds(550, 250, 23, 23);
 
         btnSearch.setText("Search");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
         getContentPane().add(btnSearch);
         btnSearch.setBounds(350, 90, 90, 29);
 
         dateBirth.setBackground(java.awt.Color.white);
         dateBirth.setDateFormatString("dd/MM/yyyy");
-        dateBirth.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                dateBirthPropertyChange(evt);
-            }
-        });
+        dateBirth.setMaxSelectableDate(new java.util.Date(4102444893000L));
+        dateBirth.setMinSelectableDate(new java.util.Date(-2208984223000L));
+        dateBirth.setName("createdateBirth"); // NOI18N
+        dateBirth.setOpaque(false);
         getContentPane().add(dateBirth);
         dateBirth.setBounds(400, 15, 140, 27);
+        dateBirth.getAccessibleContext().setAccessibleName(getName());
+        dateBirth.getAccessibleContext().setAccessibleDescription(getName());
 
-        dateContract.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                dateContractPropertyChange(evt);
-            }
-        });
         getContentPane().add(dateContract);
         dateContract.setBounds(400, 210, 140, 27);
 
@@ -516,224 +313,16 @@ public class Create_admin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cancelCreateadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelCreateadminActionPerformed
-        dispose();
-        new Pager_admin().setVisible(true);
-    }//GEN-LAST:event_cancelCreateadminActionPerformed
-
-    private void fieldDNIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldDNIMouseClicked
-        BLL_admin.askDniClick();
-    }//GEN-LAST:event_fieldDNIMouseClicked
-
-    private void fieldDNIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldDNIKeyPressed
-        BLL_admin.askAdmindata("dni");
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            fieldName.requestFocus();
-        }
-    }//GEN-LAST:event_fieldDNIKeyPressed
             
-    private void fieldDNIKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldDNIKeyReleased
-          BLL_admin.askAdmindata("dni");
-    }//GEN-LAST:event_fieldDNIKeyReleased
-
-    private void fieldNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNameKeyPressed
-       BLL_admin.askAdmindata("name");
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            fieldSurname.requestFocus();
-	}
-    }//GEN-LAST:event_fieldNameKeyPressed
-
-    private void fieldNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNameKeyReleased
-        BLL_admin.askAdmindata("name");
-    }//GEN-LAST:event_fieldNameKeyReleased
-
-    private void fieldSurnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldSurnameKeyPressed
-        BLL_admin.askAdmindata("surname");
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            fieldEmail.requestFocus();
-	}
-    }//GEN-LAST:event_fieldSurnameKeyPressed
-
-    private void fieldSurnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldSurnameKeyReleased
-        BLL_admin.askAdmindata("surname");
-    }//GEN-LAST:event_fieldSurnameKeyReleased
-
-    private void fieldEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldEmailKeyPressed
-        BLL_admin.askAdmindata("email");
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            fieldMobile.requestFocus();
-	}
-    }//GEN-LAST:event_fieldEmailKeyPressed
-
-    private void fieldEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldEmailKeyReleased
-        BLL_admin.askAdmindata("email");
-    }//GEN-LAST:event_fieldEmailKeyReleased
-
-    private void fieldMobileKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldMobileKeyPressed
-        BLL_admin.askAdmindata("mobile");
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            fieldUser.requestFocus();
-	}
-    }//GEN-LAST:event_fieldMobileKeyPressed
-
-    private void fieldMobileKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldMobileKeyReleased
-        BLL_admin.askAdmindata("mobile");
-    }//GEN-LAST:event_fieldMobileKeyReleased
-
-    private void fieldUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldUserKeyPressed
-        BLL_admin.askAdmindata("user");
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            fieldPassword.requestFocus();
-	}
-    }//GEN-LAST:event_fieldUserKeyPressed
-
-    private void fieldUserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldUserKeyReleased
-        BLL_admin.askAdmindata("user");
-    }//GEN-LAST:event_fieldUserKeyReleased
-
-    private void fieldPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldPasswordKeyPressed
-        BLL_admin.askAdmindata("password");
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            fieldPassword2.requestFocus();
-	}
-    }//GEN-LAST:event_fieldPasswordKeyPressed
-
-    private void fieldPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldPasswordKeyReleased
-        BLL_admin.askAdmindata("password");
-    }//GEN-LAST:event_fieldPasswordKeyReleased
-
-    private void fieldPassword2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldPassword2KeyPressed
-        BLL_admin.askAdmindata("password2");
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            fieldActivity.requestFocus();
-	}
-    }//GEN-LAST:event_fieldPassword2KeyPressed
-
-    private void fieldPassword2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldPassword2KeyReleased
-        BLL_admin.askAdmindata("password2");
-    }//GEN-LAST:event_fieldPassword2KeyReleased
-
-    private void fieldActivityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldActivityKeyPressed
-          BLL_admin.askAdmindata("activity");
-    }//GEN-LAST:event_fieldActivityKeyPressed
-
-    private void fieldDNIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldDNIFocusGained
-         areaInfo.setText("Input a ID card number");
-         Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-    }//GEN-LAST:event_fieldDNIFocusGained
-
-    private void fieldNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldNameFocusGained
-        areaInfo.setText("Input a name");
-        Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-    }//GEN-LAST:event_fieldNameFocusGained
-
-    private void fieldSurnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldSurnameFocusGained
-        areaInfo.setText("Input a surname");
-        Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-    }//GEN-LAST:event_fieldSurnameFocusGained
-
-    private void fieldEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldEmailFocusGained
-        areaInfo.setText("Input a e-mail address");
-        Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-    }//GEN-LAST:event_fieldEmailFocusGained
-
-    private void fieldMobileFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldMobileFocusGained
-        areaInfo.setText("Input a mobile number like 346XXXXXXXX");
-        Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-    }//GEN-LAST:event_fieldMobileFocusGained
-
-    private void fieldUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldUserFocusGained
-        areaInfo.setText("Input a user name");
-        Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-    }//GEN-LAST:event_fieldUserFocusGained
-
-    private void fieldPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldPasswordFocusGained
-        areaInfo.setText("Input a password like Az123456 (need a capital letter) 8 letters");
-        Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-    }//GEN-LAST:event_fieldPasswordFocusGained
-
-    private void fieldPassword2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldPassword2FocusGained
-        areaInfo.setText("Verify your password");
-        Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-    }//GEN-LAST:event_fieldPassword2FocusGained
-
-    private void fieldActivityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldActivityFocusGained
-        areaInfo.setText("Input the activity");
-        Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-    }//GEN-LAST:event_fieldActivityFocusGained
-
-    private void fieldDNIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldDNIFocusLost
-        areaInfo.setText("");
-    }//GEN-LAST:event_fieldDNIFocusLost
-
-    private void fieldNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldNameFocusLost
-        areaInfo.setText("");
-    }//GEN-LAST:event_fieldNameFocusLost
-
-    private void fieldSurnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldSurnameFocusLost
-        areaInfo.setText("");
-    }//GEN-LAST:event_fieldSurnameFocusLost
-
-    private void fieldEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldEmailFocusLost
-        areaInfo.setText("");
-    }//GEN-LAST:event_fieldEmailFocusLost
-
-    private void fieldMobileFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldMobileFocusLost
-        areaInfo.setText("");
-    }//GEN-LAST:event_fieldMobileFocusLost
-
-    private void fieldUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldUserFocusLost
-        areaInfo.setText("");
-    }//GEN-LAST:event_fieldUserFocusLost
-
-    private void fieldPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldPasswordFocusLost
-        areaInfo.setText("");
-    }//GEN-LAST:event_fieldPasswordFocusLost
-
-    private void fieldPassword2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldPassword2FocusLost
-        areaInfo.setText("");
-    }//GEN-LAST:event_fieldPassword2FocusLost
-
-    private void fieldActivityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldActivityFocusLost
-        areaInfo.setText("");
-    }//GEN-LAST:event_fieldActivityFocusLost
-
-    private void resetCreateadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetCreateadminActionPerformed
-       BLL_admin.resetFields();
-    }//GEN-LAST:event_resetCreateadminActionPerformed
-
-    private void dateBirthPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dateBirthPropertyChange
-            BLL_admin.askAdmindata("birthdate");
-            Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-    }//GEN-LAST:event_dateBirthPropertyChange
-
-    private void dateContractPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dateContractPropertyChange
-            BLL_admin.askAdmindata("datecontract");
-            Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-    }//GEN-LAST:event_dateContractPropertyChange
-
-    private void fieldActivityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldActivityKeyReleased
-        BLL_admin.askAdmindata("activity");
-    }//GEN-LAST:event_fieldActivityKeyReleased
-
-    private void saveCreateadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCreateadminActionPerformed
-        if(BLL_admin.create_admin()==true){
-            doPause();
-        }
-    }//GEN-LAST:event_saveCreateadminActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        BLL_admin.askAdmindata("avatar");
-    }//GEN-LAST:event_btnSearchActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextArea areaInfo;
     public static javax.swing.JLabel avatar;
     public static javax.swing.JButton btnSearch;
+    public static javax.swing.JButton btncancelCreateadmin;
+    public static javax.swing.JButton btnresetCreateadmin;
+    public static javax.swing.JButton btnsaveCreateadmin;
     private javax.swing.ButtonGroup buttonGroupState;
-    private javax.swing.JButton cancelCreateadmin;
     public static javax.swing.JLabel checkActivity;
     public static javax.swing.JLabel checkDNI;
     public static javax.swing.JLabel checkDatebirth;
@@ -773,8 +362,6 @@ public class Create_admin extends javax.swing.JFrame {
     private javax.swing.JLabel labelSurname;
     public static javax.swing.JRadioButton radioStateNo;
     public static javax.swing.JRadioButton radioStateYes;
-    private javax.swing.JButton resetCreateadmin;
-    private javax.swing.JButton saveCreateadmin;
     public javax.swing.JOptionPane saving;
     // End of variables declaration//GEN-END:variables
 }

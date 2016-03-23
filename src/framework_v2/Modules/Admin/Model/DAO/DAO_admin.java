@@ -264,7 +264,6 @@ public class DAO_admin {
             Create_admin.checkDatebirth.setIcon(ok);
             Create_admin.dateContract.setEnabled(true);
             Create_admin.dateContract.getDateEditor().setEnabled(false);
-            
             correct=true;
         }else{
             Create_admin.checkDatebirth.setIcon(no_ok);
@@ -505,18 +504,18 @@ public class DAO_admin {
    public static boolean askNameMod(){
         boolean correct=false;
         
-        if(Modify_admin.fieldName.getText().equals("")){
-            Modify_admin.fieldName.setBackground(Color.yellow);
+        if(Modify_admin.editfieldName.getText().equals("")){
+            Modify_admin.editfieldName.setBackground(Color.yellow);
             Modify_admin.checkName.setIcon(no_ok);
             correct=false;
         }else{
-                if(Validate.valname(Modify_admin.fieldName.getText())==false){
-                Modify_admin.fieldName.setBackground(Color.yellow);
+                if(Validate.valname(Modify_admin.editfieldName.getText())==false){
+                Modify_admin.editfieldName.setBackground(Color.yellow);
                 Modify_admin.checkName.setIcon(no_ok);
                 correct=false;
             }
-                else if(Validate.valname(Modify_admin.fieldName.getText())==true){
-                Modify_admin.fieldName.setBackground(Color.green);
+                else if(Validate.valname(Modify_admin.editfieldName.getText())==true){
+                Modify_admin.editfieldName.setBackground(Color.green);
                 Modify_admin.checkName.setIcon(ok);
                 correct=true;
             }
@@ -527,18 +526,18 @@ public class DAO_admin {
     
     public static boolean askSurnameMod(){
         boolean correct=false;
-        if(Modify_admin.fieldSurname.getText().equals("")){
-            Modify_admin.fieldSurname.setBackground(Color.yellow);
+        if(Modify_admin.editfieldSurname.getText().equals("")){
+            Modify_admin.editfieldSurname.setBackground(Color.yellow);
             Modify_admin.checkSurname.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valname(Modify_admin.fieldSurname.getText())==false){
-            Modify_admin.fieldSurname.setBackground(Color.yellow);
+            if(Validate.valname(Modify_admin.editfieldSurname.getText())==false){
+            Modify_admin.editfieldSurname.setBackground(Color.yellow);
             Modify_admin.checkSurname.setIcon(no_ok);
             correct=false;
             }
-            else if(Validate.valname(Modify_admin.fieldSurname.getText())==true){
-                Modify_admin.fieldSurname.setBackground(Color.green);
+            else if(Validate.valname(Modify_admin.editfieldSurname.getText())==true){
+                Modify_admin.editfieldSurname.setBackground(Color.green);
                 Modify_admin.checkSurname.setIcon(ok);
                 correct=true;
             }
@@ -550,18 +549,18 @@ public class DAO_admin {
     public static boolean askEmailMod(){
         boolean correct=false;
         
-        if(Modify_admin.fieldEmail.getText().equals("")){
-            Modify_admin.fieldEmail.setBackground(Color.yellow);
+        if(Modify_admin.editfieldEmail.getText().equals("")){
+            Modify_admin.editfieldEmail.setBackground(Color.yellow);
             Modify_admin.checkEmail.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valemail(Modify_admin.fieldEmail.getText())==false){
-            Modify_admin.fieldEmail.setBackground(Color.yellow);
+            if(Validate.valemail(Modify_admin.editfieldEmail.getText())==false){
+            Modify_admin.editfieldEmail.setBackground(Color.yellow);
             Modify_admin.checkEmail.setIcon(no_ok);
             correct=false;
             }
-            else if(Validate.valemail(Modify_admin.fieldEmail.getText())==true){
-                Modify_admin.fieldEmail.setBackground(Color.green);
+            else if(Validate.valemail(Modify_admin.editfieldEmail.getText())==true){
+                Modify_admin.editfieldEmail.setBackground(Color.green);
                 Modify_admin.checkEmail.setIcon(ok);
                 correct=true;
             }
@@ -572,17 +571,17 @@ public class DAO_admin {
     
     public static boolean askMobileMod(){
         boolean correct=false;
-        if(Modify_admin.fieldMobile.getText().equals("")){
-            Modify_admin.fieldMobile.setBackground(Color.yellow);
+        if(Modify_admin.editfieldMobile.getText().equals("")){
+            Modify_admin.editfieldMobile.setBackground(Color.yellow);
             Modify_admin.checkMobile.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valmobile(Modify_admin.fieldMobile.getText())==false){
-                Modify_admin.fieldMobile.setBackground(Color.yellow);
+            if(Validate.valmobile(Modify_admin.editfieldMobile.getText())==false){
+                Modify_admin.editfieldMobile.setBackground(Color.yellow);
                 Modify_admin.checkMobile.setIcon(no_ok);
                 correct=false  ;
-        }else if(Validate.valmobile(Modify_admin.fieldMobile.getText())==true){
-                Modify_admin.fieldMobile.setBackground(Color.green);
+        }else if(Validate.valmobile(Modify_admin.editfieldMobile.getText())==true){
+                Modify_admin.editfieldMobile.setBackground(Color.green);
                 Modify_admin.checkMobile.setIcon(ok);
                 correct=true;
         }
@@ -594,18 +593,18 @@ public class DAO_admin {
     public static boolean askUserMod(){
         boolean correct=false;
         
-        if(Modify_admin.fieldUser.getText().equals("")){
-                Modify_admin.fieldUser.setBackground(Color.yellow);
+        if(Modify_admin.editfieldUser.getText().equals("")){
+                Modify_admin.editfieldUser.setBackground(Color.yellow);
                 Modify_admin.checkUser.setIcon(no_ok);
                 correct=false;
         }else{
-            if(Validate.valuser(Modify_admin.fieldUser.getText())==false){
-                Modify_admin.fieldUser.setBackground(Color.yellow);
+            if(Validate.valuser(Modify_admin.editfieldUser.getText())==false){
+                Modify_admin.editfieldUser.setBackground(Color.yellow);
                 Modify_admin.checkUser.setIcon(no_ok);
                 correct=false;
             }
-            else if(Validate.valuser(Modify_admin.fieldUser.getText())==true){
-                Modify_admin.fieldUser.setBackground(Color.green);
+            else if(Validate.valuser(Modify_admin.editfieldUser.getText())==true){
+                Modify_admin.editfieldUser.setBackground(Color.green);
                 Modify_admin.checkUser.setIcon(ok);
                 correct=true;
             }
@@ -617,18 +616,18 @@ public class DAO_admin {
     public static boolean askPasswordMod(){
         boolean correct=false;
         
-        if(Modify_admin.fieldPassword.getText().equals("")){
-            Modify_admin.fieldPassword.setBackground(Color.yellow);
+        if(Modify_admin.editfieldPassword.getText().equals("")){
+            Modify_admin.editfieldPassword.setBackground(Color.yellow);
             Modify_admin.checkPassword.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valpass(Modify_admin.fieldPassword.getText())==false){
-                Modify_admin.fieldPassword.setBackground(Color.yellow);
+            if(Validate.valpass(Modify_admin.editfieldPassword.getText())==false){
+                Modify_admin.editfieldPassword.setBackground(Color.yellow);
                 Modify_admin.checkPassword.setIcon(no_ok);
                 correct=false;
             }
-            else if(Validate.valpass(Modify_admin.fieldPassword.getText())==true){
-                Modify_admin.fieldPassword.setBackground(Color.green);
+            else if(Validate.valpass(Modify_admin.editfieldPassword.getText())==true){
+                Modify_admin.editfieldPassword.setBackground(Color.green);
                 Modify_admin.checkPassword.setIcon(ok);
                 correct=true;
             }
@@ -640,12 +639,12 @@ public class DAO_admin {
     public static boolean askPassword2Mod(){
         boolean correct=false;
         
-        if(Modify_admin.fieldPassword.getText().equals(Modify_admin.fieldPassword2.getText()) && (Validate.valpass(Modify_admin.fieldPassword2.getText())==true)){
-            Modify_admin.fieldPassword2.setBackground(Color.green);
+        if(Modify_admin.editfieldPassword.getText().equals(Modify_admin.editfieldPassword2.getText()) && (Validate.valpass(Modify_admin.editfieldPassword2.getText())==true)){
+            Modify_admin.editfieldPassword2.setBackground(Color.green);
             Modify_admin.checkPassword2.setIcon(ok);
             correct=true;    
         }else{
-            Modify_admin.fieldPassword2.setBackground(Color.yellow);
+            Modify_admin.editfieldPassword2.setBackground(Color.yellow);
             Modify_admin.checkPassword2.setIcon(no_ok);
             correct=false;
         }
@@ -668,18 +667,18 @@ public class DAO_admin {
     public static boolean askActivityMod(){
         boolean correct=false;
         
-        if(Modify_admin.fieldActivity.getText().equals("")){
-            Modify_admin.fieldActivity.setBackground(Color.yellow);
+        if(Modify_admin.editfieldActivity.getText().equals("")){
+            Modify_admin.editfieldActivity.setBackground(Color.yellow);
             Modify_admin.checkActivity.setIcon(no_ok);
             correct=false;
         }else{
-                if(Validate.valactivity(Modify_admin.fieldActivity.getText())==false){
-                    Modify_admin.fieldActivity.setBackground(Color.yellow);
+                if(Validate.valactivity(Modify_admin.editfieldActivity.getText())==false){
+                    Modify_admin.editfieldActivity.setBackground(Color.yellow);
                     Modify_admin.checkActivity.setIcon(no_ok);
                     correct=false;
                 }
-                else if(Validate.valactivity(Modify_admin.fieldActivity.getText())==true){
-                    Modify_admin.fieldActivity.setBackground(Color.green);
+                else if(Validate.valactivity(Modify_admin.editfieldActivity.getText())==true){
+                    Modify_admin.editfieldActivity.setBackground(Color.green);
                     Modify_admin.checkActivity.setIcon(ok);
                     correct=true;
                 }
@@ -692,10 +691,10 @@ public class DAO_admin {
         boolean correct=false;
         Calendar birthdate;
         String dateform=Config_class.getinstance().getDate_format();
-        Modify_admin.dateBirth.setDateFormatString(dateform);
+        Modify_admin.editdateBirth.setDateFormatString(dateform);
 //        dateBirth.getDateEditor().setEnabled(false);
        try{
-        birthdate=Modify_admin.dateBirth.getCalendar();
+        birthdate=Modify_admin.editdateBirth.getCalendar();
         String s=birthdate.get(Calendar.DATE)+"/"+(birthdate.get(Calendar.MONTH)+1)+"/"+birthdate.get(Calendar.YEAR);
         Date_class birth= new Date_class(s);
         int years=birth.intyearstoday();
@@ -707,8 +706,8 @@ public class DAO_admin {
             correct=false;
         }
        }catch(Exception e){
-            Modify_admin.dateBirth.setBackground(Color.yellow);
-            Modify_admin.areaInfo.setText("No birth date selected");
+            Modify_admin.editdateBirth.setBackground(Color.yellow);
+            Modify_admin.editareaInfo.setText("No birth date selected");
             Modify_admin.checkDatebirth.setIcon(no_ok);
        }
         return correct;
@@ -750,16 +749,16 @@ public class DAO_admin {
         boolean correct=false;
         Calendar contract,birthdate;
         String dateform=Config_class.getinstance().getDate_format();
-        Modify_admin.dateContract.setDateFormatString(dateform);
-        Modify_admin.dateBirth.setDateFormatString(dateform);
-        Modify_admin.dateContract.getDateEditor().setEnabled(false);
+        Modify_admin.editdateContract.setDateFormatString(dateform);
+        Modify_admin.editdateBirth.setDateFormatString(dateform);
+        Modify_admin.editdateContract.getDateEditor().setEnabled(false);
        
         try{
-        contract=Modify_admin.dateContract.getCalendar();
+        contract=Modify_admin.editdateContract.getCalendar();
         String c=contract.get(Calendar.DATE)+"/"+(contract.get(Calendar.MONTH)+1)+"/"+contract.get(Calendar.YEAR);
         Date_class cont= new Date_class(c);
         
-        birthdate=Modify_admin.dateBirth.getCalendar();
+        birthdate=Modify_admin.editdateBirth.getCalendar();
         String b=birthdate.get(Calendar.DATE)+"/"+(birthdate.get(Calendar.MONTH)+1)+"/"+birthdate.get(Calendar.YEAR);
         Date_class birth= new Date_class(b);
         int comp_contract=cont.compare_birth_contract(birth, 16);
@@ -767,23 +766,23 @@ public class DAO_admin {
         switch (comp_contract) {
             case 2:
                 Modify_admin.checkDatecontract.setIcon(ok);
-
+//                datetype=1;
                 correct=true;
                 break;
             case 1:
                 Modify_admin.checkDatecontract.setIcon(ok);
-
+//                datetype=1;
                 correct=true;
                 break;
             case 0:
                 Modify_admin.checkDatecontract.setIcon(no_ok);
-
+//                datetype=0;
                 correct=false;
                 break;
         }
         }catch(Exception e){
-            Modify_admin.dateContract.setBackground(Color.yellow);
-            Modify_admin.areaInfo.setText("No contract date selected");
+            Modify_admin.editdateContract.setBackground(Color.yellow);
+            Modify_admin.editareaInfo.setText("No contract date selected");
             Modify_admin.checkDatecontract.setIcon(no_ok);
         }
         return correct;
@@ -791,18 +790,18 @@ public class DAO_admin {
     
     public static void resetFieldsMod(){
         Modify_admin.fieldDNI.setText("");
-        Modify_admin.fieldName.setText("");
-        Modify_admin.fieldSurname.setText("");
-        Modify_admin.fieldEmail.setText("");
-        Modify_admin.fieldMobile.setText("");
-        Modify_admin.fieldUser.setText("");
-        Modify_admin.fieldPassword.setText("");
-        Modify_admin.fieldPassword2.setText("");
-        Modify_admin.fieldPassword2.setBackground(Color.yellow);
+        Modify_admin.editfieldName.setText("");
+        Modify_admin.editfieldSurname.setText("");
+        Modify_admin.editfieldEmail.setText("");
+        Modify_admin.editfieldMobile.setText("");
+        Modify_admin.editfieldUser.setText("");
+        Modify_admin.editfieldPassword.setText("");
+        Modify_admin.editfieldPassword2.setText("");
+        Modify_admin.editfieldPassword2.setBackground(Color.yellow);
         Modify_admin.checkPassword2.setIcon(no_ok);
-        Modify_admin.fieldActivity.setText(" ");
+        Modify_admin.editfieldActivity.setText(" ");
         Modify_admin.fieldDNI.removeAll();
-        Modify_admin.fieldName.removeAll();
+        Modify_admin.editfieldName.removeAll();
         BLL_admin.modAdmindata("activity");
         BLL_admin.modAdmindata("dni");
         BLL_admin.modAdmindata("email");
@@ -818,8 +817,8 @@ public class DAO_admin {
         int currentDate= calendar.get(DATE);//Calendar.getInstance().get(Calendar.DATE);
         calendar.set(currentYear , currentMonth-1 , currentDate);
         date.setTime(calendar.getTimeInMillis());
-        Modify_admin.dateBirth.setDate(date);
-        Modify_admin.dateContract.setDate(date);
+        Modify_admin.editdateBirth.setDate(date);
+        Modify_admin.editdateContract.setDate(date);
     }
     
     public static Admin_class saveAdminMod(){
@@ -851,13 +850,13 @@ public class DAO_admin {
          if(fidni==true && finame==true && fisurname== true && fiemail==true &&fimobile==true && fiuser==true && fipassword==true &&
                 fipassword2==true && fdbirth==true && fdcont==true && factiv==true){
             dni=Modify_admin.fieldDNI.getText();
-            name=Modify_admin.fieldName.getText();
-            surname=Modify_admin.fieldSurname.getText();
-            email=Modify_admin.fieldEmail.getText();
-            mobile=Modify_admin.fieldMobile.getText();
-            user=Modify_admin.fieldUser.getText();
-            password=Modify_admin.fieldPassword.getText();
-            activity=Integer.parseInt(Modify_admin.fieldActivity.getText());
+            name=Modify_admin.editfieldName.getText();
+            surname=Modify_admin.editfieldSurname.getText();
+            email=Modify_admin.editfieldEmail.getText();
+            mobile=Modify_admin.editfieldMobile.getText();
+            user=Modify_admin.editfieldUser.getText();
+            password=Modify_admin.editfieldPassword.getText();
+            activity=Integer.parseInt(Modify_admin.editfieldActivity.getText());
             
             if(adminavatar==true){
                 try {
@@ -870,11 +869,11 @@ public class DAO_admin {
                 avatar=defaultavatar.toString();
             }
             
-            birthdate=Modify_admin.dateBirth.getCalendar();
+            birthdate=Modify_admin.editdateBirth.getCalendar();
             String s=birthdate.get(Calendar.DATE)+"/"+(birthdate.get(Calendar.MONTH)+1)+"/"+birthdate.get(Calendar.YEAR);
             birth= new Date_class(s);
             
-            datecontract=Modify_admin.dateContract.getCalendar();
+            datecontract=Modify_admin.editdateContract.getCalendar();
             String c=datecontract.get(Calendar.DATE)+"/"+(datecontract.get(Calendar.MONTH)+1)+"/"+datecontract.get(Calendar.YEAR);
             contract=new Date_class(c);
           
@@ -910,14 +909,14 @@ public class DAO_admin {
         
 //        System.out.println(admin.getDni());
         Modify_admin.fieldDNI.setText(adm.getDni());
-        Modify_admin.fieldName.setText(adm.getName());
-        Modify_admin.fieldSurname.setText(adm.getSurname());
-        Modify_admin.fieldEmail.setText(adm.getEmail());
-        Modify_admin.fieldMobile.setText( adm.getMobile());
-        Modify_admin.fieldUser.setText(adm.getUser());
-        Modify_admin.fieldPassword.setText(adm.getPass());
-        Modify_admin.fieldPassword2.setText(adm.getPass());
-        Modify_admin.fieldActivity.setText(String.valueOf(adm.getActivity()));
+        Modify_admin.editfieldName.setText(adm.getName());
+        Modify_admin.editfieldSurname.setText(adm.getSurname());
+        Modify_admin.editfieldEmail.setText(adm.getEmail());
+        Modify_admin.editfieldMobile.setText( adm.getMobile());
+        Modify_admin.editfieldUser.setText(adm.getUser());
+        Modify_admin.editfieldPassword.setText(adm.getPass());
+        Modify_admin.editfieldPassword2.setText(adm.getPass());
+        Modify_admin.editfieldActivity.setText(String.valueOf(adm.getActivity()));
         file=adm.getAvatar();
         birth=adm.getBirthday();
         
@@ -952,13 +951,16 @@ public class DAO_admin {
         
         calendarBirth.set(birth.getYear() , birth.getMonth()-1 , birth.getDay());
         dateBirth.setTime(calendarBirth.getTimeInMillis());
-        Modify_admin.dateBirth.setDate(dateBirth);
+        Modify_admin.editdateBirth.setDate(dateBirth);
 
         
         calendarCont.set(cont.getYear() , cont.getMonth()-1 , cont.getDay());
         dateCont.setTime(calendarCont.getTimeInMillis());
-        Modify_admin.dateContract.setDate(dateCont);
+        Modify_admin.editdateContract.setDate(dateCont);
        
+        BLL_admin.modAdmindata("birthdate");
+        BLL_admin.modAdmindata("datecontract");
+        
     }
     
 }//End public class DAO_admin
