@@ -5,17 +5,9 @@
  */
 package framework_v2.Modules.Admin.View;
 
-import framework_v2.Modules.Admin.Controller.AdminController;
 import framework_v2.Modules.Admin.Model.Classes.miniSimpleTableModel_admin;
-import framework_v2.Modules.Admin.Model.BLL.BLL_admin;
 import framework_v2.Modules.Menu.View.Mainmenu;
 import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.jsonicon;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.jsonicon_over;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.txticon;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.txticon_over;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.xmlicon;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.xmlicon_over;
 import framework_v2.Modules.Admin.Model.Utils.pager.AutocompleteJComboBox;
 import framework_v2.Modules.Admin.Model.Utils.pager.StringSearchable;
 import framework_v2.Modules.Admin.Model.Utils.pager.pagina;
@@ -40,7 +32,7 @@ public class Pager_admin extends javax.swing.JFrame {
     public static void comboActionPerformed(java.awt.event.ActionEvent evt) {                                            
 //        System.out.println("word selected: " + ((JComboBox)combo).getSelectedItem());
         pagina.currentPageIndex = 1;
-        ((miniSimpleTableModel_admin)TABLA.getModel()).filtrar();
+        ((miniSimpleTableModel_admin)pagerTable.getModel()).filtrar();
         }
     
     /**
@@ -48,54 +40,48 @@ public class Pager_admin extends javax.swing.JFrame {
      */
     public Pager_admin() {
         initComponents();
-//        BLL_admin.autoloadAdmin();
-        this.setLocationRelativeTo(null);
-        this.setTitle("Admin managment");
-        this.setResizable(false);
-        AddAdmin.setToolTipText("Add a new admin user");
-        ModAdmin.setToolTipText("Modify selected admin user");
-        DelAdmin.setToolTipText("Delete selected admin user");
-        savejson.setToolTipText("Save users to JSON");
-        savetxt.setToolTipText("Save users to TXT");
-        savexml.setToolTipText("Save users to XML");
+//        this.setLocationRelativeTo(null);/////
+//        this.setTitle("Admin managment");/////
+//        this.setResizable(false);/////
         
-        TABLA.setModel( new miniSimpleTableModel_admin() );
-        ((miniSimpleTableModel_admin)TABLA.getModel()).cargar();
-        TABLA.setFillsViewportHeight(true);
-        TABLA.setRowSorter(sorter);
+        
+//        pagerTable.setModel( new miniSimpleTableModel_admin() );/////
+//        ((miniSimpleTableModel_admin)pagerTable.getModel()).cargar();/////
+//        pagerTable.setFillsViewportHeight(true);/////
+//        pagerTable.setRowSorter(sorter);/////
 
-        pagina.inicializa();
-        pagina.initLinkBox();
+//        pagina.inicializa();/////
+//        pagina.initLinkBox();/////
         
-        jLabel3.setText(String.valueOf(Singleton_admin.adm.size()));
+//        pagAmount.setText(String.valueOf(Singleton_admin.adm.size()));/////
         
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                dispose();
-                new MenuController(new Mainmenu(),0).Init(0);
-            }
-        });
+//        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);/////
+//        addWindowListener(new WindowAdapter() {/////
+//            @Override/////
+//            public void windowClosing(WindowEvent e) {/////
+//                dispose();/////
+//                new MenuController(new Mainmenu(),0).Init(0);/////
+//            }/////
+//        });/////
           
-        List<String> myWords = new ArrayList<String>();
-        for(int i=0;i<=Singleton_admin.adm.size()-1;i++) {
-            myWords.add(Singleton_admin.adm.get(i).getName());
-        }
+//        List<String> myWords = new ArrayList<String>();/////
+//        for(int i=0;i<=Singleton_admin.adm.size()-1;i++) {/////
+//            myWords.add(Singleton_admin.adm.get(i).getName());/////
+//        }/////
 
-        StringSearchable searchable = new StringSearchable(myWords);
-        combo = new AutocompleteJComboBox(searchable);
+//        StringSearchable searchable = new StringSearchable(myWords);/////
+//        combo = new AutocompleteJComboBox(searchable);/////
         //JPanel5 se utiliza solamente para que JPanel3 que contendrá combo, no se redimensione
-        jPanel3.setLayout(new java.awt.BorderLayout());
-        jPanel3.add(combo);
+//        jPanel3.setLayout(new java.awt.BorderLayout());/////
+//        jPanel3.add(combo);/////
         
-        combo.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboActionPerformed(evt);
-                combo.requestFocus();
-            }
-        });
+//        combo.addActionListener(new java.awt.event.ActionListener() {/////
+//            @Override/////
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {/////
+//                comboActionPerformed(evt);/////
+//                combo.requestFocus();/////
+//            }/////
+//        });/////
         
     }
     
@@ -112,28 +98,28 @@ public class Pager_admin extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TABLA = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        ANTERIOR = new javax.swing.JButton();
-        SIGUIENTE = new javax.swing.JButton();
-        CAJA = new javax.swing.JTextField();
-        primero = new javax.swing.JButton();
-        ultimo = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        pagerTable = new javax.swing.JTable();
+        pagButtonpanel = new javax.swing.JPanel();
+        pagPrev = new javax.swing.JButton();
+        pagNext = new javax.swing.JButton();
+        pagBox = new javax.swing.JTextField();
+        pagFirst = new javax.swing.JButton();
+        pagLast = new javax.swing.JButton();
+        pagLinks = new javax.swing.JPanel();
+        pagReturn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        pagAmount = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         AddAdmin = new javax.swing.JLabel();
         ModAdmin = new javax.swing.JLabel();
         DelAdmin = new javax.swing.JLabel();
-        savejson = new javax.swing.JLabel();
-        savetxt = new javax.swing.JLabel();
-        savexml = new javax.swing.JLabel();
+        btnsavejson = new javax.swing.JLabel();
+        btnsavetxt = new javax.swing.JLabel();
+        btnsavexml = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         pagerInfo = new javax.swing.JTextArea();
 
@@ -141,7 +127,7 @@ public class Pager_admin extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        TABLA.setModel(new javax.swing.table.DefaultTableModel(
+        pagerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -152,18 +138,7 @@ public class Pager_admin extends javax.swing.JFrame {
 
             }
         ));
-        TABLA.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TABLAMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                TABLAMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                TABLAMouseEntered(evt);
-            }
-        });
-        jScrollPane1.setViewportView(TABLA);
+        jScrollPane1.setViewportView(pagerTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -182,80 +157,38 @@ public class Pager_admin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel2MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel2MouseEntered(evt);
-            }
-        });
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pagButtonpanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pagButtonpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ANTERIOR.setText("<");
-        ANTERIOR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ANTERIORActionPerformed(evt);
-            }
-        });
-        jPanel2.add(ANTERIOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+        pagPrev.setText("<");
+        pagButtonpanel.add(pagPrev, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
 
-        SIGUIENTE.setText(">");
-        SIGUIENTE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SIGUIENTEActionPerformed(evt);
-            }
-        });
-        jPanel2.add(SIGUIENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
+        pagNext.setText(">");
+        pagButtonpanel.add(pagNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
 
-        CAJA.setEditable(false);
-        CAJA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        CAJA.setPreferredSize(new java.awt.Dimension(140, 20));
-        jPanel2.add(CAJA, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 80, 30));
+        pagBox.setEditable(false);
+        pagBox.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pagBox.setPreferredSize(new java.awt.Dimension(140, 20));
+        pagButtonpanel.add(pagBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 80, 30));
 
-        primero.setText("|<");
-        primero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                primeroActionPerformed(evt);
-            }
-        });
-        jPanel2.add(primero, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+        pagFirst.setText("|<");
+        pagButtonpanel.add(pagFirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
-        ultimo.setText(">|");
-        ultimo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ultimoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(ultimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
+        pagLast.setText(">|");
+        pagButtonpanel.add(pagLast, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel4MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel4MouseEntered(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pagLinksLayout = new javax.swing.GroupLayout(pagLinks);
+        pagLinks.setLayout(pagLinksLayout);
+        pagLinksLayout.setHorizontalGroup(
+            pagLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pagLinksLayout.setVerticalGroup(
+            pagLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 32, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Return");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        pagReturn.setText("Return");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5", "10", "15", "20", "50", "100" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -268,7 +201,7 @@ public class Pager_admin extends javax.swing.JFrame {
 
         jLabel1.setText("Filtra First Name");
 
-        jLabel3.setText("jLabel3");
+        pagAmount.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -306,21 +239,21 @@ public class Pager_admin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pagAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pagReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pagButtonpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pagLinks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -329,20 +262,20 @@ public class Pager_admin extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pagButtonpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pagLinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(pagReturn)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pagAmount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -351,84 +284,18 @@ public class Pager_admin extends javax.swing.JFrame {
 
         AddAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         AddAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/add_no_over.png"))); // NOI18N
-        AddAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddAdminMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                AddAdminMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AddAdminMouseEntered(evt);
-            }
-        });
 
         ModAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ModAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/edit_no_over.png"))); // NOI18N
-        ModAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ModAdminMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ModAdminMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ModAdminMouseEntered(evt);
-            }
-        });
 
         DelAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         DelAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/minus_no_over.png"))); // NOI18N
-        DelAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                DelAdminMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                DelAdminMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                DelAdminMouseEntered(evt);
-            }
-        });
 
-        savejson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/json_no_over.png"))); // NOI18N
-        savejson.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                savejsonMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                savejsonMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                savejsonMouseEntered(evt);
-            }
-        });
+        btnsavejson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/json_no_over.png"))); // NOI18N
 
-        savetxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/txt_no_over.png"))); // NOI18N
-        savetxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                savetxtMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                savetxtMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                savetxtMouseEntered(evt);
-            }
-        });
+        btnsavetxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/txt_no_over.png"))); // NOI18N
 
-        savexml.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/xml_no_over.png"))); // NOI18N
-        savexml.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                savexmlMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                savexmlMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                savexmlMouseEntered(evt);
-            }
-        });
+        btnsavexml.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/xml_no_over.png"))); // NOI18N
 
         pagerInfo.setEditable(false);
         pagerInfo.setColumns(1);
@@ -450,11 +317,11 @@ public class Pager_admin extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(savejson)
+                .addComponent(btnsavejson)
                 .addGap(45, 45, 45)
-                .addComponent(savetxt)
+                .addComponent(btnsavetxt)
                 .addGap(32, 32, 32)
-                .addComponent(savexml)
+                .addComponent(btnsavexml)
                 .addGap(50, 50, 50))
         );
         jPanel7Layout.setVerticalGroup(
@@ -462,9 +329,9 @@ public class Pager_admin extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(savejson, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(savetxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(savexml, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnsavejson, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnsavetxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnsavexml, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(AddAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ModAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(DelAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -477,185 +344,40 @@ public class Pager_admin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ANTERIORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANTERIORActionPerformed
-        pagina.currentPageIndex -= 1;
-        pagina.initLinkBox();
-    }//GEN-LAST:event_ANTERIORActionPerformed
-
-    private void SIGUIENTEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SIGUIENTEActionPerformed
-        pagina.currentPageIndex += 1;
-        pagina.initLinkBox();
-    }//GEN-LAST:event_SIGUIENTEActionPerformed
-
-    private void primeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeroActionPerformed
-        pagina.currentPageIndex = 1;
-        pagina.initLinkBox();
-    }//GEN-LAST:event_primeroActionPerformed
-
-    private void ultimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ultimoActionPerformed
-        pagina.currentPageIndex = pagina.maxPageIndex;
-        pagina.initLinkBox();
-    }//GEN-LAST:event_ultimoActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        new MenuController(new Mainmenu(),0).Init(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
-        pagina.currentPageIndex = 1;
-        pagina.initLinkBox();
+//        pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
+//        pagina.currentPageIndex = 1;
+//        pagina.initLinkBox();
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void AddAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddAdminMouseClicked
-        dispose();
-        new AdminController(new Create_admin(),0).Init(0);
-    }//GEN-LAST:event_AddAdminMouseClicked
-
-    private void ModAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModAdminMouseClicked
-        boolean modify;
-        modify = BLL_admin.edit_admin();
-        if (modify == true) {
-            this.dispose();
-        }
-    }//GEN-LAST:event_ModAdminMouseClicked
-
-    private void DelAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelAdminMouseClicked
-        BLL_admin.delete_file();
-    }//GEN-LAST:event_DelAdminMouseClicked
-
-    private void AddAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddAdminMouseEntered
-        AddAdmin.setIcon(Singleton_admin.addicon_over);
-        pagerInfo.setText("Click to add new Admin user");
-    }//GEN-LAST:event_AddAdminMouseEntered
-
-    private void AddAdminMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddAdminMouseExited
-        AddAdmin.setIcon(Singleton_admin.addicon);
-        pagerInfo.setText("");
-    }//GEN-LAST:event_AddAdminMouseExited
-
-    private void ModAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModAdminMouseEntered
-        ModAdmin.setIcon(Singleton_admin.editicon_over);
-        pagerInfo.setText("Click to modify selected Admin user");
-    }//GEN-LAST:event_ModAdminMouseEntered
-
-    private void ModAdminMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModAdminMouseExited
-        ModAdmin.setIcon(Singleton_admin.editicon);
-        pagerInfo.setText("");
-    }//GEN-LAST:event_ModAdminMouseExited
-
-    private void DelAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelAdminMouseEntered
-        DelAdmin.setIcon(Singleton_admin.delicon_over);
-        pagerInfo.setText("Click to delete selected Admin user");
-    }//GEN-LAST:event_DelAdminMouseEntered
-
-    private void DelAdminMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelAdminMouseExited
-        DelAdmin.setIcon(Singleton_admin.delicon);
-        pagerInfo.setText("");
-    }//GEN-LAST:event_DelAdminMouseExited
-
-    private void TABLAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TABLAMouseClicked
-        if (evt.getClickCount() == 2) {
-            dispose();
-            BLL_admin.edit_admin();
-        }
-    }//GEN-LAST:event_TABLAMouseClicked
-
-    private void savejsonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savejsonMouseEntered
-        savejson.setIcon(jsonicon_over);
-        pagerInfo.setText("Save to JSON file format");
-    }//GEN-LAST:event_savejsonMouseEntered
-
-    private void savejsonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savejsonMouseExited
-        savejson.setIcon(jsonicon);
-        pagerInfo.setText("");
-    }//GEN-LAST:event_savejsonMouseExited
-
-    private void savejsonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savejsonMouseClicked
-        BLL_admin.savejsonAdmin();
-    }//GEN-LAST:event_savejsonMouseClicked
-
-    private void savetxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savetxtMouseEntered
-        savetxt.setIcon(txticon_over);
-        pagerInfo.setText("Save to TXT file format");
-    }//GEN-LAST:event_savetxtMouseEntered
-
-    private void savetxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savetxtMouseExited
-        savetxt.setIcon(txticon);
-        pagerInfo.setText("");
-    }//GEN-LAST:event_savetxtMouseExited
-
-    private void savetxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savetxtMouseClicked
-        BLL_admin.savetxtAdmin();
-    }//GEN-LAST:event_savetxtMouseClicked
-
-    private void savexmlMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savexmlMouseEntered
-        savexml.setIcon(xmlicon_over);
-        pagerInfo.setText("Save to XML file format");
-    }//GEN-LAST:event_savexmlMouseEntered
-
-    private void savexmlMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savexmlMouseExited
-        savexml.setIcon(xmlicon);
-        pagerInfo.setText("");
-    }//GEN-LAST:event_savexmlMouseExited
-
-    private void savexmlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savexmlMouseClicked
-        BLL_admin.savexmlAdmin();
-    }//GEN-LAST:event_savexmlMouseClicked
-
-    private void TABLAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TABLAMouseEntered
-        pagerInfo.setText("Select one user");
-    }//GEN-LAST:event_TABLAMouseEntered
-
-    private void TABLAMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TABLAMouseExited
-        pagerInfo.setText("");
-    }//GEN-LAST:event_TABLAMouseExited
-
-    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
-        pagerInfo.setText("Use the buttons for navigate the pages");
-    }//GEN-LAST:event_jPanel2MouseEntered
-
-    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
-        pagerInfo.setText("");
-    }//GEN-LAST:event_jPanel2MouseExited
-
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        pagerInfo.setText("Click on the numbers for navigate the pages");
-    }//GEN-LAST:event_jPanel4MouseEntered
-
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        pagerInfo.setText("");
-    }//GEN-LAST:event_jPanel4MouseExited
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton ANTERIOR;
     public static javax.swing.JLabel AddAdmin;
-    public static javax.swing.JTextField CAJA;
     public static javax.swing.JLabel DelAdmin;
     public static javax.swing.JLabel ModAdmin;
-    public static javax.swing.JButton SIGUIENTE;
-    public static javax.swing.JTable TABLA;
-    public static javax.swing.JButton jButton1;
+    public static javax.swing.JLabel btnsavejson;
+    public static javax.swing.JLabel btnsavetxt;
+    public static javax.swing.JLabel btnsavexml;
     public static javax.swing.JComboBox jComboBox1;
     public static javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel2;
-    public static javax.swing.JLabel jLabel3;
     public static javax.swing.JPanel jPanel1;
-    public static javax.swing.JPanel jPanel2;
     public static javax.swing.JPanel jPanel3;
-    public static javax.swing.JPanel jPanel4;
     public static javax.swing.JPanel jPanel5;
     public static javax.swing.JPanel jPanel6;
     public static javax.swing.JPanel jPanel7;
     public static javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JScrollPane jScrollPane2;
+    public static javax.swing.JLabel pagAmount;
+    public static javax.swing.JTextField pagBox;
+    public static javax.swing.JPanel pagButtonpanel;
+    public static javax.swing.JButton pagFirst;
+    public static javax.swing.JButton pagLast;
+    public static javax.swing.JPanel pagLinks;
+    public static javax.swing.JButton pagNext;
+    public static javax.swing.JButton pagPrev;
+    public static javax.swing.JButton pagReturn;
     public static javax.swing.JTextArea pagerInfo;
-    public static javax.swing.JButton primero;
-    public static javax.swing.JLabel savejson;
-    public static javax.swing.JLabel savetxt;
-    public static javax.swing.JLabel savexml;
-    public static javax.swing.JButton ultimo;
+    public static javax.swing.JTable pagerTable;
     // End of variables declaration//GEN-END:variables
 }

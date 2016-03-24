@@ -18,12 +18,12 @@ import framework_v2.Modules.Admin.Model.Utils.pager.pagina;
 import framework_v2.Modules.Admin.View.Create_admin;
 import framework_v2.Modules.Admin.View.Modify_admin;
 import framework_v2.Modules.Admin.View.Pager_admin;
-import static framework_v2.Modules.Admin.View.Pager_admin.TABLA;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import static framework_v2.Modules.Admin.View.Pager_admin.pagerTable;
 
 /**
  *
@@ -360,16 +360,16 @@ public class BLL_admin {
         int selection, inicio, selection1;
         boolean correct;
         
-        int n=((miniSimpleTableModel_admin) Pager_admin.TABLA.getModel()).getRowCount();
+        int n=((miniSimpleTableModel_admin) Pager_admin.pagerTable.getModel()).getRowCount();
         if (n != 0) {
                  inicio=(pagina.currentPageIndex-1)*pagina.itemsPerPage; //nos situamos al inicio de la página en cuestión
-                selection=Pager_admin.TABLA.getSelectedRow(); //nos situamos en la fila
+                selection=Pager_admin.pagerTable.getSelectedRow(); //nos situamos en la fila
                 selection1=inicio+selection; //nos situamos en la fila correspondiente de esa página
             if (selection1 == -1) {
                 PauseNoselect();
                 correct = false;
             } else {
-                dni = (String) Pager_admin.TABLA.getModel().getValueAt(selection1, 0);
+                dni = (String) Pager_admin.pagerTable.getModel().getValueAt(selection1, 0);
 
                 Singleton_admin.ad = new Admin_class(dni);
                 new AdminController(new Modify_admin(),1).Init(1);
@@ -392,30 +392,30 @@ public class BLL_admin {
         int pos;
         int selection, inicio, selection1;
         
-        int n=((miniSimpleTableModel_admin) Pager_admin.TABLA.getModel()).getRowCount();
+        int n=((miniSimpleTableModel_admin) Pager_admin.pagerTable.getModel()).getRowCount();
         if (n != 0) {
                  inicio=(pagina.currentPageIndex-1)*pagina.itemsPerPage; //nos situamos al inicio de la página en cuestión
-                selection=Pager_admin.TABLA.getSelectedRow(); //nos situamos en la fila
+                selection=Pager_admin.pagerTable.getSelectedRow(); //nos situamos en la fila
                 selection1=inicio+selection; //nos situamos en la fila correspondiente de esa página
             if (selection1 == -1) {
                 PauseNoselect();
             } else {
-                dni = (String) TABLA.getModel().getValueAt(selection1, 0);
+                dni = (String) pagerTable.getModel().getValueAt(selection1, 0);
                 Singleton_admin.ad = new Admin_class(dni);
                 pos = BLL_admin.searchadminMod((Admin_class) ad);
                 int opc = JOptionPane.showConfirmDialog(null, "Delete user with ID Card: " + dni+"?",
                         "Info", JOptionPane.WARNING_MESSAGE);
 
                 if (opc == 0) {
-                    ((miniSimpleTableModel_admin) TABLA.getModel()).removeRow(selection1);
+                    ((miniSimpleTableModel_admin) pagerTable.getModel()).removeRow(selection1);
                     ad = Singleton_admin.adm.get(pos);
 
                     Singleton_admin.adm.remove(ad);
                     BLL_admin.autosaveAdmin();
                 }
 
-                if (((miniSimpleTableModel_admin) TABLA.getModel()).getRowCount() == 0) {
-                    if (((miniSimpleTableModel_admin) TABLA.getModel()).getRowCount() != 0) {
+                if (((miniSimpleTableModel_admin) pagerTable.getModel()).getRowCount() == 0) {
+                    if (((miniSimpleTableModel_admin) pagerTable.getModel()).getRowCount() != 0) {
 
                     }
                 }

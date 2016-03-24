@@ -31,7 +31,7 @@ public class pagina {
         int rowCount = 0;
         switch (option) {
             case "admin":
-                rowCount = ((miniSimpleTableModel_admin) framework_v2.Modules.Admin.View.Pager_admin.TABLA.getModel()).getRowCount();
+                rowCount = ((miniSimpleTableModel_admin) framework_v2.Modules.Admin.View.Pager_admin.pagerTable.getModel()).getRowCount();
                 break;
 
         }
@@ -42,8 +42,8 @@ public class pagina {
         box.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
         switch (option) {
             case "admin":
-                Pager_admin.jPanel4.setLayout(new BorderLayout());
-                Pager_admin.jPanel4.add(pagina.box);
+                Pager_admin.pagLinks.setLayout(new BorderLayout());
+                Pager_admin.pagLinks.add(pagina.box);
                 break;
 
         }
@@ -73,7 +73,7 @@ public class pagina {
         int rowCount = 0;
         switch (option) {
             case "admin":
-                rowCount = ((miniSimpleTableModel_admin) framework_v2.Modules.Admin.View.Pager_admin.TABLA.getModel()).getRowCount();
+                rowCount = ((miniSimpleTableModel_admin) framework_v2.Modules.Admin.View.Pager_admin.pagerTable.getModel()).getRowCount();
                 break;
 
         }
@@ -90,11 +90,11 @@ public class pagina {
             switch (option) {
                 case "admin":
                     //actualizar botones y caja: desactivarlos
-                    Pager_admin.primero.setEnabled(false);
-                    Pager_admin.ANTERIOR.setEnabled(false);
-                    Pager_admin.ultimo.setEnabled(false);
-                    Pager_admin.SIGUIENTE.setEnabled(false);
-                    Pager_admin.CAJA.setText("");
+                    Pager_admin.pagFirst.setEnabled(false);
+                    Pager_admin.pagPrev.setEnabled(false);
+                    Pager_admin.pagLast.setEnabled(false);
+                    Pager_admin.pagNext.setEnabled(false);
+                    Pager_admin.pagBox.setText("");
                     break;
 
             }
@@ -112,11 +112,11 @@ public class pagina {
             switch (option) {
                 case "admin":
                     //actualizar botones y caja: desactivarlos
-                    Pager_admin.primero.setEnabled(false);
-                    Pager_admin.ANTERIOR.setEnabled(false);
-                    Pager_admin.ultimo.setEnabled(false);
-                    Pager_admin.SIGUIENTE.setEnabled(false);
-                    Pager_admin.CAJA.setText("");
+                    Pager_admin.pagFirst.setEnabled(false);
+                    Pager_admin.pagPrev.setEnabled(false);
+                    Pager_admin.pagLast.setEnabled(false);
+                    Pager_admin.pagNext.setEnabled(false);
+                    Pager_admin.pagBox.setText("");
                     break;
 
             }
@@ -134,11 +134,11 @@ public class pagina {
             switch (option) {
                 case "admin":
                     
-                    Pager_admin.primero.setEnabled(currentPageIndex > 1);
-                    Pager_admin.ANTERIOR.setEnabled(currentPageIndex > 1);
-                    Pager_admin.ultimo.setEnabled(currentPageIndex < maxPageIndex);
-                    Pager_admin.SIGUIENTE.setEnabled(currentPageIndex < maxPageIndex);
-                    Pager_admin.CAJA.setText(Integer.toString(currentPageIndex) + String.format(" / %d", maxPageIndex));
+                    Pager_admin.pagFirst.setEnabled(currentPageIndex > 1);
+                    Pager_admin.pagPrev.setEnabled(currentPageIndex > 1);
+                    Pager_admin.pagLast.setEnabled(currentPageIndex < maxPageIndex);
+                    Pager_admin.pagNext.setEnabled(currentPageIndex < maxPageIndex);
+                    Pager_admin.pagBox.setText(Integer.toString(currentPageIndex) + String.format(" / %d", maxPageIndex));
                     break;
 
             }

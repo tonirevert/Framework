@@ -13,6 +13,7 @@ import static framework_v2.Classes.Singleton_menus.configicon;
 import static framework_v2.Classes.Singleton_menus.configicon_over;
 import static framework_v2.Classes.Singleton_menus.rusericon;
 import static framework_v2.Classes.Singleton_menus.rusericon_over;
+import framework_v2.Modules.Admin.Controller.AdminController;
 import framework_v2.Modules.Admin.Model.BLL.BLL_admin;
 import framework_v2.Modules.Admin.View.Pager_admin;
 import framework_v2.Modules.Config.View.Config;
@@ -155,7 +156,8 @@ public class MenuController implements ActionListener, MouseListener{
            
            case btnAdmin:
                     main.dispose();
-                    new Pager_admin().setVisible(true);
+                    new AdminController(new Pager_admin(),2).Init(2);
+//                    new Pager_admin().setVisible(true);
 //                    new AdminController(new Create_admin(),0).Init(0);//////////////////////////////////////////////////////////
                 break;
                 

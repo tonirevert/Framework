@@ -137,7 +137,7 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
                     cont++;
                 }
             }
-            Pager_admin.jLabel3.setText(String.valueOf(cont));
+            Pager_admin.pagAmount.setText(String.valueOf(cont));
 //            System.out.println("word selected: " + nom);
             pagina.initLinkBox();
         }
@@ -172,7 +172,7 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
     public void removeRow(int fila) {
         datos.remove(fila);
         fireTableDataChanged();
-          Pager_admin.jLabel3.setText(String.valueOf(datos.size()));
+          Pager_admin.pagAmount.setText(String.valueOf(datos.size()));
             pagina.initLinkBox();
     }
 }
