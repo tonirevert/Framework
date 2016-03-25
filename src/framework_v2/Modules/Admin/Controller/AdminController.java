@@ -5,7 +5,6 @@
  */
 package framework_v2.Modules.Admin.Controller;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import framework_v2.Modules.Admin.Controller.AdminController.Action;
 import framework_v2.Modules.Admin.Model.BLL.BLL_admin;
 import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
@@ -18,6 +17,7 @@ import framework_v2.Modules.Admin.Model.Utils.pager.pagina;
 import framework_v2.Modules.Admin.View.Create_admin;
 import framework_v2.Modules.Admin.View.Modify_admin;
 import framework_v2.Modules.Admin.View.Pager_admin;
+import static framework_v2.Modules.Admin.View.Pager_admin.jComboBox1;
 import static framework_v2.Modules.Admin.View.Pager_admin.pagerTable;
 import framework_v2.Modules.Config.Classes.Config_class;
 import framework_v2.Modules.Menu.Controller.MenuController;
@@ -31,8 +31,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
@@ -47,13 +47,14 @@ import javax.swing.table.TableRowSorter;
  *
  * @author antonio
  */
-public class AdminController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener{
+public class AdminController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
 
-    public static Create_admin create;// = new Create_admin();
-    public static Modify_admin edit;// = new Modify_admin();
-    public static Pager_admin pager;// = new Pager_admin();
+    public static Create_admin create;
+    public static Modify_admin edit;
+    public static Pager_admin pager;
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new miniSimpleTableModel_admin());
     public static AutocompleteJComboBox combo = null;
+    public String comb="";
     
     public AdminController(JFrame frame, int i){
         switch(i){
@@ -71,11 +72,11 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         }
                 
     }
-
                
     public enum Action{
         
         //Create admin buttons and fields:
+        createWindow,
         createfieldDNI,
         createfieldName,
         createfieldSurname,
@@ -91,6 +92,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         createbtnCancel,
         
         //Edit admin buttons and fields
+        editWindow,
         editfieldName,
         editfieldSurname,
         editfieldEmail,
@@ -104,6 +106,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         editbtnCancel,
         
         //Pager admin buttons and fields
+        pagerWindow,
         AddAdmin,
         ModAdmin,
         DelAdmin,
@@ -111,8 +114,11 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         btnsavetxt,
         btnsavexml,
         pagerTable,
+        comboBoxChanged,
+        comboBoxEdited,
         combo,
         entriesCombo,
+        jComboBox1,
         pagFirst,
         pagPrev,
         pagBox,
@@ -140,7 +146,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         switch(i){
             
             case 0://Create admin
-                
+                Singleton_admin.window="create";
                 create.setTitle("Create Admin");////////////////////////////////////////////////////////////////////////
                 create.saving.setVisible(false);
                 create.setResizable(false);
@@ -155,16 +161,11 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 create.setLocationRelativeTo(null);
                 create.avatar.setIcon(defaultavatar);
                 create.setVisible(true);
-                Singleton_admin.window="create";
                 
+                
+                create.setName("createWindow");
+                create.addWindowListener(this);
                 create.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-                addWindowListener(new WindowAdapter() {
-               @Override
-               public void windowClosing(WindowEvent e) {
-                    create.dispose();
-                    new AdminController(new Pager_admin(),2).Init(2);
-               }
-           });
                 
                 create.fieldDNI.setActionCommand("createfieldDNI");
                 create.fieldDNI.setName("createfieldDNI");
@@ -239,7 +240,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 break;//End case 0
                 
             case 1://Modify admin
-                
+                Singleton_admin.window="modify";
                 edit.setTitle("Modify Admin");////////////////////////////////////////////////////////////////////////
                 edit.saving.setVisible(false);
                 BLL_admin.fill_admin(ad.getDni());
@@ -252,17 +253,12 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 edit.editdateContract.getDateEditor().setEnabled(false);
                 edit.setLocationRelativeTo(null);
                 edit.setVisible(true);
-                Singleton_admin.window="modify";
+
                 
+                edit.setName("editWindow");
+                edit.addWindowListener(this);
                 edit.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                edit.dispose(); 
-                new AdminController(new Pager_admin(),2).Init(2);
-            }
-        });
-                
+                        
                 edit.editfieldName.setActionCommand("editfieldName");
                 edit.editfieldName.setName("editfieldName");
                 edit.editfieldName.addFocusListener(this);
@@ -326,7 +322,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 break;//End case 1
                 
             case 2://Pager admin
-                
                 pager.setTitle("Admin management list");
                 pager.setLocationRelativeTo(null);
                 pager.setResizable(false);
@@ -342,15 +337,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 
                 pager.pagAmount.setText(String.valueOf(Singleton_admin.adm.size()));
                 
-                pager.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-                addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowClosing(WindowEvent e) {
-                                pager.dispose();
-                                new MenuController(new Mainmenu(),0).Init(0);
-                        }
-                });
-                
                 List<String> myWords = new ArrayList<String>();
                 
                 for (int e=0;e<=Singleton_admin.adm.size()-1;e++) {
@@ -361,7 +347,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 combo = new AutocompleteJComboBox(searchable);
                 pager.jPanel3.setLayout(new java.awt.BorderLayout());
                 pager.jPanel3.add(combo);
-                
+                               
                 pager.AddAdmin.setToolTipText("Add a new admin user");
                 pager.ModAdmin.setToolTipText("Modify selected admin user");
                 pager.DelAdmin.setToolTipText("Delete selected admin user");
@@ -372,11 +358,16 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.pagButtonpanel.setToolTipText("Use the buttons for navigate the pages");
                 pager.pagFirst.setToolTipText("Click to go to first page");
                 pager.pagPrev.setToolTipText("Click to go to previous page");
-                pager.pagBox.setToolTipText("Click to navigate pages");
                 pager.pagNext.setToolTipText("Click to go to next page");
                 pager.pagLast.setToolTipText("Click to go to last page");
                 pager.pagLinks.setToolTipText("Click on the numbers for navigate the pages");
                 pager.pagReturn.setToolTipText("Click to return to the previous menu");
+                jComboBox1.setToolTipText("Click to change the amount of users per page");
+                this.combo.setToolTipText("Click to user search");
+                
+                pager.setName("pagerWindow");
+                pager.addWindowListener(this);
+                pager.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 
                 pager.AddAdmin.setName("AddAdmin");
                 pager.AddAdmin.addMouseListener(this);
@@ -399,17 +390,18 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.pagerTable.setName("pagerTable");
                 pager.pagerTable.addMouseListener(this);
                 
-                pager.combo.setName("combo");
-                pager.combo.addActionListener(this);
-                pager.combo.addMouseListener(this);
+                this.combo.setActionCommand("combo");
+                this.combo.setName("combo");
+                this.combo.addActionListener(this);
                 
-                pager.jComboBox1.setName("entriesCombo");
-                pager.jComboBox1.addMouseListener(this);
+                jComboBox1.setActionCommand("entriesCombo");
+                jComboBox1.setName("entriesCombo");
+                jComboBox1.addActionListener(this);
                 
                 pager.pagFirst.setName("pagFirst");
                 pager.pagFirst.addMouseListener(this);
                 
-                pager.pagPrev.setName("PagPrev");
+                pager.pagPrev.setName("pagPrev");
                 pager.pagPrev.addMouseListener(this);
                 
                 pager.pagBox.setName("pagBox");
@@ -427,7 +419,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.pagReturn.setName("pagReturn");
                 pager.pagReturn.addMouseListener(this);
                 
-                break;//End case 2
+                break;//End case 2 Pager admin
             
         }
         
@@ -557,7 +549,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 break;
                 
         }//End switch case keyPressed
-    }//End keyPressed
+    }//End of keyPressed
 
     @Override
     public void keyReleased(KeyEvent e) {
@@ -632,19 +624,26 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 BLL_admin.modAdmindata("activity");
                 break;
         }//End switch case keyReleased
-    }//End keyReleased
+    }//End of keyReleased
     
     @Override
     public void actionPerformed(ActionEvent e) {
-
+//        System.out.println(e.getActionCommand());
         switch (Action.valueOf(e.getActionCommand())){
            
             case combo:
-//                pager.comboActionPerformed(e);
-                pagina.currentPageIndex = 1;
-                ((miniSimpleTableModel_admin)pagerTable.getModel()).filtrar();
-                pager.combo.requestFocus();
+                    pagina.currentPageIndex = 1;
+                    pagina.initLinkBox();
+                    ((miniSimpleTableModel_admin)pagerTable.getModel()).filtrar();
+                    combo.requestFocus();
                 break;
+            
+            case entriesCombo:
+                pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
+                pagina.currentPageIndex = 1;
+                pagina.initLinkBox();
+                break;
+                
         }
     }
 
@@ -751,12 +750,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 }
                 break;
                 
-            case combo:
-                pager.combo.requestFocus();
-                break;
-                
             case entriesCombo:
-                pagina.itemsPerPage=Integer.parseInt(pager.jComboBox1.getSelectedItem().toString());
+                System.out.println("framework_v2.Modules.Admin.Controller.AdminController.mouseClicked()");
+                pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
                 pagina.currentPageIndex = 1;
                 pagina.initLinkBox();
                 break;
@@ -811,6 +807,8 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        
+//        System.out.println(e.getComponent().getName());
 
         switch (Action.valueOf(e.getComponent().getName())){
                 ////Events from pager admin
@@ -897,14 +895,13 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
             case pagLinks:
                 pager.pagerInfo.setText("");
                 break;
-            
-                        }
+                
+        }
 
     }
     
     @Override
     public void focusGained(FocusEvent e) {
-        
 //        System.out.println(e.getComponent().getName());
         
          switch (Action.valueOf(e.getComponent().getName())) {
@@ -994,11 +991,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 edit.editareaInfo.setText("Input the activity");
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
-                
-                ////Events from pager admin
-            case combo:
-                pager.pagerInfo.setText("Write a name to search");
-                break;
          }
     }
 
@@ -1074,11 +1066,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
             case editfieldActivity:
                 edit.editareaInfo.setText("");
                 break;
-                
-                ////Events from pager admin
-            case combo:
-                pager.pagerInfo.setText("");
-                break;
          }
     }
     
@@ -1110,5 +1097,57 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
 
             }//End switch case
         }//End if
+    }//End of property Change
+    
+    @Override
+    public void windowOpened(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        switch(Action.valueOf(e.getComponent().getName())){
+            
+            case createWindow:
+                    create.dispose();
+                    new AdminController(new Pager_admin(),2).Init(2);
+                break;
+            
+            case editWindow:
+                     edit.dispose(); 
+                     new AdminController(new Pager_admin(),2).Init(2);
+                break;
+                
+            case pagerWindow:
+                     pager.dispose();
+                     new MenuController(new Mainmenu(),0).Init(0);
+                break;
+        }//End switch case
+    }//End Windows Closing
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

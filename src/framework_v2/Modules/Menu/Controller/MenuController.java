@@ -157,8 +157,6 @@ public class MenuController implements ActionListener, MouseListener{
            case btnAdmin:
                     main.dispose();
                     new AdminController(new Pager_admin(),2).Init(2);
-//                    new Pager_admin().setVisible(true);
-//                    new AdminController(new Create_admin(),0).Init(0);//////////////////////////////////////////////////////////
                 break;
                 
                 case btnClient:

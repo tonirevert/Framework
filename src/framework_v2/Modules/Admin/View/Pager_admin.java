@@ -5,84 +5,18 @@
  */
 package framework_v2.Modules.Admin.View;
 
-import framework_v2.Modules.Admin.Model.Classes.miniSimpleTableModel_admin;
-import framework_v2.Modules.Menu.View.Mainmenu;
-import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
-import framework_v2.Modules.Admin.Model.Utils.pager.AutocompleteJComboBox;
-import framework_v2.Modules.Admin.Model.Utils.pager.StringSearchable;
-import framework_v2.Modules.Admin.Model.Utils.pager.pagina;
-import framework_v2.Modules.Menu.Controller.MenuController;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.table.TableRowSorter;
-import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
-import javax.swing.table.TableModel;
-
 /**
  *
  * @author antonio
  */
 public class Pager_admin extends javax.swing.JFrame {
-
-    public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new miniSimpleTableModel_admin());
-    public static AutocompleteJComboBox combo = null;
-    
-    public static void comboActionPerformed(java.awt.event.ActionEvent evt) {                                            
-//        System.out.println("word selected: " + ((JComboBox)combo).getSelectedItem());
-        pagina.currentPageIndex = 1;
-        ((miniSimpleTableModel_admin)pagerTable.getModel()).filtrar();
-        }
     
     /**
      * Creates new form Pager_admin
      */
     public Pager_admin() {
         initComponents();
-//        this.setLocationRelativeTo(null);/////
-//        this.setTitle("Admin managment");/////
-//        this.setResizable(false);/////
-        
-        
-//        pagerTable.setModel( new miniSimpleTableModel_admin() );/////
-//        ((miniSimpleTableModel_admin)pagerTable.getModel()).cargar();/////
-//        pagerTable.setFillsViewportHeight(true);/////
-//        pagerTable.setRowSorter(sorter);/////
 
-//        pagina.inicializa();/////
-//        pagina.initLinkBox();/////
-        
-//        pagAmount.setText(String.valueOf(Singleton_admin.adm.size()));/////
-        
-//        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);/////
-//        addWindowListener(new WindowAdapter() {/////
-//            @Override/////
-//            public void windowClosing(WindowEvent e) {/////
-//                dispose();/////
-//                new MenuController(new Mainmenu(),0).Init(0);/////
-//            }/////
-//        });/////
-          
-//        List<String> myWords = new ArrayList<String>();/////
-//        for(int i=0;i<=Singleton_admin.adm.size()-1;i++) {/////
-//            myWords.add(Singleton_admin.adm.get(i).getName());/////
-//        }/////
-
-//        StringSearchable searchable = new StringSearchable(myWords);/////
-//        combo = new AutocompleteJComboBox(searchable);/////
-        //JPanel5 se utiliza solamente para que JPanel3 que contendrá combo, no se redimensione
-//        jPanel3.setLayout(new java.awt.BorderLayout());/////
-//        jPanel3.add(combo);/////
-        
-//        combo.addActionListener(new java.awt.event.ActionListener() {/////
-//            @Override/////
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {/////
-//                comboActionPerformed(evt);/////
-//                combo.requestFocus();/////
-//            }/////
-//        });/////
-        
     }
     
 
@@ -191,11 +125,6 @@ public class Pager_admin extends javax.swing.JFrame {
         pagReturn.setText("Return");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5", "10", "15", "20", "50", "100" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Show entries:");
 
@@ -343,12 +272,6 @@ public class Pager_admin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-//        pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
-//        pagina.currentPageIndex = 1;
-//        pagina.initLinkBox();
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,10 +1,10 @@
 package framework_v2.Modules.Admin.Model.Classes;
 import framework_v2.Classes.Date_class;
+import static framework_v2.Modules.Admin.Controller.AdminController.combo;
 import framework_v2.Modules.Admin.Model.Classes.Admin_class;
 import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
 import framework_v2.Modules.Admin.Model.Utils.pager.pagina;
 import framework_v2.Modules.Admin.View.Pager_admin;
-import static framework_v2.Modules.Admin.View.Pager_admin.combo;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.table.AbstractTableModel;
@@ -131,7 +131,6 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
         String nom=(String) ((JComboBox)combo).getSelectedItem();   
         if(nom!=null){
             for(int i=0;i<datosaux.size();i++) {
-                //if(datosaux.get(i).getFirst_name().contains(nom)){
                 if(datosaux.get(i).getName().toLowerCase().startsWith(nom.toLowerCase())){
                     addRow(datosaux.get(i));
                     cont++;
@@ -143,6 +142,21 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
         }
     }
 
+    public void filtrarB(){
+        datos.clear();
+        int cont=0;
+        
+        String name=(String)((JComboBox)combo).getSelectedItem();
+        if(name!=null){
+            for(int i=0;i<datosaux.size();i++){
+                if(datosaux.get(i).getName().toLowerCase().startsWith(name.toLowerCase())){
+                    addRow(datosaux.get(i));
+                    cont++;
+                }
+            }
+        }
+    }
+    
     public Admin_class buscar(String u) {
         datos.clear();
         cargar();

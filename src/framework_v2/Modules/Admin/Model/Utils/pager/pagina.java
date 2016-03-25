@@ -37,8 +37,10 @@ public class pagina {
         }
 
         int v = rowCount % itemsPerPage == 0 ? 0 : 1;
+        
         maxPageIndex = rowCount / itemsPerPage + v;
-
+//        System.out.println("V: "+v+" rowCount: "+rowCount+" itemsPerPage "+itemsPerPage+" maxPageIndex: "+maxPageIndex);
+        
         box.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
         switch (option) {
             case "admin":
@@ -52,7 +54,7 @@ public class pagina {
     public static void initLinkBox() {
         switch (option) {
             case "admin":
-                framework_v2.Modules.Admin.View.Pager_admin.sorter.setRowFilter(new RowFilter<TableModel, Integer>() {
+                framework_v2.Modules.Admin.Controller.AdminController.sorter.setRowFilter(new RowFilter<TableModel, Integer>() {
                     @Override
                     public boolean include(RowFilter.Entry<? extends TableModel, ? extends Integer> entry) {
                         int ti = currentPageIndex - 1;
