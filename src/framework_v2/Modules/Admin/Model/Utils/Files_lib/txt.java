@@ -4,7 +4,6 @@ package framework_v2.Modules.Admin.Model.Utils.Files_lib;
 
 import framework_v2.Modules.Admin.Model.Classes.Admin_class;
 import framework_v2.Modules.Config.Classes.Config_class;
-import framework_v2.Classes.*;
 import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,7 +29,7 @@ public class txt {
 			File f;
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setAcceptAllFileFilterUsed(false);
-	        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("TXT (*.txt)", "txt"));
+                                                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("TXT (*.txt)", "txt"));
 			int selection = fileChooser.showSaveDialog(null);
 			if (selection == JFileChooser.APPROVE_OPTION){
 				File JFC = fileChooser.getSelectedFile();
@@ -57,7 +56,7 @@ public class txt {
 	 */
 	public static void autosavetxtadmin(){
 		String [] p={"/src/framework_v2/Modules/Admin/Model/Utils/Files/txt/admin.txt",
-		"/src/framework_v2/Modules/Config/Files/admin_txt/dummy_admin.txt"};
+		"/src/framework_v2/Modules/Admin/Model/Utils/Files/txt/dummy_admin.txt"};
 		String p2="";
 		String PATH="";
 		
@@ -94,7 +93,7 @@ public class txt {
 	@SuppressWarnings("unchecked")
 	public static void autoloadtxtadmin(){
 		String [] p={"/src/framework_v2/Modules/Admin/Model/Utils/Files/txt/admin.txt",
-		"/src/framework_v2/Modules/Config/Files/admin_txt/dummy_admin.txt"};
+		"/src/framework_v2/Modules/Admin/Model/Utils/Files/txt/dummy_admin.txt"};
 		String p2="";
 		String PATH="";
 		
@@ -130,7 +129,7 @@ public class txt {
 			File f;
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setAcceptAllFileFilterUsed(false);
-	        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("TXT (*.txt)", "txt"));
+                                                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("TXT (*.txt)", "txt"));
 			int selection = fileChooser.showOpenDialog(null);
 			if(selection == JFileChooser.APPROVE_OPTION){
 				File JFC = fileChooser.getSelectedFile();
@@ -144,7 +143,8 @@ public class txt {
 			}
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopetxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopetxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+                                                JOptionPane.showMessageDialog(null,"Error loading TXT file");
 		}
 		
 	}//End load txt admin

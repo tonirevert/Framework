@@ -12,7 +12,6 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
-import framework_v2.Classes.Singleton_app;
 import framework_v2.Modules.Client.Model.Classes.Client_class;
 import framework_v2.Modules.Client.Model.Classes.Singleton_client;
 import framework_v2.Modules.Config.Classes.Config_class;
@@ -56,11 +55,13 @@ public class json {
 	        	  fileXml.write(json.toString());
 	        	  fileXml.close();
 	        	  
-	        	  JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("clijsonsavedok"), Singleton_app.lang.getProperty("savedfiletitle"),
-						JOptionPane.INFORMATION_MESSAGE);
+//	        	  JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("clijsonsavedok"), Singleton_app.lang.getProperty("savedfiletitle"),
+//						JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null,"File JSON saved correctly");
 	          }
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//			JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+                                                JOptionPane.showMessageDialog(null,"Error saving JSON file");
 		}
 		
 	}
@@ -69,8 +70,8 @@ public class json {
 	 * Used to auto save client data to JSON file format
 	 */
 	public static void autosavejsonclient(){
-		String [] p={"/src/framework_v2/Modules/Config/Files/client_files/client_json/client.json",
-		"/src/framework_v2/Modules/Config/Files/client_json/dummy_client.json"};
+		String [] p={"/src/framework_v2/Modules/Client/Model/Utils/Files/json/client.json",
+		"/src/framework_v2/Modules/Client/Model/Utils/Files/json/dummy_client.json"};
 		String p2="";
 		String PATH="";
 		
@@ -93,14 +94,15 @@ public class json {
 				xstreamjson.alias("Admin_class", Client_class.class);
 				
 				Gson gson = new Gson();
-	        	String json = gson.toJson(Singleton_client.cli);
-	        	FileWriter fileXml = new FileWriter(PATH);
-	        	fileXml.write(json.toString());
-	        	fileXml.close();
+                                                                String json = gson.toJson(Singleton_client.cli);
+                                                                FileWriter fileXml = new FileWriter(PATH);
+                                                                fileXml.write(json.toString());
+                                                                fileXml.close();
 	        	
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!",
-						JOptionPane.INFORMATION_MESSAGE);
+//				JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!",
+//						JOptionPane.INFORMATION_MESSAGE);
+                                                                JOptionPane.showMessageDialog(null,"Error auto-saving JSON file");
 			}        
 		} else{
 			File path = new File(PATH);
@@ -112,8 +114,8 @@ public class json {
 	 * Used to auto load client data from JSON file format
 	 */
 	public static void autoloadjsonclient(){
-		String [] p={"/src/framework_v2/Modules/Config/Files/client_files/client_json/client.json",
-		"/src/framework_v2/Modules/Config/Files/client_json/dummy_client.json"};
+		String [] p={"/src/framework_v2/Modules/Client/Model/Utils/Files/json/client.json",
+		"/src/framework_v2/Modules/Client/Model/Utils/Files/json/dummy_client.json"};
 		String p2="";
 		String PATH="";
 		Client_class a=new Client_class("");
@@ -147,7 +149,8 @@ public class json {
 			
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopejson"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopejson"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+                                                JOptionPane.showMessageDialog(null,"Error auto-loading JSON file");
 		}
 	}//End auto load client JSON
 	
@@ -166,7 +169,7 @@ public class json {
 			
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setAcceptAllFileFilterUsed(false);
-	        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("JSON (*.json)", "json"));
+                                                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("JSON (*.json)", "json"));
 			int selection = fileChooser.showOpenDialog(null);
 			if (selection == JFileChooser.APPROVE_OPTION){
 				File JFC = fileChooser.getSelectedFile();
@@ -187,8 +190,9 @@ public class json {
 			}
 			
 		} catch (Exception e){
-			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopejson"), "Error",
-					JOptionPane.INFORMATION_MESSAGE);
+//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopejson"), "Error",
+//					JOptionPane.INFORMATION_MESSAGE);
+                                               JOptionPane.showMessageDialog(null,"Error loading JSON file");
 		}
 	}//End load client JSON
     

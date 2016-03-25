@@ -5,26 +5,32 @@
  */
 package framework_v2.Modules.Client.Model.BLL;
 
-import framework_v2.Modules.Admin.Model.BLL.*;
 import framework_v2.Modules.Admin.Controller.AdminController;
-import framework_v2.Modules.Admin.Model.Utils.Files_lib.json;
+
 import framework_v2.Modules.Admin.Model.Classes.Admin_class;
 import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
 import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.ad;
 import framework_v2.Modules.Admin.Model.Classes.miniSimpleTableModel_admin;
 import framework_v2.Modules.Admin.Model.DAO.DAO_admin;
-import framework_v2.Modules.Admin.Model.Utils.Files_lib.txt;
-import framework_v2.Modules.Admin.Model.Utils.Files_lib.xml;
-import framework_v2.Modules.Admin.Model.Utils.pager.pagina;
-import framework_v2.Modules.Admin.View.Create_admin;
-import framework_v2.Modules.Admin.View.Modify_admin;
-import framework_v2.Modules.Admin.View.Pager_admin;
+import framework_v2.Modules.Client.Model.Utils.Files_lib.json;
+import framework_v2.Modules.Client.Model.Utils.Files_lib.txt;
+import framework_v2.Modules.Client.Model.Utils.Files_lib.xml;
+import framework_v2.Modules.Client.Model.Utils.pager.pagina;
+import framework_v2.Modules.Client.View.Create_client;
+import framework_v2.Modules.Client.View.Modify_client;
+import framework_v2.Modules.Client.View.Pager_client;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-import static framework_v2.Modules.Admin.View.Pager_admin.pagerTable;
+import static framework_v2.Modules.Client.View.Pager_client.pagerTable;
+import framework_v2.Modules.Client.Model.Classes.Client_class;
+import framework_v2.Modules.Client.Model.Classes.Singleton_client;
+import static framework_v2.Modules.Client.Model.Classes.Singleton_client.cl;
+import framework_v2.Modules.Client.Model.Classes.miniSimpleTableModel_client;
+import framework_v2.Modules.Client.Model.DAO.DAO_client;
+import framework_v2.Modules.Client.View.Create_client;
 
 /**
  *
@@ -39,16 +45,16 @@ public class BLL_client {
         Timer delay = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-        Pager_admin.pagerInfo.setText("");
-        Pager_admin.pagerInfo.setBackground(Color.white);
+        Pager_client.pagerInfo.setText("");
+        Pager_client.pagerInfo.setBackground(Color.white);
         
             }
         });
         
         delay.setRepeats(false);
         delay.start();
-        Pager_admin.pagerInfo.setText("No user selected!");
-        Pager_admin.pagerInfo.setBackground(Color.red);
+        Pager_client.pagerInfo.setText("No user selected!");
+        Pager_client.pagerInfo.setBackground(Color.red);
     }
     
     /**
@@ -58,16 +64,16 @@ public class BLL_client {
         Timer delay = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-        Pager_admin.pagerInfo.setText("");
-        Pager_admin.pagerInfo.setBackground(Color.white);
+        Pager_client.pagerInfo.setText("");
+        Pager_client.pagerInfo.setBackground(Color.white);
         
             }
         });
         
         delay.setRepeats(false);
         delay.start();
-        Pager_admin.pagerInfo.setText("List empty!");
-        Pager_admin.pagerInfo.setBackground(Color.red);
+        Pager_client.pagerInfo.setText("List empty!");
+        Pager_client.pagerInfo.setBackground(Color.red);
     }
     
     /**
@@ -77,94 +83,94 @@ public class BLL_client {
         Timer delay = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-        Create_admin.areaInfo.setText("");
-        Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
+        Create_client.areaInfo.setText("");
+        Create_client.areaInfo.setBackground(Color.decode("#d6d6d6"));
             }
         });
         delay.setRepeats(false);
         delay.start();
-        Create_admin.areaInfo.setText("User data incomplete, please revise it!");
-        Create_admin.areaInfo.setBackground(Color.red);
+        Create_client.areaInfo.setText("User data incomplete, please revise it!");
+        Create_client.areaInfo.setBackground(Color.red);
     }
     
     public static int position=-1;
     
     public static void askDniClick(){
-        DAO_admin.askDniClick();
+        DAO_client.askDniClick();
     }
  
     /**
      * 
      */
     public static void resetFields(){
-        DAO_admin.resetFields();
+        DAO_client.resetFields();
     }
     
     /**
      * Used to check the create admin fields
      * @param type to choose the action
      */
-    public static void askAdmindata(String type){
+    public static void askClientdata(String type){
         boolean correct=false;
         String route="";
         
         switch(type){
             
             case "dni":
-                correct = DAO_admin.askDni();
+                correct = DAO_client.askDni();
                 
                 break;
                 
             case "name":
-                correct = DAO_admin.askName();
+                correct = DAO_client.askName();
                 
                 break;
             case "surname":
-                correct = DAO_admin.askSurname();
+                correct = DAO_client.askSurname();
                 
                 break;
             case "email":
-                correct = DAO_admin.askEmail();
+                correct = DAO_client.askEmail();
                 
                 break;
                 
             case "mobile":
-                correct = DAO_admin.askMobile();
+                correct = DAO_client.askMobile();
                 
                 break;
                 
             case "user":
-                correct = DAO_admin.askUser();
+                correct = DAO_client.askUser();
                 
                 break;
                 
             case "password":
-                correct = DAO_admin.askPassword();
+                correct = DAO_client.askPassword();
                 
                 break;
                 
             case "password2":
-                correct = DAO_admin.askPassword2();
+                correct = DAO_client.askPassword2();
                 
                 break;
                 
             case "birthdate":
-                correct= DAO_admin.askBirth();
+                correct= DAO_client.askBirth();
                 
                 break;
                 
             case "avatar":
-                route=DAO_admin.askAvatar();
+                route=DAO_client.askAvatar();
                 
                 break;
                 
             case "datecontract":
-                correct = DAO_admin.askDatecontract();
+                correct = DAO_client.askDatecontract();
                 
                 break;
                 
             case "activity":
-                correct = DAO_admin.askActivity();
+                correct = DAO_client.askActivity();
                 
                 break;
             
@@ -175,66 +181,66 @@ public class BLL_client {
      * Used to check the modify admin fields
      * @param type to choose the action
      */
-    public static void modAdmindata(String type){
+    public static void modClientdata(String type){
         boolean correct=false;
         String route="";
         
         switch(type){
             
             case "dni":
-                correct = DAO_admin.askDniMod();
+                correct = DAO_client.askDniMod();
                 
                 break;
                 
             case "name":
-                correct = DAO_admin.askNameMod();
+                correct = DAO_client.askNameMod();
                 
                 break;
             case "surname":
-                correct = DAO_admin.askSurnameMod();
+                correct = DAO_client.askSurnameMod();
                 
                 break;
             case "email":
-                correct = DAO_admin.askEmailMod();
+                correct = DAO_client.askEmailMod();
                 
                 break;
                 
             case "mobile":
-                correct = DAO_admin.askMobileMod();
+                correct = DAO_client.askMobileMod();
                 
                 break;
                 
             case "user":
-                correct = DAO_admin.askUserMod();
+                correct = DAO_client.askUserMod();
                 
                 break;
                 
             case "password":
-                correct = DAO_admin.askPasswordMod();
+                correct = DAO_client.askPasswordMod();
                 
                 break;
                 
             case "password2":
-                correct= DAO_admin.askPassword2Mod();
+                correct= DAO_client.askPassword2Mod();
                 break;
                 
             case "birthdate":
-                correct= DAO_admin.askBirthMod();
+                correct= DAO_client.askBirthMod();
                 
                 break;
                 
             case "avatar":
-                route = DAO_admin.askAvatarMod();
+                route = DAO_client.askAvatarMod();
                 
                 break;
                 
             case "datecontract":
-                correct = DAO_admin.askDatecontractMod();
+                correct = DAO_client.askDatecontractMod();
                 
                 break;
                 
             case "activity":
-                correct = DAO_admin.askActivityMod();
+                correct = DAO_client.askActivityMod();
                 
                 break;
             
@@ -245,24 +251,24 @@ public class BLL_client {
      * 
      * @return 
      */
-    public static int searchadmin(){
-		Admin_class admin=null;
-		admin= new Admin_class(Create_admin.fieldDNI.getText());
+    public static int searchclient(){
+		Client_class client=null;
+		client= new Client_class(Create_client.fieldDNI.getText());
 		
-		for (int i = 0;i<=(Singleton_admin.adm.size()-1);i++){
-			if((Singleton_admin.adm.get(i)).equals(admin) ){
+		for (int i = 0;i<=(Singleton_client.cli.size()-1);i++){
+			if((Singleton_client.cli.get(i)).equals(client) ){
                                                 return i;
                                                 }
 		}
 		return -1;
 	}//End searchDniadmin admin
     
-    public static int searchDniadmin(){
+    public static int searchDniaclient(){
         int out=0;
-        Admin_class admin=null;
-        admin= new Admin_class(Create_admin.fieldDNI.getText());
-        for (int i = 0;i<=(Singleton_admin.adm.size()-1);i++){
-            if((Singleton_admin.adm.get(i)).equals(admin) ){
+        Client_class client=null;
+        client= new Client_class(Create_client.fieldDNI.getText());
+        for (int i = 0;i<=(Singleton_client.cli.size()-1);i++){
+            if((Singleton_client.cli.get(i)).equals(client) ){
                     out=-1;
                 }
         }
@@ -271,29 +277,29 @@ public class BLL_client {
         
     }
     
-    public static int searchadminMod(Admin_class adm){
+    public static int searchclientMod(Client_class cli){
         int aux=-1;
-        for(int i=0; i<=(Singleton_admin.adm.size()-1);i++){
-            if(Singleton_admin.adm.get(i).equals(adm)){
+        for(int i=0; i<=(Singleton_client.cli.size()-1);i++){
+            if(Singleton_client.cli.get(i).equals(cli)){
                 aux=i;
             }
         }
         return aux;
     }//End searchadminMod
     
-    public static boolean create_admin(){
-        Admin_class admin=null;
-        admin=DAO_admin.create();
+    public static boolean create_client(){
+        Client_class client=null;
+        client=DAO_client.create();
         boolean created=false;
         
-        if (admin== null){
+        if (client== null){
             PauseIncomplete();
             created=false;
         }else{
-            Singleton_admin.adm.add(admin);
-            autosaveAdmin();
-            Create_admin.areaInfo.setText("User created correctly");
-            Create_admin.areaInfo.setBackground(Color.green);
+            Singleton_client.cli.add(client);
+            autosaveClient();
+            Create_client.areaInfo.setText("User created correctly");
+            Create_client.areaInfo.setBackground(Color.green);
             created=true;
         }
         
@@ -301,51 +307,51 @@ public class BLL_client {
         
     }//End create_admin
     
-    public static Admin_class fill_admin(String dni){
-        Admin_class adm=new Admin_class(dni);
+    public static Client_class fill_client(String dni){
+        Client_class cli=new Client_class(dni);
         
-        position=BLL_client.searchadminMod(adm);
+        position=BLL_client.searchclientMod(cli);
         
         if (position==-1){
             JOptionPane.showMessageDialog(null,"Not found");
-            adm=null;
+            cli=null;
         }else{
 //            System.out.println("else fill BLL admin");
-            adm=Singleton_admin.adm.get(position);
-            DAO_admin.fillAdminMod(adm);
+            cli=Singleton_client.cli.get(position);
+            DAO_client.fillAdminMod(cli);
         }
         
-        return adm;
+        return cli;
     }
 
-    public static Admin_class fill_admin(){
-        Admin_class adm=ad;
+    public static Client_class fill_client(){
+        Client_class cli=cl;
         
-        position=BLL_client.searchadminMod(adm);
+        position=BLL_client.searchclientMod(cli);
         
         if (position==-1){
             JOptionPane.showMessageDialog(null,"Not found");
-            adm=null;
+            cli=null;
         }else{
 //            System.out.println("else fill BLL admin");
-            adm=Singleton_admin.adm.get(position);
-            DAO_admin.fillAdminMod(adm);
+            cli=Singleton_client.cli.get(position);
+            DAO_client.fillClientMod(cli);
         }
         
-        return adm;
+        return cli;
     }
     
     public static boolean save_mod_admin(){
 
         boolean correct=false;
-        Admin_class admin= null;
+        Client_class client= null;
 
-            admin=DAO_admin.saveAdminMod();
-             if (admin== null){
+            client=DAO_client.saveClientMod();
+             if (client== null){
             correct=false;
         }else{
-            Singleton_admin.adm.set(position,admin);
-            json.autosavejsonadmin();
+            Singleton_client.cli.set(position,client);
+            json.autosavejsonclient();
 //            resetFields();
             correct=true;
             position=-1;
@@ -356,24 +362,24 @@ public class BLL_client {
         /**
         * Used to edit a row from the table on pager admin
         */
-     public static boolean edit_admin() {
+     public static boolean edit_client() {/////////////////////////////////////////////////////////////////////////////////////
         String dni;
         int selection, inicio, selection1;
         boolean correct;
         
-        int n=((miniSimpleTableModel_admin) Pager_admin.pagerTable.getModel()).getRowCount();
+        int n=((miniSimpleTableModel_client) Pager_client.pagerTable.getModel()).getRowCount();
         if (n != 0) {
                  inicio=(pagina.currentPageIndex-1)*pagina.itemsPerPage; //nos situamos al inicio de la página en cuestión
-                selection=Pager_admin.pagerTable.getSelectedRow(); //nos situamos en la fila
+                selection=Pager_client.pagerTable.getSelectedRow(); //nos situamos en la fila
                 selection1=inicio+selection; //nos situamos en la fila correspondiente de esa página
             if (selection1 == -1) {
                 PauseNoselect();
                 correct = false;
             } else {
-                dni = (String) Pager_admin.pagerTable.getModel().getValueAt(selection1, 0);
+                dni = (String) Pager_client.pagerTable.getModel().getValueAt(selection1, 0);
 
-                Singleton_admin.ad = new Admin_class(dni);
-                new AdminController(new Modify_admin(),1).Init(1);
+                Singleton_client.cl = new Client_class(cli);
+                new AdminController(new Modify_client(),1).Init(1);
                 correct = true;
 
             }
@@ -387,36 +393,36 @@ public class BLL_client {
         /**
         * Used to delete a row from the table on pager admin
         */
-        public static void delete_file() {
+        public static void delete_file() {/////////////////////////////////////////////////////////////////////////////////
         String dni;
         
         int pos;
         int selection, inicio, selection1;
         
-        int n=((miniSimpleTableModel_admin) Pager_admin.pagerTable.getModel()).getRowCount();
+        int n=((miniSimpleTableModel_client) Pager_client.pagerTable.getModel()).getRowCount();
         if (n != 0) {
                  inicio=(pagina.currentPageIndex-1)*pagina.itemsPerPage; //nos situamos al inicio de la página en cuestión
-                selection=Pager_admin.pagerTable.getSelectedRow(); //nos situamos en la fila
+                selection=Pager_client.pagerTable.getSelectedRow(); //nos situamos en la fila
                 selection1=inicio+selection; //nos situamos en la fila correspondiente de esa página
             if (selection1 == -1) {
                 PauseNoselect();
             } else {
                 dni = (String) pagerTable.getModel().getValueAt(selection1, 0);
-                Singleton_admin.ad = new Admin_class(dni);
-                pos = BLL_client.searchadminMod((Admin_class) ad);
+                Singleton_client.cl = new Client_class(dni);
+                pos = BLL_client.searchclientMod((Client_class) cl);
                 int opc = JOptionPane.showConfirmDialog(null, "Delete user with ID Card: " + dni+"?",
                         "Info", JOptionPane.WARNING_MESSAGE);
 
                 if (opc == 0) {
-                    ((miniSimpleTableModel_admin) pagerTable.getModel()).removeRow(selection1);
-                    ad = Singleton_admin.adm.get(pos);
+                    ((miniSimpleTableModel_client) pagerTable.getModel()).removeRow(selection1);
+                    cl = Singleton_client.cli.get(pos);
 
-                    Singleton_admin.adm.remove(ad);
-                    BLL_client.autosaveAdmin();
+                    Singleton_client.cli.remove(ad);
+                    BLL_client.autosaveClient();
                 }
 
-                if (((miniSimpleTableModel_admin) pagerTable.getModel()).getRowCount() == 0) {
-                    if (((miniSimpleTableModel_admin) pagerTable.getModel()).getRowCount() != 0) {
+                if (((miniSimpleTableModel_client) pagerTable.getModel()).getRowCount() == 0) {
+                    if (((miniSimpleTableModel_client) pagerTable.getModel()).getRowCount() != 0) {
 
                     }
                 }
@@ -429,27 +435,27 @@ public class BLL_client {
 
     }
     
-    public static void autosaveAdmin(){
+    public static void autosaveClient(){
         json.autosavejsonadmin();
 //        txt.autosavetxtadmin();
 //        xml.autosavexmladmin();
     }
     
-    public static void autoloadAdmin(){
+    public static void autoloadClient(){
         json.autoloadjsonadmin();
 //        txt.autoloadtxtadmin();
 //        xml.autoloadxmladmin();
     }
     
-    public static void savejsonAdmin(){
+    public static void savejsonClient(){
         json.savejsonadmin();
     }
     
-    public static void savetxtAdmin(){
-        txt.savetxtadmin();
+    public static void savetxtClient(){
+        txt.savetxtclient();
     }
     
-    public static void savexmlAdmin(){
+    public static void savexmlClient(){
         xml.savexmladmin();
     }
     

@@ -12,16 +12,13 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.Annotations;
 
 
-import framework_v2.Classes.*;
 
 @SuppressWarnings("deprecation")
 public class xml {
@@ -48,7 +45,7 @@ public class xml {
 			
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setAcceptAllFileFilterUsed(false);
-            fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("XML (*.xml)", "xml"));
+                                                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("XML (*.xml)", "xml"));
 			int selection = fileChooser.showSaveDialog(null);
 			if (selection == JFileChooser.APPROVE_OPTION){
 				File JFC = fileChooser.getSelectedFile();
@@ -77,7 +74,7 @@ public class xml {
 	 */
 	public static void autosavexmladmin(){
 		String [] p={"/src/framework_v2/Modules/Admin/Model/Utils/Files/xml/admin.xml",
-		"/src/framework_v2/Modules/Config/Files/admin_xml/dummy_admin.xml"};
+		"/src/framework_v2/Modules/Admin/Model/Utils/Files/xml/dummy_admin.xml"};
 		String p2="";
 		String PATH="";
 		
@@ -125,7 +122,7 @@ public class xml {
 	@SuppressWarnings({ "unchecked" })
 	public static void autoloadxmladmin(){
 		String [] p={"/src/framework_v2/Modules/Admin/Model/Utils/Files/xml/admin.xml",
-		"/src/framework_v2/Modules/Config/Files/admin_xml/dummy_admin.xml"};
+		"/src/framework_v2/Modules/Admin/Model/Utils/Files/xml/dummy_admin.xml"};
 		String p2="";
 		String PATH="";
 		
@@ -165,7 +162,7 @@ public class xml {
 			
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setAcceptAllFileFilterUsed(false);
-            fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("XML (*.xml)", "xml"));
+                                                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("XML (*.xml)", "xml"));
 			int selection = fileChooser.showOpenDialog(null);
 			if (selection == JFileChooser.APPROVE_OPTION){
 				File JFC = fileChooser.getSelectedFile();
@@ -173,7 +170,8 @@ public class xml {
 				Singleton_admin.adm=(ArrayList <Admin_class>)xstream.fromXML(new FileReader(path));
 			}
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopexml"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopexml"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+                                                JOptionPane.showMessageDialog(null,"Error loading XML file");
 		}
 	}//End load XML admin
 	

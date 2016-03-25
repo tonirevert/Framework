@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.table.AbstractTableModel;
 
-public class miniSimpleTableModel_admin extends AbstractTableModel {
+public class miniSimpleTableModel_client extends AbstractTableModel {
     public static ArrayList<Admin_class> datos = new ArrayList<Admin_class>();
     public static ArrayList<Admin_class> datosaux = new ArrayList<Admin_class>();
     String[] columnas = {"ID Card", "Name", "Surname", "Cont. date","Salary"};

@@ -5,16 +5,18 @@
  */
 package framework_v2.Modules.Client.Model.DAO;
 
-import framework_v2.Modules.Admin.Model.DAO.*;
 import framework_v2.Modules.Config.Classes.Config_class;
 import framework_v2.Classes.Date_class;
-import framework_v2.Modules.Admin.Model.BLL.BLL_admin;
-import framework_v2.Modules.Admin.Model.Classes.Admin_class;
-import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.*;
-import  framework_v2.Modules.Admin.View.Create_admin;
-import static framework_v2.Modules.Admin.View.Create_admin.*;
 import framework_v2.Modules.Admin.View.Modify_admin;
+import framework_v2.Modules.Client.Model.BLL.BLL_client;
+import framework_v2.Modules.Client.Model.Classes.Client_class;
+import framework_v2.Modules.Client.Model.Classes.Singleton_client;
+import static framework_v2.Modules.Client.Model.Classes.Singleton_client.*;
+
+import static framework_v2.Modules.Client.View.Create_client.*;
+
+import framework_v2.Modules.Client.View.Create_client;
+import framework_v2.Modules.Client.View.Modify_client;
 
 import framework_v2.Utils.Validate;
 import java.awt.Color;
@@ -45,48 +47,48 @@ public class DAO_client {
     public static boolean askDni(){
         boolean correct =false;
 //        System.out.println(BLL_admin.searchDniadmin());
-        if(BLL_admin.searchDniadmin()!=-1){
-        if(Create_admin.fieldDNI.getText().equals("")){
-            Create_admin.fieldDNI.setBackground(Color.yellow);
-            Create_admin.checkDNI.setIcon(no_ok);
+        if(BLL_client.searchDniaclient()!=-1){
+        if(Create_client.fieldDNI.getText().equals("")){
+            Create_client.fieldDNI.setBackground(Color.yellow);
+            Create_client.checkDNI.setIcon(no_ok);
             correct=false;
-        }else if(Validate.validateDNI(Create_admin.fieldDNI.getText())==true){
-            Create_admin.fieldDNI.setBackground(Color.green);
-            Create_admin.checkDNI.setIcon(ok);
+        }else if(Validate.validateDNI(Create_client.fieldDNI.getText())==true){
+            Create_client.fieldDNI.setBackground(Color.green);
+            Create_client.checkDNI.setIcon(ok);
             correct = true;
         }
-        }else if(BLL_admin.searchDniadmin()==-1){
-            Create_admin.fieldDNI.setBackground(Color.orange);
-            Create_admin.checkDNI.setIcon(exclamation);
+        }else if(BLL_client.searchDniaclient()==-1){
+            Create_client.fieldDNI.setBackground(Color.orange);
+            Create_client.checkDNI.setIcon(exclamation);
             correct=false;
-            Create_admin.areaInfo.setText("ID Card already exists in database");
-            Create_admin.areaInfo.setBackground(Color.orange);
+            Create_client.areaInfo.setText("ID Card already exists in database");
+            Create_client.areaInfo.setBackground(Color.orange);
         }
         return correct;
     }
     
     public static void askDniClick(){
-         if(Validate.validateDNI(Create_admin.fieldDNI.getText())==false){
-            Create_admin.fieldDNI.setText("");
+         if(Validate.validateDNI(Create_client.fieldDNI.getText())==false){
+            Create_client.fieldDNI.setText("");
         }
     }
     
     public static boolean askName(){
         boolean correct=false;
         
-        if(Create_admin.fieldName.getText().equals("")){
-            Create_admin.fieldName.setBackground(Color.yellow);
-            Create_admin.checkName.setIcon(no_ok);
+        if(Create_client.fieldName.getText().equals("")){
+            Create_client.fieldName.setBackground(Color.yellow);
+            Create_client.checkName.setIcon(no_ok);
             correct=false;
         }else{
-                if(Validate.valname(Create_admin.fieldName.getText())==false){
-                Create_admin.fieldName.setBackground(Color.yellow);
-                Create_admin.checkName.setIcon(no_ok);
+                if(Validate.valname(Create_client.fieldName.getText())==false){
+                Create_client.fieldName.setBackground(Color.yellow);
+                Create_client.checkName.setIcon(no_ok);
                 correct=false;
                 }
-                else if(Validate.valname(Create_admin.fieldName.getText())==true){
-                Create_admin.fieldName.setBackground(Color.green);
-                Create_admin.checkName.setIcon(ok);
+                else if(Validate.valname(Create_client.fieldName.getText())==true){
+                Create_client.fieldName.setBackground(Color.green);
+                Create_client.checkName.setIcon(ok);
                 correct=true;
                 }
         }
@@ -96,19 +98,19 @@ public class DAO_client {
     
     public static boolean askSurname(){
         boolean correct=false;
-        if(Create_admin.fieldSurname.getText().equals("")){
-            Create_admin.fieldSurname.setBackground(Color.yellow);
-            Create_admin.checkSurname.setIcon(no_ok);
+        if(Create_client.fieldSurname.getText().equals("")){
+            Create_client.fieldSurname.setBackground(Color.yellow);
+            Create_client.checkSurname.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valname(Create_admin.fieldSurname.getText())==false){
-            Create_admin.fieldSurname.setBackground(Color.yellow);
-            Create_admin.checkSurname.setIcon(no_ok);
+            if(Validate.valname(Create_client.fieldSurname.getText())==false){
+            Create_client.fieldSurname.setBackground(Color.yellow);
+            Create_client.checkSurname.setIcon(no_ok);
             correct=false;
             }
-            else if(Validate.valname(Create_admin.fieldSurname.getText())==true){
-                Create_admin.fieldSurname.setBackground(Color.green);
-                Create_admin.checkSurname.setIcon(ok);
+            else if(Validate.valname(Create_client.fieldSurname.getText())==true){
+                Create_client.fieldSurname.setBackground(Color.green);
+                Create_client.checkSurname.setIcon(ok);
                 correct=true;
             }
         }
@@ -119,19 +121,19 @@ public class DAO_client {
     public static boolean askEmail(){
         boolean correct=false;
         
-        if(Create_admin.fieldEmail.getText().equals("")){
-            Create_admin.fieldEmail.setBackground(Color.yellow);
-            Create_admin.checkEmail.setIcon(no_ok);
+        if(Create_client.fieldEmail.getText().equals("")){
+            Create_client.fieldEmail.setBackground(Color.yellow);
+            Create_client.checkEmail.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valemail(Create_admin.fieldEmail.getText())==false){
-            Create_admin.fieldEmail.setBackground(Color.yellow);
-            Create_admin.checkEmail.setIcon(no_ok);
+            if(Validate.valemail(Create_client.fieldEmail.getText())==false){
+            Create_client.fieldEmail.setBackground(Color.yellow);
+            Create_client.checkEmail.setIcon(no_ok);
             correct=false;
             }
-            else if(Validate.valemail(Create_admin.fieldEmail.getText())==true){
-                Create_admin.fieldEmail.setBackground(Color.green);
-                Create_admin.checkEmail.setIcon(ok);
+            else if(Validate.valemail(Create_client.fieldEmail.getText())==true){
+                Create_client.fieldEmail.setBackground(Color.green);
+                Create_client.checkEmail.setIcon(ok);
                 correct=true;
             }
         }
@@ -141,18 +143,18 @@ public class DAO_client {
     
     public static boolean askMobile(){
         boolean correct=false;
-        if(Create_admin.fieldMobile.getText().equals("")){
-            Create_admin.fieldMobile.setBackground(Color.yellow);
-            Create_admin.checkMobile.setIcon(no_ok);
+        if(Create_client.fieldMobile.getText().equals("")){
+            Create_client.fieldMobile.setBackground(Color.yellow);
+            Create_client.checkMobile.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valmobile(Create_admin.fieldMobile.getText())==false){
-                Create_admin.fieldMobile.setBackground(Color.yellow);
-                Create_admin.checkMobile.setIcon(no_ok);
+            if(Validate.valmobile(Create_client.fieldMobile.getText())==false){
+                Create_client.fieldMobile.setBackground(Color.yellow);
+                Create_client.checkMobile.setIcon(no_ok);
                 correct=false  ;
-        }else if(Validate.valmobile(Create_admin.fieldMobile.getText())==true){
-                Create_admin.fieldMobile.setBackground(Color.green);
-                Create_admin.checkMobile.setIcon(ok);
+        }else if(Validate.valmobile(Create_client.fieldMobile.getText())==true){
+                Create_client.fieldMobile.setBackground(Color.green);
+                Create_client.checkMobile.setIcon(ok);
                 correct=true;
         }
         }
@@ -163,19 +165,19 @@ public class DAO_client {
     public static boolean askUser(){
         boolean correct=false;
         
-        if(Create_admin.fieldUser.getText().equals("")){
-                Create_admin.fieldUser.setBackground(Color.yellow);
-                Create_admin.checkUser.setIcon(no_ok);
+        if(Create_client.fieldUser.getText().equals("")){
+                Create_client.fieldUser.setBackground(Color.yellow);
+                Create_client.checkUser.setIcon(no_ok);
                 correct=false;
         }else{
-            if(Validate.valuser(Create_admin.fieldUser.getText())==false){
-                Create_admin.fieldUser.setBackground(Color.yellow);
-                Create_admin.checkUser.setIcon(no_ok);
+            if(Validate.valuser(Create_client.fieldUser.getText())==false){
+                Create_client.fieldUser.setBackground(Color.yellow);
+                Create_client.checkUser.setIcon(no_ok);
                 correct=false;
             }
-            else if(Validate.valuser(Create_admin.fieldUser.getText())==true){
-                Create_admin.fieldUser.setBackground(Color.green);
-                Create_admin.checkUser.setIcon(ok);
+            else if(Validate.valuser(Create_client.fieldUser.getText())==true){
+                Create_client.fieldUser.setBackground(Color.green);
+                Create_client.checkUser.setIcon(ok);
                 correct=true;
             }
         }
@@ -186,14 +188,14 @@ public class DAO_client {
     public static boolean askPassword(){
         boolean correct=false;
         
-         if(Validate.valpass(Create_admin.fieldPassword.getText())==false){
-            Create_admin.fieldPassword.setBackground(Color.yellow);
-            Create_admin.checkPassword.setIcon(no_ok);
+         if(Validate.valpass(Create_client.fieldPassword.getText())==false){
+            Create_client.fieldPassword.setBackground(Color.yellow);
+            Create_client.checkPassword.setIcon(no_ok);
             correct=false;
         }
-        else if(Validate.valpass(Create_admin.fieldPassword.getText())==true){
-            Create_admin.fieldPassword.setBackground(Color.green);
-            Create_admin.checkPassword.setIcon(ok);
+        else if(Validate.valpass(Create_client.fieldPassword.getText())==true){
+            Create_client.fieldPassword.setBackground(Color.green);
+            Create_client.checkPassword.setIcon(ok);
             correct=true;
         }
          return correct;
@@ -202,16 +204,31 @@ public class DAO_client {
     public static boolean askPassword2(){
         boolean correct=false;
         
-        if(Create_admin.fieldPassword.getText().equals(Create_admin.fieldPassword2.getText()) && (Validate.valpass(Create_admin.fieldPassword.getText())==true)){
-                Create_admin.fieldPassword2.setBackground(Color.green);
-                Create_admin.checkPassword2.setIcon(ok);
+        if(Create_client.fieldPassword.getText().equals(Create_client.fieldPassword2.getText()) && (Validate.valpass(Create_client.fieldPassword.getText())==true)){
+                Create_client.fieldPassword2.setBackground(Color.green);
+                Create_client.checkPassword2.setIcon(ok);
                 correct=true;
         }else{
-                Create_admin.fieldPassword2.setBackground(Color.yellow);
-                Create_admin.checkPassword2.setIcon(no_ok);
+                Create_client.fieldPassword2.setBackground(Color.yellow);
+                Create_client.checkPassword2.setIcon(no_ok);
                 correct=false;
             }
         
+        return correct;
+    }
+    
+    public static boolean askShopping(){
+        boolean correct=false;
+        
+        if(Validate.valshopping(Create_client.fieldShopping.getText())==false){
+            Create_client.fieldShopping.setBackground(Color.yellow);
+            Create_client.checkShopping.setIcon(no_ok);
+            correct=false;
+        }else{
+            Create_client.fieldShopping.setBackground(Color.green);
+            Create_client.checkShopping.setIcon(ok);
+            correct=true;
+        }
         return correct;
     }
     
@@ -226,22 +243,22 @@ public class DAO_client {
             return connected;
     }
 
-    public static boolean askActivity(){
+    public static boolean askCientType(){
         boolean correct=false;
         
-        if(Create_admin.fieldActivity.getText().equals("")){
-            Create_admin.fieldActivity.setBackground(Color.yellow);
-            Create_admin.checkActivity.setIcon(no_ok);
+        if(Create_client.fieldClientType.getText().equals("")){
+            Create_client.fieldClientType.setBackground(Color.yellow);
+            Create_client.checkClientType.setIcon(no_ok);
             correct=false;
         }else{
-                if(Validate.valactivity(Create_admin.fieldActivity.getText())==false){
-                    Create_admin.fieldActivity.setBackground(Color.yellow);
-                    Create_admin.checkActivity.setIcon(no_ok);
+                if(Validate.valactivity(Create_client.fieldClientType.getText())==false){
+                    Create_client.fieldClientType.setBackground(Color.yellow);
+                    Create_client.checkClientType.setIcon(no_ok);
                     correct=false;
                 }
-                else if(Validate.valactivity(Create_admin.fieldActivity.getText())==true){
-                    Create_admin.fieldActivity.setBackground(Color.green);
-                    Create_admin.checkActivity.setIcon(ok);
+                else if(Validate.valactivity(Create_client.fieldClientType.getText())==true){
+                    Create_client.fieldClientType.setBackground(Color.green);
+                    Create_client.checkClientType.setIcon(ok);
                     correct=true;
                 }
         }
@@ -253,26 +270,26 @@ public class DAO_client {
         boolean correct=false;
         Calendar birthdate;
         String dateform=Config_class.getinstance().getDate_format();
-        Create_admin.dateBirth.setDateFormatString(dateform);
+        Create_client.dateBirth.setDateFormatString(dateform);
 //        dateBirth.getDateEditor().setEnabled(false);
        try{
-        birthdate=Create_admin.dateBirth.getCalendar();
+        birthdate=Create_client.dateBirth.getCalendar();
         String s=birthdate.get(Calendar.DATE)+"/"+(birthdate.get(Calendar.MONTH)+1)+"/"+birthdate.get(Calendar.YEAR);
         Date_class birth= new Date_class(s);
         int years=birth.intyearstoday();
 //           System.out.println("years: "+years);
-        if(years>=16){
-            Create_admin.checkDatebirth.setIcon(ok);
-            Create_admin.dateContract.setEnabled(true);
-            Create_admin.dateContract.getDateEditor().setEnabled(false);
+        if(years>=18){
+            Create_client.checkDatebirth.setIcon(ok);
+            Create_client.dateRegistration.setEnabled(true);
+            Create_client.dateRegistration.getDateEditor().setEnabled(false);
             correct=true;
         }else{
-            Create_admin.checkDatebirth.setIcon(no_ok);
+            Create_client.checkDatebirth.setIcon(no_ok);
             correct=false;
         }
        }catch(Exception e){
-            Create_admin.areaInfo.setText("No birth date selected");
-            Create_admin.checkDatebirth.setIcon(no_ok);
+            Create_client.areaInfo.setText("No birth date selected");
+            Create_client.checkDatebirth.setIcon(no_ok);
        }
         return correct;
     }
@@ -286,23 +303,23 @@ public class DAO_client {
         dialog.addChoosableFileFilter(new FileNameExtensionFilter("JPG (*.jpg)", "jpg"));
         dialog.addChoosableFileFilter(new FileNameExtensionFilter("PNG (*.png)", "png"));
 
-        if(adminavatar==false){
+        if(clientavatar==false){
         int option = dialog.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION){
             file=dialog.getSelectedFile().getPath();
             routeAvataradmin=file;
-            Create_admin.avatar.setIcon(new ImageIcon(file));
+            Create_client.avatar.setIcon(new ImageIcon(file));
             ImageIcon icon = new ImageIcon(file);
             Image img=icon.getImage();
             Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
             ImageIcon newIcon = new ImageIcon(newimg);
-            Create_admin.avatar.setIcon(newIcon);
-            Create_admin.avatar.setSize(100,100);
-            Create_admin.avatar.setToolTipText(file);
-            adminavatar=true;
+            Create_client.avatar.setIcon(newIcon);
+            Create_client.avatar.setSize(100,100);
+            Create_client.avatar.setToolTipText(file);
+            clientavatar=true;
             
         }else{
-            adminavatar=false;
+            clientavatar=false;
             route=defaultavatar.toString();
         }
         }
@@ -314,16 +331,16 @@ public class DAO_client {
         boolean correct=false;
         Calendar contract,birthdate;
         String dateform=Config_class.getinstance().getDate_format();
-        Create_admin.dateContract.setDateFormatString(dateform);
-        Create_admin.dateBirth.setDateFormatString(dateform);
+        Create_client.dateRegistration.setDateFormatString(dateform);
+        Create_client.dateBirth.setDateFormatString(dateform);
 //        dateContract.getDateEditor().setEnabled(false);
        
         try{
-        contract=Create_admin.dateContract.getCalendar();
+        contract=Create_client.dateRegistration.getCalendar();
         String c=contract.get(Calendar.DATE)+"/"+(contract.get(Calendar.MONTH)+1)+"/"+contract.get(Calendar.YEAR);
         Date_class cont= new Date_class(c);
         
-        birthdate=Create_admin.dateBirth.getCalendar();
+        birthdate=Create_client.dateBirth.getCalendar();
         String b=birthdate.get(Calendar.DATE)+"/"+(birthdate.get(Calendar.MONTH)+1)+"/"+birthdate.get(Calendar.YEAR);
         Date_class birth= new Date_class(b);
         int comp_contract=cont.compare_birth_contract(birth, 16);
@@ -331,64 +348,66 @@ public class DAO_client {
         switch (comp_contract) {
             case 2:
                 if(cont.comp_today()==2){
-                    Create_admin.checkDatecontract.setIcon(no_ok);
+                    Create_client.checkDateRegistration.setIcon(no_ok);
                     correct=false;
                 }else{
-                    Create_admin.checkDatecontract.setIcon(ok);
+                    Create_client.checkDateRegistration.setIcon(ok);
                     correct=true;
                 }
                 break;
             case 1:
                 if(cont.comp_today()==2){
-                    Create_admin.checkDatecontract.setIcon(no_ok);
+                    Create_client.checkDateRegistration.setIcon(no_ok);
                     correct=false;
                 }else{
-                    Create_admin.checkDatecontract.setIcon(ok);
+                    Create_client.checkDateRegistration.setIcon(ok);
                     correct=true;
                 }
                 break;
             case 0:
-                Create_admin.checkDatecontract.setIcon(no_ok);
+                Create_client.checkDateRegistration.setIcon(no_ok);
                 correct=false;
                 break;
         }
         }catch(Exception e){
-            Create_admin.dateContract.setBackground(Color.yellow);
-            Create_admin.areaInfo.setText("No contract date selected");
-            Create_admin.checkDatecontract.setIcon(no_ok);
+            Create_client.dateRegistration.setBackground(Color.yellow);
+            Create_client.areaInfo.setText("No contract date selected");
+            Create_client.checkDateRegistration.setIcon(no_ok);
         }
         return correct;
     }
     
     public static void resetFields(){
-        Create_admin.fieldDNI.setText("");
-        Create_admin.fieldName.setText("");
-        Create_admin.fieldSurname.setText("");
-        Create_admin.fieldEmail.setText("");
-        Create_admin.fieldMobile.setText("");
-        Create_admin.fieldUser.setText("");
-        Create_admin.fieldPassword.setText("");
-        Create_admin.fieldPassword2.setText("");
-        Create_admin.fieldPassword2.setBackground(Color.yellow);
-        Create_admin.checkPassword2.setIcon(no_ok);
-        Create_admin.fieldActivity.setText(" ");
-        Create_admin.fieldDNI.removeAll();
-        Create_admin.fieldName.removeAll();
-        Create_admin.radioStateNo.setSelected(true);
-        Create_admin.areaInfo.setText("");
-        Create_admin.areaInfo.removeAll();
-        Create_admin.areaInfo.setBackground(Color.decode("#d6d6d6"));
-        BLL_admin.askAdmindata("dni");
-        BLL_admin.askAdmindata("name");
-        BLL_admin.askAdmindata("surname");
-        BLL_admin.askAdmindata("email");
-        BLL_admin.askAdmindata("mobile");
-        BLL_admin.askAdmindata("user");
-        BLL_admin.askAdmindata("password");
-        BLL_admin.askAdmindata("password2");
-        BLL_admin.askAdmindata("activity");
-        Create_admin.avatar.setIcon(defaultavatar);
-        adminavatar=false;
+        Create_client.fieldDNI.setText("");
+        Create_client.fieldName.setText("");
+        Create_client.fieldSurname.setText("");
+        Create_client.fieldEmail.setText("");
+        Create_client.fieldMobile.setText("");
+        Create_client.fieldUser.setText("");
+        Create_client.fieldPassword.setText("");
+        Create_client.fieldPassword2.setText("");
+        Create_client.fieldPassword2.setBackground(Color.yellow);
+        Create_client.checkPassword2.setIcon(no_ok);
+        Create_client.fieldShopping.setText("");
+        Create_client.fieldClientType.setText("");
+        Create_client.fieldDNI.removeAll();
+        Create_client.fieldName.removeAll();
+        Create_client.radioStateNo.setSelected(true);
+        Create_client.radioPremiumNo.setSelected(true);
+        Create_client.areaInfo.setText("");
+        Create_client.areaInfo.removeAll();
+        Create_client.areaInfo.setBackground(Color.decode("#d6d6d6"));
+        BLL_client.askAdmindata("dni");
+        BLL_client.askAdmindata("name");
+        BLL_client.askAdmindata("surname");
+        BLL_client.askAdmindata("email");
+        BLL_client.askAdmindata("mobile");
+        BLL_client.askAdmindata("user");
+        BLL_client.askAdmindata("password");
+        BLL_client.askAdmindata("password2");
+        BLL_client.askAdmindata("activity");
+        Create_client.avatar.setIcon(defaultavatar);
+        clientavatar=false;
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
         int currentYear = calendar.get(YEAR);//Calendar.getInstance().get(Calendar.YEAR);
@@ -396,19 +415,22 @@ public class DAO_client {
         int currentDate= calendar.get(DATE);//Calendar.getInstance().get(Calendar.DATE);
         calendar.set(currentYear , currentMonth-1 , currentDate);
         date.setTime(calendar.getTimeInMillis());
-        Create_admin.dateBirth.setDate(date);
-        Create_admin.dateContract.setDate(date);
+        Create_client.dateBirth.setDate(date);
+        Create_client.dateRegistration.setDate(date);
     }//End reset fields
     
-    public static Admin_class create(){
-        Admin_class admin;
-        String dni="", name="", surname="", email="", mobile="", user="", password="", avatar="";
+    public static Client_class create(){
+        Client_class client;
+        String dni="", name="", surname="", email="", mobile="", user="", password="", avatar="",clitype="";
         int activity=0;
+        float shopping=0.0f;
         Date_class birth;
-        Date_class contract;
+        Date_class registration;
         boolean connected=false;
-        boolean fidni,finame,fisurname,fiemail,fimobile,fiuser,fipassword,fipassword2,fiavatar,fdbirth,fdcont,factiv;
-        Calendar birthdate,datecontract;
+        boolean premium=false;
+        boolean fidni,finame,fisurname,fiemail,fimobile,fiuser,fipassword,fipassword2,fiavatar,fdbirth,fdcont,ficlityp,
+                fishopp;
+        Calendar birthdate,dateregistration;
         String dateform=Config_class.getinstance().getDate_format();
 
         fdbirth=askBirth();
@@ -421,40 +443,46 @@ public class DAO_client {
         fiuser=askUser();
         fipassword=askPassword();
         fipassword2=askPassword2();
-        
+        fishopp=askShopping();
         fiavatar=true;
         connected=askConnected();
         
-        factiv=askActivity();
+        ficlityp=askCientType();
        
          if(fidni==true && finame==true && fisurname== true && fiemail==true &&fimobile==true && fiuser==true && fipassword==true &&
-               fipassword2==true && fiavatar==true && fdbirth==true && fdcont==true && factiv==true){
-            dni=Create_admin.fieldDNI.getText();
-            name=Create_admin.fieldName.getText();
-            surname=Create_admin.fieldSurname.getText();
-            email=Create_admin.fieldEmail.getText();
-            mobile=Create_admin.fieldMobile.getText();
-            user=Create_admin.fieldUser.getText();
-            password=Create_admin.fieldPassword.getText();
-            activity=Integer.parseInt(Create_admin.fieldActivity.getText());
+               fipassword2==true && fiavatar==true && fdbirth==true && fdcont==true && ficlityp==true && fishopp==true){
+            dni=Create_client.fieldDNI.getText();
+            name=Create_client.fieldName.getText();
+            surname=Create_client.fieldSurname.getText();
+            email=Create_client.fieldEmail.getText();
+            mobile=Create_client.fieldMobile.getText();
+            user=Create_client.fieldUser.getText();
+            password=Create_client.fieldPassword.getText();
+            shopping=Float.parseFloat(Create_client.fieldShopping.getText());
+            clitype=Create_client.fieldClientType.getText();
             
             
-            
-            if(Create_admin.radioStateYes.isSelected()){
+            if(Create_client.radioStateYes.isSelected()){
                 connected=true;
-            }else if(Create_admin.radioStateNo.isSelected()){
+            }else if(Create_client.radioStateNo.isSelected()){
                 connected=false;
             }
             
-            birthdate=Create_admin.dateBirth.getCalendar();
+             if(Create_client.radioPremiumYes.isSelected()){
+                premium=true;
+            }else if(Create_client.radioPremiumNo.isSelected()){
+                premium=false;
+            }
+            
+            birthdate=Create_client.dateBirth.getCalendar();
             String s=birthdate.get(Calendar.DATE)+"/"+(birthdate.get(Calendar.MONTH)+1)+"/"+birthdate.get(Calendar.YEAR);
             birth= new Date_class(s);
             
-            datecontract=Create_admin.dateContract.getCalendar();
-            String c=datecontract.get(Calendar.DATE)+"/"+(datecontract.get(Calendar.MONTH)+1)+"/"+datecontract.get(Calendar.YEAR);
-            contract=new Date_class(c);
+            dateregistration=Create_client.dateRegistration.getCalendar();
+            String c=dateregistration.get(Calendar.DATE)+"/"+(dateregistration.get(Calendar.MONTH)+1)+"/"+dateregistration.get(Calendar.YEAR);
+            registration=new Date_class(c);
           
-            if(adminavatar==true){
+            if(clientavatar==true){
                 try {
                     Files.copy(Paths.get(routeAvataradmin),Paths.get(avatarsroute+dni) , REPLACE_EXISTING);
                 } catch (IOException ex) {
@@ -465,14 +493,15 @@ public class DAO_client {
                 avatar=defaultavatar.toString();
             }
             
-            admin=new Admin_class(dni,name,surname,birth,mobile,email,user,password,avatar,connected,contract,activity);
-            adminavatar=false;
+            client=new Client_class(dni,name,surname,birth,mobile,email,user,password,avatar,connected,registration
+                    ,shopping,premium,clitype);
+            clientavatar=false;
         }else{
-            admin=null;
-             adminavatar=false;
+            client=null;
+             clientavatar=false;
         }
        
-        return admin;
+        return client;
         
     }//En create admin
     
@@ -483,13 +512,13 @@ public class DAO_client {
     public static boolean askDniMod(){
         boolean correct =false;
         
-        if(Modify_admin.fieldDNI.getText().equals("")){
-            Modify_admin.fieldDNI.setBackground(Color.yellow);
-            Modify_admin.checkDNI.setIcon(no_ok);
+        if(Modify_client.fieldDNI.getText().equals("")){
+            Modify_client.fieldDNI.setBackground(Color.yellow);
+            Modify_client.checkDNI.setIcon(no_ok);
             correct=false;
-        }else if(Validate.validateDNI(Modify_admin.fieldDNI.getText())==true){
-            Modify_admin.fieldDNI.setBackground(Color.green);
-            Modify_admin.checkDNI.setIcon(ok);
+        }else if(Validate.validateDNI(Modify_client.fieldDNI.getText())==true){
+            Modify_client.fieldDNI.setBackground(Color.green);
+            Modify_client.checkDNI.setIcon(ok);
             correct = true;
         }
         
@@ -497,27 +526,27 @@ public class DAO_client {
     }
     
     public static void askDniClickMod(){
-         if(Validate.validateDNI(Modify_admin.fieldDNI.getText())==false){
-            Modify_admin.fieldDNI.setText("");
+         if(Validate.validateDNI(Modify_client.fieldDNI.getText())==false){
+            Modify_client.fieldDNI.setText("");
         }
     }
     
    public static boolean askNameMod(){
         boolean correct=false;
         
-        if(Modify_admin.editfieldName.getText().equals("")){
-            Modify_admin.editfieldName.setBackground(Color.yellow);
-            Modify_admin.checkName.setIcon(no_ok);
+        if(Modify_client.editfieldName.getText().equals("")){
+            Modify_client.editfieldName.setBackground(Color.yellow);
+            Modify_client.checkName.setIcon(no_ok);
             correct=false;
         }else{
-                if(Validate.valname(Modify_admin.editfieldName.getText())==false){
-                Modify_admin.editfieldName.setBackground(Color.yellow);
-                Modify_admin.checkName.setIcon(no_ok);
+                if(Validate.valname(Modify_client.editfieldName.getText())==false){
+                Modify_client.editfieldName.setBackground(Color.yellow);
+                Modify_client.checkName.setIcon(no_ok);
                 correct=false;
             }
-                else if(Validate.valname(Modify_admin.editfieldName.getText())==true){
-                Modify_admin.editfieldName.setBackground(Color.green);
-                Modify_admin.checkName.setIcon(ok);
+                else if(Validate.valname(Modify_client.editfieldName.getText())==true){
+                Modify_client.editfieldName.setBackground(Color.green);
+                Modify_client.checkName.setIcon(ok);
                 correct=true;
             }
         }
@@ -527,19 +556,19 @@ public class DAO_client {
     
     public static boolean askSurnameMod(){
         boolean correct=false;
-        if(Modify_admin.editfieldSurname.getText().equals("")){
-            Modify_admin.editfieldSurname.setBackground(Color.yellow);
-            Modify_admin.checkSurname.setIcon(no_ok);
+        if(Modify_client.editfieldSurname.getText().equals("")){
+            Modify_client.editfieldSurname.setBackground(Color.yellow);
+            Modify_client.checkSurname.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valname(Modify_admin.editfieldSurname.getText())==false){
-            Modify_admin.editfieldSurname.setBackground(Color.yellow);
-            Modify_admin.checkSurname.setIcon(no_ok);
+            if(Validate.valname(Modify_client.editfieldSurname.getText())==false){
+            Modify_client.editfieldSurname.setBackground(Color.yellow);
+            Modify_client.checkSurname.setIcon(no_ok);
             correct=false;
             }
-            else if(Validate.valname(Modify_admin.editfieldSurname.getText())==true){
-                Modify_admin.editfieldSurname.setBackground(Color.green);
-                Modify_admin.checkSurname.setIcon(ok);
+            else if(Validate.valname(Modify_client.editfieldSurname.getText())==true){
+                Modify_client.editfieldSurname.setBackground(Color.green);
+                Modify_client.checkSurname.setIcon(ok);
                 correct=true;
             }
         }
@@ -550,19 +579,19 @@ public class DAO_client {
     public static boolean askEmailMod(){
         boolean correct=false;
         
-        if(Modify_admin.editfieldEmail.getText().equals("")){
-            Modify_admin.editfieldEmail.setBackground(Color.yellow);
-            Modify_admin.checkEmail.setIcon(no_ok);
+        if(Modify_client.editfieldEmail.getText().equals("")){
+            Modify_client.editfieldEmail.setBackground(Color.yellow);
+            Modify_client.checkEmail.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valemail(Modify_admin.editfieldEmail.getText())==false){
-            Modify_admin.editfieldEmail.setBackground(Color.yellow);
-            Modify_admin.checkEmail.setIcon(no_ok);
+            if(Validate.valemail(Modify_client.editfieldEmail.getText())==false){
+            Modify_client.editfieldEmail.setBackground(Color.yellow);
+            Modify_client.checkEmail.setIcon(no_ok);
             correct=false;
             }
-            else if(Validate.valemail(Modify_admin.editfieldEmail.getText())==true){
-                Modify_admin.editfieldEmail.setBackground(Color.green);
-                Modify_admin.checkEmail.setIcon(ok);
+            else if(Validate.valemail(Modify_client.editfieldEmail.getText())==true){
+                Modify_client.editfieldEmail.setBackground(Color.green);
+                Modify_client.checkEmail.setIcon(ok);
                 correct=true;
             }
         }
@@ -572,18 +601,18 @@ public class DAO_client {
     
     public static boolean askMobileMod(){
         boolean correct=false;
-        if(Modify_admin.editfieldMobile.getText().equals("")){
-            Modify_admin.editfieldMobile.setBackground(Color.yellow);
-            Modify_admin.checkMobile.setIcon(no_ok);
+        if(Modify_client.editfieldMobile.getText().equals("")){
+            Modify_client.editfieldMobile.setBackground(Color.yellow);
+            Modify_client.checkMobile.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valmobile(Modify_admin.editfieldMobile.getText())==false){
-                Modify_admin.editfieldMobile.setBackground(Color.yellow);
-                Modify_admin.checkMobile.setIcon(no_ok);
+            if(Validate.valmobile(Modify_client.editfieldMobile.getText())==false){
+                Modify_client.editfieldMobile.setBackground(Color.yellow);
+                Modify_client.checkMobile.setIcon(no_ok);
                 correct=false  ;
-        }else if(Validate.valmobile(Modify_admin.editfieldMobile.getText())==true){
-                Modify_admin.editfieldMobile.setBackground(Color.green);
-                Modify_admin.checkMobile.setIcon(ok);
+        }else if(Validate.valmobile(Modify_client.editfieldMobile.getText())==true){
+                Modify_client.editfieldMobile.setBackground(Color.green);
+                Modify_client.checkMobile.setIcon(ok);
                 correct=true;
         }
         }
@@ -594,19 +623,19 @@ public class DAO_client {
     public static boolean askUserMod(){
         boolean correct=false;
         
-        if(Modify_admin.editfieldUser.getText().equals("")){
-                Modify_admin.editfieldUser.setBackground(Color.yellow);
-                Modify_admin.checkUser.setIcon(no_ok);
+        if(Modify_client.editfieldUser.getText().equals("")){
+                Modify_client.editfieldUser.setBackground(Color.yellow);
+                Modify_client.checkUser.setIcon(no_ok);
                 correct=false;
         }else{
-            if(Validate.valuser(Modify_admin.editfieldUser.getText())==false){
-                Modify_admin.editfieldUser.setBackground(Color.yellow);
-                Modify_admin.checkUser.setIcon(no_ok);
+            if(Validate.valuser(Modify_client.editfieldUser.getText())==false){
+                Modify_client.editfieldUser.setBackground(Color.yellow);
+                Modify_client.checkUser.setIcon(no_ok);
                 correct=false;
             }
-            else if(Validate.valuser(Modify_admin.editfieldUser.getText())==true){
-                Modify_admin.editfieldUser.setBackground(Color.green);
-                Modify_admin.checkUser.setIcon(ok);
+            else if(Validate.valuser(Modify_client.editfieldUser.getText())==true){
+                Modify_client.editfieldUser.setBackground(Color.green);
+                Modify_client.checkUser.setIcon(ok);
                 correct=true;
             }
         }
@@ -617,19 +646,19 @@ public class DAO_client {
     public static boolean askPasswordMod(){
         boolean correct=false;
         
-        if(Modify_admin.editfieldPassword.getText().equals("")){
-            Modify_admin.editfieldPassword.setBackground(Color.yellow);
-            Modify_admin.checkPassword.setIcon(no_ok);
+        if(Modify_client.editfieldPassword.getText().equals("")){
+            Modify_client.editfieldPassword.setBackground(Color.yellow);
+            Modify_client.checkPassword.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valpass(Modify_admin.editfieldPassword.getText())==false){
-                Modify_admin.editfieldPassword.setBackground(Color.yellow);
-                Modify_admin.checkPassword.setIcon(no_ok);
+            if(Validate.valpass(Modify_client.editfieldPassword.getText())==false){
+                Modify_client.editfieldPassword.setBackground(Color.yellow);
+                Modify_client.checkPassword.setIcon(no_ok);
                 correct=false;
             }
-            else if(Validate.valpass(Modify_admin.editfieldPassword.getText())==true){
-                Modify_admin.editfieldPassword.setBackground(Color.green);
-                Modify_admin.checkPassword.setIcon(ok);
+            else if(Validate.valpass(Modify_client.editfieldPassword.getText())==true){
+                Modify_client.editfieldPassword.setBackground(Color.green);
+                Modify_client.checkPassword.setIcon(ok);
                 correct=true;
             }
         }
@@ -640,13 +669,13 @@ public class DAO_client {
     public static boolean askPassword2Mod(){
         boolean correct=false;
         
-        if(Modify_admin.editfieldPassword.getText().equals(Modify_admin.editfieldPassword2.getText()) && (Validate.valpass(Modify_admin.editfieldPassword2.getText())==true)){
-            Modify_admin.editfieldPassword2.setBackground(Color.green);
-            Modify_admin.checkPassword2.setIcon(ok);
+        if(Modify_client.editfieldPassword.getText().equals(Modify_client.editfieldPassword2.getText()) && (Validate.valpass(Modify_client.editfieldPassword2.getText())==true)){
+            Modify_client.editfieldPassword2.setBackground(Color.green);
+            Modify_client.checkPassword2.setIcon(ok);
             correct=true;    
         }else{
-            Modify_admin.editfieldPassword2.setBackground(Color.yellow);
-            Modify_admin.checkPassword2.setIcon(no_ok);
+            Modify_client.editfieldPassword2.setBackground(Color.yellow);
+            Modify_client.checkPassword2.setIcon(no_ok);
             correct=false;
         }
         
@@ -656,9 +685,9 @@ public class DAO_client {
     
     public static boolean askConnectedMod(){
         boolean connected=false;
-        if (Modify_admin.radioStateYes.isSelected()){
+        if (Modify_client.radioStateYes.isSelected()){
             connected=true;
-        }else if(Modify_admin.radioStateNo.isSelected()){
+        }else if(Modify_client.radioStateNo.isSelected()){
             connected=false;
         }
             
@@ -668,19 +697,19 @@ public class DAO_client {
     public static boolean askActivityMod(){
         boolean correct=false;
         
-        if(Modify_admin.editfieldActivity.getText().equals("")){
-            Modify_admin.editfieldActivity.setBackground(Color.yellow);
-            Modify_admin.checkActivity.setIcon(no_ok);
+        if(Modify_client.editfieldActivity.getText().equals("")){
+            Modify_client.editfieldActivity.setBackground(Color.yellow);
+            Modify_client.checkActivity.setIcon(no_ok);
             correct=false;
         }else{
-                if(Validate.valactivity(Modify_admin.editfieldActivity.getText())==false){
-                    Modify_admin.editfieldActivity.setBackground(Color.yellow);
-                    Modify_admin.checkActivity.setIcon(no_ok);
+                if(Validate.valactivity(Modify_client.editfieldActivity.getText())==false){
+                    Modify_client.editfieldActivity.setBackground(Color.yellow);
+                    Modify_client.checkActivity.setIcon(no_ok);
                     correct=false;
                 }
-                else if(Validate.valactivity(Modify_admin.editfieldActivity.getText())==true){
-                    Modify_admin.editfieldActivity.setBackground(Color.green);
-                    Modify_admin.checkActivity.setIcon(ok);
+                else if(Validate.valactivity(Modify_client.editfieldActivity.getText())==true){
+                    Modify_client.editfieldActivity.setBackground(Color.green);
+                    Modify_client.checkActivity.setIcon(ok);
                     correct=true;
                 }
         }
@@ -692,24 +721,24 @@ public class DAO_client {
         boolean correct=false;
         Calendar birthdate;
         String dateform=Config_class.getinstance().getDate_format();
-        Modify_admin.editdateBirth.setDateFormatString(dateform);
+        Modify_client.editdateBirth.setDateFormatString(dateform);
 //        dateBirth.getDateEditor().setEnabled(false);
        try{
-        birthdate=Modify_admin.editdateBirth.getCalendar();
+        birthdate=Modify_client.editdateBirth.getCalendar();
         String s=birthdate.get(Calendar.DATE)+"/"+(birthdate.get(Calendar.MONTH)+1)+"/"+birthdate.get(Calendar.YEAR);
         Date_class birth= new Date_class(s);
         int years=birth.intyearstoday();
-        if(years>=16){
-            Modify_admin.checkDatebirth.setIcon(ok);
+        if(years>=18){
+            Modify_client.checkDatebirth.setIcon(ok);
             correct=true;
         }else{
-            Modify_admin.checkDatebirth.setIcon(no_ok);
+            Modify_client.checkDatebirth.setIcon(no_ok);
             correct=false;
         }
        }catch(Exception e){
-            Modify_admin.editdateBirth.setBackground(Color.yellow);
-            Modify_admin.editareaInfo.setText("No birth date selected");
-            Modify_admin.checkDatebirth.setIcon(no_ok);
+            Modify_client.editdateBirth.setBackground(Color.yellow);
+            Modify_client.editareaInfo.setText("No birth date selected");
+            Modify_client.checkDatebirth.setIcon(no_ok);
        }
         return correct;
     }
@@ -723,23 +752,23 @@ public class DAO_client {
         dialog.addChoosableFileFilter(new FileNameExtensionFilter("JPG (*.jpg)", "jpg"));
         dialog.addChoosableFileFilter(new FileNameExtensionFilter("PNG (*.png)", "png"));
 
-        if(adminavatar==false){
+        if(clientavatar==false){
         int option = dialog.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION){
             file=dialog.getSelectedFile().getPath();
             routeAvataradmin=file;//toString? con el funciona
-            Modify_admin.avatar.setIcon(new ImageIcon(file));
+            Modify_client.avatar.setIcon(new ImageIcon(file));
             ImageIcon icon = new ImageIcon(file);
             Image img=icon.getImage();
             Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
             ImageIcon newIcon = new ImageIcon(newimg);
-            Modify_admin.avatar.setIcon(newIcon);
-            Modify_admin.avatar.setSize(100,100);
-            Modify_admin.avatar.setToolTipText(file);
-            adminavatar=true;
+            Modify_client.avatar.setIcon(newIcon);
+            Modify_client.avatar.setSize(100,100);
+            Modify_client.avatar.setToolTipText(file);
+            clientavatar=true;
             
         }else{
-            adminavatar=false;
+            clientavatar=false;
             route=defaultavatar.toString();
         }
         }
@@ -750,67 +779,67 @@ public class DAO_client {
         boolean correct=false;
         Calendar contract,birthdate;
         String dateform=Config_class.getinstance().getDate_format();
-        Modify_admin.editdateContract.setDateFormatString(dateform);
-        Modify_admin.editdateBirth.setDateFormatString(dateform);
-        Modify_admin.editdateContract.getDateEditor().setEnabled(false);
+        Modify_client.editdateContract.setDateFormatString(dateform);
+        Modify_client.editdateBirth.setDateFormatString(dateform);
+        Modify_client.editdateContract.getDateEditor().setEnabled(false);
        
         try{
-        contract=Modify_admin.editdateContract.getCalendar();
+        contract=Modify_client.editdateContract.getCalendar();
         String c=contract.get(Calendar.DATE)+"/"+(contract.get(Calendar.MONTH)+1)+"/"+contract.get(Calendar.YEAR);
         Date_class cont= new Date_class(c);
         
-        birthdate=Modify_admin.editdateBirth.getCalendar();
+        birthdate=Modify_client.editdateBirth.getCalendar();
         String b=birthdate.get(Calendar.DATE)+"/"+(birthdate.get(Calendar.MONTH)+1)+"/"+birthdate.get(Calendar.YEAR);
         Date_class birth= new Date_class(b);
         int comp_contract=cont.compare_birth_contract(birth, 16);
         
         switch (comp_contract) {
             case 2:
-                Modify_admin.checkDatecontract.setIcon(ok);
+                Modify_client.checkDatecontract.setIcon(ok);
 //                datetype=1;
                 correct=true;
                 break;
             case 1:
-                Modify_admin.checkDatecontract.setIcon(ok);
+                Modify_client.checkDatecontract.setIcon(ok);
 //                datetype=1;
                 correct=true;
                 break;
             case 0:
-                Modify_admin.checkDatecontract.setIcon(no_ok);
+                Modify_client.checkDatecontract.setIcon(no_ok);
 //                datetype=0;
                 correct=false;
                 break;
         }
         }catch(Exception e){
-            Modify_admin.editdateContract.setBackground(Color.yellow);
-            Modify_admin.editareaInfo.setText("No contract date selected");
-            Modify_admin.checkDatecontract.setIcon(no_ok);
+            Modify_client.editdateContract.setBackground(Color.yellow);
+            Modify_client.editareaInfo.setText("No contract date selected");
+            Modify_client.checkDatecontract.setIcon(no_ok);
         }
         return correct;
     }
     
     public static void resetFieldsMod(){
-        Modify_admin.fieldDNI.setText("");
-        Modify_admin.editfieldName.setText("");
-        Modify_admin.editfieldSurname.setText("");
-        Modify_admin.editfieldEmail.setText("");
-        Modify_admin.editfieldMobile.setText("");
-        Modify_admin.editfieldUser.setText("");
-        Modify_admin.editfieldPassword.setText("");
-        Modify_admin.editfieldPassword2.setText("");
-        Modify_admin.editfieldPassword2.setBackground(Color.yellow);
-        Modify_admin.checkPassword2.setIcon(no_ok);
-        Modify_admin.editfieldActivity.setText(" ");
-        Modify_admin.fieldDNI.removeAll();
-        Modify_admin.editfieldName.removeAll();
-        BLL_admin.modAdmindata("activity");
-        BLL_admin.modAdmindata("dni");
-        BLL_admin.modAdmindata("email");
-        BLL_admin.modAdmindata("mobile");
-        BLL_admin.modAdmindata("name");
-        BLL_admin.modAdmindata("password");
-        BLL_admin.modAdmindata("surname");
-        BLL_admin.modAdmindata("user");
+        Modify_client.fieldDNI.setText("");
+        Modify_client.editfieldName.setText("");
+        Modify_client.editfieldSurname.setText("");
+        Modify_client.editfieldEmail.setText("");
+        Modify_client.editfieldMobile.setText("");
+        Modify_client.editfieldUser.setText("");
+        Modify_client.editfieldPassword.setText("");
+        Modify_client.editfieldPassword2.setText("");
+        Modify_client.editfieldPassword2.setBackground(Color.yellow);
+        Modify_client.checkPassword2.setIcon(no_ok);
+        Modify_client.editfieldActivity.setText(" ");
+        Modify_client.fieldDNI.removeAll();
+        Modify_client.editfieldName.removeAll();
+        BLL_client.modClientdata("activity");
+        BLL_client.modClientdata("dni");
+        BLL_client.modClientdata("email");
+        BLL_client.modClientdata("mobile");
+        BLL_client.modClientdata("name");
+        BLL_client.modClientdata("password");
+        BLL_client.modClientdata("surname");
+        BLL_client.modClientdata("user");
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
         int currentYear = calendar.get(YEAR);//Calendar.getInstance().get(Calendar.YEAR);
@@ -818,12 +847,12 @@ public class DAO_client {
         int currentDate= calendar.get(DATE);//Calendar.getInstance().get(Calendar.DATE);
         calendar.set(currentYear , currentMonth-1 , currentDate);
         date.setTime(calendar.getTimeInMillis());
-        Modify_admin.editdateBirth.setDate(date);
-        Modify_admin.editdateContract.setDate(date);
+        Modify_client.editdateBirth.setDate(date);
+        Modify_client.editdateContract.setDate(date);
     }
     
-    public static Admin_class saveAdminMod(){
-        Admin_class admin;
+    public static Client_class saveClientMod(){
+        Client_class admin;
         String dni="", name="", surname="", email="", mobile="", user="", password="", avatar="";
         int activity=0, position=0;
         Date_class birth;
@@ -859,7 +888,7 @@ public class DAO_client {
             password=Modify_admin.editfieldPassword.getText();
             activity=Integer.parseInt(Modify_admin.editfieldActivity.getText());
             
-            if(adminavatar==true){
+            if(clientavatar==true){
                 try {
                     Files.copy(Paths.get(routeAvataradmin),Paths.get(avatarsroute+dni) , REPLACE_EXISTING);
                 } catch (IOException ex) {
@@ -879,18 +908,18 @@ public class DAO_client {
             contract=new Date_class(c);
           
             admin=new Admin_class(dni,name,surname,birth,mobile,email,user,password,avatar,connected,contract,activity);
-            Singleton_admin.saved=0;
+            Singleton_client.saved=0;
         
          }else{
             admin=null;
-            Singleton_admin.saved=1;
+            Singleton_client.saved=1;
         }
-        adminavatar=false;
+        clientavatar=false;
         return admin;
         
     }
     
-    public static void fillAdminMod(Admin_class adm){
+    public static void fillClientMod(Client_class cli){
         String dni2="";
         int position=0;
         Date dateBirth = new Date();
@@ -909,17 +938,17 @@ public class DAO_client {
         
         
 //        System.out.println(admin.getDni());
-        Modify_admin.fieldDNI.setText(adm.getDni());
-        Modify_admin.editfieldName.setText(adm.getName());
-        Modify_admin.editfieldSurname.setText(adm.getSurname());
-        Modify_admin.editfieldEmail.setText(adm.getEmail());
-        Modify_admin.editfieldMobile.setText( adm.getMobile());
-        Modify_admin.editfieldUser.setText(adm.getUser());
-        Modify_admin.editfieldPassword.setText(adm.getPass());
-        Modify_admin.editfieldPassword2.setText(adm.getPass());
-        Modify_admin.editfieldActivity.setText(String.valueOf(adm.getActivity()));
-        file=adm.getAvatar();
-        birth=adm.getBirthday();
+        Modify_admin.fieldDNI.setText(cli.getDni());
+        Modify_admin.editfieldName.setText(cli.getName());
+        Modify_admin.editfieldSurname.setText(cli.getSurname());
+        Modify_admin.editfieldEmail.setText(cli.getEmail());
+        Modify_admin.editfieldMobile.setText( cli.getMobile());
+        Modify_admin.editfieldUser.setText(cli.getUser());
+        Modify_admin.editfieldPassword.setText(cli.getPass());
+        Modify_admin.editfieldPassword2.setText(cli.getPass());
+        Modify_admin.editfieldActivity.setText(String.valueOf(cli.getActivity()));
+        file=cli.getAvatar();
+        birth=cli.getBirthday();
         
         Modify_admin.avatar.setIcon(new ImageIcon(file));
         ImageIcon icon = new ImageIcon(file);
@@ -930,9 +959,9 @@ public class DAO_client {
         Modify_admin.avatar.setSize(100,100);
         Modify_admin.avatar.setToolTipText(file);
         
-        cont=adm.getCont_date();
+        cont=cli.getCont_date();
         
-        if(adm.isState()==true){
+        if(cli.isState()==true){
             Modify_admin.radioStateYes.setSelected(true);
         }else{
             Modify_admin.radioStateNo.setSelected(true);

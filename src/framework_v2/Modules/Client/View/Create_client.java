@@ -15,32 +15,13 @@ import javax.swing.JLabel;
  * @author antonio
  */
 public class Create_client extends javax.swing.JFrame {
-
-
-    
-//    private void doPause() {
-//        Timer delay = new Timer(3000, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//        dispose();
-//        new Pager_admin().setVisible(true);
-//            }
-//        });
-//        
-//              
-//        saving.setVisible(true);
-//        delay.setRepeats(false);
-//        delay.start();
-//        Create_client.areaInfo.setText("User created correctly");
-//        Create_client.areaInfo.setBackground(Color.green);
-//    }
-    
+  
     
     /**
      * Creates new form Create_admin
      */
     public Create_client() {
-        ImageIcon icon = new ImageIcon("src/framework_v2/Modules/Admin/View/img/wood_3.jpg");
+        ImageIcon icon = new ImageIcon("src/framework_v2/Modules/Client/View/img/wood_3.jpg");
         Image img=icon.getImage();
         Image newimg = img.getScaledInstance(600, 500, java.awt.Image.SCALE_SMOOTH);
         setContentPane(new JLabel(new ImageIcon (newimg)));
@@ -59,6 +40,7 @@ public class Create_client extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroupState = new javax.swing.ButtonGroup();
+        buttonGroupPremium = new javax.swing.ButtonGroup();
         fieldDNI = new javax.swing.JTextField();
         labelDNI = new javax.swing.JLabel();
         fieldName = new javax.swing.JTextField();
@@ -79,8 +61,8 @@ public class Create_client extends javax.swing.JFrame {
         radioStateYes = new javax.swing.JRadioButton();
         radioStateNo = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        fieldActivity = new javax.swing.JTextField();
+        labelClientType = new javax.swing.JLabel();
+        fieldClientType = new javax.swing.JTextField();
         btnsaveCreateadmin = new javax.swing.JButton();
         btncancelCreateadmin = new javax.swing.JButton();
         btnresetCreateadmin = new javax.swing.JButton();
@@ -95,16 +77,23 @@ public class Create_client extends javax.swing.JFrame {
         labelPassword2 = new javax.swing.JLabel();
         fieldPassword2 = new javax.swing.JPasswordField();
         checkPassword2 = new javax.swing.JLabel();
-        checkActivity = new javax.swing.JLabel();
+        checkClientType = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
         dateBirth = new com.toedter.calendar.JDateChooser();
-        dateContract = new com.toedter.calendar.JDateChooser();
+        dateRegistration = new com.toedter.calendar.JDateChooser();
         checkDatebirth = new javax.swing.JLabel();
-        checkDatecontract = new javax.swing.JLabel();
+        checkDateRegistration = new javax.swing.JLabel();
         avatar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaInfo = new javax.swing.JTextArea();
         saving = new javax.swing.JOptionPane();
+        labelShopping = new javax.swing.JLabel();
+        fieldShopping = new javax.swing.JTextField();
+        checkPassword3 = new javax.swing.JLabel();
+        checkShopping = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        radioPremiumYes = new javax.swing.JRadioButton();
+        radioPremiumNo = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -114,55 +103,55 @@ public class Create_client extends javax.swing.JFrame {
         fieldDNI.setBackground(java.awt.Color.yellow);
         fieldDNI.setToolTipText("");
         getContentPane().add(fieldDNI);
-        fieldDNI.setBounds(90, 10, 148, 25);
+        fieldDNI.setBounds(90, 5, 148, 25);
 
         labelDNI.setText("ID Card:");
         getContentPane().add(labelDNI);
-        labelDNI.setBounds(10, 15, 70, 15);
+        labelDNI.setBounds(10, 5, 70, 15);
 
         fieldName.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldName);
-        fieldName.setBounds(90, 50, 148, 25);
+        fieldName.setBounds(90, 40, 148, 25);
 
         labelName.setText("Name:");
         getContentPane().add(labelName);
-        labelName.setBounds(10, 50, 80, 15);
+        labelName.setBounds(10, 40, 80, 15);
 
         labelSurname.setText("Surname:");
         getContentPane().add(labelSurname);
-        labelSurname.setBounds(10, 90, 80, 15);
+        labelSurname.setBounds(10, 75, 80, 15);
 
         fieldSurname.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldSurname);
-        fieldSurname.setBounds(90, 90, 150, 25);
+        fieldSurname.setBounds(90, 75, 150, 25);
 
         labelEmail.setText("e-mail:");
         getContentPane().add(labelEmail);
-        labelEmail.setBounds(10, 130, 80, 15);
+        labelEmail.setBounds(10, 110, 80, 15);
 
         fieldEmail.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldEmail);
-        fieldEmail.setBounds(90, 130, 150, 25);
+        fieldEmail.setBounds(90, 110, 150, 25);
 
         jLabel5.setText("Mobile:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(10, 170, 80, 15);
+        jLabel5.setBounds(10, 145, 80, 15);
 
         fieldMobile.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldMobile);
-        fieldMobile.setBounds(90, 170, 150, 25);
+        fieldMobile.setBounds(90, 145, 150, 25);
 
         jLabel6.setText("User:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(10, 210, 80, 15);
+        jLabel6.setBounds(10, 180, 80, 15);
 
         fieldUser.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldUser);
-        fieldUser.setBounds(90, 210, 150, 25);
+        fieldUser.setBounds(90, 180, 150, 25);
 
         jLabel7.setText("Password:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(10, 250, 80, 15);
+        jLabel7.setBounds(10, 215, 80, 15);
 
         jLabel9.setText("Birth date:");
         getContentPane().add(jLabel9);
@@ -191,17 +180,17 @@ public class Create_client extends javax.swing.JFrame {
         getContentPane().add(radioStateNo);
         radioStateNo.setBounds(500, 170, 60, 22);
 
-        jLabel8.setText("Contract date:");
+        jLabel8.setText("Register date:");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(290, 210, 110, 15);
 
-        jLabel13.setText("Activity:");
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(290, 250, 90, 15);
+        labelClientType.setText("Client type:");
+        getContentPane().add(labelClientType);
+        labelClientType.setBounds(290, 250, 110, 15);
 
-        fieldActivity.setBackground(java.awt.Color.yellow);
-        getContentPane().add(fieldActivity);
-        fieldActivity.setBounds(400, 250, 114, 25);
+        fieldClientType.setBackground(java.awt.Color.yellow);
+        getContentPane().add(fieldClientType);
+        fieldClientType.setBounds(400, 250, 114, 25);
 
         btnsaveCreateadmin.setText("Save");
         getContentPane().add(btnsaveCreateadmin);
@@ -217,51 +206,51 @@ public class Create_client extends javax.swing.JFrame {
 
         checkSurname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkSurname);
-        checkSurname.setBounds(250, 90, 23, 23);
+        checkSurname.setBounds(250, 75, 23, 23);
 
         checkDNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDNI);
-        checkDNI.setBounds(250, 10, 23, 23);
+        checkDNI.setBounds(250, 5, 23, 23);
 
         checkName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkName);
-        checkName.setBounds(250, 50, 23, 23);
+        checkName.setBounds(250, 40, 23, 23);
 
         checkEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkEmail);
-        checkEmail.setBounds(250, 130, 23, 23);
+        checkEmail.setBounds(250, 110, 23, 23);
 
         checkMobile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkMobile);
-        checkMobile.setBounds(250, 170, 23, 23);
+        checkMobile.setBounds(250, 145, 23, 23);
 
         checkUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkUser);
-        checkUser.setBounds(250, 210, 23, 23);
+        checkUser.setBounds(250, 180, 23, 23);
 
         fieldPassword.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldPassword);
-        fieldPassword.setBounds(90, 250, 150, 25);
+        fieldPassword.setBounds(90, 215, 150, 25);
 
         checkPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword);
-        checkPassword.setBounds(250, 250, 23, 23);
+        checkPassword.setBounds(250, 215, 23, 23);
 
         labelPassword2.setText("Verify:");
         getContentPane().add(labelPassword2);
-        labelPassword2.setBounds(10, 290, 80, 15);
+        labelPassword2.setBounds(10, 250, 80, 15);
 
         fieldPassword2.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldPassword2);
-        fieldPassword2.setBounds(90, 290, 150, 25);
+        fieldPassword2.setBounds(90, 250, 150, 25);
 
         checkPassword2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword2);
-        checkPassword2.setBounds(250, 290, 23, 23);
+        checkPassword2.setBounds(250, 250, 23, 23);
 
-        checkActivity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
-        getContentPane().add(checkActivity);
-        checkActivity.setBounds(550, 250, 23, 23);
+        checkClientType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
+        getContentPane().add(checkClientType);
+        checkClientType.setBounds(550, 250, 23, 23);
 
         btnSearch.setText("Search");
         getContentPane().add(btnSearch);
@@ -278,16 +267,16 @@ public class Create_client extends javax.swing.JFrame {
         dateBirth.getAccessibleContext().setAccessibleName(getName());
         dateBirth.getAccessibleContext().setAccessibleDescription(getName());
 
-        getContentPane().add(dateContract);
-        dateContract.setBounds(400, 210, 140, 27);
+        getContentPane().add(dateRegistration);
+        dateRegistration.setBounds(400, 210, 140, 27);
 
         checkDatebirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatebirth);
         checkDatebirth.setBounds(550, 15, 23, 23);
 
-        checkDatecontract.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
-        getContentPane().add(checkDatecontract);
-        checkDatecontract.setBounds(550, 210, 23, 23);
+        checkDateRegistration.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
+        getContentPane().add(checkDateRegistration);
+        checkDateRegistration.setBounds(550, 210, 23, 23);
 
         avatar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(avatar);
@@ -311,6 +300,35 @@ public class Create_client extends javax.swing.JFrame {
         getContentPane().add(saving);
         saving.setBounds(238, 148, 130, 130);
 
+        labelShopping.setText("Shopping:");
+        getContentPane().add(labelShopping);
+        labelShopping.setBounds(10, 285, 80, 15);
+        getContentPane().add(fieldShopping);
+        fieldShopping.setBounds(90, 285, 150, 25);
+
+        checkPassword3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
+        getContentPane().add(checkPassword3);
+        checkPassword3.setBounds(250, 250, 23, 23);
+
+        checkShopping.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/not_ok.png"))); // NOI18N
+        getContentPane().add(checkShopping);
+        checkShopping.setBounds(250, 285, 23, 23);
+
+        jLabel1.setText("Is premium?");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(290, 290, 110, 15);
+
+        buttonGroupPremium.add(radioPremiumYes);
+        radioPremiumYes.setText("Yes");
+        getContentPane().add(radioPremiumYes);
+        radioPremiumYes.setBounds(440, 290, 60, 22);
+
+        buttonGroupPremium.add(radioPremiumNo);
+        radioPremiumNo.setSelected(true);
+        radioPremiumNo.setText("No");
+        getContentPane().add(radioPremiumNo);
+        radioPremiumNo.setBounds(500, 290, 60, 22);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
             
@@ -322,44 +340,52 @@ public class Create_client extends javax.swing.JFrame {
     public static javax.swing.JButton btncancelCreateadmin;
     public static javax.swing.JButton btnresetCreateadmin;
     public static javax.swing.JButton btnsaveCreateadmin;
+    private javax.swing.ButtonGroup buttonGroupPremium;
     private javax.swing.ButtonGroup buttonGroupState;
-    public static javax.swing.JLabel checkActivity;
+    public static javax.swing.JLabel checkClientType;
     public static javax.swing.JLabel checkDNI;
+    public static javax.swing.JLabel checkDateRegistration;
     public static javax.swing.JLabel checkDatebirth;
-    public static javax.swing.JLabel checkDatecontract;
     public static javax.swing.JLabel checkEmail;
     public static javax.swing.JLabel checkMobile;
     public static javax.swing.JLabel checkName;
     public static javax.swing.JLabel checkPassword;
     public static javax.swing.JLabel checkPassword2;
+    public static javax.swing.JLabel checkPassword3;
+    public static javax.swing.JLabel checkShopping;
     public static javax.swing.JLabel checkSurname;
     public static javax.swing.JLabel checkUser;
     public static com.toedter.calendar.JDateChooser dateBirth;
-    public static com.toedter.calendar.JDateChooser dateContract;
-    public static javax.swing.JTextField fieldActivity;
+    public static com.toedter.calendar.JDateChooser dateRegistration;
+    public static javax.swing.JTextField fieldClientType;
     public static javax.swing.JTextField fieldDNI;
     public static javax.swing.JTextField fieldEmail;
     public static javax.swing.JTextField fieldMobile;
     public static javax.swing.JTextField fieldName;
     public static javax.swing.JPasswordField fieldPassword;
     public static javax.swing.JPasswordField fieldPassword2;
+    public static javax.swing.JTextField fieldShopping;
     public static javax.swing.JTextField fieldSurname;
     public static javax.swing.JTextField fieldUser;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    public static javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel jLabel10;
+    public static javax.swing.JLabel jLabel11;
+    public static javax.swing.JLabel jLabel12;
+    public static javax.swing.JLabel jLabel5;
+    public static javax.swing.JLabel jLabel6;
+    public static javax.swing.JLabel jLabel7;
+    public static javax.swing.JLabel jLabel8;
+    public static javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelDNI;
-    private javax.swing.JLabel labelEmail;
-    private javax.swing.JLabel labelName;
-    private javax.swing.JLabel labelPassword2;
-    private javax.swing.JLabel labelSurname;
+    private javax.swing.JLabel labelClientType;
+    public static javax.swing.JLabel labelDNI;
+    public static javax.swing.JLabel labelEmail;
+    public static javax.swing.JLabel labelName;
+    public static javax.swing.JLabel labelPassword2;
+    public static javax.swing.JLabel labelShopping;
+    public static javax.swing.JLabel labelSurname;
+    public static javax.swing.JRadioButton radioPremiumNo;
+    public static javax.swing.JRadioButton radioPremiumYes;
     public static javax.swing.JRadioButton radioStateNo;
     public static javax.swing.JRadioButton radioStateYes;
     public javax.swing.JOptionPane saving;

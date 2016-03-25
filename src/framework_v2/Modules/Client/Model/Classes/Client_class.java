@@ -57,7 +57,6 @@ public class Client_class extends User_class implements Serializable{
 		 
 		 case 16:
 			 this.reg_date=(Date_class)param;
-			 
 			 break;
 		 case 17:
 			 this.antique=(int)param;

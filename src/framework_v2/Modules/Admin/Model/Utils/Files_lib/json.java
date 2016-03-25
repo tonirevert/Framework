@@ -19,7 +19,6 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
-import framework_v2.Classes.*;
 
 
 
@@ -187,8 +186,9 @@ public class json {
 			}
 			
 		} catch (Exception e){
-			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopejson"), "Error!",
-					JOptionPane.INFORMATION_MESSAGE);
+//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopejson"), "Error!",
+//					JOptionPane.INFORMATION_MESSAGE);
+                                                JOptionPane.showMessageDialog(null,"Error loading JSON file");
 		}
 	}
 	
