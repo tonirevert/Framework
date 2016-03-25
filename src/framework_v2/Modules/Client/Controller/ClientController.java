@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package framework_v2.Modules.Admin.Controller;
+package framework_v2.Modules.Client.Controller;
 
+import framework_v2.Modules.Admin.Controller.*;
 import framework_v2.Modules.Admin.Controller.AdminController.Action;
 import framework_v2.Modules.Admin.Model.BLL.BLL_admin;
 import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
@@ -47,7 +48,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author antonio
  */
-public class AdminController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
+public class ClientController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
 
     public static Create_admin create;
     public static Modify_admin edit;
@@ -56,7 +57,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     public static AutocompleteJComboBox combo = null;
     public String comb="";
     
-    public AdminController(JFrame frame, int i){
+    public ClientController(JFrame frame, int i){
         switch(i){
             case 0:
                 create=(Create_admin) frame;
@@ -661,7 +662,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                     @Override
                     public void actionPerformed(ActionEvent e) {
                             create.dispose();
-                            new AdminController(new Pager_admin(),2).Init(2);
+                            new ClientController(new Pager_admin(),2).Init(2);
                             }
                         });
 
@@ -679,7 +680,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 
             case createbtnCancel:
                 create.dispose();
-                new AdminController(new Pager_admin(),2).Init(2);
+                new ClientController(new Pager_admin(),2).Init(2);
                 break;
                 
                 ////Events from Modify admin:
@@ -694,7 +695,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             edit.dispose();
-                            new AdminController(new Pager_admin(),2).Init(2);
+                            new ClientController(new Pager_admin(),2).Init(2);
                         }
                     });
                     edit.saving.setVisible(true);
@@ -710,13 +711,13 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 
             case editbtnCancel:
                 edit.dispose();
-                new AdminController(new Pager_admin(),2).Init(2);
+                new ClientController(new Pager_admin(),2).Init(2);
                 break;
                 
                 ////Events from pager admin
             case AddAdmin:
                 pager.dispose();
-                new AdminController(new Create_admin(),0).Init(0);
+                new ClientController(new Create_admin(),0).Init(0);
                 break;
                 
             case ModAdmin:
@@ -1110,12 +1111,12 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
             
             case createWindow:
                     create.dispose();
-                    new AdminController(new Pager_admin(),2).Init(2);
+                    new ClientController(new Pager_admin(),2).Init(2);
                 break;
             
             case editWindow:
                      edit.dispose(); 
-                     new AdminController(new Pager_admin(),2).Init(2);
+                     new ClientController(new Pager_admin(),2).Init(2);
                 break;
                 
             case pagerWindow:

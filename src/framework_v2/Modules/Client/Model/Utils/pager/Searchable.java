@@ -1,0 +1,12 @@
+package framework_v2.Modules.Client.Model.Utils.pager;
+import framework_v2.Modules.Admin.Model.Utils.pager.*;
+import java.util.Collection;
+
+public interface Searchable<E, V>{
+	/**
+	 * Searches an underlying inventory of items consisting of type E
+	 * @param value A searchable value of type V
+	 * @return A Collection of items of type E.
+	 */
+	public Collection<E> search(V value);
+}

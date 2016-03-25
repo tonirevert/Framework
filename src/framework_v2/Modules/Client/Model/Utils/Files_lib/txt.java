@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package framework_v2.Modules.Client.Model.Utils;
+package framework_v2.Modules.Client.Model.Utils.Files_lib;
 
 import framework_v2.Classes.Singleton_app;
 import framework_v2.Modules.Client.Model.Classes.Client_class;

@@ -7,9 +7,9 @@ package framework_v2.Modules.Client.Model.BLL;
 
 import framework_v2.Classes.Singleton_app;
 import framework_v2.Modules.Client.Model.Classes.Singleton_client;
-import framework_v2.Modules.Client.Model.Utils.json;
-import framework_v2.Modules.Client.Model.Utils.txt;
-import framework_v2.Modules.Client.Model.Utils.xml;
+import framework_v2.Modules.Client.Model.Utils.Files_lib.json;
+import framework_v2.Modules.Client.Model.Utils.Files_lib.txt;
+import framework_v2.Modules.Client.Model.Utils.Files_lib.xml;
 import framework_v2.Modules.Config.Classes.Config_class;
 import javax.swing.JOptionPane;
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package framework_v2.Modules.Client.Model.Utils;
+package framework_v2.Modules.Client.Model.Utils.Files_lib;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
