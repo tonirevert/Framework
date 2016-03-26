@@ -6,18 +6,13 @@
 package framework_v2.Modules.Client.Model.DAO;
 
 import framework_v2.Modules.Config.Classes.Config_class;
-import framework_v2.Classes.Date_class;
-import framework_v2.Modules.Admin.View.Modify_admin;
+import framework_v2.Classes.Date_class;;
 import framework_v2.Modules.Client.Model.BLL.BLL_client;
 import framework_v2.Modules.Client.Model.Classes.Client_class;
 import framework_v2.Modules.Client.Model.Classes.Singleton_client;
 import static framework_v2.Modules.Client.Model.Classes.Singleton_client.*;
-
-import static framework_v2.Modules.Client.View.Create_client.*;
-
 import framework_v2.Modules.Client.View.Create_client;
 import framework_v2.Modules.Client.View.Modify_client;
-
 import framework_v2.Utils.Validate;
 import java.awt.Color;
 import java.awt.Image;
@@ -47,7 +42,7 @@ public class DAO_client {
     public static boolean askDni(){
         boolean correct =false;
 //        System.out.println(BLL_admin.searchDniadmin());
-        if(BLL_client.searchDniaclient()!=-1){
+        if(BLL_client.searchDniclient()!=-1){
         if(Create_client.fieldDNI.getText().equals("")){
             Create_client.fieldDNI.setBackground(Color.yellow);
             Create_client.checkDNI.setIcon(no_ok);
@@ -57,7 +52,7 @@ public class DAO_client {
             Create_client.checkDNI.setIcon(ok);
             correct = true;
         }
-        }else if(BLL_client.searchDniaclient()==-1){
+        }else if(BLL_client.searchDniclient()==-1){
             Create_client.fieldDNI.setBackground(Color.orange);
             Create_client.checkDNI.setIcon(exclamation);
             correct=false;
@@ -234,9 +229,9 @@ public class DAO_client {
     
     public static boolean askConnected(){
         boolean connected=false;
-        if (radioStateYes.isSelected()){
+        if (Create_client.radioStateYes.isSelected()){
             connected=true;
-        }else if(radioStateNo.isSelected()){
+        }else if(Create_client.radioStateNo.isSelected()){
             connected=false;
         }
             
@@ -266,6 +261,17 @@ public class DAO_client {
         return correct;
     }
 
+        public static boolean askPremium(){
+        boolean connected=false;
+        if (Create_client.radioPremiumYes.isSelected()){
+            connected=true;
+        }else if(Create_client.radioStateNo.isSelected()){
+            connected=false;
+        }
+            
+            return connected;
+    }
+    
     public static boolean askBirth(){
         boolean correct=false;
         Calendar birthdate;
@@ -327,7 +333,7 @@ public class DAO_client {
         return route;
     }
     
-    public static boolean askDatecontract(){
+    public static boolean askDateRegistration(){
         boolean correct=false;
         Calendar contract,birthdate;
         String dateform=Config_class.getinstance().getDate_format();
@@ -394,18 +400,21 @@ public class DAO_client {
         Create_client.fieldName.removeAll();
         Create_client.radioStateNo.setSelected(true);
         Create_client.radioPremiumNo.setSelected(true);
+        Create_client.fieldClientType.setText("");
         Create_client.areaInfo.setText("");
         Create_client.areaInfo.removeAll();
         Create_client.areaInfo.setBackground(Color.decode("#d6d6d6"));
-        BLL_client.askAdmindata("dni");
-        BLL_client.askAdmindata("name");
-        BLL_client.askAdmindata("surname");
-        BLL_client.askAdmindata("email");
-        BLL_client.askAdmindata("mobile");
-        BLL_client.askAdmindata("user");
-        BLL_client.askAdmindata("password");
-        BLL_client.askAdmindata("password2");
-        BLL_client.askAdmindata("activity");
+        BLL_client.askClientdata("dni");
+        BLL_client.askClientdata("name");
+        BLL_client.askClientdata("surname");
+        BLL_client.askClientdata("email");
+        BLL_client.askClientdata("mobile");
+        BLL_client.askClientdata("user");
+        BLL_client.askClientdata("password");
+        BLL_client.askClientdata("password2");
+        BLL_client.askClientdata("activity");
+        BLL_client.askClientdata("shopping");
+        BLL_client.askClientdata("clienttype");
         Create_client.avatar.setIcon(defaultavatar);
         clientavatar=false;
         Date date = new Date();
@@ -428,13 +437,13 @@ public class DAO_client {
         Date_class registration;
         boolean connected=false;
         boolean premium=false;
-        boolean fidni,finame,fisurname,fiemail,fimobile,fiuser,fipassword,fipassword2,fiavatar,fdbirth,fdcont,ficlityp,
+        boolean fidni,finame,fisurname,fiemail,fimobile,fiuser,fipassword,fipassword2,fiavatar,fdbirth,fdreg,ficlityp,
                 fishopp;
         Calendar birthdate,dateregistration;
         String dateform=Config_class.getinstance().getDate_format();
 
         fdbirth=askBirth();
-        fdcont=askDatecontract();
+        fdreg=askDateRegistration();
         fidni=askDni();
         finame=askName();
         fisurname=askSurname();
@@ -450,7 +459,7 @@ public class DAO_client {
         ficlityp=askCientType();
        
          if(fidni==true && finame==true && fisurname== true && fiemail==true &&fimobile==true && fiuser==true && fipassword==true &&
-               fipassword2==true && fiavatar==true && fdbirth==true && fdcont==true && ficlityp==true && fishopp==true){
+               fipassword2==true && fiavatar==true && fdbirth==true && fdreg==true && ficlityp==true && fishopp==true){
             dni=Create_client.fieldDNI.getText();
             name=Create_client.fieldName.getText();
             surname=Create_client.fieldSurname.getText();
@@ -524,13 +533,7 @@ public class DAO_client {
         
         return correct;
     }
-    
-    public static void askDniClickMod(){
-         if(Validate.validateDNI(Modify_client.fieldDNI.getText())==false){
-            Modify_client.fieldDNI.setText("");
-        }
-    }
-    
+  
    public static boolean askNameMod(){
         boolean correct=false;
         
@@ -694,29 +697,40 @@ public class DAO_client {
             return connected;
     }
     
-    public static boolean askActivityMod(){
+        public static boolean askCientTypeMod(){
         boolean correct=false;
         
-        if(Modify_client.editfieldActivity.getText().equals("")){
-            Modify_client.editfieldActivity.setBackground(Color.yellow);
-            Modify_client.checkActivity.setIcon(no_ok);
+        if(Modify_client.editfieldClientType.getText().equals("")){
+            Modify_client.editfieldClientType.setBackground(Color.yellow);
+            Modify_client.checkClientType.setIcon(no_ok);
             correct=false;
         }else{
-                if(Validate.valactivity(Modify_client.editfieldActivity.getText())==false){
-                    Modify_client.editfieldActivity.setBackground(Color.yellow);
-                    Modify_client.checkActivity.setIcon(no_ok);
+                if(Validate.valactivity(Modify_client.editfieldClientType.getText())==false){
+                    Modify_client.editfieldClientType.setBackground(Color.yellow);
+                    Modify_client.checkClientType.setIcon(no_ok);
                     correct=false;
                 }
-                else if(Validate.valactivity(Modify_client.editfieldActivity.getText())==true){
-                    Modify_client.editfieldActivity.setBackground(Color.green);
-                    Modify_client.checkActivity.setIcon(ok);
+                else if(Validate.valactivity(Modify_client.editfieldClientType.getText())==true){
+                    Modify_client.editfieldClientType.setBackground(Color.green);
+                    Modify_client.checkClientType.setIcon(ok);
                     correct=true;
                 }
         }
         
         return correct;
     }
-    
+
+        public static boolean askPremiumMod(){
+        boolean connected=false;
+        if (Modify_client.radioPremiumYes.isSelected()){
+            connected=true;
+        }else if(Modify_client.radioStateNo.isSelected()){
+            connected=false;
+        }
+            
+            return connected;
+    }
+       
     public static boolean askBirthMod(){
         boolean correct=false;
         Calendar birthdate;
@@ -779,12 +793,12 @@ public class DAO_client {
         boolean correct=false;
         Calendar contract,birthdate;
         String dateform=Config_class.getinstance().getDate_format();
-        Modify_client.editdateContract.setDateFormatString(dateform);
+        Modify_client.editdateRegistration.setDateFormatString(dateform);
         Modify_client.editdateBirth.setDateFormatString(dateform);
-        Modify_client.editdateContract.getDateEditor().setEnabled(false);
+        Modify_client.editdateRegistration.getDateEditor().setEnabled(false);
        
         try{
-        contract=Modify_client.editdateContract.getCalendar();
+        contract=Modify_client.editdateRegistration.getCalendar();
         String c=contract.get(Calendar.DATE)+"/"+(contract.get(Calendar.MONTH)+1)+"/"+contract.get(Calendar.YEAR);
         Date_class cont= new Date_class(c);
         
@@ -795,75 +809,43 @@ public class DAO_client {
         
         switch (comp_contract) {
             case 2:
-                Modify_client.checkDatecontract.setIcon(ok);
+                Modify_client.editdateRegistration.setIcon(ok);
 //                datetype=1;
                 correct=true;
                 break;
             case 1:
-                Modify_client.checkDatecontract.setIcon(ok);
+                Modify_client.editdateRegistration.setIcon(ok);
 //                datetype=1;
                 correct=true;
                 break;
             case 0:
-                Modify_client.checkDatecontract.setIcon(no_ok);
+                Modify_client.editdateRegistration.setIcon(no_ok);
 //                datetype=0;
                 correct=false;
                 break;
         }
         }catch(Exception e){
-            Modify_client.editdateContract.setBackground(Color.yellow);
+            Modify_client.editdateRegistration.setBackground(Color.yellow);
             Modify_client.editareaInfo.setText("No contract date selected");
-            Modify_client.checkDatecontract.setIcon(no_ok);
+            Modify_client.editdateRegistration.setIcon(no_ok);
         }
         return correct;
     }
-    
-    public static void resetFieldsMod(){
-        Modify_client.fieldDNI.setText("");
-        Modify_client.editfieldName.setText("");
-        Modify_client.editfieldSurname.setText("");
-        Modify_client.editfieldEmail.setText("");
-        Modify_client.editfieldMobile.setText("");
-        Modify_client.editfieldUser.setText("");
-        Modify_client.editfieldPassword.setText("");
-        Modify_client.editfieldPassword2.setText("");
-        Modify_client.editfieldPassword2.setBackground(Color.yellow);
-        Modify_client.checkPassword2.setIcon(no_ok);
-        Modify_client.editfieldActivity.setText(" ");
-        Modify_client.fieldDNI.removeAll();
-        Modify_client.editfieldName.removeAll();
-        BLL_client.modClientdata("activity");
-        BLL_client.modClientdata("dni");
-        BLL_client.modClientdata("email");
-        BLL_client.modClientdata("mobile");
-        BLL_client.modClientdata("name");
-        BLL_client.modClientdata("password");
-        BLL_client.modClientdata("surname");
-        BLL_client.modClientdata("user");
-        Date date = new Date();
-        Calendar calendar = Calendar.getInstance();
-        int currentYear = calendar.get(YEAR);//Calendar.getInstance().get(Calendar.YEAR);
-        int currentMonth = calendar.get(MONTH);//Calendar.getInstance().get(Calendar.MONTH);
-        int currentDate= calendar.get(DATE);//Calendar.getInstance().get(Calendar.DATE);
-        calendar.set(currentYear , currentMonth-1 , currentDate);
-        date.setTime(calendar.getTimeInMillis());
-        Modify_client.editdateBirth.setDate(date);
-        Modify_client.editdateContract.setDate(date);
-    }
-    
+        
     public static Client_class saveClientMod(){
-        Client_class admin;
-        String dni="", name="", surname="", email="", mobile="", user="", password="", avatar="";
-        int activity=0, position=0;
+        Client_class client;
+        String dni="", name="", surname="", email="", mobile="", user="", password="", avatar="",clitype="";
+        float shopping=0.0f;
         Date_class birth;
-        Date_class contract;
+        Date_class registration;
         boolean connected=false;
-        boolean fidni,finame,fisurname,fiemail,fimobile,fiuser,fipassword,fipassword2,fiavatar,fdbirth,fdcont,factiv;
+        boolean premium=false;
+        boolean fidni,finame,fisurname,fiemail,fimobile,fiuser,fipassword,fipassword2,fdbirth,fdreg,ficlityp,fishopp;
         Calendar birthdate,datecontract;
         String dateform=Config_class.getinstance().getDate_format();
 
         fdbirth=askBirthMod();
-        fdcont=askDatecontractMod();
+        fdreg=askDateRegistration();
         fidni=askDniMod();
         finame=askNameMod();
         fisurname=askSurnameMod();
@@ -872,21 +854,21 @@ public class DAO_client {
         fiuser=askUserMod();
         fipassword=askPasswordMod();
         fipassword2=askPassword2Mod();
-        
+        fishopp=askShopping();
         connected=askConnectedMod();
-        
-        factiv=askActivityMod();
+        ficlityp=askCientType();
        
-         if(fidni==true && finame==true && fisurname== true && fiemail==true &&fimobile==true && fiuser==true && fipassword==true &&
-                fipassword2==true && fdbirth==true && fdcont==true && factiv==true){
-            dni=Modify_admin.fieldDNI.getText();
-            name=Modify_admin.editfieldName.getText();
-            surname=Modify_admin.editfieldSurname.getText();
-            email=Modify_admin.editfieldEmail.getText();
-            mobile=Modify_admin.editfieldMobile.getText();
-            user=Modify_admin.editfieldUser.getText();
-            password=Modify_admin.editfieldPassword.getText();
-            activity=Integer.parseInt(Modify_admin.editfieldActivity.getText());
+         if(fidni==true && finame==true && fisurname== true && fiemail==true &&fimobile==true && fiuser==true && 
+            fipassword==true && fipassword2==true && fdbirth==true && fdreg==true && ficlityp==true && fishopp==true){
+            dni=Modify_client.fieldDNI.getText();
+            name=Modify_client.editfieldName.getText();
+            surname=Modify_client.editfieldSurname.getText();
+            email=Modify_client.editfieldEmail.getText();
+            mobile=Modify_client.editfieldMobile.getText();
+            user=Modify_client.editfieldUser.getText();
+            password=Modify_client.editfieldPassword.getText();
+            shopping=Float.parseFloat(Modify_client.editfieldShopping.getText());
+            clitype=Modify_client.editfieldClientType.getText();
             
             if(clientavatar==true){
                 try {
@@ -899,98 +881,104 @@ public class DAO_client {
                 avatar=defaultavatar.toString();
             }
             
-            birthdate=Modify_admin.editdateBirth.getCalendar();
+            if(Modify_client.radioPremiumYes.isSelected()){
+                premium=true;
+            }else if(Modify_client.radioPremiumNo.isSelected()){
+                premium=false;
+            }
+            
+            birthdate=Modify_client.editdateBirth.getCalendar();
             String s=birthdate.get(Calendar.DATE)+"/"+(birthdate.get(Calendar.MONTH)+1)+"/"+birthdate.get(Calendar.YEAR);
             birth= new Date_class(s);
             
-            datecontract=Modify_admin.editdateContract.getCalendar();
+            datecontract=Modify_client.editdateRegistration.getCalendar();
             String c=datecontract.get(Calendar.DATE)+"/"+(datecontract.get(Calendar.MONTH)+1)+"/"+datecontract.get(Calendar.YEAR);
-            contract=new Date_class(c);
+            registration=new Date_class(c);
           
-            admin=new Admin_class(dni,name,surname,birth,mobile,email,user,password,avatar,connected,contract,activity);
+            client=new Client_class(dni,name,surname,birth,mobile,email,user,password,avatar,connected,registration
+                    ,shopping,premium,clitype);
             Singleton_client.saved=0;
         
          }else{
-            admin=null;
+            client=null;
             Singleton_client.saved=1;
         }
         clientavatar=false;
-        return admin;
+        return client;
         
     }
     
+    /**
+     * Used to fill Modify Client window with a client data
+     * @param cli is a client with all their data
+     */
     public static void fillClientMod(Client_class cli){
-        String dni2="";
-        int position=0;
         Date dateBirth = new Date();
         Date dateCont = new Date();
         Date_class birth=null;
         Calendar calendarBirth = Calendar.getInstance();
-        Date_class cont=null;
+        Date_class reg=null;
         Calendar calendarCont = Calendar.getInstance();
         String file="";
-//        Admin_class admin=((Admin_class) adm);
-        
-//        Admin_class admin = new Admin_class(dni);
-//        position=BLL_admin.searchadminMod((Admin_class) admin);
-//        
-//        admin=Singleton_admin.adm.get(position);
-        
-        
-//        System.out.println(admin.getDni());
-        Modify_admin.fieldDNI.setText(cli.getDni());
-        Modify_admin.editfieldName.setText(cli.getName());
-        Modify_admin.editfieldSurname.setText(cli.getSurname());
-        Modify_admin.editfieldEmail.setText(cli.getEmail());
-        Modify_admin.editfieldMobile.setText( cli.getMobile());
-        Modify_admin.editfieldUser.setText(cli.getUser());
-        Modify_admin.editfieldPassword.setText(cli.getPass());
-        Modify_admin.editfieldPassword2.setText(cli.getPass());
-        Modify_admin.editfieldActivity.setText(String.valueOf(cli.getActivity()));
+
+        Modify_client.fieldDNI.setText(cli.getDni());
+        Modify_client.editfieldName.setText(cli.getName());
+        Modify_client.editfieldSurname.setText(cli.getSurname());
+        Modify_client.editfieldEmail.setText(cli.getEmail());
+        Modify_client.editfieldMobile.setText( cli.getMobile());
+        Modify_client.editfieldUser.setText(cli.getUser());
+        Modify_client.editfieldPassword.setText(cli.getPass());
+        Modify_client.editfieldPassword2.setText(cli.getPass());
+        Modify_client.editfieldShopping.setText(String.valueOf(cli.getShopping()));
+        Modify_client.editfieldClientType.setText(cli.getClient_type());
         file=cli.getAvatar();
         birth=cli.getBirthday();
         
-        Modify_admin.avatar.setIcon(new ImageIcon(file));
+        Modify_client.avatar.setIcon(new ImageIcon(file));
         ImageIcon icon = new ImageIcon(file);
         Image img=icon.getImage();
         Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
         ImageIcon newIcon = new ImageIcon(newimg);
-        Modify_admin.avatar.setIcon(newIcon);
-        Modify_admin.avatar.setSize(100,100);
-        Modify_admin.avatar.setToolTipText(file);
+        Modify_client.avatar.setIcon(newIcon);
+        Modify_client.avatar.setSize(100,100);
+        Modify_client.avatar.setToolTipText(file);
         
-        cont=cli.getCont_date();
+        reg=cli.getReg_date();
         
         if(cli.isState()==true){
-            Modify_admin.radioStateYes.setSelected(true);
+            Modify_client.radioStateYes.setSelected(true);
         }else{
-            Modify_admin.radioStateNo.setSelected(true);
+            Modify_client.radioStateNo.setSelected(true);
         }
         
-        BLL_admin.modAdmindata("activity");
-        BLL_admin.modAdmindata("dni");
-        BLL_admin.modAdmindata("email");
-        BLL_admin.modAdmindata("mobile");
-        BLL_admin.modAdmindata("name");
-        BLL_admin.modAdmindata("password");
-        BLL_admin.modAdmindata("password2");
-        BLL_admin.modAdmindata("surname");
-        BLL_admin.modAdmindata("user");
-        
+        if(cli.isPremium()==true){
+            Modify_client.radioPremiumYes.setSelected(true);
+        }else{
+            Modify_client.radioPremiumNo.setSelected(true);
+        }
 
-        
         calendarBirth.set(birth.getYear() , birth.getMonth()-1 , birth.getDay());
         dateBirth.setTime(calendarBirth.getTimeInMillis());
-        Modify_admin.editdateBirth.setDate(dateBirth);
+        Modify_client.editdateBirth.setDate(dateBirth);
 
         
-        calendarCont.set(cont.getYear() , cont.getMonth()-1 , cont.getDay());
+        calendarCont.set(reg.getYear() , reg.getMonth()-1 , reg.getDay());
         dateCont.setTime(calendarCont.getTimeInMillis());
-        Modify_admin.editdateContract.setDate(dateCont);
-       
-        BLL_admin.modAdmindata("birthdate");
-        BLL_admin.modAdmindata("datecontract");
+        Modify_client.editdateRegistration.setDate(dateCont);
         
+        
+        BLL_client.modClientdata("dni");
+        BLL_client.modClientdata("name");
+        BLL_client.modClientdata("surname");
+        BLL_client.modClientdata("email");
+        BLL_client.modClientdata("mobile");
+        BLL_client.modClientdata("user");
+        BLL_client.modClientdata("password");
+        BLL_client.modClientdata("password2");
+        BLL_client.modClientdata("birthdate");
+        BLL_client.modClientdata("datereg");
+        BLL_client.modClientdata("shopping");
+        BLL_client.modClientdata("clienttype");
     }
     
 }//End public class DAO_client

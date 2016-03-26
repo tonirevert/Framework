@@ -338,11 +338,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="AddAdmin" min="-2" max="-2" attributes="0"/>
+                  <Component id="AddClient" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="ModAdmin" min="-2" max="-2" attributes="0"/>
+                  <Component id="ModClient" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="DelAdmin" min="-2" max="-2" attributes="0"/>
+                  <Component id="DelClient" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="464" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -363,9 +363,9 @@
                       <Component id="btnsavejson" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnsavetxt" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnsavexml" alignment="0" max="32767" attributes="0"/>
-                      <Component id="AddAdmin" alignment="0" max="32767" attributes="0"/>
-                      <Component id="ModAdmin" alignment="0" max="32767" attributes="0"/>
-                      <Component id="DelAdmin" alignment="0" max="32767" attributes="0"/>
+                      <Component id="AddClient" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ModClient" alignment="0" max="32767" attributes="0"/>
+                      <Component id="DelClient" alignment="0" max="32767" attributes="0"/>
                       <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -374,7 +374,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="AddAdmin">
+        <Component class="javax.swing.JLabel" name="AddClient">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -382,7 +382,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="ModAdmin">
+        <Component class="javax.swing.JLabel" name="ModClient">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -390,7 +390,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="DelAdmin">
+        <Component class="javax.swing.JLabel" name="DelClient">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">

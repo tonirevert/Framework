@@ -1,19 +1,17 @@
 package framework_v2.Modules.Client.Model.Classes;
-import framework_v2.Modules.Admin.Model.Classes.*;
+
 import framework_v2.Classes.Date_class;
 import static framework_v2.Modules.Admin.Controller.AdminController.combo;
-import framework_v2.Modules.Admin.Model.Classes.Admin_class;
-import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
-import framework_v2.Modules.Admin.Model.Utils.pager.pagina;
-import framework_v2.Modules.Admin.View.Pager_admin;
+import framework_v2.Modules.Client.Model.Utils.pager.pagina;
+import framework_v2.Modules.Client.View.Pager_client;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.table.AbstractTableModel;
 
 public class miniSimpleTableModel_client extends AbstractTableModel {
-    public static ArrayList<Admin_class> datos = new ArrayList<Admin_class>();
-    public static ArrayList<Admin_class> datosaux = new ArrayList<Admin_class>();
-    String[] columnas = {"ID Card", "Name", "Surname", "Cont. date","Salary"};
+    public static ArrayList<Client_class> datos = new ArrayList<Client_class>();
+    public static ArrayList<Client_class> datosaux = new ArrayList<Client_class>();
+    String[] columnas = {"ID Card", "Name", "Surname", "Reg. date","Shopping"};
 
     
     ////////////////////estos métodos son necesarios para que jtable funcione/////////////////////
@@ -39,7 +37,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
     public Object getValueAt(int row, int col) {
 
         Object dev = null;
-        Admin_class fila = (Admin_class) datos.get(row);
+        Client_class fila = (Client_class) datos.get(row);
 
         switch (col) {
             case 0:
@@ -55,11 +53,11 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
                 break;
 
             case 3:
-                dev= fila.getCont_date();
+                dev= fila.getReg_date();
                 break;
                 
             case 4:
-                dev = fila.getSalary();
+                dev = fila.getShopping();
                 break;
 
         }
@@ -75,7 +73,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
     //Actualiza un objeto de una fila y columna
     @Override
     public void setValueAt(Object value, int row, int col) {
-        Admin_class fila = (Admin_class) datos.get(row);
+        Client_class fila = (Client_class) datos.get(row);
 
         switch (col) {
             case 0:
@@ -91,17 +89,17 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
                 break;
             
             case 3:
-                fila.setCont_date(((Date_class) value));
+                fila.setReg_date(((Date_class) value));
                 break;
 
             case 4:
-                fila.setSalary((double)value);
+                fila.setShopping((float)value);
                 break;
         }
         fireTableCellUpdated(row, col);
     }
 
-    public void addRow(Admin_class usu) {
+    public void addRow(Client_class usu) {
         datos.add(usu);
         fireTableDataChanged();
     }
@@ -110,12 +108,12 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
         datos.clear();
         datosaux.clear();
         
-        Admin_class admin = null;
+        Client_class client = null;
         java.util.Date date= new java.util.Date();
-        for(int i=0;i<=Singleton_admin.adm.size()-1;i++) {
-            admin=Singleton_admin.adm.get(i);
-            addRow(admin);
-            datosaux.add(admin);
+        for(int i=0;i<=Singleton_client.cli.size()-1;i++) {
+            client=Singleton_client.cli.get(i);
+            addRow(client);
+            datosaux.add(client);
             
             try {
                 Thread.sleep(1); //1 milliseconds
@@ -137,7 +135,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
                     cont++;
                 }
             }
-            Pager_admin.pagAmount.setText(String.valueOf(cont));
+            Pager_client.pagAmount.setText(String.valueOf(cont));
 //            System.out.println("word selected: " + nom);
             pagina.initLinkBox();
         }
@@ -158,7 +156,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
         }
     }
     
-    public Admin_class buscar(String u) {
+    public Client_class buscar(String u) {
         datos.clear();
         cargar();
 
@@ -172,7 +170,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
         return null;
     }
 
-    public int buscaUsuario(Admin_class u) {
+    public int buscaUsuario(Client_class u) {
         datos.clear();
         cargar();
 
@@ -187,7 +185,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
     public void removeRow(int fila) {
         datos.remove(fila);
         fireTableDataChanged();
-          Pager_admin.pagAmount.setText(String.valueOf(datos.size()));
+          Pager_client.pagAmount.setText(String.valueOf(datos.size()));
             pagina.initLinkBox();
     }
 }

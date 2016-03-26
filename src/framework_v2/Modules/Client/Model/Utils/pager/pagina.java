@@ -1,9 +1,8 @@
 package framework_v2.Modules.Client.Model.Utils.pager;
 
 
-import framework_v2.Modules.Admin.Model.Utils.pager.*;
-import framework_v2.Modules.Admin.Model.Classes.miniSimpleTableModel_admin;
-import framework_v2.Modules.Admin.View.Pager_admin;
+import framework_v2.Modules.Client.Model.Classes.miniSimpleTableModel_client;
+import framework_v2.Modules.Client.View.Pager_client;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -25,14 +24,14 @@ public class pagina {
     public static int currentPageIndex = 1;
     public static int itemsPerPage = 5;
     public static int maxPageIndex;
-    public static String option="admin";
+    public static String option="client";
 
     public static void inicializa() {
 //        String option="admin";
         int rowCount = 0;
         switch (option) {
-            case "admin":
-                rowCount = ((miniSimpleTableModel_admin) framework_v2.Modules.Admin.View.Pager_admin.pagerTable.getModel()).getRowCount();
+            case "client":
+                rowCount = ((miniSimpleTableModel_client) framework_v2.Modules.Client.View.Pager_client.pagerTable.getModel()).getRowCount();
                 break;
 
         }
@@ -40,13 +39,12 @@ public class pagina {
         int v = rowCount % itemsPerPage == 0 ? 0 : 1;
         
         maxPageIndex = rowCount / itemsPerPage + v;
-//        System.out.println("V: "+v+" rowCount: "+rowCount+" itemsPerPage "+itemsPerPage+" maxPageIndex: "+maxPageIndex);
         
         box.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
         switch (option) {
-            case "admin":
-                Pager_admin.pagLinks.setLayout(new BorderLayout());
-                Pager_admin.pagLinks.add(pagina.box);
+            case "client":
+                Pager_client.pagLinks.setLayout(new BorderLayout());
+                Pager_client.pagLinks.add(pagina.box);
                 break;
 
         }
@@ -54,8 +52,8 @@ public class pagina {
 
     public static void initLinkBox() {
         switch (option) {
-            case "admin":
-                framework_v2.Modules.Admin.Controller.AdminController.sorter.setRowFilter(new RowFilter<TableModel, Integer>() {
+            case "client":
+                framework_v2.Modules.Client.Controller.ClientController.sorter.setRowFilter(new RowFilter<TableModel, Integer>() {
                     @Override
                     public boolean include(RowFilter.Entry<? extends TableModel, ? extends Integer> entry) {
                         int ti = currentPageIndex - 1;
@@ -76,7 +74,7 @@ public class pagina {
         int rowCount = 0;
         switch (option) {
             case "admin":
-                rowCount = ((miniSimpleTableModel_admin) framework_v2.Modules.Admin.View.Pager_admin.pagerTable.getModel()).getRowCount();
+                rowCount = ((miniSimpleTableModel_client) framework_v2.Modules.Client.View.Pager_client.pagerTable.getModel()).getRowCount();
                 break;
 
         }
@@ -93,11 +91,11 @@ public class pagina {
             switch (option) {
                 case "admin":
                     //actualizar botones y caja: desactivarlos
-                    Pager_admin.pagFirst.setEnabled(false);
-                    Pager_admin.pagPrev.setEnabled(false);
-                    Pager_admin.pagLast.setEnabled(false);
-                    Pager_admin.pagNext.setEnabled(false);
-                    Pager_admin.pagBox.setText("");
+                    Pager_client.pagFirst.setEnabled(false);
+                    Pager_client.pagPrev.setEnabled(false);
+                    Pager_client.pagLast.setEnabled(false);
+                    Pager_client.pagNext.setEnabled(false);
+                    Pager_client.pagBox.setText("");
                     break;
 
             }
@@ -115,11 +113,11 @@ public class pagina {
             switch (option) {
                 case "admin":
                     //actualizar botones y caja: desactivarlos
-                    Pager_admin.pagFirst.setEnabled(false);
-                    Pager_admin.pagPrev.setEnabled(false);
-                    Pager_admin.pagLast.setEnabled(false);
-                    Pager_admin.pagNext.setEnabled(false);
-                    Pager_admin.pagBox.setText("");
+                    Pager_client.pagFirst.setEnabled(false);
+                    Pager_client.pagPrev.setEnabled(false);
+                    Pager_client.pagLast.setEnabled(false);
+                    Pager_client.pagNext.setEnabled(false);
+                    Pager_client.pagBox.setText("");
                     break;
 
             }
@@ -135,13 +133,13 @@ public class pagina {
 
         } else if (rowCount > itemsPerPage) {
             switch (option) {
-                case "admin":
+                case "client":
                     
-                    Pager_admin.pagFirst.setEnabled(currentPageIndex > 1);
-                    Pager_admin.pagPrev.setEnabled(currentPageIndex > 1);
-                    Pager_admin.pagLast.setEnabled(currentPageIndex < maxPageIndex);
-                    Pager_admin.pagNext.setEnabled(currentPageIndex < maxPageIndex);
-                    Pager_admin.pagBox.setText(Integer.toString(currentPageIndex) + String.format(" / %d", maxPageIndex));
+                    Pager_client.pagFirst.setEnabled(currentPageIndex > 1);
+                    Pager_client.pagPrev.setEnabled(currentPageIndex > 1);
+                    Pager_client.pagLast.setEnabled(currentPageIndex < maxPageIndex);
+                    Pager_client.pagNext.setEnabled(currentPageIndex < maxPageIndex);
+                    Pager_client.pagBox.setText(Integer.toString(currentPageIndex) + String.format(" / %d", maxPageIndex));
                     break;
 
             }

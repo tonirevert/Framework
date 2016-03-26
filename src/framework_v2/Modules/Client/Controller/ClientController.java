@@ -5,21 +5,19 @@
  */
 package framework_v2.Modules.Client.Controller;
 
-import framework_v2.Modules.Admin.Controller.*;
-import framework_v2.Modules.Admin.Controller.AdminController.Action;
-import framework_v2.Modules.Admin.Model.BLL.BLL_admin;
-import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.ad;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.defaultavatar;
-import framework_v2.Modules.Admin.Model.Classes.miniSimpleTableModel_admin;
-import framework_v2.Modules.Admin.Model.Utils.pager.AutocompleteJComboBox;
-import framework_v2.Modules.Admin.Model.Utils.pager.StringSearchable;
-import framework_v2.Modules.Admin.Model.Utils.pager.pagina;
-import framework_v2.Modules.Admin.View.Create_admin;
-import framework_v2.Modules.Admin.View.Modify_admin;
-import framework_v2.Modules.Admin.View.Pager_admin;
-import static framework_v2.Modules.Admin.View.Pager_admin.jComboBox1;
-import static framework_v2.Modules.Admin.View.Pager_admin.pagerTable;
+import framework_v2.Modules.Client.Model.BLL.BLL_client;
+import framework_v2.Modules.Client.Model.Classes.Singleton_client;
+import static framework_v2.Modules.Client.Model.Classes.Singleton_client.cl;
+import static framework_v2.Modules.Client.Model.Classes.Singleton_client.defaultavatar;
+import framework_v2.Modules.Client.Model.Classes.miniSimpleTableModel_client;
+import framework_v2.Modules.Client.Model.Utils.pager.AutocompleteJComboBox;
+import framework_v2.Modules.Client.Model.Utils.pager.StringSearchable;
+import framework_v2.Modules.Client.Model.Utils.pager.pagina;
+import framework_v2.Modules.Client.View.Create_client;
+import framework_v2.Modules.Client.View.Modify_client;
+import framework_v2.Modules.Client.View.Pager_client;
+import static framework_v2.Modules.Client.View.Pager_client.jComboBox1;
+import static framework_v2.Modules.Client.View.Pager_client.pagerTable;
 import framework_v2.Modules.Config.Classes.Config_class;
 import framework_v2.Modules.Menu.Controller.MenuController;
 import framework_v2.Modules.Menu.View.Mainmenu;
@@ -50,25 +48,25 @@ import javax.swing.table.TableRowSorter;
  */
 public class ClientController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
 
-    public static Create_admin create;
-    public static Modify_admin edit;
-    public static Pager_admin pager;
-    public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new miniSimpleTableModel_admin());
+    public static Create_client create;
+    public static Modify_client edit;
+    public static Pager_client pager;
+    public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new miniSimpleTableModel_client());
     public static AutocompleteJComboBox combo = null;
     public String comb="";
     
     public ClientController(JFrame frame, int i){
         switch(i){
             case 0:
-                create=(Create_admin) frame;
+                create=(Create_client) frame;
                 break;
                 
             case 1:
-                edit=(Modify_admin)frame;
+                edit=(Modify_client)frame;
                 break;
                 
             case 2:
-                pager=(Pager_admin)frame;
+                pager=(Pager_client)frame;
                 break;
         }
                 
@@ -87,7 +85,8 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         createfieldPassword,
         createfieldVerify,
         createbtnSearch,
-        createfieldActivity,
+        createfieldShopping,
+        createfieldClientType,
         createbtnSave,
         createbtnReset,
         createbtnCancel,
@@ -102,6 +101,8 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         editfieldPassword,
         editfieldVerify,
         editbtnSearch,
+        editfieldShopping,
+        editfieldClientType,
         editfieldActivity,
         editbtnSave,
         editbtnCancel,
@@ -147,16 +148,16 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         switch(i){
             
             case 0://Create admin
-                Singleton_admin.window="create";
-                create.setTitle("Create Admin");////////////////////////////////////////////////////////////////////////
+                Singleton_client.window="create";
+                create.setTitle("Create Client");////////////////////////////////////////////////////////////////////////
                 create.saving.setVisible(false);
                 create.setResizable(false);
                 create.setSize(600,500);
                 create.dateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
-                create.dateContract.setDateFormatString(Config_class.getinstance().getDate_format());
-                create.dateContract.getDateEditor().setEnabled(false);
+                create.dateRegistration.setDateFormatString(Config_class.getinstance().getDate_format());
+                create.dateRegistration.getDateEditor().setEnabled(false);
                 create.dateBirth.getDateEditor().setEnabled(false);
-                create.dateContract.setEnabled(false);
+                create.dateRegistration.setEnabled(false);
                 create.areaInfo.setEditable(false);
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 create.setLocationRelativeTo(null);
@@ -221,13 +222,19 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 create.btnSearch.setName("createbtnSearch");
                 create.btnSearch.addMouseListener(this);
                 
-                create.dateContract.addPropertyChangeListener(this);
+                create.dateRegistration.addPropertyChangeListener(this);
                 
-                create.fieldActivity.setActionCommand("createfieldActivity");
-                create.fieldActivity.setName("createfieldActivity");
-                create.fieldActivity.addFocusListener(this);
-                create.fieldActivity.addActionListener(this);
-                create.fieldActivity.addKeyListener(this);
+                create.fieldShopping.setActionCommand("createfieldShopping");
+                create.fieldShopping.setName("createfieldShopping");
+                create.fieldShopping.addFocusListener(this);
+                create.fieldShopping.addActionListener(this);
+                create.fieldShopping.addKeyListener(this);
+                
+                create.fieldClientType.setActionCommand("createfieldClientType");
+                create.fieldClientType.setName("createfieldClientType");
+                create.fieldClientType.addFocusListener(this);
+                create.fieldClientType.addActionListener(this);
+                create.fieldClientType.addKeyListener(this);
                 
                 create.btnsaveCreateadmin.setName("createbtnSave");
                 create.btnsaveCreateadmin.addMouseListener(this);
@@ -241,17 +248,17 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 break;//End case 0
                 
             case 1://Modify admin
-                Singleton_admin.window="modify";
+                Singleton_client.window="modify";
                 edit.setTitle("Modify Admin");////////////////////////////////////////////////////////////////////////
                 edit.saving.setVisible(false);
-                BLL_admin.fill_admin(ad.getDni());
+                BLL_client.fill_client(cl.getDni());
                 edit.fieldDNI.setEditable(false);
                 edit.setResizable(false);
                 edit.setSize(600,500);
                 edit.editdateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
-                edit.editdateContract.setDateFormatString(Config_class.getinstance().getDate_format());
+                edit.editdateRegistration.setDateFormatString(Config_class.getinstance().getDate_format());
                 edit.editdateBirth.getDateEditor().setEnabled(false);
-                edit.editdateContract.getDateEditor().setEnabled(false);
+                edit.editdateRegistration.getDateEditor().setEnabled(false);
                 edit.setLocationRelativeTo(null);
                 edit.setVisible(true);
 
@@ -307,19 +314,25 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 edit.btnSearch.setName("editbtnSearch");
                 edit.btnSearch.addMouseListener(this);
                 
-                edit.editdateContract.addPropertyChangeListener(this);
+                edit.editdateRegistration.addPropertyChangeListener(this);
                 
-                edit.editfieldActivity.setActionCommand("editfieldActivity");
-                edit.editfieldActivity.setName("editfieldActivity");
-                edit.editfieldActivity.addFocusListener(this);
-                edit.editfieldActivity.addActionListener(this);
-                edit.editfieldActivity.addKeyListener(this);
+                edit.editfieldShopping.setActionCommand("editfieldShopping");
+                edit.editfieldShopping.setName("editfieldShopping");
+                edit.editfieldShopping.addFocusListener(this);
+                edit.editfieldShopping.addActionListener(this);
+                edit.editfieldShopping.addKeyListener(this);
                 
-                edit.btnsaveEditadmin.setName("editbtnSave");
-                edit.btnsaveEditadmin.addMouseListener(this);
+                edit.editfieldClientType.setActionCommand("editfieldClientType");
+                edit.editfieldClientType.setName("editfieldClientType");
+                edit.editfieldClientType.addFocusListener(this);
+                edit.editfieldClientType.addActionListener(this);
+                edit.editfieldClientType.addKeyListener(this);
                 
-                edit.btncancelEditadmin.setName("editbtnCancel");
-                edit.btncancelEditadmin.addMouseListener(this);
+                edit.btnsaveEditclient.setName("editbtnSave");
+                edit.btnsaveEditclient.addMouseListener(this);
+                
+                edit.btncancelEditclient.setName("editbtnCancel");
+                edit.btncancelEditclient.addMouseListener(this);
                 break;//End case 1
                 
             case 2://Pager admin
@@ -328,20 +341,20 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 pager.setResizable(false);
                 pager.setVisible(true);
                 
-                pager.pagerTable.setModel( new miniSimpleTableModel_admin() );
-                ((miniSimpleTableModel_admin)pagerTable.getModel()).cargar();
+                pager.pagerTable.setModel( new miniSimpleTableModel_client() );
+                ((miniSimpleTableModel_client)pagerTable.getModel()).cargar();
                 pager.pagerTable.setFillsViewportHeight(true);
                 pager.pagerTable.setRowSorter(sorter);
                 
                 pagina.inicializa();
                 pagina.initLinkBox();
                 
-                pager.pagAmount.setText(String.valueOf(Singleton_admin.adm.size()));
+                pager.pagAmount.setText(String.valueOf(Singleton_client.cli.size()));
                 
                 List<String> myWords = new ArrayList<String>();
                 
-                for (int e=0;e<=Singleton_admin.adm.size()-1;e++) {
-                myWords.add(Singleton_admin.adm.get(e).getName());
+                for (int e=0;e<=Singleton_client.cli.size()-1;e++) {
+                myWords.add(Singleton_client.cli.get(e).getName());
                 }
                 
                 StringSearchable searchable = new StringSearchable(myWords);
@@ -349,9 +362,9 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 pager.jPanel3.setLayout(new java.awt.BorderLayout());
                 pager.jPanel3.add(combo);
                                
-                pager.AddAdmin.setToolTipText("Add a new admin user");
-                pager.ModAdmin.setToolTipText("Modify selected admin user");
-                pager.DelAdmin.setToolTipText("Delete selected admin user");
+                pager.AddClient.setToolTipText("Add a new admin user");
+                pager.ModClient.setToolTipText("Modify selected admin user");
+                pager.DelClient.setToolTipText("Delete selected admin user");
                 pager.btnsavejson.setToolTipText("Save users to JSON");
                 pager.btnsavetxt.setToolTipText("Save users to TXT");
                 pager.btnsavexml.setToolTipText("Save users to XML");
@@ -370,14 +383,14 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 pager.addWindowListener(this);
                 pager.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 
-                pager.AddAdmin.setName("AddAdmin");
-                pager.AddAdmin.addMouseListener(this);
+                pager.AddClient.setName("AddAdmin");
+                pager.AddClient.addMouseListener(this);
                 
-                pager.ModAdmin.setName("ModAdmin");
-                pager.ModAdmin.addMouseListener(this);
+                pager.ModClient.setName("ModAdmin");
+                pager.ModClient.addMouseListener(this);
                 
-                pager.DelAdmin.setName("DelAdmin");
-                pager.DelAdmin.addMouseListener(this);
+                pager.DelClient.setName("DelAdmin");
+                pager.DelClient.addMouseListener(this);
                 
                 pager.btnsavejson.setName("btnsavejson");
                 pager.btnsavejson.addMouseListener(this);
@@ -436,56 +449,56 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         switch (Action.valueOf(e.getComponent().getName())) {
             
             case createfieldDNI:
-                BLL_admin.askAdmindata("dni");
+                BLL_client.askClientdata("dni");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldName.requestFocus();
                 }
                 break;
                 
             case createfieldName:
-                BLL_admin.askAdmindata("name");
+                BLL_client.askClientdata("name");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldSurname.requestFocus();
 	}
                 break;
                 
             case createfieldSurname:
-                BLL_admin.askAdmindata("surname");
+                BLL_client.askClientdata("surname");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldEmail.requestFocus();
 	}
                 break;
                 
             case createfieldEmail:
-                BLL_admin.askAdmindata("email");
+                BLL_client.askClientdata("email");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldMobile.requestFocus();
 	}
                 break;
                 
             case createfieldMobile:
-                BLL_admin.askAdmindata("mobile");
+                BLL_client.askClientdata("mobile");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldUser.requestFocus();
 	}
                 break;
                 
             case createfieldUser:
-                BLL_admin.askAdmindata("user");
+                BLL_client.askClientdata("user");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldPassword.requestFocus();
 	}
                 break;
                 
             case createfieldPassword:
-                BLL_admin.askAdmindata("password");
+                BLL_client.askClientdata("password");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldPassword2.requestFocus();
 	}
                 break;
                 
             case createfieldVerify:
-                BLL_admin.askAdmindata("password2");
+                BLL_client.askClientdata("password2");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldActivity.requestFocus();
 	}
@@ -497,49 +510,49 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 
                 ////Events from Modify admin
             case editfieldName:
-                BLL_admin.modAdmindata("name");
+                BLL_client.modClientdata("name");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldSurname.requestFocus();
 	}
                 break;
                 
             case editfieldSurname:
-                BLL_admin.modAdmindata("surname");
+                BLL_client.modClientdata("surname");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldEmail.requestFocus();
 	}
                 break;
                 
             case editfieldEmail:
-                BLL_admin.modAdmindata("email");
+                BLL_client.modClientdata("email");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldMobile.requestFocus();
 	}
                 break;
                 
             case editfieldMobile:
-                BLL_admin.modAdmindata("mobile");
+                BLL_client.modClientdata("mobile");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldUser.requestFocus();
 	}
                 break;
                 
             case editfieldUser:
-                BLL_admin.modAdmindata("user");
+                BLL_client.modClientdata("user");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldPassword.requestFocus();
 	}
                 break;
                 
             case editfieldPassword:
-                BLL_admin.modAdmindata("password");
+                BLL_client.modClientdata("password");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldPassword2.requestFocus();
 	}
                 break;
                 
             case editfieldVerify:
-                BLL_admin.modAdmindata("password2");
+                BLL_client.modClientdata("password2");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldActivity.requestFocus();
 	}
@@ -556,73 +569,73 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     public void keyReleased(KeyEvent e) {
          switch (Action.valueOf(e.getComponent().getName())) {
             case createfieldDNI:
-                BLL_admin.askAdmindata("dni");
+                BLL_client.askClientdata("dni");
                 break;
                 
             case createfieldName:
-                BLL_admin.askAdmindata("name");
+                BLL_client.askClientdata("name");
                 break;
                 
             case createfieldSurname:
-                BLL_admin.askAdmindata("surname");
+                BLL_client.askClientdata("surname");
                 break;
                 
             case createfieldEmail:
-                BLL_admin.askAdmindata("email");
+                BLL_client.askClientdata("email");
                 break;
             
             case createfieldMobile:
-                BLL_admin.askAdmindata("mobile");
+                BLL_client.askClientdata("mobile");
                 break;
                 
             case createfieldUser:
-                BLL_admin.askAdmindata("user");
+                BLL_client.askClientdata("user");
                 break;
                 
             case createfieldPassword:
-                BLL_admin.askAdmindata("password");
+                BLL_client.askClientdata("password");
                 break;
                 
             case createfieldVerify:
-                BLL_admin.askAdmindata("password2");
+                BLL_client.askClientdata("password2");
                 break;
                 
             case createfieldActivity:
-                BLL_admin.askAdmindata("activity");
+                BLL_client.askClientdata("activity");
                 break;
                 
                 ////Events from Modify admin:
                 
             case editfieldName:
-                BLL_admin.modAdmindata("name");
+                BLL_client.modClientdata("name");
                 break;
                 
             case editfieldSurname:
-                BLL_admin.modAdmindata("surname");
+                BLL_client.modClientdata("surname");
                 break;
                 
             case editfieldEmail:
-                BLL_admin.modAdmindata("email");
+                BLL_client.modClientdata("email");
                 break;
                 
             case editfieldMobile:
-                BLL_admin.modAdmindata("mobile");
+                BLL_client.modClientdata("mobile");
                 break;
                 
             case editfieldUser:
-                BLL_admin.modAdmindata("user");
+                BLL_client.modClientdata("user");
                 break;
                 
             case editfieldPassword:
-                BLL_admin.modAdmindata("password");
+                BLL_client.modClientdata("password");
                 break;
                 
             case editfieldVerify:
-                BLL_admin.modAdmindata("password2");
+                BLL_client.modClientdata("password2");
                 break;
                 
             case editfieldActivity:
-                BLL_admin.modAdmindata("activity");
+                BLL_client.modClientdata("activity");
                 break;
         }//End switch case keyReleased
     }//End of keyReleased
@@ -635,7 +648,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
             case combo:
                     pagina.currentPageIndex = 1;
                     pagina.initLinkBox();
-                    ((miniSimpleTableModel_admin)pagerTable.getModel()).filtrar();
+                    ((miniSimpleTableModel_client)pagerTable.getModel()).filtrar();
                     combo.requestFocus();
                 break;
             
@@ -653,16 +666,16 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         switch (Action.valueOf(e.getComponent().getName())){
             
             case createbtnSearch:
-                BLL_admin.askAdmindata("avatar");
+                BLL_client.askClientdata("avatar");
                 break;
             
             case createbtnSave:
-                if(BLL_admin.create_admin()==true){
+                if(BLL_client.create_client()==true){
                 Timer delay = new Timer(3000, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                             create.dispose();
-                            new ClientController(new Pager_admin(),2).Init(2);
+                            new ClientController(new Pager_client(),2).Init(2);
                             }
                         });
 
@@ -675,27 +688,27 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 break;
                 
             case createbtnReset:
-                BLL_admin.resetFields();
+                BLL_client.resetFields();
                 break;
                 
             case createbtnCancel:
                 create.dispose();
-                new ClientController(new Pager_admin(),2).Init(2);
+                new ClientController(new Pager_client(),2).Init(2);
                 break;
                 
                 ////Events from Modify admin:
                 
             case editbtnSearch:
-                BLL_admin.modAdmindata("avatar");
+                BLL_client.modClientdata("avatar");
                 break;
                 
             case editbtnSave:
-                if(BLL_admin.save_mod_admin()!=false){
+                if(BLL_client.save_mod_client()!=false){
                     Timer delay = new Timer(3000, new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             edit.dispose();
-                            new ClientController(new Pager_admin(),2).Init(2);
+                            new ClientController(new Pager_client(),2).Init(2);
                         }
                     });
                     edit.saving.setVisible(true);
@@ -711,52 +724,52 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 
             case editbtnCancel:
                 edit.dispose();
-                new ClientController(new Pager_admin(),2).Init(2);
+                new ClientController(new Pager_client(),2).Init(2);
                 break;
                 
                 ////Events from pager admin
             case AddAdmin:
                 pager.dispose();
-                new ClientController(new Create_admin(),0).Init(0);
+                new ClientController(new Create_client(),0).Init(0);
                 break;
                 
             case ModAdmin:
                 boolean modify;
-                modify = BLL_admin.edit_admin();
+                modify = BLL_client.edit_client();
                 if (modify == true) {
                 pager.dispose();
                 }
                 break;
                 
             case DelAdmin:
-                BLL_admin.delete_file();
+                BLL_client.delete_file();
                 break;
                 
             case btnsavejson:
-                BLL_admin.savejsonAdmin();
+                BLL_client.savejsonClient();
                 break;
                 
             case btnsavetxt:
-                BLL_admin.savetxtAdmin();
+                BLL_client.savetxtClient();
                 break;
                 
             case btnsavexml:
-                BLL_admin.savexmlAdmin();
+                BLL_client.savexmlClient();
                 break;
                 
             case pagerTable:
                 if (e.getClickCount() == 2) {
                 pager.dispose();
-                BLL_admin.edit_admin();
+                BLL_client.edit_client();
                 }
                 break;
                 
-            case entriesCombo:
-                System.out.println("framework_v2.Modules.Admin.Controller.AdminController.mouseClicked()");
-                pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
-                pagina.currentPageIndex = 1;
-                pagina.initLinkBox();
-                break;
+//            case entriesCombo:
+//                System.out.println("framework_v2.Modules.Admin.Controller.AdminController.mouseClicked()");
+//                pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
+//                pagina.currentPageIndex = 1;
+//                pagina.initLinkBox();
+//                break;
                 
             case pagFirst:
                 pagina.currentPageIndex = 1;
@@ -814,32 +827,32 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         switch (Action.valueOf(e.getComponent().getName())){
                 ////Events from pager admin
             case AddAdmin:
-                pager.AddAdmin.setIcon(Singleton_admin.addicon_over);
+                pager.AddClient.setIcon(Singleton_client.addicon_over);
                 pager.pagerInfo.setText("Click to add new Admin user");
                 break;
                 
             case ModAdmin:
-                pager.ModAdmin.setIcon(Singleton_admin.editicon_over);
+                pager.ModClient.setIcon(Singleton_client.editicon_over);
                 pager.pagerInfo.setText("Click to modify selected Admin user");    
                 break;
                 
             case DelAdmin:
-                pager.DelAdmin.setIcon(Singleton_admin.delicon_over);
+                pager.DelClient.setIcon(Singleton_client.delicon_over);
                 pager.pagerInfo.setText("Click to delete selected Admin user");
                 break;
                 
             case btnsavejson:
-                pager.btnsavejson.setIcon(Singleton_admin.jsonicon_over);
+                pager.btnsavejson.setIcon(Singleton_client.jsonicon_over);
                 pager.pagerInfo.setText("Save to JSON file format");
                 break;
                 
             case btnsavetxt:
-                pager.btnsavetxt.setIcon(Singleton_admin.txticon_over);
+                pager.btnsavetxt.setIcon(Singleton_client.txticon_over);
                 pager.pagerInfo.setText("Save to TXT file format");
                 break;
                 
             case btnsavexml:
-                pager.btnsavexml.setIcon(Singleton_admin.xmlicon_over);
+                pager.btnsavexml.setIcon(Singleton_client.xmlicon_over);
                 pager.pagerInfo.setText("Save to XML file format");
                 break;
                 
@@ -860,32 +873,32 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         switch (Action.valueOf(e.getComponent().getName())){
                 ////Events from pager admin
             case AddAdmin:
-                pager.AddAdmin.setIcon(Singleton_admin.addicon);
+                pager.AddClient.setIcon(Singleton_client.addicon);
                 pager.pagerInfo.setText("");
                 break;
                 
             case ModAdmin:
-                pager.ModAdmin.setIcon(Singleton_admin.editicon);
+                pager.ModClient.setIcon(Singleton_client.editicon);
                 pager.pagerInfo.setText("");    
                 break;
                 
             case DelAdmin:
-                pager.DelAdmin.setIcon(Singleton_admin.delicon);
+                pager.DelClient.setIcon(Singleton_client.delicon);
                 pager.pagerInfo.setText("");
                 break;
                 
             case btnsavejson:
-                pager.btnsavejson.setIcon(Singleton_admin.jsonicon);
+                pager.btnsavejson.setIcon(Singleton_client.jsonicon);
                 pager.pagerInfo.setText("");
                 break;
                 
             case btnsavetxt:
-                pager.btnsavetxt.setIcon(Singleton_admin.txticon);
+                pager.btnsavetxt.setIcon(Singleton_client.txticon);
                 pager.pagerInfo.setText("");
                 break;
                 
             case btnsavexml:
-                pager.btnsavexml.setIcon(Singleton_admin.xmlicon);
+                pager.btnsavexml.setIcon(Singleton_client.xmlicon);
                 pager.pagerInfo.setText("");
                 break;
                 
@@ -1074,25 +1087,25 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     public void propertyChange(PropertyChangeEvent evt) {
 //        System.out.println(evt.getPropertyName());
 
-        if(Singleton_admin.window.equals("create")){
+        if(Singleton_client.window.equals("create")){
                     
             switch (Property.valueOf(evt.getPropertyName())) {
 
                 case date:
-                    BLL_admin.askAdmindata("birthdate");
-                    BLL_admin.askAdmindata("datecontract");
+                    BLL_client.askClientdata("birthdate");
+                    BLL_client.askClientdata("datecontract");
                     create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                     break;
 
             }//End switch case
         }//End if
-        if(Singleton_admin.window.equals("modify")){
+        if(Singleton_client.window.equals("modify")){
                     
             switch (Property.valueOf(evt.getPropertyName())) {
 
                 case date:
-                    BLL_admin.modAdmindata("birthdate");
-                    BLL_admin.modAdmindata("datecontract");
+                    BLL_client.modClientdata("birthdate");
+                    BLL_client.modClientdata("datecontract");
                     edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                     break;
 
@@ -1111,12 +1124,12 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
             
             case createWindow:
                     create.dispose();
-                    new ClientController(new Pager_admin(),2).Init(2);
+                    new ClientController(new Pager_client(),2).Init(2);
                 break;
             
             case editWindow:
                      edit.dispose(); 
-                     new ClientController(new Pager_admin(),2).Init(2);
+                     new ClientController(new Pager_client(),2).Init(2);
                 break;
                 
             case pagerWindow:

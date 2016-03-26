@@ -50,9 +50,9 @@ public class Pager_client extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        AddAdmin = new javax.swing.JLabel();
-        ModAdmin = new javax.swing.JLabel();
-        DelAdmin = new javax.swing.JLabel();
+        AddClient = new javax.swing.JLabel();
+        ModClient = new javax.swing.JLabel();
+        DelClient = new javax.swing.JLabel();
         btnsavejson = new javax.swing.JLabel();
         btnsavetxt = new javax.swing.JLabel();
         btnsavexml = new javax.swing.JLabel();
@@ -213,14 +213,14 @@ public class Pager_client extends javax.swing.JFrame {
 
         getContentPane().add(jPanel6, java.awt.BorderLayout.CENTER);
 
-        AddAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        AddAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/add_no_over.png"))); // NOI18N
+        AddClient.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        AddClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/add_no_over.png"))); // NOI18N
 
-        ModAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ModAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/edit_no_over.png"))); // NOI18N
+        ModClient.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ModClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/edit_no_over.png"))); // NOI18N
 
-        DelAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        DelAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/minus_no_over.png"))); // NOI18N
+        DelClient.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        DelClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/minus_no_over.png"))); // NOI18N
 
         btnsavejson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework_v2/Modules/Admin/View/img/json_no_over.png"))); // NOI18N
 
@@ -240,11 +240,11 @@ public class Pager_client extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(AddAdmin)
+                .addComponent(AddClient)
                 .addGap(18, 18, 18)
-                .addComponent(ModAdmin)
+                .addComponent(ModClient)
                 .addGap(18, 18, 18)
-                .addComponent(DelAdmin)
+                .addComponent(DelClient)
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
@@ -263,9 +263,9 @@ public class Pager_client extends javax.swing.JFrame {
                     .addComponent(btnsavejson, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnsavetxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnsavexml, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AddAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ModAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DelAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AddClient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ModClient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DelClient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addGap(19, 19, 19))
         );
@@ -277,9 +277,9 @@ public class Pager_client extends javax.swing.JFrame {
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JLabel AddAdmin;
-    public static javax.swing.JLabel DelAdmin;
-    public static javax.swing.JLabel ModAdmin;
+    public static javax.swing.JLabel AddClient;
+    public static javax.swing.JLabel DelClient;
+    public static javax.swing.JLabel ModClient;
     public static javax.swing.JLabel btnsavejson;
     public static javax.swing.JLabel btnsavetxt;
     public static javax.swing.JLabel btnsavexml;

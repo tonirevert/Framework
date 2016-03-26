@@ -5,18 +5,11 @@
  */
 package framework_v2.Modules.Client.Model.BLL;
 
-import framework_v2.Modules.Admin.Controller.AdminController;
-
-import framework_v2.Modules.Admin.Model.Classes.Admin_class;
-import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.ad;
-import framework_v2.Modules.Admin.Model.Classes.miniSimpleTableModel_admin;
-import framework_v2.Modules.Admin.Model.DAO.DAO_admin;
+import framework_v2.Modules.Client.Controller.ClientController;
 import framework_v2.Modules.Client.Model.Utils.Files_lib.json;
 import framework_v2.Modules.Client.Model.Utils.Files_lib.txt;
 import framework_v2.Modules.Client.Model.Utils.Files_lib.xml;
 import framework_v2.Modules.Client.Model.Utils.pager.pagina;
-import framework_v2.Modules.Client.View.Create_client;
 import framework_v2.Modules.Client.View.Modify_client;
 import framework_v2.Modules.Client.View.Pager_client;
 import java.awt.Color;
@@ -118,62 +111,53 @@ public class BLL_client {
             
             case "dni":
                 correct = DAO_client.askDni();
-                
                 break;
                 
             case "name":
                 correct = DAO_client.askName();
-                
                 break;
             case "surname":
                 correct = DAO_client.askSurname();
-                
                 break;
             case "email":
                 correct = DAO_client.askEmail();
-                
                 break;
                 
             case "mobile":
                 correct = DAO_client.askMobile();
-                
                 break;
                 
             case "user":
                 correct = DAO_client.askUser();
-                
                 break;
                 
             case "password":
                 correct = DAO_client.askPassword();
-                
                 break;
                 
             case "password2":
                 correct = DAO_client.askPassword2();
-                
                 break;
                 
             case "birthdate":
                 correct= DAO_client.askBirth();
-                
                 break;
                 
             case "avatar":
                 route=DAO_client.askAvatar();
-                
                 break;
                 
-            case "datecontract":
-                correct = DAO_client.askDatecontract();
-                
+            case "datereg":
+                correct = DAO_client.askDateRegistration();
                 break;
                 
-            case "activity":
-                correct = DAO_client.askActivity();
-                
+            case "shopping":
+                correct = DAO_client.askShopping();
                 break;
             
+            case "clienttype":
+                correct = DAO_client.askCientType();
+                break;
         }
     }//End askAdmindata
     
@@ -189,35 +173,28 @@ public class BLL_client {
             
             case "dni":
                 correct = DAO_client.askDniMod();
-                
                 break;
                 
             case "name":
                 correct = DAO_client.askNameMod();
-                
                 break;
             case "surname":
                 correct = DAO_client.askSurnameMod();
-                
                 break;
             case "email":
                 correct = DAO_client.askEmailMod();
-                
                 break;
                 
             case "mobile":
                 correct = DAO_client.askMobileMod();
-                
                 break;
                 
             case "user":
                 correct = DAO_client.askUserMod();
-                
                 break;
                 
             case "password":
                 correct = DAO_client.askPasswordMod();
-                
                 break;
                 
             case "password2":
@@ -226,22 +203,22 @@ public class BLL_client {
                 
             case "birthdate":
                 correct= DAO_client.askBirthMod();
-                
                 break;
                 
             case "avatar":
                 route = DAO_client.askAvatarMod();
-                
                 break;
                 
-            case "datecontract":
+            case "datereg":
                 correct = DAO_client.askDatecontractMod();
-                
                 break;
                 
-            case "activity":
-                correct = DAO_client.askActivityMod();
-                
+            case "shopping":
+                correct = DAO_client.askShopping();
+                break;
+            
+            case "clienttype":
+                correct = DAO_client.askCientType();
                 break;
             
         }
@@ -263,7 +240,7 @@ public class BLL_client {
 		return -1;
 	}//End searchDniadmin admin
     
-    public static int searchDniaclient(){
+    public static int searchDniclient(){
         int out=0;
         Client_class client=null;
         client= new Client_class(Create_client.fieldDNI.getText());
@@ -318,7 +295,7 @@ public class BLL_client {
         }else{
 //            System.out.println("else fill BLL admin");
             cli=Singleton_client.cli.get(position);
-            DAO_client.fillAdminMod(cli);
+            DAO_client.fillClientMod(cli);
         }
         
         return cli;
@@ -341,7 +318,7 @@ public class BLL_client {
         return cli;
     }
     
-    public static boolean save_mod_admin(){
+    public static boolean save_mod_client(){
 
         boolean correct=false;
         Client_class client= null;
@@ -357,12 +334,12 @@ public class BLL_client {
             position=-1;
             }
              return correct;
-    }
+    }//End save mod client
 
         /**
         * Used to edit a row from the table on pager admin
         */
-     public static boolean edit_client() {/////////////////////////////////////////////////////////////////////////////////////
+     public static boolean edit_client() {
         String dni;
         int selection, inicio, selection1;
         boolean correct;
@@ -378,8 +355,8 @@ public class BLL_client {
             } else {
                 dni = (String) Pager_client.pagerTable.getModel().getValueAt(selection1, 0);
 
-                Singleton_client.cl = new Client_class(cli);
-                new AdminController(new Modify_client(),1).Init(1);
+                Singleton_client.cl = new Client_class(dni);
+                new ClientController(new Modify_client(),1).Init(1);
                 correct = true;
 
             }
@@ -393,62 +370,56 @@ public class BLL_client {
         /**
         * Used to delete a row from the table on pager admin
         */
-        public static void delete_file() {/////////////////////////////////////////////////////////////////////////////////
-        String dni;
-        
-        int pos;
-        int selection, inicio, selection1;
-        
-        int n=((miniSimpleTableModel_client) Pager_client.pagerTable.getModel()).getRowCount();
-        if (n != 0) {
-                 inicio=(pagina.currentPageIndex-1)*pagina.itemsPerPage; //nos situamos al inicio de la página en cuestión
-                selection=Pager_client.pagerTable.getSelectedRow(); //nos situamos en la fila
-                selection1=inicio+selection; //nos situamos en la fila correspondiente de esa página
-            if (selection1 == -1) {
-                PauseNoselect();
-            } else {
-                dni = (String) pagerTable.getModel().getValueAt(selection1, 0);
-                Singleton_client.cl = new Client_class(dni);
-                pos = BLL_client.searchclientMod((Client_class) cl);
-                int opc = JOptionPane.showConfirmDialog(null, "Delete user with ID Card: " + dni+"?",
-                        "Info", JOptionPane.WARNING_MESSAGE);
+        public static void delete_file() {
+                String dni;
 
-                if (opc == 0) {
-                    ((miniSimpleTableModel_client) pagerTable.getModel()).removeRow(selection1);
-                    cl = Singleton_client.cli.get(pos);
+                int pos;
+                int selection, inicio, selection1;
 
-                    Singleton_client.cli.remove(ad);
-                    BLL_client.autosaveClient();
-                }
+                int n=((miniSimpleTableModel_client) Pager_client.pagerTable.getModel()).getRowCount();
+                if (n != 0) {
+                         inicio=(pagina.currentPageIndex-1)*pagina.itemsPerPage; //nos situamos al inicio de la página en cuestión
+                        selection=Pager_client.pagerTable.getSelectedRow(); //nos situamos en la fila
+                        selection1=inicio+selection; //nos situamos en la fila correspondiente de esa página
+                    if (selection1 == -1) {
+                        PauseNoselect();
+                    } else {
+                        dni = (String) pagerTable.getModel().getValueAt(selection1, 0);
+                        Singleton_client.cl = new Client_class(dni);
+                        pos = BLL_client.searchclientMod((Client_class) cl);
+                        int opc = JOptionPane.showConfirmDialog(null, "Delete user with ID Card: " + dni+"?",
+                                "Info", JOptionPane.WARNING_MESSAGE);
 
-                if (((miniSimpleTableModel_client) pagerTable.getModel()).getRowCount() == 0) {
-                    if (((miniSimpleTableModel_client) pagerTable.getModel()).getRowCount() != 0) {
+                        if (opc == 0) {
+                            ((miniSimpleTableModel_client) pagerTable.getModel()).removeRow(selection1);
+                            cl = Singleton_client.cli.get(pos);
 
+                            Singleton_client.cli.remove(cl);
+                            BLL_client.autosaveClient();
+                        }
+
+                        if (((miniSimpleTableModel_client) pagerTable.getModel()).getRowCount() == 0) {
+                            if (((miniSimpleTableModel_client) pagerTable.getModel()).getRowCount() != 0) {
+
+                            }
+                        }
                     }
+
+                } else {
+                    PauseEmpty();
                 }
-            }
-
-        } else {
-            PauseEmpty();
-        }
-//       ((miniSimpleTableModel_admin)TABLA.getModel()).cargar();
-
-    }
+        }//End delete_file
     
     public static void autosaveClient(){
-        json.autosavejsonadmin();
-//        txt.autosavetxtadmin();
-//        xml.autosavexmladmin();
+        json.autosavejsonclient();
     }
     
     public static void autoloadClient(){
-        json.autoloadjsonadmin();
-//        txt.autoloadtxtadmin();
-//        xml.autoloadxmladmin();
+        json.autoloadjsonclient();
     }
     
     public static void savejsonClient(){
-        json.savejsonadmin();
+        json.savejsonclient();
     }
     
     public static void savetxtClient(){
@@ -456,7 +427,7 @@ public class BLL_client {
     }
     
     public static void savexmlClient(){
-        xml.savexmladmin();
+        xml.savexmlclient();
     }
     
 }//End public class BLL_client

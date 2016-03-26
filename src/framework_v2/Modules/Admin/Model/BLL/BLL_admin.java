@@ -430,14 +430,10 @@ public class BLL_admin {
     
     public static void autosaveAdmin(){
         json.autosavejsonadmin();
-//        txt.autosavetxtadmin();
-//        xml.autosavexmladmin();
     }
     
     public static void autoloadAdmin(){
         json.autoloadjsonadmin();
-//        txt.autoloadtxtadmin();
-//        xml.autoloadxmladmin();
     }
     
     public static void savejsonAdmin(){

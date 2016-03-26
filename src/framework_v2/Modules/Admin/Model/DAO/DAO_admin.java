@@ -824,11 +824,11 @@ public class DAO_admin {
     public static Admin_class saveAdminMod(){
         Admin_class admin;
         String dni="", name="", surname="", email="", mobile="", user="", password="", avatar="";
-        int activity=0, position=0;
+        int activity=0;
         Date_class birth;
         Date_class contract;
         boolean connected=false;
-        boolean fidni,finame,fisurname,fiemail,fimobile,fiuser,fipassword,fipassword2,fiavatar,fdbirth,fdcont,factiv;
+        boolean fidni,finame,fisurname,fiemail,fimobile,fiuser,fipassword,fipassword2,fdbirth,fdcont,factiv;
         Calendar birthdate,datecontract;
         String dateform=Config_class.getinstance().getDate_format();
 
@@ -890,8 +890,6 @@ public class DAO_admin {
     }
     
     public static void fillAdminMod(Admin_class adm){
-        String dni2="";
-        int position=0;
         Date dateBirth = new Date();
         Date dateCont = new Date();
         Date_class birth=null;
@@ -899,15 +897,7 @@ public class DAO_admin {
         Date_class cont=null;
         Calendar calendarCont = Calendar.getInstance();
         String file="";
-//        Admin_class admin=((Admin_class) adm);
-        
-//        Admin_class admin = new Admin_class(dni);
-//        position=BLL_admin.searchadminMod((Admin_class) admin);
-//        
-//        admin=Singleton_admin.adm.get(position);
-        
-        
-//        System.out.println(admin.getDni());
+
         Modify_admin.fieldDNI.setText(adm.getDni());
         Modify_admin.editfieldName.setText(adm.getName());
         Modify_admin.editfieldSurname.setText(adm.getSurname());
@@ -937,6 +927,15 @@ public class DAO_admin {
             Modify_admin.radioStateNo.setSelected(true);
         }
         
+        calendarBirth.set(birth.getYear() , birth.getMonth()-1 , birth.getDay());
+        dateBirth.setTime(calendarBirth.getTimeInMillis());
+        Modify_admin.editdateBirth.setDate(dateBirth);
+
+        
+        calendarCont.set(cont.getYear() , cont.getMonth()-1 , cont.getDay());
+        dateCont.setTime(calendarCont.getTimeInMillis());
+        Modify_admin.editdateContract.setDate(dateCont);
+        
         BLL_admin.modAdmindata("activity");
         BLL_admin.modAdmindata("dni");
         BLL_admin.modAdmindata("email");
@@ -946,18 +945,6 @@ public class DAO_admin {
         BLL_admin.modAdmindata("password2");
         BLL_admin.modAdmindata("surname");
         BLL_admin.modAdmindata("user");
-        
-
-        
-        calendarBirth.set(birth.getYear() , birth.getMonth()-1 , birth.getDay());
-        dateBirth.setTime(calendarBirth.getTimeInMillis());
-        Modify_admin.editdateBirth.setDate(dateBirth);
-
-        
-        calendarCont.set(cont.getYear() , cont.getMonth()-1 , cont.getDay());
-        dateCont.setTime(calendarCont.getTimeInMillis());
-        Modify_admin.editdateContract.setDate(dateCont);
-       
         BLL_admin.modAdmindata("birthdate");
         BLL_admin.modAdmindata("datecontract");
         
