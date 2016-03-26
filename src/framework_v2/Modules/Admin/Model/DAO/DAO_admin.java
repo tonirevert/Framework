@@ -866,7 +866,7 @@ public class DAO_admin {
                 }
             avatar=avatarsroute+dni;
             }else{
-                avatar=defaultavatar.toString();
+                avatar=avatarMod;
             }
             
             birthdate=Modify_admin.editdateBirth.getCalendar();
@@ -909,6 +909,7 @@ public class DAO_admin {
         Modify_admin.editfieldActivity.setText(String.valueOf(adm.getActivity()));
         file=adm.getAvatar();
         birth=adm.getBirthday();
+        avatarMod=file;
         
         Modify_admin.avatar.setIcon(new ImageIcon(file));
         ImageIcon icon = new ImageIcon(file);

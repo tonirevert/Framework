@@ -445,6 +445,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
 
     @Override
     public void keyPressed(KeyEvent e) {
+        
         switch (Action.valueOf(e.getComponent().getName())) {
             
             case createfieldDNI:
@@ -580,6 +581,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
 
     @Override
     public void keyReleased(KeyEvent e) {
+        
          switch (Action.valueOf(e.getComponent().getName())) {
             case createfieldDNI:
                 BLL_client.askClientdata("dni");
@@ -685,6 +687,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        
         switch (Action.valueOf(e.getComponent().getName())){
             
             case createbtnSearch:
@@ -787,13 +790,6 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 }
                 break;
                 
-//            case entriesCombo:
-//                System.out.println("framework_v2.Modules.Admin.Controller.AdminController.mouseClicked()");
-//                pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
-//                pagina.currentPageIndex = 1;
-//                pagina.initLinkBox();
-//                break;
-                
             case pagFirst:
                 pagina.currentPageIndex = 1;
                 pagina.initLinkBox();                
@@ -828,8 +824,6 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 break;
          }
         
-
-                
     }
 
     @Override
@@ -851,17 +845,17 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 ////Events from pager admin
             case AddClient:
                 pager.AddClient.setIcon(Singleton_client.addicon_over);
-                pager.pagerInfo.setText("Click to add new Admin user");
+                pager.pagerInfo.setText("Click to add new Client user");
                 break;
                 
             case ModClient:
                 pager.ModClient.setIcon(Singleton_client.editicon_over);
-                pager.pagerInfo.setText("Click to modify selected Admin user");    
+                pager.pagerInfo.setText("Click to modify selected Client user");    
                 break;
                 
             case DelClient:
                 pager.DelClient.setIcon(Singleton_client.delicon_over);
-                pager.pagerInfo.setText("Click to delete selected Admin user");
+                pager.pagerInfo.setText("Click to delete selected Client user");
                 break;
                 
             case btnsavejson:
@@ -1161,6 +1155,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
 
     @Override
     public void windowClosing(WindowEvent e) {
+        
         switch(Action.valueOf(e.getComponent().getName())){
             
             case createWindow:

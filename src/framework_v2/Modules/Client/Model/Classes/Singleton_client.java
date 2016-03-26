@@ -28,9 +28,10 @@ public class Singleton_client {
                 public static ImageIcon txticon_over = new ImageIcon("src/framework_v2/Modules/Client/View/img/txt_over.png");
                 public static ImageIcon xmlicon = new ImageIcon("src/framework_v2/Modules/Client/View/img/xml_no_over.png");
                 public static ImageIcon xmlicon_over = new ImageIcon("src/framework_v2/Modules/Client/View/img/xml_over.png");
+                public static String avatarMod="";
                 public static String avatarsroute="src/framework_v2/Modules/Client/View/img/avatar/";
                 public static boolean clientavatar=false;
-                public static String routeAvataradmin="";
+                public static String routeAvatarclient="";
                 public static int saved=1;
 	
 }

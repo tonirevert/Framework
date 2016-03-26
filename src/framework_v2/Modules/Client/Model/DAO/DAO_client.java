@@ -313,7 +313,7 @@ public class DAO_client {
         int option = dialog.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION){
             file=dialog.getSelectedFile().getPath();
-            routeAvataradmin=file;
+            routeAvatarclient=file;
             Create_client.avatar.setIcon(new ImageIcon(file));
             ImageIcon icon = new ImageIcon(file);
             Image img=icon.getImage();
@@ -494,7 +494,7 @@ public class DAO_client {
           
             if(clientavatar==true){
                 try {
-                    Files.copy(Paths.get(routeAvataradmin),Paths.get(avatarsroute+dni) , REPLACE_EXISTING);
+                    Files.copy(Paths.get(routeAvatarclient),Paths.get(avatarsroute+dni) , REPLACE_EXISTING);
                 } catch (IOException ex) {
                     Logger.getLogger(DAO_client.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -786,7 +786,7 @@ public class DAO_client {
         int option = dialog.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION){
             file=dialog.getSelectedFile().getPath();
-            routeAvataradmin=file;//toString? con el funciona
+            routeAvatarclient=file;//toString? con el funciona
             Modify_client.avatar.setIcon(new ImageIcon(file));
             ImageIcon icon = new ImageIcon(file);
             Image img=icon.getImage();
@@ -886,13 +886,13 @@ public class DAO_client {
             
             if(clientavatar==true){
                 try {
-                    Files.copy(Paths.get(routeAvataradmin),Paths.get(avatarsroute+dni) , REPLACE_EXISTING);
+                    Files.copy(Paths.get(routeAvatarclient),Paths.get(avatarsroute+dni) , REPLACE_EXISTING);
                 } catch (IOException ex) {
                     Logger.getLogger(DAO_client.class.getName()).log(Level.SEVERE, null, ex);
                 }
             avatar=avatarsroute+dni;
             }else{
-                avatar=defaultavatar.toString();
+                avatar=avatarMod;
             }
             
             if(Modify_client.radioPremiumYes.isSelected()){
@@ -917,6 +917,7 @@ public class DAO_client {
             client=null;
             Singleton_client.saved=1;
         }
+        avatarMod="";
         clientavatar=false;
         return client;
         
@@ -947,6 +948,7 @@ public class DAO_client {
         Modify_client.editfieldClientType.setText(cli.getClient_type());
         file=cli.getAvatar();
         birth=cli.getBirthday();
+        avatarMod=file;
         
         Modify_client.avatar.setIcon(new ImageIcon(file));
         ImageIcon icon = new ImageIcon(file);

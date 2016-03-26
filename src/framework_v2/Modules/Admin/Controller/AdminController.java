@@ -19,7 +19,6 @@ import framework_v2.Modules.Admin.View.Modify_admin;
 import framework_v2.Modules.Admin.View.Pager_admin;
 import static framework_v2.Modules.Admin.View.Pager_admin.jComboBox1;
 import static framework_v2.Modules.Admin.View.Pager_admin.pagerTable;
-import framework_v2.Modules.Client.Model.BLL.BLL_client;
 import framework_v2.Modules.Config.Classes.Config_class;
 import framework_v2.Modules.Menu.Controller.MenuController;
 import framework_v2.Modules.Menu.View.Mainmenu;

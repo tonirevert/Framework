@@ -136,7 +136,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
                 }
             }
             Pager_client.pagAmount.setText(String.valueOf(cont));
-            System.out.println("word selected: " + nom);
+//            System.out.println("word selected: " + nom);
             pagina.initLinkBox();
         }
     }

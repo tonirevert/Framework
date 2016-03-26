@@ -24,6 +24,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import static framework_v2.Modules.Admin.View.Pager_admin.pagerTable;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  *
@@ -386,7 +389,7 @@ public class BLL_admin {
         /**
         * Used to delete a row from the table on pager admin
         */
-        public static void delete_file() {
+        public static void delete_file() throws IOException {
         String dni;
         
         int pos;
@@ -409,7 +412,11 @@ public class BLL_admin {
                 if (opc == 0) {
                     ((miniSimpleTableModel_admin) pagerTable.getModel()).removeRow(selection1);
                     ad = Singleton_admin.adm.get(pos);
+                    if(ad.getAvatar().equals("src/framework_v2/Modules/Admin/View/img/avatar/default.png")){
 
+                            }else{
+                                Files.delete(Paths.get(ad.getAvatar()));
+                            }
                     Singleton_admin.adm.remove(ad);
                     autosaveAdmin();
                 }

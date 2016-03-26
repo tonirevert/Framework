@@ -24,6 +24,9 @@ import static framework_v2.Modules.Client.Model.Classes.Singleton_client.cl;
 import framework_v2.Modules.Client.Model.Classes.miniSimpleTableModel_client;
 import framework_v2.Modules.Client.Model.DAO.DAO_client;
 import framework_v2.Modules.Client.View.Create_client;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  *
@@ -371,7 +374,7 @@ public class BLL_client {
         /**
         * Used to delete a row from the table on pager admin
         */
-        public static void delete_file() {
+        public static void delete_file() throws IOException {
                 String dni;
 
                 int pos;
@@ -394,9 +397,13 @@ public class BLL_client {
                         if (opc == 0) {
                             ((miniSimpleTableModel_client) pagerTable.getModel()).removeRow(selection1);
                             cl = Singleton_client.cli.get(pos);
+                            if(cl.getAvatar().equals("src/framework_v2/Modules/Client/View/img/avatar/default.png")){
 
+                            }else{
+                                Files.delete(Paths.get(cl.getAvatar()));
+                            }
                             Singleton_client.cli.remove(cl);
-                            BLL_client.autosaveClient();
+                            autosaveClient();
                         }
 
                         if (((miniSimpleTableModel_client) pagerTable.getModel()).getRowCount() == 0) {
