@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package framework_v2.Modules.Reg_user.Model.Utils;
+package framework_v2.Modules.Reg_user.Model.Utils.Files_lib;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -13,7 +13,6 @@ import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 import framework_v2.Classes.Singleton_app;
-import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
 import framework_v2.Modules.Config.Classes.Config_class;
 import framework_v2.Modules.Reg_user.Model.Classes.Reg_user_class;
 import framework_v2.Modules.Reg_user.Model.Classes.Singleton_ruser;
@@ -57,12 +56,14 @@ public class json {
 	        	  fileXml.write(json.toString());
 	        	  fileXml.close();
 	        	  
-	        	  JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("rusjsonsavedok"), Singleton_app.lang.getProperty("savedfiletitle"),
-						JOptionPane.INFORMATION_MESSAGE);
+//	        	  JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("rusjsonsavedok"), Singleton_app.lang.getProperty("savedfiletitle"),
+//						JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null,"File JSON saved correctly");
 	          }
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwrijson"), "Error!", 
-					JOptionPane.INFORMATION_MESSAGE);
+//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwrijson"), "Error!", 
+//					JOptionPane.INFORMATION_MESSAGE);
+                                                JOptionPane.showMessageDialog(null,"Error saving JSON file");
 		}
 	}//End save JSON ruser
 	
@@ -70,8 +71,8 @@ public class json {
 	 * Used to auto save registered user data to JSON file format
 	 */
 	public static void autosavejsonruser(){
-		String [] p={"/src/framework_v2/Modules/Config/Files/ruser_files/ruser_json/ruser.json",
-		"/src/framework_v2/Modules/Config/Files/ruser_json/dummy_ruser.json"};
+		String [] p={"/src/framework_v2/Modules/Reg_user/Model/Utils/Files/json/ruser.json",
+		"/src/framework_v2/Modules/Reg_user/Model/Utils/Files/json/dummy_ruser.json"};
 		String p2="";
 		String PATH="";
 		
@@ -100,8 +101,9 @@ public class json {
 	        	fileXml.close();
 	        	
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!",
-						JOptionPane.INFORMATION_MESSAGE);
+//				JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!",
+//						JOptionPane.INFORMATION_MESSAGE);
+                                                                JOptionPane.showMessageDialog(null,"Error auto-saving JSON file");
 			}        
 		} else{
 			File path = new File(PATH);
@@ -113,8 +115,8 @@ public class json {
 	 * Used to auto load registered user data from JSON file format
 	 */
 	public static void autoloadjsonruser(){
-		String [] p={"/src/framework_v2/Modules/Config/Files/ruser_files/ruser_json/ruser.json",
-		"/src/framework_v2/Modules/Config/Files/ruser_json/dummy_ruser.json"};
+		String [] p={"/src/framework_v2/Modules/Reg_user/Model/Utils/Files/json/ruser.json",
+		"/src/framework_v2/Modules/Reg_user/Model/Utils/Files/json/dummy_ruser.json"};
 		String p2="";
 		String PATH="";
 		Reg_user_class a=new Reg_user_class("");
@@ -148,7 +150,8 @@ public class json {
 			
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopejson"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopejson"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+                                                JOptionPane.showMessageDialog(null,"Error auto-loading JSON file");
 		}
 	}//End auto load registered user JSON
 
@@ -187,8 +190,9 @@ public class json {
 			}
 			
 		} catch (Exception e){
-			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopejson"), "Error",
-					JOptionPane.INFORMATION_MESSAGE);
+//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopejson"), "Error",
+//					JOptionPane.INFORMATION_MESSAGE);
+                                               JOptionPane.showMessageDialog(null,"Error loading JSON file");
 		}
 	}
 }

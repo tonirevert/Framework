@@ -24,6 +24,8 @@ import static framework_v2.Modules.Menu.Controller.MenuController.Action.btnAdmi
 import static framework_v2.Modules.Menu.Controller.MenuController.Action.btnConfig;
 import static framework_v2.Modules.Menu.Controller.MenuController.main;
 import framework_v2.Modules.Menu.View.Mainmenu;
+import framework_v2.Modules.Reg_user.Controller.RuserController;
+import framework_v2.Modules.Reg_user.View.Pager_ruser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -168,7 +170,8 @@ public class MenuController implements ActionListener, MouseListener{
                 break;
                 
                 case btnReguser:
-                
+                    main.dispose();
+                    new RuserController(new Pager_ruser(),2).Init(2);
                 break;
                 
                 case btnConfig:

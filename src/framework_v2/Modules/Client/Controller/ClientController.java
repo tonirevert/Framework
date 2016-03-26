@@ -34,8 +34,11 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -768,7 +771,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 break;
                 
             case DelClient:
-                BLL_client.delete_file();
+                        BLL_client.delete_file();
                 break;
                 
             case btnsavejson:

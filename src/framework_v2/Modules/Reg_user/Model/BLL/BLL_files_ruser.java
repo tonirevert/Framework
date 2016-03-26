@@ -8,9 +8,9 @@ package framework_v2.Modules.Reg_user.Model.BLL;
 import framework_v2.Classes.Singleton_app;
 import framework_v2.Modules.Config.Classes.Config_class;
 import framework_v2.Modules.Reg_user.Model.Classes.Singleton_ruser;
-import framework_v2.Modules.Reg_user.Model.Utils.json;
-import framework_v2.Modules.Reg_user.Model.Utils.txt;
-import framework_v2.Modules.Reg_user.Model.Utils.xml;
+import framework_v2.Modules.Reg_user.Model.Utils.Files_lib.json;
+import framework_v2.Modules.Reg_user.Model.Utils.Files_lib.txt;
+import framework_v2.Modules.Reg_user.Model.Utils.Files_lib.xml;
 import javax.swing.JOptionPane;
 
 /**

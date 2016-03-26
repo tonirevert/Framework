@@ -118,30 +118,51 @@ public class Reg_user_class extends User_class implements Serializable{
 		 StringBuffer out=new StringBuffer();
 		 
 		 if((getActivity())>=5000){
-			 out.append(Singleton_app.lang.getProperty("r_high"));
+                                                out.append("High");
+//			 out.append(Singleton_app.lang.getProperty("r_high"));
 		 }else if((getActivity())>=3000){
-			 out.append(Singleton_app.lang.getProperty("r_medium"));
+                                                out.append("Medium");
+//			 out.append(Singleton_app.lang.getProperty("r_medium"));
 		 }else
-			 out.append(Singleton_app.lang.getProperty("r_low"));
-		 
+                                                out.append("Low");
+//			 out.append(Singleton_app.lang.getProperty("r_low"));
 		 return out.toString();
 	 }
-	 
-	 public double calc_benefit() {
+	public double calc_benefit() {
 		double benefit=0.0d;	
 		
 		if ((double)getActivity()==0.0){
 			benefit=0.0d;
 		}else{
-			if(getKarma().equals(Singleton_app.lang.getProperty("r_high"))){
+			if(getKarma().equals("High")){
 				benefit=5.0d *(double)getActivity();
-			}else if (getKarma().equals(Singleton_app.lang.getProperty("r_medium"))){
+			}else if (getKarma().equals("Medium")){
 				 benefit=3.0d *(double)getActivity();	
-			}else if(getKarma().equals(Singleton_app.lang.getProperty("r_low"))){
+			}else if(getKarma().equals("Low")){
 				benefit=1.0d *(double)getActivity();	
 			}	
 		}
 			return benefit;
-	 }//End of calc_benefit
+	 }//End of calc_benefit 
+         
+         
+         
+         
+//	 public double calc_benefit() {
+//		double benefit=0.0d;	
+//		
+//		if ((double)getActivity()==0.0){
+//			benefit=0.0d;
+//		}else{
+//			if(getKarma().equals(Singleton_app.lang.getProperty("r_high"))){
+//				benefit=5.0d *(double)getActivity();
+//			}else if (getKarma().equals(Singleton_app.lang.getProperty("r_medium"))){
+//				 benefit=3.0d *(double)getActivity();	
+//			}else if(getKarma().equals(Singleton_app.lang.getProperty("r_low"))){
+//				benefit=1.0d *(double)getActivity();	
+//			}	
+//		}
+//			return benefit;
+//	 }//End of calc_benefit
 	 
 }

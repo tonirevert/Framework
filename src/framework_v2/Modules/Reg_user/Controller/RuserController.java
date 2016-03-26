@@ -3,25 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package framework_v2.Modules.Admin.Controller;
+package framework_v2.Modules.Reg_user.Controller;
 
-import framework_v2.Modules.Admin.Controller.AdminController.Action;
-import framework_v2.Modules.Admin.Model.BLL.BLL_admin;
-import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.ad;
-import static framework_v2.Modules.Admin.Model.Classes.Singleton_admin.defaultavatar;
-import framework_v2.Modules.Admin.Model.Classes.miniSimpleTableModel_admin;
-import framework_v2.Modules.Admin.Model.Utils.pager.AutocompleteJComboBox;
-import framework_v2.Modules.Admin.Model.Utils.pager.StringSearchable;
-import framework_v2.Modules.Admin.Model.Utils.pager.pagina;
-import framework_v2.Modules.Admin.View.Create_admin;
-import framework_v2.Modules.Admin.View.Modify_admin;
-import framework_v2.Modules.Admin.View.Pager_admin;
-import static framework_v2.Modules.Admin.View.Pager_admin.jComboBox1;
-import static framework_v2.Modules.Admin.View.Pager_admin.pagerTable;
+import framework_v2.Modules.Reg_user.Controller.RuserController.Action;
+import framework_v2.Modules.Reg_user.Model.BLL.BLL_ruser;
+import framework_v2.Modules.Reg_user.Model.Classes.Singleton_ruser;
+import static framework_v2.Modules.Reg_user.Model.Classes.Singleton_ruser.ru;
+import framework_v2.Modules.Reg_user.Model.Utils.pager.AutocompleteJComboBox;
+import framework_v2.Modules.Reg_user.Model.Utils.pager.StringSearchable;
+import framework_v2.Modules.Reg_user.Model.Utils.pager.pagina;
+import static framework_v2.Modules.Reg_user.View.Pager_ruser.jComboBox1;
+import static framework_v2.Modules.Reg_user.View.Pager_ruser.pagerTable;
 import framework_v2.Modules.Config.Classes.Config_class;
 import framework_v2.Modules.Menu.Controller.MenuController;
 import framework_v2.Modules.Menu.View.Mainmenu;
+import static framework_v2.Modules.Reg_user.Model.Classes.Singleton_ruser.defaultavatar;
+import framework_v2.Modules.Reg_user.Model.Classes.miniSimpleTableModel_ruser;
+import framework_v2.Modules.Reg_user.View.Create_ruser;
+import framework_v2.Modules.Reg_user.View.Modify_ruser;
+import framework_v2.Modules.Reg_user.View.Pager_ruser;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,27 +47,27 @@ import javax.swing.table.TableRowSorter;
  *
  * @author antonio
  */
-public class AdminController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
+public class RuserController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
 
-    public static Create_admin create;
-    public static Modify_admin edit;
-    public static Pager_admin pager;
-    public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new miniSimpleTableModel_admin());
-    public static AutocompleteJComboBox comboAdmin = null;
+    public static Create_ruser create;
+    public static Modify_ruser edit;
+    public static Pager_ruser pager;
+    public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new miniSimpleTableModel_ruser());
+    public static AutocompleteJComboBox comboRuser = null;
     public String comb="";
     
-    public AdminController(JFrame frame, int i){
+    public RuserController(JFrame frame, int i){
         switch(i){
             case 0:
-                create=(Create_admin) frame;
+                create=(Create_ruser) frame;
                 break;
                 
             case 1:
-                edit=(Modify_admin)frame;
+                edit=(Modify_ruser)frame;
                 break;
                 
             case 2:
-                pager=(Pager_admin)frame;
+                pager=(Pager_ruser)frame;
                 break;
         }
                 
@@ -87,6 +87,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         createfieldVerify,
         createbtnSearch,
         createfieldActivity,
+//        createfieldKarma,
         createbtnSave,
         createbtnReset,
         createbtnCancel,
@@ -102,6 +103,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         editfieldVerify,
         editbtnSearch,
         editfieldActivity,
+//        editfieldKarma,
         editbtnSave,
         editbtnCancel,
         
@@ -116,7 +118,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         pagerTable,
         comboBoxChanged,
         comboBoxEdited,
-        comboAdmin,
+        comboRuser,
         entriesCombo,
         jComboBox1,
         pagFirst,
@@ -146,22 +148,18 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         switch(i){
             
             case 0://Create admin
-                Singleton_admin.window="create";
-                create.setTitle("Create Admin");////////////////////////////////////////////////////////////////////////
+                Singleton_ruser.window="create";
+                create.setTitle("Create Reg. user");////////////////////////////////////////////////////////////////////////
                 create.saving.setVisible(false);
                 create.setResizable(false);
                 create.setSize(600,500);
                 create.dateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
-                create.dateContract.setDateFormatString(Config_class.getinstance().getDate_format());
-                create.dateContract.getDateEditor().setEnabled(false);
                 create.dateBirth.getDateEditor().setEnabled(false);
-                create.dateContract.setEnabled(false);
                 create.areaInfo.setEditable(false);
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 create.setLocationRelativeTo(null);
                 create.avatar.setIcon(defaultavatar);
                 create.setVisible(true);
-                
                 
                 create.setName("createWindow");
                 create.addWindowListener(this);
@@ -220,37 +218,40 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 create.btnSearch.setName("createbtnSearch");
                 create.btnSearch.addMouseListener(this);
                 
-                create.dateContract.addPropertyChangeListener(this);
-                
                 create.fieldActivity.setActionCommand("createfieldActivity");
                 create.fieldActivity.setName("createfieldActivity");
                 create.fieldActivity.addFocusListener(this);
                 create.fieldActivity.addActionListener(this);
                 create.fieldActivity.addKeyListener(this);
                 
-                create.btnsaveCreateadmin.setName("createbtnSave");
-                create.btnsaveCreateadmin.addMouseListener(this);
-
-                create.btnresetCreateadmin.setName("createbtnReset");
-                create.btnresetCreateadmin.addMouseListener(this);
+//                create.fieldKarma.setActionCommand("createfieldKarma");
+//                create.fieldKarma.setName("createfieldKarma");
+//                create.fieldKarma.addFocusListener(this);
+//                create.fieldKarma.addActionListener(this);
+//                create.fieldKarma.addKeyListener(this);
                 
-                create.btncancelCreateadmin.setName("createbtnCancel");
-                create.btncancelCreateadmin.addMouseListener(this);
+                create.btnsaveCreateruser.setName("createbtnSave");
+                create.btnsaveCreateruser.addMouseListener(this);
+
+                create.btnresetCreateruser.setName("createbtnReset");
+                create.btnresetCreateruser.addMouseListener(this);
+                
+                create.btncancelCreateruser.setName("createbtnCancel");
+                create.btncancelCreateruser.addMouseListener(this);
+                
                 
                 break;//End case 0
                 
             case 1://Modify admin
-                Singleton_admin.window="modify";
-                edit.setTitle("Modify Admin");////////////////////////////////////////////////////////////////////////
+                Singleton_ruser.window="modify";
+                edit.setTitle("Modify Reg. user");////////////////////////////////////////////////////////////////////////
                 edit.saving.setVisible(false);
-                BLL_admin.fill_admin(ad.getDni());
+                BLL_ruser.fill_ruser(ru.getDni());
                 edit.fieldDNI.setEditable(false);
                 edit.setResizable(false);
                 edit.setSize(600,500);
                 edit.editdateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
-                edit.editdateContract.setDateFormatString(Config_class.getinstance().getDate_format());
                 edit.editdateBirth.getDateEditor().setEnabled(false);
-                edit.editdateContract.getDateEditor().setEnabled(false);
                 edit.setLocationRelativeTo(null);
                 edit.setVisible(true);
 
@@ -306,47 +307,51 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 edit.btnSearch.setName("editbtnSearch");
                 edit.btnSearch.addMouseListener(this);
                 
-                edit.editdateContract.addPropertyChangeListener(this);
-                
                 edit.editfieldActivity.setActionCommand("editfieldActivity");
                 edit.editfieldActivity.setName("editfieldActivity");
                 edit.editfieldActivity.addFocusListener(this);
                 edit.editfieldActivity.addActionListener(this);
                 edit.editfieldActivity.addKeyListener(this);
                 
-                edit.btnsaveEditadmin.setName("editbtnSave");
-                edit.btnsaveEditadmin.addMouseListener(this);
+//                edit.editfieldKarma.setActionCommand("editfieldKarma");
+//                edit.editfieldKarma.setName("editfieldKarma");
+//                edit.editfieldKarma.addFocusListener(this);
+//                edit.editfieldKarma.addActionListener(this);
+//                edit.editfieldKarma.addKeyListener(this);
                 
-                edit.btncancelEditadmin.setName("editbtnCancel");
-                edit.btncancelEditadmin.addMouseListener(this);
+                edit.btnsaveEditruser.setName("editbtnSave");
+                edit.btnsaveEditruser.addMouseListener(this);
+                
+                edit.btncancelEditruser.setName("editbtnCancel");
+                edit.btncancelEditruser.addMouseListener(this);
                 break;//End case 1
                 
             case 2://Pager admin
-                pager.setTitle("Admin management list");
+                pager.setTitle("Reg. user management list");
                 pager.setLocationRelativeTo(null);
                 pager.setResizable(false);
                 pager.setVisible(true);
                 
-                pager.pagerTable.setModel( new miniSimpleTableModel_admin() );
-                ((miniSimpleTableModel_admin)pagerTable.getModel()).cargar();
+                pager.pagerTable.setModel( new miniSimpleTableModel_ruser() );
+                ((miniSimpleTableModel_ruser)pagerTable.getModel()).cargar();
                 pager.pagerTable.setFillsViewportHeight(true);
                 pager.pagerTable.setRowSorter(sorter);
                 
                 pagina.inicializa();
                 pagina.initLinkBox();
                 
-                pager.pagAmount.setText(String.valueOf(Singleton_admin.adm.size()));
+                pager.pagAmount.setText(String.valueOf(Singleton_ruser.rus.size()));
                 
                 List<String> myWords = new ArrayList<String>();
                 
-                for (int e=0;e<=Singleton_admin.adm.size()-1;e++) {
-                myWords.add(Singleton_admin.adm.get(e).getName());
+                for (int e=0;e<=Singleton_ruser.rus.size()-1;e++) {
+                myWords.add(Singleton_ruser.rus.get(e).getName());
                 }
                 
                 StringSearchable searchable = new StringSearchable(myWords);
-                comboAdmin = new AutocompleteJComboBox(searchable);
+                comboRuser = new AutocompleteJComboBox(searchable);
                 pager.jPanel3.setLayout(new java.awt.BorderLayout());
-                pager.jPanel3.add(comboAdmin);
+                pager.jPanel3.add(comboRuser);
                                
                 pager.AddAdmin.setToolTipText("Add a new admin user");
                 pager.ModAdmin.setToolTipText("Modify selected admin user");
@@ -363,7 +368,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.pagLinks.setToolTipText("Click on the numbers for navigate the pages");
                 pager.pagReturn.setToolTipText("Click to return to the previous menu");
                 jComboBox1.setToolTipText("Click to change the amount of users per page");
-                this.comboAdmin.setToolTipText("Click to user search");
+                this.comboRuser.setToolTipText("Click to user search");
                 
                 pager.setName("pagerWindow");
                 pager.addWindowListener(this);
@@ -390,9 +395,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.pagerTable.setName("pagerTable");
                 pager.pagerTable.addMouseListener(this);
                 
-                comboAdmin.setActionCommand("comboAdmin");
-                comboAdmin.setName("comboAdmin");
-                comboAdmin.addActionListener(this);
+                comboRuser.setActionCommand("comboRuser");
+                comboRuser.setName("comboRuser");
+                comboRuser.addActionListener(this);
                 
                 jComboBox1.setActionCommand("entriesCombo");
                 jComboBox1.setName("entriesCombo");
@@ -435,119 +440,119 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         switch (Action.valueOf(e.getComponent().getName())) {
             
             case createfieldDNI:
-                BLL_admin.askAdmindata("dni");
+                BLL_ruser.askRuserdata("dni");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldName.requestFocus();
                 }
                 break;
                 
             case createfieldName:
-                BLL_admin.askAdmindata("name");
+                BLL_ruser.askRuserdata("name");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldSurname.requestFocus();
 	}
                 break;
                 
             case createfieldSurname:
-                BLL_admin.askAdmindata("surname");
+                BLL_ruser.askRuserdata("surname");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldEmail.requestFocus();
 	}
                 break;
                 
             case createfieldEmail:
-                BLL_admin.askAdmindata("email");
+                BLL_ruser.askRuserdata("email");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldMobile.requestFocus();
 	}
                 break;
                 
             case createfieldMobile:
-                BLL_admin.askAdmindata("mobile");
+                BLL_ruser.askRuserdata("mobile");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldUser.requestFocus();
 	}
                 break;
                 
             case createfieldUser:
-                BLL_admin.askAdmindata("user");
+                BLL_ruser.askRuserdata("user");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldPassword.requestFocus();
 	}
                 break;
                 
             case createfieldPassword:
-                BLL_admin.askAdmindata("password");
+                BLL_ruser.askRuserdata("password");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldPassword2.requestFocus();
 	}
                 break;
                 
             case createfieldVerify:
-                BLL_admin.askAdmindata("password2");
+                BLL_ruser.askRuserdata("password2");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     create.fieldActivity.requestFocus();
 	}
                 break;
                 
             case createfieldActivity:
-                BLL_admin.askAdmindata("activity");
+                BLL_ruser.askRuserdata("activity");
                 break;
                 
                 ////Events from Modify admin
             case editfieldName:
-                BLL_admin.modAdmindata("name");
+                BLL_ruser.modRuserdata("name");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldSurname.requestFocus();
 	}
                 break;
                 
             case editfieldSurname:
-                BLL_admin.modAdmindata("surname");
+                BLL_ruser.modRuserdata("surname");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldEmail.requestFocus();
 	}
                 break;
                 
             case editfieldEmail:
-                BLL_admin.modAdmindata("email");
+                BLL_ruser.modRuserdata("email");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldMobile.requestFocus();
 	}
                 break;
                 
             case editfieldMobile:
-                BLL_admin.modAdmindata("mobile");
+                BLL_ruser.modRuserdata("mobile");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldUser.requestFocus();
 	}
                 break;
                 
             case editfieldUser:
-                BLL_admin.modAdmindata("user");
+                BLL_ruser.modRuserdata("user");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldPassword.requestFocus();
 	}
                 break;
                 
             case editfieldPassword:
-                BLL_admin.modAdmindata("password");
+                BLL_ruser.modRuserdata("password");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldPassword2.requestFocus();
 	}
                 break;
                 
             case editfieldVerify:
-                BLL_admin.modAdmindata("password2");
+                BLL_ruser.modRuserdata("password2");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     edit.editfieldActivity.requestFocus();
 	}
                 break;
                 
             case editfieldActivity:
-                BLL_admin.modAdmindata("activity");
+                BLL_ruser.modRuserdata("activity");
                 break;
-                
+
         }//End switch case keyPressed
     }//End of keyPressed
 
@@ -555,73 +560,73 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     public void keyReleased(KeyEvent e) {
          switch (Action.valueOf(e.getComponent().getName())) {
             case createfieldDNI:
-                BLL_admin.askAdmindata("dni");
+                BLL_ruser.askRuserdata("dni");
                 break;
                 
             case createfieldName:
-                BLL_admin.askAdmindata("name");
+                BLL_ruser.askRuserdata("name");
                 break;
                 
             case createfieldSurname:
-                BLL_admin.askAdmindata("surname");
+                BLL_ruser.askRuserdata("surname");
                 break;
                 
             case createfieldEmail:
-                BLL_admin.askAdmindata("email");
+                BLL_ruser.askRuserdata("email");
                 break;
             
             case createfieldMobile:
-                BLL_admin.askAdmindata("mobile");
+                BLL_ruser.askRuserdata("mobile");
                 break;
                 
             case createfieldUser:
-                BLL_admin.askAdmindata("user");
+                BLL_ruser.askRuserdata("user");
                 break;
                 
             case createfieldPassword:
-                BLL_admin.askAdmindata("password");
+                BLL_ruser.askRuserdata("password");
                 break;
                 
             case createfieldVerify:
-                BLL_admin.askAdmindata("password2");
+                BLL_ruser.askRuserdata("password2");
                 break;
                 
             case createfieldActivity:
-                BLL_admin.askAdmindata("activity");
+                BLL_ruser.askRuserdata("activity");
                 break;
                 
                 ////Events from Modify admin:
                 
             case editfieldName:
-                BLL_admin.modAdmindata("name");
+                BLL_ruser.modRuserdata("name");
                 break;
                 
             case editfieldSurname:
-                BLL_admin.modAdmindata("surname");
+                BLL_ruser.modRuserdata("surname");
                 break;
                 
             case editfieldEmail:
-                BLL_admin.modAdmindata("email");
+                BLL_ruser.modRuserdata("email");
                 break;
                 
             case editfieldMobile:
-                BLL_admin.modAdmindata("mobile");
+                BLL_ruser.modRuserdata("mobile");
                 break;
                 
             case editfieldUser:
-                BLL_admin.modAdmindata("user");
+                BLL_ruser.modRuserdata("user");
                 break;
                 
             case editfieldPassword:
-                BLL_admin.modAdmindata("password");
+                BLL_ruser.modRuserdata("password");
                 break;
                 
             case editfieldVerify:
-                BLL_admin.modAdmindata("password2");
+                BLL_ruser.modRuserdata("password2");
                 break;
                 
             case editfieldActivity:
-                BLL_admin.modAdmindata("activity");
+                BLL_ruser.modRuserdata("activity");
                 break;
         }//End switch case keyReleased
     }//End of keyReleased
@@ -631,11 +636,11 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
 //        System.out.println(e.getActionCommand());
         switch (Action.valueOf(e.getActionCommand())){
            
-            case comboAdmin:
+            case comboRuser:
                     pagina.currentPageIndex = 1;
                     pagina.initLinkBox();
-                    ((miniSimpleTableModel_admin)pagerTable.getModel()).filtrar();
-                    comboAdmin.requestFocus();
+                    ((miniSimpleTableModel_ruser)pagerTable.getModel()).filtrar();
+                    comboRuser.requestFocus();
                 break;
             
             case entriesCombo:
@@ -652,16 +657,16 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         switch (Action.valueOf(e.getComponent().getName())){
             
             case createbtnSearch:
-                BLL_admin.askAdmindata("avatar");
+                BLL_ruser.askRuserdata("avatar");
                 break;
             
             case createbtnSave:
-                if(BLL_admin.create_admin()==true){
+                if(BLL_ruser.create_ruser()==true){
                 Timer delay = new Timer(3000, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                             create.dispose();
-                            new AdminController(new Pager_admin(),2).Init(2);
+                            new RuserController(new Pager_ruser(),2).Init(2);
                             }
                         });
 
@@ -674,33 +679,33 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 break;
                 
             case createbtnReset:
-                BLL_admin.resetFields();
+                BLL_ruser.resetFields();
                 break;
                 
             case createbtnCancel:
                 create.dispose();
-                new AdminController(new Pager_admin(),2).Init(2);
+                new RuserController(new Pager_ruser(),2).Init(2);
                 break;
                 
                 ////Events from Modify admin:
                 
             case editbtnSearch:
-                BLL_admin.modAdmindata("avatar");
+                BLL_ruser.modRuserdata("avatar");
                 break;
                 
             case editbtnSave:
-                if(BLL_admin.save_mod_admin()!=false){
+                if(BLL_ruser.save_mod_ruser()!=false){
                     Timer delay = new Timer(3000, new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             edit.dispose();
-                            new AdminController(new Pager_admin(),2).Init(2);
+                            new RuserController(new Pager_ruser(),2).Init(2);
                         }
                     });
                     edit.saving.setVisible(true);
                     delay.setRepeats(false);
                     delay.start();
-                    BLL_admin.autosaveAdmin();
+                    BLL_ruser.autosaveRuser();
                     edit.editareaInfo.setText("User saved correctly");
                     edit.editareaInfo.setBackground(Color.green);
                 }else{
@@ -711,43 +716,43 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 
             case editbtnCancel:
                 edit.dispose();
-                new AdminController(new Pager_admin(),2).Init(2);
+                new RuserController(new Pager_ruser(),2).Init(2);
                 break;
                 
                 ////Events from pager admin
             case AddAdmin:
                 pager.dispose();
-                new AdminController(new Create_admin(),0).Init(0);
+                new RuserController(new Create_ruser(),0).Init(0);
                 break;
                 
             case ModAdmin:
                 boolean modify;
-                modify = BLL_admin.edit_admin();
+                modify = BLL_ruser.edit_ruser();
                 if (modify == true) {
                 pager.dispose();
                 }
                 break;
                 
             case DelAdmin:
-                        BLL_admin.delete_file();
+                    BLL_ruser.delete_file();
                 break;
                 
             case btnsavejson:
-                BLL_admin.savejsonAdmin();
+                BLL_ruser.savejsonRuser();
                 break;
                 
             case btnsavetxt:
-                BLL_admin.savetxtAdmin();
+                BLL_ruser.savetxtRuser();
                 break;
                 
             case btnsavexml:
-                BLL_admin.savexmlAdmin();
+                BLL_ruser.savexmlRuser();
                 break;
                 
             case pagerTable:
                 if (e.getClickCount() == 2) {
                 pager.dispose();
-                BLL_admin.edit_admin();
+                BLL_ruser.edit_ruser();
                 }
                 break;
                 
@@ -814,32 +819,32 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         switch (Action.valueOf(e.getComponent().getName())){
                 ////Events from pager admin
             case AddAdmin:
-                pager.AddAdmin.setIcon(Singleton_admin.addicon_over);
+                pager.AddAdmin.setIcon(Singleton_ruser.addicon_over);
                 pager.pagerInfo.setText("Click to add new Admin user");
                 break;
                 
             case ModAdmin:
-                pager.ModAdmin.setIcon(Singleton_admin.editicon_over);
+                pager.ModAdmin.setIcon(Singleton_ruser.editicon_over);
                 pager.pagerInfo.setText("Click to modify selected Admin user");    
                 break;
                 
             case DelAdmin:
-                pager.DelAdmin.setIcon(Singleton_admin.delicon_over);
+                pager.DelAdmin.setIcon(Singleton_ruser.delicon_over);
                 pager.pagerInfo.setText("Click to delete selected Admin user");
                 break;
                 
             case btnsavejson:
-                pager.btnsavejson.setIcon(Singleton_admin.jsonicon_over);
+                pager.btnsavejson.setIcon(Singleton_ruser.jsonicon_over);
                 pager.pagerInfo.setText("Save to JSON file format");
                 break;
                 
             case btnsavetxt:
-                pager.btnsavetxt.setIcon(Singleton_admin.txticon_over);
+                pager.btnsavetxt.setIcon(Singleton_ruser.txticon_over);
                 pager.pagerInfo.setText("Save to TXT file format");
                 break;
                 
             case btnsavexml:
-                pager.btnsavexml.setIcon(Singleton_admin.xmlicon_over);
+                pager.btnsavexml.setIcon(Singleton_ruser.xmlicon_over);
                 pager.pagerInfo.setText("Save to XML file format");
                 break;
                 
@@ -860,32 +865,32 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         switch (Action.valueOf(e.getComponent().getName())){
                 ////Events from pager admin
             case AddAdmin:
-                pager.AddAdmin.setIcon(Singleton_admin.addicon);
+                pager.AddAdmin.setIcon(Singleton_ruser.addicon);
                 pager.pagerInfo.setText("");
                 break;
                 
             case ModAdmin:
-                pager.ModAdmin.setIcon(Singleton_admin.editicon);
+                pager.ModAdmin.setIcon(Singleton_ruser.editicon);
                 pager.pagerInfo.setText("");    
                 break;
                 
             case DelAdmin:
-                pager.DelAdmin.setIcon(Singleton_admin.delicon);
+                pager.DelAdmin.setIcon(Singleton_ruser.delicon);
                 pager.pagerInfo.setText("");
                 break;
                 
             case btnsavejson:
-                pager.btnsavejson.setIcon(Singleton_admin.jsonicon);
+                pager.btnsavejson.setIcon(Singleton_ruser.jsonicon);
                 pager.pagerInfo.setText("");
                 break;
                 
             case btnsavetxt:
-                pager.btnsavetxt.setIcon(Singleton_admin.txticon);
+                pager.btnsavetxt.setIcon(Singleton_ruser.txticon);
                 pager.pagerInfo.setText("");
                 break;
                 
             case btnsavexml:
-                pager.btnsavexml.setIcon(Singleton_admin.xmlicon);
+                pager.btnsavexml.setIcon(Singleton_ruser.xmlicon);
                 pager.pagerInfo.setText("");
                 break;
                 
@@ -951,6 +956,11 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
+//            case createfieldKarma:
+//                create.areaInfo.setText("Input the karma (in text)");
+//                create.areaInfo.setBackground(Color.decode("#d6d6d6"));
+//                break;
+                
                 ////Events from Modify admin:
                 
             case editfieldName:
@@ -992,6 +1002,11 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 edit.editareaInfo.setText("Input the activity");
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
+                
+//            case editfieldKarma:
+//                edit.editareaInfo.setText("Input the karma (in text)");
+//                edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+//                break;
          }
     }
 
@@ -1034,6 +1049,10 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 create.areaInfo.setText("");
                 break;
                 
+//            case createfieldKarma:
+//                create.areaInfo.setText("");
+//                break;
+                
                 ////Events from Modify admin:
                 
             case editfieldName:
@@ -1067,6 +1086,10 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
             case editfieldActivity:
                 edit.editareaInfo.setText("");
                 break;
+                
+//            case editfieldKarma:
+//                create.areaInfo.setText("");
+//                break;
          }
     }
     
@@ -1074,25 +1097,25 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     public void propertyChange(PropertyChangeEvent evt) {
 //        System.out.println(evt.getPropertyName());
 
-        if(Singleton_admin.window.equals("create")){
+        if(Singleton_ruser.window.equals("create")){
                     
             switch (Property.valueOf(evt.getPropertyName())) {
 
                 case date:
-                    BLL_admin.askAdmindata("birthdate");
-                    BLL_admin.askAdmindata("datecontract");
+                    BLL_ruser.askRuserdata("birthdate");
+                    BLL_ruser.askRuserdata("datecontract");
                     create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                     break;
 
             }//End switch case
         }//End if
-        if(Singleton_admin.window.equals("modify")){
+        if(Singleton_ruser.window.equals("modify")){
                     
             switch (Property.valueOf(evt.getPropertyName())) {
 
                 case date:
-                    BLL_admin.modAdmindata("birthdate");
-                    BLL_admin.modAdmindata("datecontract");
+                    BLL_ruser.modRuserdata("birthdate");
+                    BLL_ruser.modRuserdata("datecontract");
                     edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                     break;
 
@@ -1111,12 +1134,12 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
             
             case createWindow:
                     create.dispose();
-                    new AdminController(new Pager_admin(),2).Init(2);
+                    new RuserController(new Pager_ruser(),2).Init(2);
                 break;
             
             case editWindow:
                      edit.dispose(); 
-                     new AdminController(new Pager_admin(),2).Init(2);
+                     new RuserController(new Pager_ruser(),2).Init(2);
                 break;
                 
             case pagerWindow:

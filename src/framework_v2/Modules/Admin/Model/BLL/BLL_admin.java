@@ -27,6 +27,8 @@ import static framework_v2.Modules.Admin.View.Pager_admin.pagerTable;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -389,7 +391,7 @@ public class BLL_admin {
         /**
         * Used to delete a row from the table on pager admin
         */
-        public static void delete_file() throws IOException {
+        public static void delete_file() {
         String dni;
         
         int pos;
@@ -412,10 +414,14 @@ public class BLL_admin {
                 if (opc == 0) {
                     ((miniSimpleTableModel_admin) pagerTable.getModel()).removeRow(selection1);
                     ad = Singleton_admin.adm.get(pos);
-                    if(ad.getAvatar().equals("src/framework_v2/Modules/Admin/View/img/avatar/default.png")){
+                            if(ad.getAvatar().equals(Singleton_admin.defaultavatar.toString())){
 
-                            }else{
+                            }else{try {
+                                //Deletes the file if exists
                                 Files.delete(Paths.get(ad.getAvatar()));
+                        } catch (IOException ex) {
+                            Logger.getLogger(BLL_admin.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                             }
                     Singleton_admin.adm.remove(ad);
                     autosaveAdmin();
