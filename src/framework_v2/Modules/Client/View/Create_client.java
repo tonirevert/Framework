@@ -303,6 +303,8 @@ public class Create_client extends javax.swing.JFrame {
         labelShopping.setText("Shopping:");
         getContentPane().add(labelShopping);
         labelShopping.setBounds(10, 285, 80, 15);
+
+        fieldShopping.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldShopping);
         fieldShopping.setBounds(90, 285, 150, 25);
 

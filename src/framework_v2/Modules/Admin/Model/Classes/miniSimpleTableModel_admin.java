@@ -1,8 +1,6 @@
 package framework_v2.Modules.Admin.Model.Classes;
 import framework_v2.Classes.Date_class;
-import static framework_v2.Modules.Admin.Controller.AdminController.combo;
-import framework_v2.Modules.Admin.Model.Classes.Admin_class;
-import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
+import static framework_v2.Modules.Admin.Controller.AdminController.comboAdmin;
 import framework_v2.Modules.Admin.Model.Utils.pager.pagina;
 import framework_v2.Modules.Admin.View.Pager_admin;
 import java.util.ArrayList;
@@ -128,7 +126,7 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
         datos.clear();
         int cont=0;
 
-        String nom=(String) ((JComboBox)combo).getSelectedItem();   
+        String nom=(String) ((JComboBox)comboAdmin).getSelectedItem();
         if(nom!=null){
             for(int i=0;i<datosaux.size();i++) {
                 if(datosaux.get(i).getName().toLowerCase().startsWith(nom.toLowerCase())){
@@ -146,7 +144,7 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
         datos.clear();
         int cont=0;
         
-        String name=(String)((JComboBox)combo).getSelectedItem();
+        String name=(String)((JComboBox)comboAdmin).getSelectedItem();
         if(name!=null){
             for(int i=0;i<datosaux.size();i++){
                 if(datosaux.get(i).getName().toLowerCase().startsWith(name.toLowerCase())){

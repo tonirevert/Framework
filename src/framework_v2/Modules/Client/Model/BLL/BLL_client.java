@@ -158,7 +158,8 @@ public class BLL_client {
             case "clienttype":
                 correct = DAO_client.askCientType();
                 break;
-        }
+                
+        }//End switch type
     }//End askAdmindata
     
     /**
@@ -210,15 +211,15 @@ public class BLL_client {
                 break;
                 
             case "datereg":
-                correct = DAO_client.askDatecontractMod();
+                correct = DAO_client.askDateRegistrationMod();
                 break;
                 
             case "shopping":
-                correct = DAO_client.askShopping();
+                correct = DAO_client.askShoppingMod();
                 break;
             
             case "clienttype":
-                correct = DAO_client.askCientType();
+                correct = DAO_client.askCientTypeMod();
                 break;
             
         }
@@ -328,7 +329,7 @@ public class BLL_client {
             correct=false;
         }else{
             Singleton_client.cli.set(position,client);
-            json.autosavejsonclient();
+            autosaveClient();
 //            resetFields();
             correct=true;
             position=-1;

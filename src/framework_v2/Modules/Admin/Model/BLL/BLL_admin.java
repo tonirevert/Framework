@@ -344,7 +344,7 @@ public class BLL_admin {
             correct=false;
         }else{
             Singleton_admin.adm.set(position,admin);
-            json.autosavejsonadmin();
+            autosaveAdmin();
 //            resetFields();
             correct=true;
             position=-1;
@@ -411,7 +411,7 @@ public class BLL_admin {
                     ad = Singleton_admin.adm.get(pos);
 
                     Singleton_admin.adm.remove(ad);
-                    BLL_admin.autosaveAdmin();
+                    autosaveAdmin();
                 }
 
                 if (((miniSimpleTableModel_admin) pagerTable.getModel()).getRowCount() == 0) {

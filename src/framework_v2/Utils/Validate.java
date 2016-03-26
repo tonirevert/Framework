@@ -42,6 +42,7 @@ public class Validate {
 	private static final String validsalary= "([0-9]{1,4}.[0-9]{0,2})$";
 	private static final String validshopping= "([0-9]{1,4}.[0-9]{0,2})$";
 	private static final String validactivity = "[0-9]{0,9}$";
+                private static final String validcltype = "^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ\\s]{3,}$";
 	
 	public static boolean validateDNI(String DNI) {
 		String s = "[0-9]{8}[a-zA-Z]";
@@ -105,6 +106,12 @@ public class Validate {
 		return name.matches(validactivity);
 	}
 	
+                /**Validate client type*/
+                public static boolean valclitype(String name){
+		return name.matches(validcltype);
+	}
+        
+                /**Validate dates*/
 	public static boolean newvaldate(String name){
 		//System.out.println("newvaldate: "+name);
 		boolean ok=false;

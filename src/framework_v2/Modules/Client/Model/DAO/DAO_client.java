@@ -246,12 +246,12 @@ public class DAO_client {
             Create_client.checkClientType.setIcon(no_ok);
             correct=false;
         }else{
-                if(Validate.valactivity(Create_client.fieldClientType.getText())==false){
+                if(Validate.valclitype(Create_client.fieldClientType.getText())==false){
                     Create_client.fieldClientType.setBackground(Color.yellow);
                     Create_client.checkClientType.setIcon(no_ok);
                     correct=false;
                 }
-                else if(Validate.valactivity(Create_client.fieldClientType.getText())==true){
+                else if(Validate.valclitype(Create_client.fieldClientType.getText())==true){
                     Create_client.fieldClientType.setBackground(Color.green);
                     Create_client.checkClientType.setIcon(ok);
                     correct=true;
@@ -335,6 +335,7 @@ public class DAO_client {
     
     public static boolean askDateRegistration(){
         boolean correct=false;
+        int years=18;
         Calendar contract,birthdate;
         String dateform=Config_class.getinstance().getDate_format();
         Create_client.dateRegistration.setDateFormatString(dateform);
@@ -349,7 +350,7 @@ public class DAO_client {
         birthdate=Create_client.dateBirth.getCalendar();
         String b=birthdate.get(Calendar.DATE)+"/"+(birthdate.get(Calendar.MONTH)+1)+"/"+birthdate.get(Calendar.YEAR);
         Date_class birth= new Date_class(b);
-        int comp_contract=cont.compare_birth_contract(birth, 16);
+        int comp_contract=cont.compare_birth_contract(birth, years);
         
         switch (comp_contract) {
             case 2:
@@ -686,6 +687,21 @@ public class DAO_client {
         return correct;
     }
     
+        public static boolean askShoppingMod(){
+        boolean correct=false;
+        
+        if(Validate.valshopping(Modify_client.editfieldShopping.getText())==false){
+            Modify_client.editfieldShopping.setBackground(Color.yellow);
+            Modify_client.checkShopping.setIcon(no_ok);
+            correct=false;
+        }else{
+            Modify_client.editfieldShopping.setBackground(Color.green);
+            Modify_client.checkShopping.setIcon(ok);
+            correct=true;
+        }
+        return correct;
+    }
+    
     public static boolean askConnectedMod(){
         boolean connected=false;
         if (Modify_client.radioStateYes.isSelected()){
@@ -705,12 +721,12 @@ public class DAO_client {
             Modify_client.checkClientType.setIcon(no_ok);
             correct=false;
         }else{
-                if(Validate.valactivity(Modify_client.editfieldClientType.getText())==false){
+                if(Validate.valclitype(Modify_client.editfieldClientType.getText())==false){
                     Modify_client.editfieldClientType.setBackground(Color.yellow);
                     Modify_client.checkClientType.setIcon(no_ok);
                     correct=false;
                 }
-                else if(Validate.valactivity(Modify_client.editfieldClientType.getText())==true){
+                else if(Validate.valclitype(Modify_client.editfieldClientType.getText())==true){
                     Modify_client.editfieldClientType.setBackground(Color.green);
                     Modify_client.checkClientType.setIcon(ok);
                     correct=true;
@@ -789,8 +805,9 @@ public class DAO_client {
         return route;
     }
     
-    public static boolean askDatecontractMod(){
+    public static boolean askDateRegistrationMod(){
         boolean correct=false;
+        int years=18;
         Calendar contract,birthdate;
         String dateform=Config_class.getinstance().getDate_format();
         Modify_client.editdateRegistration.setDateFormatString(dateform);
@@ -805,29 +822,26 @@ public class DAO_client {
         birthdate=Modify_client.editdateBirth.getCalendar();
         String b=birthdate.get(Calendar.DATE)+"/"+(birthdate.get(Calendar.MONTH)+1)+"/"+birthdate.get(Calendar.YEAR);
         Date_class birth= new Date_class(b);
-        int comp_contract=cont.compare_birth_contract(birth, 16);
+        int comp_contract=cont.compare_birth_contract(birth, years);
         
         switch (comp_contract) {
             case 2:
-                Modify_client.editdateRegistration.setIcon(ok);
-//                datetype=1;
+                Modify_client.checkDateRegistration.setIcon(ok);
                 correct=true;
                 break;
             case 1:
-                Modify_client.editdateRegistration.setIcon(ok);
-//                datetype=1;
+                Modify_client.checkDateRegistration.setIcon(ok);
                 correct=true;
                 break;
             case 0:
-                Modify_client.editdateRegistration.setIcon(no_ok);
-//                datetype=0;
+                Modify_client.checkDateRegistration.setIcon(no_ok);
                 correct=false;
                 break;
         }
         }catch(Exception e){
             Modify_client.editdateRegistration.setBackground(Color.yellow);
             Modify_client.editareaInfo.setText("No contract date selected");
-            Modify_client.editdateRegistration.setIcon(no_ok);
+            Modify_client.checkDateRegistration.setIcon(no_ok);
         }
         return correct;
     }
@@ -845,7 +859,7 @@ public class DAO_client {
         String dateform=Config_class.getinstance().getDate_format();
 
         fdbirth=askBirthMod();
-        fdreg=askDateRegistration();
+        fdreg=askDateRegistrationMod();
         fidni=askDniMod();
         finame=askNameMod();
         fisurname=askSurnameMod();
@@ -854,9 +868,9 @@ public class DAO_client {
         fiuser=askUserMod();
         fipassword=askPasswordMod();
         fipassword2=askPassword2Mod();
-        fishopp=askShopping();
+        fishopp=askShoppingMod();
         connected=askConnectedMod();
-        ficlityp=askCientType();
+        ficlityp=askCientTypeMod();
        
          if(fidni==true && finame==true && fisurname== true && fiemail==true &&fimobile==true && fiuser==true && 
             fipassword==true && fipassword2==true && fdbirth==true && fdreg==true && ficlityp==true && fishopp==true){
@@ -918,7 +932,7 @@ public class DAO_client {
         Date_class birth=null;
         Calendar calendarBirth = Calendar.getInstance();
         Date_class reg=null;
-        Calendar calendarCont = Calendar.getInstance();
+        Calendar calendarReg = Calendar.getInstance();
         String file="";
 
         Modify_client.fieldDNI.setText(cli.getDni());
@@ -962,8 +976,8 @@ public class DAO_client {
         Modify_client.editdateBirth.setDate(dateBirth);
 
         
-        calendarCont.set(reg.getYear() , reg.getMonth()-1 , reg.getDay());
-        dateCont.setTime(calendarCont.getTimeInMillis());
+        calendarReg.set(reg.getYear() , reg.getMonth()-1 , reg.getDay());
+        dateCont.setTime(calendarReg.getTimeInMillis());
         Modify_client.editdateRegistration.setDate(dateCont);
         
         

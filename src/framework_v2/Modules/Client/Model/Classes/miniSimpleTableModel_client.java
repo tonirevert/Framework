@@ -1,7 +1,7 @@
 package framework_v2.Modules.Client.Model.Classes;
 
 import framework_v2.Classes.Date_class;
-import static framework_v2.Modules.Admin.Controller.AdminController.combo;
+import static framework_v2.Modules.Client.Controller.ClientController.comboClient;
 import framework_v2.Modules.Client.Model.Utils.pager.pagina;
 import framework_v2.Modules.Client.View.Pager_client;
 import java.util.ArrayList;
@@ -127,7 +127,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
         datos.clear();
         int cont=0;
 
-        String nom=(String) ((JComboBox)combo).getSelectedItem();   
+        String nom=(String) ((JComboBox)comboClient).getSelectedItem();
         if(nom!=null){
             for(int i=0;i<datosaux.size();i++) {
                 if(datosaux.get(i).getName().toLowerCase().startsWith(nom.toLowerCase())){
@@ -136,7 +136,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
                 }
             }
             Pager_client.pagAmount.setText(String.valueOf(cont));
-//            System.out.println("word selected: " + nom);
+            System.out.println("word selected: " + nom);
             pagina.initLinkBox();
         }
     }
@@ -145,7 +145,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
         datos.clear();
         int cont=0;
         
-        String name=(String)((JComboBox)combo).getSelectedItem();
+        String name=(String)((JComboBox)comboClient).getSelectedItem();
         if(name!=null){
             for(int i=0;i<datosaux.size();i++){
                 if(datosaux.get(i).getName().toLowerCase().startsWith(name.toLowerCase())){

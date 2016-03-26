@@ -5,8 +5,6 @@
  */
 package framework_v2.Modules.Client.View;
 
-import framework_v2.Modules.Admin.View.*;
-
 /**
  *
  * @author antonio

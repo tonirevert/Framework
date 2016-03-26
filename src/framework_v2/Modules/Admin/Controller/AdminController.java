@@ -19,6 +19,7 @@ import framework_v2.Modules.Admin.View.Modify_admin;
 import framework_v2.Modules.Admin.View.Pager_admin;
 import static framework_v2.Modules.Admin.View.Pager_admin.jComboBox1;
 import static framework_v2.Modules.Admin.View.Pager_admin.pagerTable;
+import framework_v2.Modules.Client.Model.BLL.BLL_client;
 import framework_v2.Modules.Config.Classes.Config_class;
 import framework_v2.Modules.Menu.Controller.MenuController;
 import framework_v2.Modules.Menu.View.Mainmenu;
@@ -53,7 +54,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     public static Modify_admin edit;
     public static Pager_admin pager;
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new miniSimpleTableModel_admin());
-    public static AutocompleteJComboBox combo = null;
+    public static AutocompleteJComboBox comboAdmin = null;
     public String comb="";
     
     public AdminController(JFrame frame, int i){
@@ -116,7 +117,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         pagerTable,
         comboBoxChanged,
         comboBoxEdited,
-        combo,
+        comboAdmin,
         entriesCombo,
         jComboBox1,
         pagFirst,
@@ -344,9 +345,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 }
                 
                 StringSearchable searchable = new StringSearchable(myWords);
-                combo = new AutocompleteJComboBox(searchable);
+                comboAdmin = new AutocompleteJComboBox(searchable);
                 pager.jPanel3.setLayout(new java.awt.BorderLayout());
-                pager.jPanel3.add(combo);
+                pager.jPanel3.add(comboAdmin);
                                
                 pager.AddAdmin.setToolTipText("Add a new admin user");
                 pager.ModAdmin.setToolTipText("Modify selected admin user");
@@ -363,7 +364,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.pagLinks.setToolTipText("Click on the numbers for navigate the pages");
                 pager.pagReturn.setToolTipText("Click to return to the previous menu");
                 jComboBox1.setToolTipText("Click to change the amount of users per page");
-                this.combo.setToolTipText("Click to user search");
+                this.comboAdmin.setToolTipText("Click to user search");
                 
                 pager.setName("pagerWindow");
                 pager.addWindowListener(this);
@@ -390,9 +391,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.pagerTable.setName("pagerTable");
                 pager.pagerTable.addMouseListener(this);
                 
-                this.combo.setActionCommand("combo");
-                this.combo.setName("combo");
-                this.combo.addActionListener(this);
+                comboAdmin.setActionCommand("comboAdmin");
+                comboAdmin.setName("comboAdmin");
+                comboAdmin.addActionListener(this);
                 
                 jComboBox1.setActionCommand("entriesCombo");
                 jComboBox1.setName("entriesCombo");
@@ -631,11 +632,11 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
 //        System.out.println(e.getActionCommand());
         switch (Action.valueOf(e.getActionCommand())){
            
-            case combo:
+            case comboAdmin:
                     pagina.currentPageIndex = 1;
                     pagina.initLinkBox();
                     ((miniSimpleTableModel_admin)pagerTable.getModel()).filtrar();
-                    combo.requestFocus();
+                    comboAdmin.requestFocus();
                 break;
             
             case entriesCombo:
@@ -700,6 +701,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                     edit.saving.setVisible(true);
                     delay.setRepeats(false);
                     delay.start();
+                    BLL_admin.autosaveAdmin();
                     edit.editareaInfo.setText("User saved correctly");
                     edit.editareaInfo.setBackground(Color.green);
                 }else{

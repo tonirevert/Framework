@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import framework_v2.Classes.Singleton_app;
 import framework_v2.Modules.Admin.Model.BLL.BLL_admin;
+import framework_v2.Modules.Client.Model.BLL.BLL_client;
+import framework_v2.Modules.Client.Model.Classes.Client_class;
+import framework_v2.Modules.Client.Model.Classes.Singleton_client;
+import framework_v2.Modules.Reg_user.Model.Classes.Reg_user_class;
+import framework_v2.Modules.Reg_user.Model.Classes.Singleton_ruser;
 import framework_v2.Utils.theme_class;
 
 
@@ -35,6 +40,7 @@ private static Config_class instance;
 		if (instance == null){
 			instance = new Config_class();
                                                 BLL_admin.autoloadAdmin();
+                                                BLL_client.autoloadClient();
 //			instance = Funct_files_config.loadjsonconfig();
 //			instance = Funct_files_config.loadxmlconfig();
 //			theme_class.selectedtheme(Config_class.getinstance().getTheme());
@@ -58,8 +64,8 @@ private static Config_class instance;
 		this.dummy=false;
 		
 		Singleton_admin.adm = new ArrayList<Admin_class>();
-//		Singleton_client.cli = new ArrayList<Client_class>();
-//		Singleton_ruser.rus = new ArrayList<Reg_user_class>();
+		Singleton_client.cli = new ArrayList<Client_class>();
+		Singleton_ruser.rus = new ArrayList<Reg_user_class>();
 		
 //                BLL_admin.autoloadAdmin();
 		theme_class.selectedtheme("Metal");

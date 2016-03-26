@@ -16,6 +16,9 @@ import static framework_v2.Classes.Singleton_menus.rusericon_over;
 import framework_v2.Modules.Admin.Controller.AdminController;
 import framework_v2.Modules.Admin.Model.BLL.BLL_admin;
 import framework_v2.Modules.Admin.View.Pager_admin;
+import framework_v2.Modules.Client.Controller.ClientController;
+import framework_v2.Modules.Client.Model.BLL.BLL_client;
+import framework_v2.Modules.Client.View.Pager_client;
 import framework_v2.Modules.Config.View.Config;
 import static framework_v2.Modules.Menu.Controller.MenuController.Action.btnAdmin;
 import static framework_v2.Modules.Menu.Controller.MenuController.Action.btnConfig;
@@ -160,7 +163,8 @@ public class MenuController implements ActionListener, MouseListener{
                 break;
                 
                 case btnClient:
-                
+                    main.dispose();
+                    new ClientController(new Pager_client(),2).Init(2);
                 break;
                 
                 case btnReguser:
@@ -173,7 +177,8 @@ public class MenuController implements ActionListener, MouseListener{
                break;
                
                case btnExit:
-                    BLL_admin.autosaveAdmin();        
+                    BLL_admin.autosaveAdmin();
+                    BLL_client.autosaveClient();
                     JOptionPane.showMessageDialog(null,"Leaving application...");
                     main.dispose();
                     System.exit(0);
