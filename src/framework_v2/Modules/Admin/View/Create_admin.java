@@ -278,6 +278,8 @@ public class Create_admin extends javax.swing.JFrame {
         dateBirth.getAccessibleContext().setAccessibleName(getName());
         dateBirth.getAccessibleContext().setAccessibleDescription(getName());
 
+        dateContract.setMaxSelectableDate(new java.util.Date(4102444917000L));
+        dateContract.setMinSelectableDate(new java.util.Date(-2208984199000L));
         getContentPane().add(dateContract);
         dateContract.setBounds(400, 210, 140, 27);
 

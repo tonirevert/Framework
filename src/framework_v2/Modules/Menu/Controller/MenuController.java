@@ -19,6 +19,9 @@ import framework_v2.Modules.Admin.View.Pager_admin;
 import framework_v2.Modules.Client.Controller.ClientController;
 import framework_v2.Modules.Client.Model.BLL.BLL_client;
 import framework_v2.Modules.Client.View.Pager_client;
+import framework_v2.Modules.Config.BLL.BLL_Config;
+import framework_v2.Modules.Config.Classes.Config_class;
+import framework_v2.Modules.Config.Classes.theme_class;
 import framework_v2.Modules.Config.View.Config;
 import static framework_v2.Modules.Menu.Controller.MenuController.Action.btnAdmin;
 import static framework_v2.Modules.Menu.Controller.MenuController.Action.btnConfig;
@@ -35,6 +38,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
@@ -88,6 +92,8 @@ public class MenuController implements ActionListener, MouseListener{
             
             case 0:
                
+                theme_class.selectedtheme(Config_class.getinstance().getTheme());
+                SwingUtilities.updateComponentTreeUI(this.main);
                 main.setVisible(true);
                 
                 main.setLocationRelativeTo(null);
@@ -116,6 +122,8 @@ public class MenuController implements ActionListener, MouseListener{
                 break;
             case 1:
                 
+                theme_class.selectedtheme(Config_class.getinstance().getTheme());
+                SwingUtilities.updateComponentTreeUI(this.conf);
                 
                 conf.setTitle("Configuration");
                 conf.setSize(400, 450);
@@ -188,11 +196,13 @@ public class MenuController implements ActionListener, MouseListener{
                 break;
                 
                 case btnSaveConf:
-                
+                    BLL_Config.save();
+                    conf.dispose();
+                    new MenuController(new Mainmenu(), 0).Init(0);
                 break;
                 
                 case btnResetConf:
-                
+                    BLL_Config.reset();
                 break;
                 
                 case btnCancelConf:

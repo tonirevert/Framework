@@ -238,6 +238,8 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         editdateBirth.setBackground(java.awt.Color.white);
         editdateBirth.setDateFormatString("dd/MM/yyyy");
+        editdateBirth.setMaxSelectableDate(new java.util.Date(4102444866000L));
+        editdateBirth.setMinSelectableDate(new java.util.Date(-2208984250000L));
         getContentPane().add(editdateBirth);
         editdateBirth.setBounds(400, 15, 140, 27);
 

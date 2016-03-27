@@ -1,5 +1,6 @@
 package framework_v2.Utils;
 
+import framework_v2.Modules.Config.Classes.theme_class;
 import framework_v2.Modules.Config.Classes.Config_class;
 import framework_v2.Classes.*;
 

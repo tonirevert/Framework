@@ -128,7 +128,7 @@ public class Pager_admin extends javax.swing.JFrame {
 
         jLabel2.setText("Show entries:");
 
-        jLabel1.setText("Filtra First Name");
+        jLabel1.setText("Search first Name");
 
         pagAmount.setText("jLabel3");
 

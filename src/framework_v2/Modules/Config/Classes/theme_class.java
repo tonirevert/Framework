@@ -1,4 +1,4 @@
-package framework_v2.Utils;
+package framework_v2.Modules.Config.Classes;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;

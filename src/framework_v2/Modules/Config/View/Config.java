@@ -5,6 +5,7 @@
  */
 package framework_v2.Modules.Config.View;
 
+import framework_v2.Modules.Config.DAO.DAO_Config;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -38,19 +39,19 @@ public class Config extends javax.swing.JFrame {
     private void initComponents() {
 
         labelDateform = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboDateform = new javax.swing.JComboBox<>();
         labelCurrency = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboCurrency = new javax.swing.JComboBox<>();
         labelLanguage = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        comboLanguage = new javax.swing.JComboBox<>();
         labelFileform = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        comboFileform = new javax.swing.JComboBox<>();
         btnSaveConf = new javax.swing.JButton();
         btnCancelConf = new javax.swing.JButton();
         labelTheme = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        comboTheme = new javax.swing.JComboBox<>();
         labelDecimals = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        comboDecimals = new javax.swing.JComboBox<>();
         btnResetConf = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,37 +63,37 @@ public class Config extends javax.swing.JFrame {
         getContentPane().add(labelDateform);
         labelDateform.setBounds(60, 36, 110, 15);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dd/MM/yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "yyyy/MM/dd" }));
-        jComboBox1.setToolTipText("Choose the date format");
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(170, 30, 120, 25);
+        comboDateform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dd/MM/yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "yyyy/MM/dd" }));
+        comboDateform.setToolTipText("Choose the date format");
+        getContentPane().add(comboDateform);
+        comboDateform.setBounds(170, 30, 120, 25);
 
         labelCurrency.setText("Currency:");
         getContentPane().add(labelCurrency);
         labelCurrency.setBounds(60, 80, 110, 20);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Euro", "Dollar", "Pound" }));
-        jComboBox2.setToolTipText("Choose the currency type");
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(170, 79, 120, 25);
+        comboCurrency.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Euro", "Dollar", "Pound" }));
+        comboCurrency.setToolTipText("Choose the currency type");
+        getContentPane().add(comboCurrency);
+        comboCurrency.setBounds(170, 79, 120, 25);
 
         labelLanguage.setText("Language:");
         getContentPane().add(labelLanguage);
         labelLanguage.setBounds(60, 130, 110, 15);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "English", "Spanish", "Valencian" }));
-        jComboBox3.setToolTipText("Choose the language");
-        getContentPane().add(jComboBox3);
-        jComboBox3.setBounds(170, 130, 120, 25);
+        comboLanguage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "English", "Spanish", "Valencian" }));
+        comboLanguage.setToolTipText("Choose the language");
+        getContentPane().add(comboLanguage);
+        comboLanguage.setBounds(170, 130, 120, 25);
 
         labelFileform.setText("File format:");
         getContentPane().add(labelFileform);
         labelFileform.setBounds(60, 180, 110, 15);
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JSON", "TXT", "XML" }));
-        jComboBox4.setToolTipText("Choose the file format");
-        getContentPane().add(jComboBox4);
-        jComboBox4.setBounds(170, 180, 120, 25);
+        comboFileform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JSON", "TXT", "XML" }));
+        comboFileform.setToolTipText("Choose the file format");
+        getContentPane().add(comboFileform);
+        comboFileform.setBounds(170, 180, 120, 25);
 
         btnSaveConf.setText("Save");
         btnSaveConf.setToolTipText("Save configuration");
@@ -108,19 +109,19 @@ public class Config extends javax.swing.JFrame {
         getContentPane().add(labelTheme);
         labelTheme.setBounds(60, 230, 110, 15);
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nimbus", "Metal" }));
-        jComboBox5.setToolTipText("Choose the theme");
-        getContentPane().add(jComboBox5);
-        jComboBox5.setBounds(170, 230, 120, 25);
+        comboTheme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metal", "Windows", "Motif", "Nimbus", " " }));
+        comboTheme.setToolTipText("Choose the theme");
+        getContentPane().add(comboTheme);
+        comboTheme.setBounds(170, 230, 120, 25);
 
         labelDecimals.setText("Decimals:");
         getContentPane().add(labelDecimals);
         labelDecimals.setBounds(60, 280, 110, 15);
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 decimal", "2 decimals", "3 decimals" }));
-        jComboBox6.setToolTipText("Choose the decimal format");
-        getContentPane().add(jComboBox6);
-        jComboBox6.setBounds(170, 280, 120, 25);
+        comboDecimals.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 decimal", "2 decimals", "3 decimals" }));
+        comboDecimals.setToolTipText("Choose the decimal format");
+        getContentPane().add(comboDecimals);
+        comboDecimals.setBounds(170, 280, 120, 25);
 
         btnResetConf.setText("Reset");
         btnResetConf.setToolTipText("Reset to defaults");
@@ -134,17 +135,17 @@ public class Config extends javax.swing.JFrame {
     public static javax.swing.JButton btnCancelConf;
     public static javax.swing.JButton btnResetConf;
     public static javax.swing.JButton btnSaveConf;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    public javax.swing.JLabel labelCurrency;
-    public javax.swing.JLabel labelDateform;
-    public javax.swing.JLabel labelDecimals;
-    public javax.swing.JLabel labelFileform;
-    public javax.swing.JLabel labelLanguage;
-    public javax.swing.JLabel labelTheme;
+    public static javax.swing.JComboBox<String> comboCurrency;
+    public static javax.swing.JComboBox<String> comboDateform;
+    public static javax.swing.JComboBox<String> comboDecimals;
+    public static javax.swing.JComboBox<String> comboFileform;
+    public static javax.swing.JComboBox<String> comboLanguage;
+    public static javax.swing.JComboBox<String> comboTheme;
+    public static javax.swing.JLabel labelCurrency;
+    public static javax.swing.JLabel labelDateform;
+    public static javax.swing.JLabel labelDecimals;
+    public static javax.swing.JLabel labelFileform;
+    public static javax.swing.JLabel labelLanguage;
+    public static javax.swing.JLabel labelTheme;
     // End of variables declaration//GEN-END:variables
 }

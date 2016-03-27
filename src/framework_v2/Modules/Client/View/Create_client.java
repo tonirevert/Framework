@@ -267,6 +267,8 @@ public class Create_client extends javax.swing.JFrame {
         dateBirth.getAccessibleContext().setAccessibleName(getName());
         dateBirth.getAccessibleContext().setAccessibleDescription(getName());
 
+        dateRegistration.setMaxSelectableDate(new java.util.Date(4102444875000L));
+        dateRegistration.setMinSelectableDate(new java.util.Date(-2208984241000L));
         getContentPane().add(dateRegistration);
         dateRegistration.setBounds(400, 210, 140, 27);
 

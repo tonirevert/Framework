@@ -245,8 +245,13 @@ public class Modify_admin extends javax.swing.JFrame {
 
         editdateBirth.setBackground(java.awt.Color.white);
         editdateBirth.setDateFormatString("dd/MM/yyyy");
+        editdateBirth.setMaxSelectableDate(new java.util.Date(4102444881000L));
+        editdateBirth.setMinSelectableDate(new java.util.Date(-2208984235000L));
         getContentPane().add(editdateBirth);
         editdateBirth.setBounds(400, 15, 140, 27);
+
+        editdateContract.setMaxSelectableDate(new java.util.Date(4102444883000L));
+        editdateContract.setMinSelectableDate(new java.util.Date(-2208984233000L));
         getContentPane().add(editdateContract);
         editdateContract.setBounds(400, 210, 140, 27);
 

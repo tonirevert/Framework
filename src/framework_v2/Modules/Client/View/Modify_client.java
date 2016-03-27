@@ -262,6 +262,8 @@ public class Modify_client extends javax.swing.JFrame {
         editdateBirth.getAccessibleContext().setAccessibleName(getName());
         editdateBirth.getAccessibleContext().setAccessibleDescription(getName());
 
+        editdateRegistration.setMaxSelectableDate(new java.util.Date(4102444865000L));
+        editdateRegistration.setMinSelectableDate(new java.util.Date(-2208984251000L));
         getContentPane().add(editdateRegistration);
         editdateRegistration.setBounds(400, 210, 140, 27);
 

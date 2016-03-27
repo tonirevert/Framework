@@ -280,7 +280,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Filtra First Name"/>
+            <Property name="text" type="java.lang.String" value="Search first Name"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="pagAmount">

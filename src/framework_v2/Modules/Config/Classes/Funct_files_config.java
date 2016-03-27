@@ -1,4 +1,4 @@
-package framework_v2.Utils;
+package framework_v2.Modules.Config.Classes;
 
 import framework_v2.Modules.Config.Classes.Config_class;
 import java.io.ByteArrayOutputStream;
@@ -23,7 +23,10 @@ import framework_v2.Classes.*;
 @SuppressWarnings("deprecation")
 public class Funct_files_config {
 	private static final String ENCODING = "UTF-8";
-
+                
+                /**
+	 * Used to auto load configuration data from JSON file format
+	 */
 	public static Config_class loadjsonconfig(){
 			String PATH=null;
 			Config_class c=new Config_class();
@@ -32,7 +35,7 @@ public class Funct_files_config {
 				XStream xstream = new XStream(new JettisonMappedXmlDriver());
 				xstream.setMode(XStream.NO_REFERENCES);
 				xstream.alias("Config_class", Config_class.class);
-				PATH = new java.io.File(".").getCanonicalPath()+"/src/Framework/config.json";
+				PATH = new java.io.File(".").getCanonicalPath()+"/src/framework_v2/Modules/Config/Files/config.json";
 				
 				File path= new File(PATH);
 				if(path.exists()){
@@ -50,7 +53,7 @@ public class Funct_files_config {
 				JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("ffc_prloadjson"), "Error", JOptionPane.ERROR_MESSAGE);
 			}	
 			return c;
-	}//End load config JSON
+	}//End load config JSON Configuration
 	
 	/**
 	 * Used to auto save configuration data to JSON file format
@@ -59,7 +62,7 @@ public class Funct_files_config {
 		String PATH="";
 
 		try {
-			PATH = new java.io.File(".").getCanonicalPath()+"/src/Framework/config.json";
+			PATH = new java.io.File(".").getCanonicalPath()+"/src/framework_v2/Modules/Config/Files/config.json";
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -85,9 +88,12 @@ public class Funct_files_config {
 			File path = new File(PATH);
 			path.delete();
 		}
-	}//End auto save JSON configuration
+	}//End auto save JSON Configuration
 	
-	public static Config_class loadxmlconfig(){
+                /**
+	 * Used to auto load configuration data from XML file format
+	 */
+                public static Config_class loadxmlconfig(){
 		String PATH="";
 		Config_class c=new Config_class();
 		
@@ -95,7 +101,7 @@ public class Funct_files_config {
 			XStream xstream = new XStream();
 			Annotations.configureAliases(xstream, Config_class.class);
 			
-			PATH = new java.io.File(".").getCanonicalPath()+"/src/Framework/config.xml";
+			PATH = new java.io.File(".").getCanonicalPath()+"/src/framework_v2/Modules/Config/Files/config.xml";
 			
 			File path = new File(PATH);
 			
@@ -106,14 +112,16 @@ public class Funct_files_config {
 			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopexml"), "Error!", JOptionPane.INFORMATION_MESSAGE);
 		}
 		return c;
-	}//End auto load XML admin
+	}//End auto load XML Configuration
 	
-	
+	/**
+	 * Used to auto save configuration data to XML file format
+	 */
 	public static void autosavexmlconfig(){
 		String PATH="";
 		
 		try {
-			PATH=new java.io.File(".").getCanonicalPath()+"/src/Framework/config.xml";
+			PATH=new java.io.File(".").getCanonicalPath()+"/src/framework_v2/Modules/Config/Files/config.xml";
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
