@@ -5,6 +5,7 @@
  */
 package framework_v2.Modules.Config.BLL;
 
+import framework_v2.Modules.Config.Utils.Files_lib.Funct_files_config;
 import framework_v2.Modules.Config.DAO.DAO_Config;
 
 /**
@@ -19,5 +20,10 @@ public class BLL_Config {
     
     public static void save(){
         DAO_Config.saveConfig();
+        Funct_files_config.autosavejsonconfig();
+    }
+    
+    public static void load(){
+        DAO_Config.loadConfig();
     }
 }

@@ -1,6 +1,5 @@
-package framework_v2.Modules.Config.Classes;
+package framework_v2.Modules.Config.Utils.Files_lib;
 
-import framework_v2.Modules.Config.Classes.Config_class;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileReader;
@@ -15,6 +14,7 @@ import com.thoughtworks.xstream.*;
 import com.thoughtworks.xstream.annotations.Annotations;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 import framework_v2.Classes.*;
+import framework_v2.Modules.Config.Classes.Config_class;
 
 
 
@@ -35,7 +35,7 @@ public class Funct_files_config {
 				XStream xstream = new XStream(new JettisonMappedXmlDriver());
 				xstream.setMode(XStream.NO_REFERENCES);
 				xstream.alias("Config_class", Config_class.class);
-				PATH = new java.io.File(".").getCanonicalPath()+"/src/framework_v2/Modules/Config/Files/config.json";
+				PATH = new java.io.File(".").getCanonicalPath()+"/src/framework_v2/Modules/Config/Utils/Files/config.json";
 				
 				File path= new File(PATH);
 				if(path.exists()){
@@ -62,7 +62,7 @@ public class Funct_files_config {
 		String PATH="";
 
 		try {
-			PATH = new java.io.File(".").getCanonicalPath()+"/src/framework_v2/Modules/Config/Files/config.json";
+			PATH = new java.io.File(".").getCanonicalPath()+"/src/framework_v2/Modules/Config/Utils/Files/config.json";
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -101,7 +101,7 @@ public class Funct_files_config {
 			XStream xstream = new XStream();
 			Annotations.configureAliases(xstream, Config_class.class);
 			
-			PATH = new java.io.File(".").getCanonicalPath()+"/src/framework_v2/Modules/Config/Files/config.xml";
+			PATH = new java.io.File(".").getCanonicalPath()+"/src/framework_v2/Modules/Config/Utils/Files/config.xml";
 			
 			File path = new File(PATH);
 			
@@ -121,7 +121,7 @@ public class Funct_files_config {
 		String PATH="";
 		
 		try {
-			PATH=new java.io.File(".").getCanonicalPath()+"/src/framework_v2/Modules/Config/Files/config.xml";
+			PATH=new java.io.File(".").getCanonicalPath()+"/src/framework_v2/Modules/Config/Utils/Files/config.xml";
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

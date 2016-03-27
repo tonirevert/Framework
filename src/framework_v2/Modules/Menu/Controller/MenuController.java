@@ -33,8 +33,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -45,7 +45,7 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
  *
  * @author antonio
  */
-public class MenuController implements ActionListener, MouseListener{
+public class MenuController implements ActionListener, MouseListener, WindowListener{
 
     public static Mainmenu main;// = new Mainmenu();
     public static Config conf;//= new Config();
@@ -63,6 +63,7 @@ public class MenuController implements ActionListener, MouseListener{
         }
                 
     }
+
     
     /**
      * 
@@ -70,6 +71,7 @@ public class MenuController implements ActionListener, MouseListener{
     public enum Action{
         
         //Main menu buttons
+        mainMenu,
         btnAdmin,
         btnClient,
         btnReguser,
@@ -77,6 +79,7 @@ public class MenuController implements ActionListener, MouseListener{
         btnExit,
         
         //Configuration buttons
+        configMenu,
         btnSaveConf,
         btnResetConf,
         btnCancelConf
@@ -93,12 +96,15 @@ public class MenuController implements ActionListener, MouseListener{
             case 0:
                
                 theme_class.selectedtheme(Config_class.getinstance().getTheme());
-                SwingUtilities.updateComponentTreeUI(this.main);
-                main.setVisible(true);
+                SwingUtilities.updateComponentTreeUI(main);
                 
+                main.setName("mainMenu");
+                main.addWindowListener(this);
+                main.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 main.setLocationRelativeTo(null);
                 main.setTitle("Main Menu");
                 main.setSize(700,460);
+                main.setVisible(true);
                                
                 main.btnAdmin.setName("btnAdmin");
                 main.btnAdmin.addMouseListener(this);
@@ -111,32 +117,20 @@ public class MenuController implements ActionListener, MouseListener{
                 main.btnExit.setName("btnExit");
                 main.btnExit.addMouseListener(this);
                 
-                main.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-                main.addWindowListener(new WindowAdapter(){
-                    public void windowClosing(WindowEvent e){
-                        JOptionPane.showMessageDialog(null, "Leaving the aplication...","Leaving",JOptionPane.INFORMATION_MESSAGE);
-                        System.exit(0);
-                    }
-                });
-                
                 break;
             case 1:
                 
                 theme_class.selectedtheme(Config_class.getinstance().getTheme());
                 SwingUtilities.updateComponentTreeUI(this.conf);
                 
+                conf.setName("configMenu");
+                conf.addWindowListener(this);
+                conf.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 conf.setTitle("Configuration");
                 conf.setSize(400, 450);
                 conf.setLocationRelativeTo(null);
                 conf.setVisible(true);
-                
-                conf.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-                conf.addWindowListener(new WindowAdapter(){
-                    public void windowClosing(WindowEvent e){
-                        conf.dispose();
-                        new MenuController(new Mainmenu(), 0).Init(0);
-                    }
-                });
+                BLL_Config.load();
                 
                 conf.btnSaveConf.setName("btnSaveConf");
                 conf.btnSaveConf.addMouseListener(this);
@@ -144,8 +138,6 @@ public class MenuController implements ActionListener, MouseListener{
                 conf.btnResetConf.addMouseListener(this);
                 conf.btnCancelConf.setName("btnCancelConf");
                 conf.btnCancelConf.addMouseListener(this);
-                
-                
                 
                 break;
                 
@@ -270,6 +262,52 @@ public class MenuController implements ActionListener, MouseListener{
                 main.btnConfig.setIcon(configicon);
             break;
     }
+    }
+    
+        @Override
+    public void windowOpened(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        switch(MenuController.Action.valueOf(e.getComponent().getName())){
+            
+            case mainMenu:
+                JOptionPane.showMessageDialog(null, "Leaving the aplication...","Leaving",JOptionPane.INFORMATION_MESSAGE);
+                System.exit(0);
+                break;
+                
+            case configMenu:
+                conf.dispose();
+                new MenuController(new Mainmenu(),0).Init(0);
+                break;
+        }
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

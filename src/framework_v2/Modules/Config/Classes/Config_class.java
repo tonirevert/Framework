@@ -1,4 +1,5 @@
 package framework_v2.Modules.Config.Classes;
+import framework_v2.Modules.Config.Utils.Files_lib.Funct_files_config;
 import framework_v2.Modules.Admin.Model.Classes.Singleton_admin;
 import framework_v2.Modules.Admin.Model.Classes.Admin_class;
 import java.io.Serializable;
@@ -36,17 +37,22 @@ public class Config_class implements Serializable{
 
 private static Config_class instance;
 	
+                
+
 	public static Config_class getinstance(){
+                                
+                                
 		if (instance == null){
 			instance = new Config_class();
+                                                instance = Funct_files_config.loadjsonconfig();                        
                                                 BLL_admin.autoloadAdmin();
                                                 BLL_client.autoloadClient();
                                                 BLL_ruser.autoloadRuser();
-//			instance = Funct_files_config.loadjsonconfig();
 //			instance = Funct_files_config.loadxmlconfig();
 			theme_class.selectedtheme(Config_class.getinstance().getTheme());
 //			Singleton_app.lang = new Language(Config_class.getinstance().getLanguage());
 		}	
+                                
 			return instance;
 			
 	}
