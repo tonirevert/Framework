@@ -103,6 +103,7 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                 main.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 main.setLocationRelativeTo(null);
                 main.setTitle("Main Menu");
+                main.setResizable(false);
                 main.setSize(700,460);
                 main.setVisible(true);
                                
@@ -127,6 +128,7 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                 conf.addWindowListener(this);
                 conf.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 conf.setTitle("Configuration");
+                conf.setResizable(false);
                 conf.setSize(400, 450);
                 conf.setLocationRelativeTo(null);
                 conf.setVisible(true);
