@@ -10,6 +10,7 @@ import Modules.Admin.Model.BLL.BLL_admin;
 import Modules.Client.Model.BLL.BLL_client;
 import Modules.Client.Model.Classes.Client_class;
 import Modules.Client.Model.Classes.Singleton_client;
+import Modules.Config.Classes.Language.Language;
 import Modules.Reg_user.Model.BLL.BLL_ruser;
 import Modules.Reg_user.Model.Classes.Reg_user_class;
 import Modules.Reg_user.Model.Classes.Singleton_ruser;
@@ -50,7 +51,7 @@ private static Config_class instance;
                                                 BLL_ruser.autoloadRuser();
 //			instance = Funct_files_config.loadxmlconfig();
 			theme_class.selectedtheme(Config_class.getinstance().getTheme());
-//			Singleton_app.lang = new Language(Config_class.getinstance().getLanguage());
+			Singleton_app.lang = new Language(Config_class.getinstance().getLanguage());
 		}	
                                 
 			return instance;

@@ -167,7 +167,8 @@ public class Client_class extends User_class implements Serializable{
 				 out.append(Singleton_app.lang.getProperty("c_antique")+this.getAntique()+"\n");
 				 break;
 			 case 15:
-				 out.append(Singleton_app.lang.getProperty("c_shopping")+Currency.autocurrency(this.getShopping())+"\n");
+//				 out.append(Singleton_app.lang.getProperty("c_shopping")+Currency.autocurrency(this.getShopping())+"\n");
+                                                                out.append(Currency.autocurrency(this.getShopping()));
 				 break;
 			 case 16:
 				 out.append(Singleton_app.lang.getProperty("c_premium")+this.isPremium()+"\n");

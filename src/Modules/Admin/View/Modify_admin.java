@@ -5,12 +5,6 @@
  */
 package Modules.Admin.View;
 
-
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
-
 /**
  *
  * @author Antonio Revert
@@ -21,11 +15,7 @@ public class Modify_admin extends javax.swing.JFrame {
      * Creates new form Create_admin
      */
     public Modify_admin() {
-        ImageIcon icon = new ImageIcon("src/Modules/Admin/View/img/wood_3.jpg");
-        Image img=icon.getImage();
-        Image newimg = img.getScaledInstance(600, 500, java.awt.Image.SCALE_SMOOTH);
-        setContentPane(new JLabel(new ImageIcon (newimg)));
-//        
+     
         initComponents();
     }
 
@@ -83,6 +73,7 @@ public class Modify_admin extends javax.swing.JFrame {
         editareaInfo = new javax.swing.JTextArea();
         btnsaveEditadmin = new javax.swing.JButton();
         btncancelEditadmin = new javax.swing.JButton();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -91,167 +82,167 @@ public class Modify_admin extends javax.swing.JFrame {
 
         fieldDNI.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldDNI);
-        fieldDNI.setBounds(90, 10, 148, 25);
+        fieldDNI.setBounds(130, 10, 148, 25);
 
         labelDNI.setText("ID Card:");
         getContentPane().add(labelDNI);
-        labelDNI.setBounds(10, 15, 70, 15);
+        labelDNI.setBounds(25, 15, 105, 15);
 
         checkDNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDNI);
-        checkDNI.setBounds(250, 10, 23, 23);
+        checkDNI.setBounds(280, 10, 23, 23);
 
         editfieldName.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldName);
-        editfieldName.setBounds(90, 50, 148, 25);
+        editfieldName.setBounds(130, 50, 148, 25);
 
         labelName.setText("Name:");
         getContentPane().add(labelName);
-        labelName.setBounds(10, 50, 80, 15);
+        labelName.setBounds(25, 50, 105, 15);
 
         checkName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkName);
-        checkName.setBounds(250, 50, 23, 23);
+        checkName.setBounds(280, 50, 23, 23);
 
         editfieldSurname.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldSurname);
-        editfieldSurname.setBounds(90, 90, 150, 25);
+        editfieldSurname.setBounds(130, 90, 150, 25);
         editfieldSurname.getAccessibleContext().setAccessibleName("editfieldSurname");
 
         labelSurname.setText("Surname:");
         getContentPane().add(labelSurname);
-        labelSurname.setBounds(10, 90, 80, 15);
+        labelSurname.setBounds(25, 90, 105, 15);
 
         checkSurname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkSurname);
-        checkSurname.setBounds(250, 90, 23, 23);
+        checkSurname.setBounds(280, 90, 23, 23);
 
         editfieldEmail.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldEmail);
-        editfieldEmail.setBounds(90, 130, 150, 25);
+        editfieldEmail.setBounds(130, 130, 150, 25);
 
         labelEmail.setText("e-mail:");
         getContentPane().add(labelEmail);
-        labelEmail.setBounds(10, 130, 80, 15);
+        labelEmail.setBounds(25, 130, 105, 15);
 
         checkEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkEmail);
-        checkEmail.setBounds(250, 130, 23, 23);
+        checkEmail.setBounds(280, 130, 23, 23);
 
         editfieldMobile.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldMobile);
-        editfieldMobile.setBounds(90, 170, 150, 25);
+        editfieldMobile.setBounds(130, 170, 150, 25);
 
         labelMobile.setText("Mobile:");
         getContentPane().add(labelMobile);
-        labelMobile.setBounds(10, 170, 80, 15);
+        labelMobile.setBounds(25, 170, 105, 15);
 
         checkMobile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkMobile);
-        checkMobile.setBounds(250, 170, 23, 23);
+        checkMobile.setBounds(280, 170, 23, 23);
 
         editfieldUser.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldUser);
-        editfieldUser.setBounds(90, 210, 150, 25);
+        editfieldUser.setBounds(130, 210, 150, 25);
 
         labelUser.setText("User:");
         getContentPane().add(labelUser);
-        labelUser.setBounds(10, 210, 80, 15);
+        labelUser.setBounds(25, 210, 105, 15);
 
         checkUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkUser);
-        checkUser.setBounds(250, 210, 23, 23);
+        checkUser.setBounds(280, 210, 23, 23);
 
         editfieldPassword.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldPassword);
-        editfieldPassword.setBounds(90, 250, 150, 25);
+        editfieldPassword.setBounds(130, 250, 150, 25);
 
         labelPassword.setText("Password:");
         getContentPane().add(labelPassword);
-        labelPassword.setBounds(10, 250, 80, 15);
+        labelPassword.setBounds(25, 250, 105, 15);
 
         checkPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword);
-        checkPassword.setBounds(250, 250, 23, 23);
+        checkPassword.setBounds(280, 250, 23, 23);
 
         editfieldPassword2.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldPassword2);
-        editfieldPassword2.setBounds(90, 290, 150, 25);
+        editfieldPassword2.setBounds(130, 290, 150, 25);
 
         labelPassword2.setText("Verify:");
         getContentPane().add(labelPassword2);
-        labelPassword2.setBounds(10, 290, 80, 15);
+        labelPassword2.setBounds(25, 290, 105, 15);
 
         checkPassword2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword2);
-        checkPassword2.setBounds(250, 290, 23, 23);
+        checkPassword2.setBounds(280, 290, 23, 23);
 
         editdateBirth.setBackground(java.awt.Color.white);
         editdateBirth.setDateFormatString("dd/MM/yyyy");
         editdateBirth.setMaxSelectableDate(new java.util.Date(4102444881000L));
         editdateBirth.setMinSelectableDate(new java.util.Date(-2208984235000L));
         getContentPane().add(editdateBirth);
-        editdateBirth.setBounds(400, 15, 140, 27);
+        editdateBirth.setBounds(430, 15, 140, 27);
 
         labeldateBirth.setText("Birth date:");
         getContentPane().add(labeldateBirth);
-        labeldateBirth.setBounds(290, 15, 90, 15);
+        labeldateBirth.setBounds(310, 15, 90, 15);
 
         checkDatebirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatebirth);
-        checkDatebirth.setBounds(550, 15, 23, 23);
+        checkDatebirth.setBounds(580, 15, 23, 23);
 
         btnSearch.setText("Search");
         getContentPane().add(btnSearch);
-        btnSearch.setBounds(350, 90, 90, 29);
+        btnSearch.setBounds(380, 90, 90, 29);
 
         avatar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(avatar);
-        avatar.setBounds(460, 60, 100, 100);
+        avatar.setBounds(490, 60, 100, 100);
 
         labelAvatar.setText("Avatar:");
         getContentPane().add(labelAvatar);
-        labelAvatar.setBounds(290, 90, 90, 15);
+        labelAvatar.setBounds(310, 90, 90, 15);
 
         labelState.setText("State: Connected?");
         getContentPane().add(labelState);
-        labelState.setBounds(290, 170, 140, 15);
+        labelState.setBounds(310, 170, 140, 15);
 
         buttonGroupState.add(radioStateYes);
         radioStateYes.setText("Yes");
         getContentPane().add(radioStateYes);
-        radioStateYes.setBounds(440, 170, 60, 22);
+        radioStateYes.setBounds(470, 170, 60, 22);
 
         buttonGroupState.add(radioStateNo);
         radioStateNo.setSelected(true);
         radioStateNo.setText("No");
         getContentPane().add(radioStateNo);
-        radioStateNo.setBounds(500, 170, 60, 22);
+        radioStateNo.setBounds(530, 170, 60, 22);
 
         editdateContract.setMaxSelectableDate(new java.util.Date(4102444883000L));
         editdateContract.setMinSelectableDate(new java.util.Date(-2208984233000L));
         getContentPane().add(editdateContract);
-        editdateContract.setBounds(400, 210, 140, 27);
+        editdateContract.setBounds(430, 210, 140, 27);
 
         labeldateContract.setText("Contract date:");
         getContentPane().add(labeldateContract);
-        labeldateContract.setBounds(290, 210, 110, 15);
+        labeldateContract.setBounds(310, 210, 110, 15);
 
         checkDatecontract.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatecontract);
-        checkDatecontract.setBounds(550, 210, 23, 23);
+        checkDatecontract.setBounds(580, 210, 23, 23);
 
         editfieldActivity.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldActivity);
-        editfieldActivity.setBounds(400, 250, 114, 25);
+        editfieldActivity.setBounds(430, 250, 114, 25);
 
         labelActivity.setText("Activity:");
         getContentPane().add(labelActivity);
-        labelActivity.setBounds(290, 250, 90, 15);
+        labelActivity.setBounds(310, 250, 90, 15);
 
         checkActivity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkActivity);
-        checkActivity.setBounds(550, 250, 23, 23);
+        checkActivity.setBounds(580, 250, 23, 23);
 
         saving.setBorder(null);
         saving.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/Preloader_3.gif"))); // NOI18N
@@ -261,21 +252,25 @@ public class Modify_admin extends javax.swing.JFrame {
         saving.setRequestFocusEnabled(false);
         saving.setVerifyInputWhenFocusTarget(false);
         getContentPane().add(saving);
-        saving.setBounds(238, 148, 130, 130);
+        saving.setBounds(260, 148, 130, 130);
 
         editareaInfo.setColumns(2);
         editareaInfo.setRows(1);
         editareaInfo.setBorder(javax.swing.BorderFactory.createTitledBorder("Info:"));
         getContentPane().add(editareaInfo);
-        editareaInfo.setBounds(40, 330, 490, 50);
+        editareaInfo.setBounds(65, 330, 490, 50);
 
         btnsaveEditadmin.setText("Save");
         getContentPane().add(btnsaveEditadmin);
-        btnsaveEditadmin.setBounds(140, 400, 80, 29);
+        btnsaveEditadmin.setBounds(160, 400, 80, 29);
 
         btncancelEditadmin.setText("Cancel");
         getContentPane().add(btncancelEditadmin);
-        btncancelEditadmin.setBounds(360, 400, 90, 29);
+        btncancelEditadmin.setBounds(380, 400, 90, 29);
+
+        back.setText("back");
+        getContentPane().add(back);
+        back.setBounds(0, 0, 30, 15);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -284,6 +279,7 @@ public class Modify_admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel avatar;
+    public static javax.swing.JLabel back;
     public static javax.swing.JButton btnSearch;
     public static javax.swing.JButton btncancelEditadmin;
     public static javax.swing.JButton btnsaveEditadmin;

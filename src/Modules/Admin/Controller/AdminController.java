@@ -5,6 +5,7 @@
  */
 package Modules.Admin.Controller;
 
+import Classes.Singleton_app;
 import Modules.Admin.Controller.AdminController.Action;
 import Modules.Admin.Model.BLL.BLL_admin;
 import Modules.Admin.Model.Classes.Singleton_admin;
@@ -15,6 +16,7 @@ import Modules.Admin.Model.Utils.pager.AutocompleteJComboBox;
 import Modules.Admin.Model.Utils.pager.StringSearchable;
 import Modules.Admin.Model.Utils.pager.pagina;
 import Modules.Admin.View.Create_admin;
+import Modules.Admin.View.List_admin;
 import Modules.Admin.View.Modify_admin;
 import Modules.Admin.View.Pager_admin;
 import static Modules.Admin.View.Pager_admin.jComboBox1;
@@ -23,6 +25,7 @@ import Modules.Config.Classes.Config_class;
 import Modules.Menu.Controller.MenuController;
 import Modules.Menu.View.Mainmenu;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -37,6 +40,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -49,9 +53,14 @@ import javax.swing.table.TableRowSorter;
  */
 public class AdminController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
 
+        ImageIcon icon = new ImageIcon("src/Modules/Admin/View/img/wood_3.jpg");
+        Image img=icon.getImage();
+        Image newimg = img.getScaledInstance(650, 500, java.awt.Image.SCALE_SMOOTH);
+        
     public static Create_admin create;
     public static Modify_admin edit;
     public static Pager_admin pager;
+    public static List_admin list;
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new miniSimpleTableModel_admin());
     public static AutocompleteJComboBox comboAdmin = null;
     public String comb="";
@@ -69,6 +78,11 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
             case 2:
                 pager=(Pager_admin)frame;
                 break;
+                
+            case 3:
+                list=(List_admin)frame;
+                break;
+                
         }
                 
     }
@@ -110,6 +124,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         AddAdmin,
         ModAdmin,
         DelAdmin,
+        ListAdmin,
         btnsavejson,
         btnsavetxt,
         btnsavexml,
@@ -146,11 +161,15 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         switch(i){
             
             case 0://Create admin
+                int cx=650;
+                int cy=500;
+                create.back.setSize(cx,cy);
+                create.back.setIcon(new ImageIcon (newimg));
                 Singleton_admin.window="create";
                 create.setTitle("Create Admin");////////////////////////////////////////////////////////////////////////
                 create.saving.setVisible(false);
                 create.setResizable(false);
-                create.setSize(600,500);
+                create.setSize(cx,cy);
                 create.dateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
                 create.dateContract.setDateFormatString(Config_class.getinstance().getDate_format());
                 create.dateContract.getDateEditor().setEnabled(false);
@@ -167,18 +186,21 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 create.addWindowListener(this);
                 create.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 
+                create.labelDNI.setText(Singleton_app.lang.getProperty("u_idcard"));
                 create.fieldDNI.setActionCommand("createfieldDNI");
                 create.fieldDNI.setName("createfieldDNI");
                 create.fieldDNI.addFocusListener(this);
                 create.fieldDNI.addActionListener(this);
                 create.fieldDNI.addKeyListener(this);
                 
+                create.labelName.setText(Singleton_app.lang.getProperty("u_name"));
                 create.fieldName.setActionCommand("createfieldName");
                 create.fieldName.setName("createfieldName");
                 create.fieldName.addFocusListener(this);
                 create.fieldName.addActionListener(this);
                 create.fieldName.addKeyListener(this);
                 
+                create.labelSurname.setText(Singleton_app.lang.getProperty("u_surname"));
                 create.fieldSurname.setActionCommand("createfieldSurname");
                 create.fieldSurname.setName("createfieldSurname");
                 create.fieldSurname.addFocusListener(this);
@@ -191,18 +213,21 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 create.fieldEmail.addActionListener(this);
                 create.fieldEmail.addKeyListener(this);
                 
+                create.labelMobile.setText(Singleton_app.lang.getProperty("u_mobile"));
                 create.fieldMobile.setActionCommand("createfieldMobile");
                 create.fieldMobile.setName("createfieldMobile");
                 create.fieldMobile.addFocusListener(this);
                 create.fieldMobile.addActionListener(this);
                 create.fieldMobile.addKeyListener(this);
                 
+                create.labelUser.setText(Singleton_app.lang.getProperty("u_user"));
                 create.fieldUser.setActionCommand("createfieldUser");
                 create.fieldUser.setName("createfieldUser");
                 create.fieldUser.addFocusListener(this);
                 create.fieldUser.addActionListener(this);
                 create.fieldUser.addKeyListener(this);
                 
+                create.labelPassword.setText(Singleton_app.lang.getProperty("u_password"));
                 create.fieldPassword.setActionCommand("createfieldPassword");
                 create.fieldPassword.setName("createfieldPassword");
                 create.fieldPassword.addFocusListener(this);
@@ -215,6 +240,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 create.fieldPassword2.addActionListener(this);
                 create.fieldPassword2.addKeyListener(this);
                 
+                create.labeldateBirth.setText(Singleton_app.lang.getProperty("u_birthday"));
                 create.dateBirth.addPropertyChangeListener(this);
                 
                 create.btnSearch.setName("createbtnSearch");
@@ -240,13 +266,17 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 break;//End case 0
                 
             case 1://Modify admin
+                int ex=650;
+                int ey=500;
+                edit.back.setSize(ex,ey);
+                edit.back.setIcon(new ImageIcon (newimg));
                 Singleton_admin.window="modify";
                 edit.setTitle("Modify Admin");////////////////////////////////////////////////////////////////////////
                 edit.saving.setVisible(false);
                 BLL_admin.fill_admin(ad.getDni());
                 edit.fieldDNI.setEditable(false);
                 edit.setResizable(false);
-                edit.setSize(600,500);
+                edit.setSize(ex,ey);
                 edit.editdateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
                 edit.editdateContract.setDateFormatString(Config_class.getinstance().getDate_format());
                 edit.editdateBirth.getDateEditor().setEnabled(false);
@@ -378,6 +408,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.DelAdmin.setName("DelAdmin");
                 pager.DelAdmin.addMouseListener(this);
                 
+                pager.ListAdmin.setName("ListAdmin");
+                pager.ListAdmin.addMouseListener(this);
+                
                 pager.btnsavejson.setName("btnsavejson");
                 pager.btnsavejson.addMouseListener(this);
                 
@@ -420,6 +453,15 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.pagReturn.addMouseListener(this);
                 
                 break;//End case 2 Pager admin
+                
+            case 3:
+                list.setTitle("Admin data list");
+                list.StringArea.setEditable(false);
+                list.setLocationRelativeTo(null);
+                list.setSize(400,300);
+                list.setResizable(false);
+                list.setVisible(true);
+                break;//End case 3 List admin
             
         }
         
@@ -728,6 +770,10 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 }
                 break;
                 
+            case ListAdmin:
+                BLL_admin.list_admin();
+                break;
+                
             case DelAdmin:
                         BLL_admin.delete_file();
                 break;
@@ -828,6 +874,10 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.pagerInfo.setText("Click to delete selected Admin user");
                 break;
                 
+            case ListAdmin:
+                
+                break;
+                
             case btnsavejson:
                 pager.btnsavejson.setIcon(Singleton_admin.jsonicon_over);
                 pager.pagerInfo.setText("Save to JSON file format");
@@ -872,6 +922,10 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
             case DelAdmin:
                 pager.DelAdmin.setIcon(Singleton_admin.delicon);
                 pager.pagerInfo.setText("");
+                break;
+                
+            case ListAdmin:
+                
                 break;
                 
             case btnsavejson:

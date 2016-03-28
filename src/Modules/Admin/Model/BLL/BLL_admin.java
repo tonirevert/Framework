@@ -16,6 +16,7 @@ import Modules.Admin.Model.Utils.Files_lib.txt;
 import Modules.Admin.Model.Utils.Files_lib.xml;
 import Modules.Admin.Model.Utils.pager.pagina;
 import Modules.Admin.View.Create_admin;
+import Modules.Admin.View.List_admin;
 import Modules.Admin.View.Modify_admin;
 import Modules.Admin.View.Pager_admin;
 import java.awt.Color;
@@ -388,6 +389,40 @@ public class BLL_admin {
         return correct;
     }
     
+                /**
+        * Used to edit a row from the table on pager admin
+        */
+     public static boolean list_admin() {
+        String dni;
+        int selection, inicio, selection1;
+        boolean correct;
+        
+        int n=((miniSimpleTableModel_admin) Pager_admin.pagerTable.getModel()).getRowCount();
+        if (n != 0) {
+                 inicio=(pagina.currentPageIndex-1)*pagina.itemsPerPage; //nos situamos al inicio de la página en cuestión
+                selection=Pager_admin.pagerTable.getSelectedRow(); //nos situamos en la fila
+                selection1=inicio+selection; //nos situamos en la fila correspondiente de esa página
+            if (selection1 == -1) {
+                PauseNoselect();
+                correct = false;
+            } else {
+                dni = (String) Pager_admin.pagerTable.getModel().getValueAt(selection1, 0);
+
+                Singleton_admin.ad = new Admin_class(dni);
+//                Singleton_admin.list=ad.toString();
+                new AdminController(new List_admin(),3).Init(3);
+                List_admin.StringArea.setText(ad.toString());
+                correct = true;
+
+            }
+        } else {
+            PauseEmpty();
+            correct = false;
+        }
+        return correct;
+    }
+    
+     
         /**
         * Used to delete a row from the table on pager admin
         */

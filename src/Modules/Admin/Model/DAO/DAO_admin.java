@@ -950,4 +950,8 @@ public class DAO_admin {
         
     }
     
+    public static void listAdmin(){
+        
+    }
+    
 }//End public class DAO_admin

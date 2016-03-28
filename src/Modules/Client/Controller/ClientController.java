@@ -22,6 +22,7 @@ import Modules.Config.Classes.Config_class;
 import Modules.Menu.Controller.MenuController;
 import Modules.Menu.View.Mainmenu;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -36,6 +37,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -48,6 +50,10 @@ import javax.swing.table.TableRowSorter;
  */
 public class ClientController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
 
+        ImageIcon icon = new ImageIcon("src/Modules/Client/View/img/wood_3.jpg");
+        Image img=icon.getImage();
+        Image newimg = img.getScaledInstance(650, 500, java.awt.Image.SCALE_SMOOTH);
+        
     public static Create_client create;
     public static Modify_client edit;
     public static Pager_client pager;
@@ -147,11 +153,15 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         switch(i){
             
             case 0://Create client
+                int cx=650;
+                int cy=500;
+                create.back.setSize(cx,cy);
+                create.back.setIcon(new ImageIcon (newimg));
                 Singleton_client.window="create";
                 create.setTitle("Create Client");////////////////////////////////////////////////////////////////////////
                 create.saving.setVisible(false);
                 create.setResizable(false);
-                create.setSize(600,500);
+                create.setSize(cx,cy);
                 create.dateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
                 create.dateRegistration.setDateFormatString(Config_class.getinstance().getDate_format());
                 create.dateRegistration.getDateEditor().setEnabled(false);
@@ -247,13 +257,16 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 break;//End case 0
                 
             case 1://Modify client
+                int ex=650;
+                int ey=500;
+                edit.back.setSize(ex,ey);
                 Singleton_client.window="modify";
                 edit.setTitle("Modify Client");////////////////////////////////////////////////////////////////////////
                 edit.saving.setVisible(false);
                 BLL_client.fill_client(cl.getDni());
                 edit.fieldDNI.setEditable(false);
                 edit.setResizable(false);
-                edit.setSize(600,500);
+                edit.setSize(ex,ey);
                 edit.editdateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
                 edit.editdateRegistration.setDateFormatString(Config_class.getinstance().getDate_format());
                 edit.editdateBirth.getDateEditor().setEnabled(false);

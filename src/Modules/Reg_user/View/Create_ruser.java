@@ -81,6 +81,7 @@ public class Create_ruser extends javax.swing.JFrame {
         btnsaveCreateruser = new javax.swing.JButton();
         btncancelCreateruser = new javax.swing.JButton();
         btnresetCreateruser = new javax.swing.JButton();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -90,99 +91,99 @@ public class Create_ruser extends javax.swing.JFrame {
         fieldDNI.setBackground(java.awt.Color.yellow);
         fieldDNI.setToolTipText("");
         getContentPane().add(fieldDNI);
-        fieldDNI.setBounds(90, 10, 148, 25);
+        fieldDNI.setBounds(130, 10, 148, 25);
 
         labelDNI.setText("ID Card:");
         getContentPane().add(labelDNI);
-        labelDNI.setBounds(10, 15, 70, 15);
+        labelDNI.setBounds(25, 15, 105, 15);
 
         checkDNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDNI);
-        checkDNI.setBounds(250, 10, 23, 23);
+        checkDNI.setBounds(280, 10, 23, 23);
 
         fieldName.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldName);
-        fieldName.setBounds(90, 50, 148, 25);
+        fieldName.setBounds(130, 50, 148, 25);
 
         labelName.setText("Name:");
         getContentPane().add(labelName);
-        labelName.setBounds(10, 50, 80, 15);
+        labelName.setBounds(25, 50, 105, 15);
 
         checkName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkName);
-        checkName.setBounds(250, 50, 23, 23);
+        checkName.setBounds(280, 50, 23, 23);
 
         fieldSurname.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldSurname);
-        fieldSurname.setBounds(90, 90, 150, 25);
+        fieldSurname.setBounds(130, 90, 150, 25);
 
         labelSurname.setText("Surname:");
         getContentPane().add(labelSurname);
-        labelSurname.setBounds(10, 90, 80, 15);
+        labelSurname.setBounds(25, 90, 105, 15);
 
         checkSurname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkSurname);
-        checkSurname.setBounds(250, 90, 23, 23);
+        checkSurname.setBounds(280, 90, 23, 23);
 
         fieldEmail.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldEmail);
-        fieldEmail.setBounds(90, 130, 150, 25);
+        fieldEmail.setBounds(130, 130, 150, 25);
 
         labelEmail.setText("e-mail:");
         getContentPane().add(labelEmail);
-        labelEmail.setBounds(10, 130, 80, 15);
+        labelEmail.setBounds(25, 130, 105, 15);
 
         checkEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkEmail);
-        checkEmail.setBounds(250, 130, 23, 23);
+        checkEmail.setBounds(280, 130, 23, 23);
 
         fieldMobile.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldMobile);
-        fieldMobile.setBounds(90, 170, 150, 25);
+        fieldMobile.setBounds(130, 170, 150, 25);
 
         labelMobile.setText("Mobile:");
         getContentPane().add(labelMobile);
-        labelMobile.setBounds(10, 170, 80, 15);
+        labelMobile.setBounds(25, 170, 105, 15);
 
         checkMobile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkMobile);
-        checkMobile.setBounds(250, 170, 23, 23);
+        checkMobile.setBounds(280, 170, 23, 23);
 
         fieldUser.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldUser);
-        fieldUser.setBounds(90, 210, 150, 25);
+        fieldUser.setBounds(130, 210, 150, 25);
 
         labelUser.setText("User:");
         getContentPane().add(labelUser);
-        labelUser.setBounds(10, 210, 80, 15);
+        labelUser.setBounds(25, 210, 105, 15);
 
         checkUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkUser);
-        checkUser.setBounds(250, 210, 23, 23);
+        checkUser.setBounds(280, 210, 23, 23);
 
         fieldPassword.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldPassword);
-        fieldPassword.setBounds(90, 250, 150, 25);
+        fieldPassword.setBounds(130, 250, 150, 25);
 
         labelPassword.setText("Password:");
         getContentPane().add(labelPassword);
-        labelPassword.setBounds(10, 250, 80, 15);
+        labelPassword.setBounds(25, 250, 105, 15);
 
         checkPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword);
-        checkPassword.setBounds(250, 250, 23, 23);
+        checkPassword.setBounds(280, 250, 23, 23);
 
         fieldPassword2.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldPassword2);
-        fieldPassword2.setBounds(90, 290, 150, 25);
+        fieldPassword2.setBounds(130, 290, 150, 25);
 
         labelPassword2.setText("Verify:");
         getContentPane().add(labelPassword2);
-        labelPassword2.setBounds(10, 290, 80, 15);
+        labelPassword2.setBounds(25, 290, 105, 15);
 
         checkPassword2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword2);
-        checkPassword2.setBounds(250, 290, 23, 23);
+        checkPassword2.setBounds(280, 290, 23, 23);
 
         dateBirth.setBackground(java.awt.Color.white);
         dateBirth.setDateFormatString("dd/MM/yyyy");
@@ -191,33 +192,33 @@ public class Create_ruser extends javax.swing.JFrame {
         dateBirth.setName("createdateBirth"); // NOI18N
         dateBirth.setOpaque(false);
         getContentPane().add(dateBirth);
-        dateBirth.setBounds(400, 15, 140, 27);
+        dateBirth.setBounds(430, 15, 140, 27);
         dateBirth.getAccessibleContext().setAccessibleName(getName());
         dateBirth.getAccessibleContext().setAccessibleDescription(getName());
 
         labeldateBitrh.setText("Birth date:");
         getContentPane().add(labeldateBitrh);
-        labeldateBitrh.setBounds(290, 15, 90, 15);
+        labeldateBitrh.setBounds(310, 15, 90, 15);
 
         checkDatebirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatebirth);
-        checkDatebirth.setBounds(550, 15, 23, 23);
+        checkDatebirth.setBounds(580, 15, 23, 23);
 
         btnSearch.setText("Search");
         getContentPane().add(btnSearch);
-        btnSearch.setBounds(350, 90, 90, 29);
+        btnSearch.setBounds(380, 90, 90, 29);
 
         avatar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(avatar);
-        avatar.setBounds(460, 60, 100, 100);
+        avatar.setBounds(490, 60, 100, 100);
 
         labelAvatar.setText("Avatar:");
         getContentPane().add(labelAvatar);
-        labelAvatar.setBounds(290, 90, 90, 15);
+        labelAvatar.setBounds(310, 90, 90, 15);
 
         labelState.setText("State: Connected?");
         getContentPane().add(labelState);
-        labelState.setBounds(290, 170, 140, 15);
+        labelState.setBounds(310, 170, 140, 15);
 
         buttonGroupState.add(radioStateYes);
         radioStateYes.setText("Yes");
@@ -232,15 +233,15 @@ public class Create_ruser extends javax.swing.JFrame {
 
         fieldActivity.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldActivity);
-        fieldActivity.setBounds(400, 210, 114, 25);
+        fieldActivity.setBounds(430, 210, 114, 25);
 
         labelActivity.setText("Activity:");
         getContentPane().add(labelActivity);
-        labelActivity.setBounds(290, 210, 90, 15);
+        labelActivity.setBounds(310, 210, 90, 15);
 
         checkActivity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkActivity);
-        checkActivity.setBounds(550, 210, 23, 23);
+        checkActivity.setBounds(580, 210, 23, 23);
 
         saving.setBorder(null);
         saving.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/Preloader_3.gif"))); // NOI18N
@@ -250,25 +251,29 @@ public class Create_ruser extends javax.swing.JFrame {
         saving.setRequestFocusEnabled(false);
         saving.setVerifyInputWhenFocusTarget(false);
         getContentPane().add(saving);
-        saving.setBounds(238, 148, 130, 130);
+        saving.setBounds(260, 148, 130, 130);
 
         areaInfo.setColumns(2);
         areaInfo.setRows(1);
         areaInfo.setBorder(javax.swing.BorderFactory.createTitledBorder("Info:"));
         getContentPane().add(areaInfo);
-        areaInfo.setBounds(40, 330, 490, 50);
+        areaInfo.setBounds(65, 330, 490, 50);
 
         btnsaveCreateruser.setText("Save");
         getContentPane().add(btnsaveCreateruser);
-        btnsaveCreateruser.setBounds(140, 400, 80, 29);
+        btnsaveCreateruser.setBounds(160, 400, 80, 29);
 
         btncancelCreateruser.setText("Cancel");
         getContentPane().add(btncancelCreateruser);
-        btncancelCreateruser.setBounds(360, 400, 90, 29);
+        btncancelCreateruser.setBounds(380, 400, 90, 29);
 
         btnresetCreateruser.setText("Reset");
         getContentPane().add(btnresetCreateruser);
-        btnresetCreateruser.setBounds(250, 400, 90, 29);
+        btnresetCreateruser.setBounds(270, 400, 90, 29);
+
+        back.setText("back");
+        getContentPane().add(back);
+        back.setBounds(0, 0, 30, 15);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -277,6 +282,7 @@ public class Create_ruser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextArea areaInfo;
     public static javax.swing.JLabel avatar;
+    public static javax.swing.JLabel back;
     public static javax.swing.JButton btnSearch;
     public static javax.swing.JButton btncancelCreateruser;
     public static javax.swing.JButton btnresetCreateruser;

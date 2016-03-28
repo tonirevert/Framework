@@ -7,7 +7,6 @@ package Modules.Config.DAO;
 
 import Modules.Config.Classes.Config_class;
 import Modules.Config.View.Config;
-import javax.swing.SwingUtilities;
 
 /**
  *Used to get the configuration from their Window
@@ -23,7 +22,7 @@ public class DAO_Config {
         
         Config_class.getinstance().setDate_format(dateForm());
         Config_class.getinstance().setCurrency(Currency());
-//        Config_class.getinstance().setLanguage(Language());
+        Config_class.getinstance().setLanguage(Language());
 //        Config_class.getinstance().setFile_format(FileForm());
         Config_class.getinstance().setTheme(Theme());
         Config_class.getinstance().setDecimals(Decimals());
@@ -51,7 +50,7 @@ public class DAO_Config {
         
         Config.comboDateform.setSelectedIndex(filldateForm());
         Config.comboCurrency.setSelectedIndex(fillCurrency());
-//        Config.comboLanguage.setSelectedIndex(fillLanguage());
+        Config.comboLanguage.setSelectedIndex(fillLanguage());
 //        Config.comboFileform.setSelectedIndex(fillFileform());
         Config.comboTheme.setSelectedIndex(fillTheme());
         Config.comboDecimals.setSelectedIndex(fillDecimals());
@@ -63,29 +62,29 @@ public class DAO_Config {
     * @return String with the desired date format 
     */
     public static String dateForm(){
-        String [] format={"dd/MM/yyyy","yyyy/MM/dd","dd-MM-yyyy","yyyy-MM-dd"};
-        String selection="";
+        String [] format={"dd/MM/yyyy","dd-MM-yyyy","yyyy-MM-dd","yyyy/MM/dd"};
+        StringBuffer selection=new StringBuffer();
         
         switch(Config.comboDateform.getSelectedIndex()){
             
             case 0:
-                selection=format[0];
+                selection.append(format[0]);
                 break;
                 
             case 1:
-                selection=format[1];
+                selection.append(format[1]);
                 break;
                 
             case 2:
-                selection=format[2];
+                selection.append(format[2]);
                 break;
                 
             case 3:
-                selection=format[3];
+                selection.append(format[3]);
                 break;
         }
         
-        return selection;
+        return selection.toString();
         
     }//End Date Form
     
@@ -94,7 +93,7 @@ public class DAO_Config {
     * @return String with the desired currency format 
     */
     public static char Currency(){
-        char [] currency={'€','£','$'};
+        char [] currency={'€','$','£'};
         char selection=' ';
         
         switch(Config.comboCurrency.getSelectedIndex()){
@@ -123,25 +122,25 @@ public class DAO_Config {
     */
     public static String Language(){
         String [] language={"en","es","val"};
-        String selection="";
+        StringBuffer selection=new StringBuffer();
         
         switch(Config.comboLanguage.getSelectedIndex()){
             
             case 0:
-                selection=language[0];
+                selection.append(language[0]);
                 break;
                 
             case 1:
-                selection=language[1];
+                selection.append(language[1]);
                 break;
                 
             case 2:
-                selection=language[2];
+                selection.append(language[2]);
                 break;
             
         }
         
-        return selection;
+        return selection.toString();
         
     }//End Language
     
@@ -151,24 +150,24 @@ public class DAO_Config {
     */
     public static String FileForm(){
         String [] file_form={"json","txt","xml"};
-        String selection="";
+        StringBuffer selection=new StringBuffer();
         
         switch(Config.comboFileform.getSelectedIndex()){
             
             case 0:
-                selection=file_form[0];
+                selection.append(file_form[0]);
                 break;
                 
             case 1:
-                selection=file_form[1];
+                selection.append(file_form[1]);
                 break;
                 
             case 2:
-                selection=file_form[2];
+                selection.append(file_form[2]);
                 break;
         }
         
-        return selection;
+        return selection.toString();
         
     }//End File Format
     
@@ -178,28 +177,28 @@ public class DAO_Config {
     */
     public static String Theme(){
         String [] theme={"Metal","Windows","Motif","Nimbus"};
-        String selection="";
+        StringBuffer selection=new StringBuffer();
         
         switch(Config.comboTheme.getSelectedIndex()){
             
             case 0:
-                selection=theme[0];
+                selection.append(theme[0]);
                 break;
                 
             case 1:
-                selection=theme[1];
+                selection.append(theme[1]);
                 break;
                 
             case 2:
-                selection=theme[2];
+                selection.append(theme[2]);
                 break;
                 
             case 3:
-                selection=theme[3];
+                selection.append(theme[3]);
                 break;
         }
         
-        return selection;
+        return selection.toString();
         
     }//End Theme
     
@@ -235,7 +234,7 @@ public class DAO_Config {
     * @return int with the actual selection
     */
     public static int filldateForm(){
-        String [] format={"dd/MM/yyyy","yyyy/MM/dd","dd-MM-yyyy","yyyy-MM-dd"};
+        String [] format={"dd/MM/yyyy","dd-MM-yyyy","yyyy-MM-dd","yyyy/MM/dd"};
         int selection=0;
         
             
@@ -261,7 +260,7 @@ public class DAO_Config {
     * @return int with the actual selection
     */
     public static int fillCurrency(){
-        char [] currency={'€','£','$'};
+        char [] currency={'€','$','£'};
         int selection=0;
         
         if(Config_class.getinstance().getCurrency()==currency[0]){

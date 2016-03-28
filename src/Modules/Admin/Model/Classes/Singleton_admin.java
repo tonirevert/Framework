@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 public class Singleton_admin {
 	public static ArrayList <Admin_class> adm;
 	public static Admin_class ad;
+                public static String list="";
                 public static String DNI=" ";
                 public static String window="";
 	public static ImageIcon ok = new ImageIcon("src/Modules/Admin/View/img/ok.png");

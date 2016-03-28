@@ -343,15 +343,17 @@
                   <Component id="ModAdmin" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="DelAdmin" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="ListAdmin" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
                   <Component id="pagerInfo" min="-2" pref="462" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnsavejson" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnsavetxt" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnsavexml" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -359,16 +361,15 @@
           <Group type="103" groupAlignment="1" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="pagerInfo" min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btnsavejson" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnsavetxt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnsavexml" alignment="0" max="32767" attributes="0"/>
-                          <Component id="AddAdmin" alignment="0" max="32767" attributes="0"/>
-                          <Component id="ModAdmin" alignment="0" max="32767" attributes="0"/>
-                          <Component id="DelAdmin" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btnsavejson" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnsavetxt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnsavexml" alignment="0" max="32767" attributes="0"/>
+                      <Component id="AddAdmin" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ModAdmin" alignment="0" max="32767" attributes="0"/>
+                      <Component id="DelAdmin" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ListAdmin" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
@@ -435,6 +436,13 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="ListAdmin">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Modules/Admin/View/img/list.png"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

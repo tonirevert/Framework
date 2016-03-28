@@ -5,45 +5,18 @@
  */
 package Modules.Admin.View;
 
-
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 /**
  *
  * @author antonio
  */
 public class Create_admin extends javax.swing.JFrame {
 
-
-    
-//    private void doPause() {
-//        Timer delay = new Timer(3000, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//        dispose();
-//        new Pager_admin().setVisible(true);
-//            }
-//        });
-//        
-//              
-//        saving.setVisible(true);
-//        delay.setRepeats(false);
-//        delay.start();
-//        Create_admin.areaInfo.setText("User created correctly");
-//        Create_admin.areaInfo.setBackground(Color.green);
-//    }
-    
+ 
     
     /**
      * Creates new form Create_admin
      */
     public Create_admin() {
-        ImageIcon icon = new ImageIcon("src/Modules/Admin/View/img/wood_3.jpg");
-        Image img=icon.getImage();
-        Image newimg = img.getScaledInstance(600, 500, java.awt.Image.SCALE_SMOOTH);
-        setContentPane(new JLabel(new ImageIcon (newimg)));
         
         initComponents();
     }
@@ -103,6 +76,7 @@ public class Create_admin extends javax.swing.JFrame {
         btncancelCreateadmin = new javax.swing.JButton();
         btnresetCreateadmin = new javax.swing.JButton();
         checkDatecontract = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -112,99 +86,99 @@ public class Create_admin extends javax.swing.JFrame {
         fieldDNI.setBackground(java.awt.Color.yellow);
         fieldDNI.setToolTipText("");
         getContentPane().add(fieldDNI);
-        fieldDNI.setBounds(90, 10, 148, 25);
+        fieldDNI.setBounds(130, 10, 148, 25);
 
         labelDNI.setText("ID Card:");
         getContentPane().add(labelDNI);
-        labelDNI.setBounds(10, 15, 70, 15);
+        labelDNI.setBounds(25, 15, 105, 15);
 
         checkDNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDNI);
-        checkDNI.setBounds(250, 10, 23, 23);
+        checkDNI.setBounds(280, 10, 23, 23);
 
         fieldName.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldName);
-        fieldName.setBounds(90, 50, 148, 25);
+        fieldName.setBounds(130, 50, 148, 25);
 
         labelName.setText("Name:");
         getContentPane().add(labelName);
-        labelName.setBounds(10, 50, 80, 15);
+        labelName.setBounds(25, 50, 105, 15);
 
         checkName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkName);
-        checkName.setBounds(250, 50, 23, 23);
+        checkName.setBounds(280, 50, 23, 23);
 
         fieldSurname.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldSurname);
-        fieldSurname.setBounds(90, 90, 150, 25);
+        fieldSurname.setBounds(130, 90, 150, 25);
 
         labelSurname.setText("Surname:");
         getContentPane().add(labelSurname);
-        labelSurname.setBounds(10, 90, 80, 15);
+        labelSurname.setBounds(25, 90, 105, 15);
 
         checkSurname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkSurname);
-        checkSurname.setBounds(250, 90, 23, 23);
+        checkSurname.setBounds(280, 90, 23, 23);
 
         fieldEmail.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldEmail);
-        fieldEmail.setBounds(90, 130, 150, 25);
+        fieldEmail.setBounds(130, 130, 150, 25);
 
         labelEmail.setText("e-mail:");
         getContentPane().add(labelEmail);
-        labelEmail.setBounds(10, 130, 80, 15);
+        labelEmail.setBounds(25, 130, 105, 15);
 
         checkEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkEmail);
-        checkEmail.setBounds(250, 130, 23, 23);
+        checkEmail.setBounds(280, 130, 23, 23);
 
         fieldMobile.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldMobile);
-        fieldMobile.setBounds(90, 170, 150, 25);
+        fieldMobile.setBounds(130, 170, 150, 25);
 
         labelMobile.setText("Mobile:");
         getContentPane().add(labelMobile);
-        labelMobile.setBounds(10, 170, 80, 15);
+        labelMobile.setBounds(25, 170, 105, 15);
 
         checkMobile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkMobile);
-        checkMobile.setBounds(250, 170, 23, 23);
+        checkMobile.setBounds(280, 170, 23, 23);
 
         fieldUser.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldUser);
-        fieldUser.setBounds(90, 210, 150, 25);
+        fieldUser.setBounds(130, 210, 150, 25);
 
         labelUser.setText("User:");
         getContentPane().add(labelUser);
-        labelUser.setBounds(10, 210, 80, 15);
+        labelUser.setBounds(25, 210, 105, 15);
 
         checkUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkUser);
-        checkUser.setBounds(250, 210, 23, 23);
+        checkUser.setBounds(280, 210, 23, 23);
 
         fieldPassword.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldPassword);
-        fieldPassword.setBounds(90, 250, 150, 25);
+        fieldPassword.setBounds(130, 250, 150, 25);
 
         labelPassword.setText("Password:");
         getContentPane().add(labelPassword);
-        labelPassword.setBounds(10, 250, 80, 15);
+        labelPassword.setBounds(25, 250, 105, 15);
 
         checkPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword);
-        checkPassword.setBounds(250, 250, 23, 23);
+        checkPassword.setBounds(280, 250, 23, 23);
 
         fieldPassword2.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldPassword2);
-        fieldPassword2.setBounds(90, 290, 150, 25);
+        fieldPassword2.setBounds(130, 290, 150, 25);
 
         labelPassword2.setText("Verify:");
         getContentPane().add(labelPassword2);
-        labelPassword2.setBounds(10, 290, 80, 15);
+        labelPassword2.setBounds(25, 290, 105, 15);
 
         checkPassword2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword2);
-        checkPassword2.setBounds(250, 290, 23, 23);
+        checkPassword2.setBounds(280, 290, 23, 23);
 
         dateBirth.setBackground(java.awt.Color.white);
         dateBirth.setDateFormatString("dd/MM/yyyy");
@@ -213,65 +187,65 @@ public class Create_admin extends javax.swing.JFrame {
         dateBirth.setName("createdateBirth"); // NOI18N
         dateBirth.setOpaque(false);
         getContentPane().add(dateBirth);
-        dateBirth.setBounds(400, 15, 140, 27);
+        dateBirth.setBounds(430, 20, 140, 27);
         dateBirth.getAccessibleContext().setAccessibleName(getName());
         dateBirth.getAccessibleContext().setAccessibleDescription(getName());
 
         labeldateBirth.setText("Birth date:");
         getContentPane().add(labeldateBirth);
-        labeldateBirth.setBounds(290, 15, 90, 15);
+        labeldateBirth.setBounds(310, 20, 100, 15);
 
         checkDatebirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatebirth);
-        checkDatebirth.setBounds(550, 15, 23, 23);
+        checkDatebirth.setBounds(580, 20, 23, 23);
 
         btnSearch.setText("Search");
         getContentPane().add(btnSearch);
-        btnSearch.setBounds(350, 90, 90, 29);
+        btnSearch.setBounds(380, 90, 90, 29);
 
         avatar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(avatar);
-        avatar.setBounds(460, 60, 100, 100);
+        avatar.setBounds(490, 60, 100, 100);
 
         labelAvatar.setText("Avatar:");
         getContentPane().add(labelAvatar);
-        labelAvatar.setBounds(290, 90, 90, 15);
+        labelAvatar.setBounds(310, 90, 90, 15);
 
         labelState.setText("State: Connected?");
         getContentPane().add(labelState);
-        labelState.setBounds(290, 170, 140, 15);
+        labelState.setBounds(310, 170, 140, 15);
 
         buttonGroupState.add(radioStateYes);
         radioStateYes.setText("Yes");
         getContentPane().add(radioStateYes);
-        radioStateYes.setBounds(440, 170, 60, 22);
+        radioStateYes.setBounds(470, 170, 60, 22);
 
         buttonGroupState.add(radioStateNo);
         radioStateNo.setSelected(true);
         radioStateNo.setText("No");
         getContentPane().add(radioStateNo);
-        radioStateNo.setBounds(500, 170, 60, 22);
+        radioStateNo.setBounds(530, 170, 60, 22);
 
         dateContract.setMaxSelectableDate(new java.util.Date(4102444917000L));
         dateContract.setMinSelectableDate(new java.util.Date(-2208984199000L));
         getContentPane().add(dateContract);
-        dateContract.setBounds(400, 210, 140, 27);
+        dateContract.setBounds(430, 210, 140, 27);
 
         labeldateContract.setText("Contract date:");
         getContentPane().add(labeldateContract);
-        labeldateContract.setBounds(290, 210, 110, 15);
+        labeldateContract.setBounds(310, 210, 110, 15);
 
         fieldActivity.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldActivity);
-        fieldActivity.setBounds(400, 250, 114, 25);
+        fieldActivity.setBounds(430, 250, 114, 25);
 
         labelActivity.setText("Activity:");
         getContentPane().add(labelActivity);
-        labelActivity.setBounds(290, 250, 90, 15);
+        labelActivity.setBounds(310, 250, 90, 15);
 
         checkActivity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkActivity);
-        checkActivity.setBounds(550, 250, 23, 23);
+        checkActivity.setBounds(580, 250, 23, 23);
 
         saving.setBorder(null);
         saving.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/Preloader_3.gif"))); // NOI18N
@@ -281,29 +255,33 @@ public class Create_admin extends javax.swing.JFrame {
         saving.setRequestFocusEnabled(false);
         saving.setVerifyInputWhenFocusTarget(false);
         getContentPane().add(saving);
-        saving.setBounds(238, 148, 130, 130);
+        saving.setBounds(260, 148, 130, 130);
 
         areaInfo.setColumns(2);
         areaInfo.setRows(1);
         areaInfo.setBorder(javax.swing.BorderFactory.createTitledBorder("Info:"));
         getContentPane().add(areaInfo);
-        areaInfo.setBounds(40, 330, 490, 50);
+        areaInfo.setBounds(65, 330, 490, 50);
 
         btnsaveCreateadmin.setText("Save");
         getContentPane().add(btnsaveCreateadmin);
-        btnsaveCreateadmin.setBounds(140, 400, 80, 29);
+        btnsaveCreateadmin.setBounds(160, 400, 80, 29);
 
         btncancelCreateadmin.setText("Cancel");
         getContentPane().add(btncancelCreateadmin);
-        btncancelCreateadmin.setBounds(360, 400, 90, 29);
+        btncancelCreateadmin.setBounds(380, 400, 90, 29);
 
         btnresetCreateadmin.setText("Reset");
         getContentPane().add(btnresetCreateadmin);
-        btnresetCreateadmin.setBounds(250, 400, 90, 29);
+        btnresetCreateadmin.setBounds(270, 400, 90, 29);
 
         checkDatecontract.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatecontract);
-        checkDatecontract.setBounds(550, 210, 23, 23);
+        checkDatecontract.setBounds(580, 210, 23, 23);
+
+        back.setText("back");
+        getContentPane().add(back);
+        back.setBounds(0, 0, 30, 15);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -312,6 +290,7 @@ public class Create_admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextArea areaInfo;
     public static javax.swing.JLabel avatar;
+    public static javax.swing.JLabel back;
     public static javax.swing.JButton btnSearch;
     public static javax.swing.JButton btncancelCreateadmin;
     public static javax.swing.JButton btnresetCreateadmin;
@@ -339,19 +318,19 @@ public class Create_admin extends javax.swing.JFrame {
     public static javax.swing.JPasswordField fieldPassword2;
     public static javax.swing.JTextField fieldSurname;
     public static javax.swing.JTextField fieldUser;
-    private javax.swing.JLabel labelActivity;
-    private javax.swing.JLabel labelAvatar;
-    private javax.swing.JLabel labelDNI;
-    private javax.swing.JLabel labelEmail;
-    private javax.swing.JLabel labelMobile;
-    private javax.swing.JLabel labelName;
-    private javax.swing.JLabel labelPassword;
-    private javax.swing.JLabel labelPassword2;
+    public static javax.swing.JLabel labelActivity;
+    public static javax.swing.JLabel labelAvatar;
+    public static javax.swing.JLabel labelDNI;
+    public static javax.swing.JLabel labelEmail;
+    public static javax.swing.JLabel labelMobile;
+    public static javax.swing.JLabel labelName;
+    public static javax.swing.JLabel labelPassword;
+    public static javax.swing.JLabel labelPassword2;
     private javax.swing.JLabel labelState;
-    private javax.swing.JLabel labelSurname;
-    private javax.swing.JLabel labelUser;
-    private javax.swing.JLabel labeldateBirth;
-    private javax.swing.JLabel labeldateContract;
+    public static javax.swing.JLabel labelSurname;
+    public static javax.swing.JLabel labelUser;
+    public static javax.swing.JLabel labeldateBirth;
+    public static javax.swing.JLabel labeldateContract;
     public static javax.swing.JRadioButton radioStateNo;
     public static javax.swing.JRadioButton radioStateYes;
     public javax.swing.JOptionPane saving;

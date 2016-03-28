@@ -52,11 +52,11 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
                 break;
 
             case 3:
-                dev= fila.getCont_date();
+                dev= fila.getCont_date().toString(1);
                 break;
                 
             case 4:
-                dev = fila.getSalary();
+                dev = fila.toString(15);
                 break;
 
         }

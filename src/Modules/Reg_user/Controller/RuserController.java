@@ -23,6 +23,7 @@ import Modules.Reg_user.View.Create_ruser;
 import Modules.Reg_user.View.Modify_ruser;
 import Modules.Reg_user.View.Pager_ruser;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -37,6 +38,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -49,6 +51,10 @@ import javax.swing.table.TableRowSorter;
  */
 public class RuserController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
 
+        ImageIcon icon = new ImageIcon("src/Modules/Reg_user/View/img/wood_3.jpg");
+        Image img=icon.getImage();
+        Image newimg = img.getScaledInstance(650, 500, java.awt.Image.SCALE_SMOOTH);
+        
     public static Create_ruser create;
     public static Modify_ruser edit;
     public static Pager_ruser pager;
@@ -148,11 +154,15 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
         switch(i){
             
             case 0://Create admin
+                int cx=650;
+                int cy=500;
+                create.back.setSize(cx,cy);
+                create.back.setIcon(new ImageIcon (newimg));
                 Singleton_ruser.window="create";
                 create.setTitle("Create Reg. user");////////////////////////////////////////////////////////////////////////
                 create.saving.setVisible(false);
                 create.setResizable(false);
-                create.setSize(600,500);
+                create.setSize(cx,cy);
                 create.dateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
                 create.dateBirth.getDateEditor().setEnabled(false);
                 create.areaInfo.setEditable(false);
@@ -224,12 +234,6 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 create.fieldActivity.addActionListener(this);
                 create.fieldActivity.addKeyListener(this);
                 
-//                create.fieldKarma.setActionCommand("createfieldKarma");
-//                create.fieldKarma.setName("createfieldKarma");
-//                create.fieldKarma.addFocusListener(this);
-//                create.fieldKarma.addActionListener(this);
-//                create.fieldKarma.addKeyListener(this);
-                
                 create.btnsaveCreateruser.setName("createbtnSave");
                 create.btnsaveCreateruser.addMouseListener(this);
 
@@ -243,13 +247,17 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 break;//End case 0
                 
             case 1://Modify admin
+                int ex=650;
+                int ey=500;
+                edit.back.setSize(ex,ey);
+                edit.back.setIcon(new ImageIcon (newimg));
                 Singleton_ruser.window="modify";
                 edit.setTitle("Modify Reg. user");////////////////////////////////////////////////////////////////////////
                 edit.saving.setVisible(false);
                 BLL_ruser.fill_ruser(ru.getDni());
                 edit.fieldDNI.setEditable(false);
                 edit.setResizable(false);
-                edit.setSize(600,500);
+                edit.setSize(ex,ey);
                 edit.editdateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
                 edit.editdateBirth.getDateEditor().setEnabled(false);
                 edit.setLocationRelativeTo(null);
@@ -312,13 +320,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 edit.editfieldActivity.addFocusListener(this);
                 edit.editfieldActivity.addActionListener(this);
                 edit.editfieldActivity.addKeyListener(this);
-                
-//                edit.editfieldKarma.setActionCommand("editfieldKarma");
-//                edit.editfieldKarma.setName("editfieldKarma");
-//                edit.editfieldKarma.addFocusListener(this);
-//                edit.editfieldKarma.addActionListener(this);
-//                edit.editfieldKarma.addKeyListener(this);
-                
+
                 edit.btnsaveEditruser.setName("editbtnSave");
                 edit.btnsaveEditruser.addMouseListener(this);
                 

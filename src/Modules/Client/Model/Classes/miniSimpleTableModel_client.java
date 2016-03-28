@@ -53,11 +53,11 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
                 break;
 
             case 3:
-                dev= fila.getReg_date();
+                dev= fila.getReg_date().toString(1);
                 break;
                 
             case 4:
-                dev = fila.getShopping();
+                dev = fila.toString(15);
                 break;
 
         }
