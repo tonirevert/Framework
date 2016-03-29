@@ -23,18 +23,21 @@ import Modules.Config.BLL.BLL_Config;
 import Modules.Config.Classes.Config_class;
 import Modules.Config.Classes.theme_class;
 import Modules.Config.View.Config;
+import Modules.Menu.Classes.Singleton_menus;
 import static Modules.Menu.Controller.MenuController.Action.btnAdmin;
 import static Modules.Menu.Controller.MenuController.Action.btnConfig;
 import static Modules.Menu.Controller.MenuController.main;
 import Modules.Menu.View.Mainmenu;
 import Modules.Reg_user.Controller.RuserController;
 import Modules.Reg_user.View.Pager_ruser;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -94,7 +97,11 @@ public class MenuController implements ActionListener, MouseListener, WindowList
         switch(i){
             
             case 0:
-               
+                int mx=700;
+                int my=460;
+                main.back.setSize(mx, my);
+                Image mback=Singleton_menus.mainback.getImage();
+                main.back.setIcon(new ImageIcon(mback.getScaledInstance(mx, my, java.awt.Image.SCALE_SMOOTH)));
                 theme_class.selectedtheme(Config_class.getinstance().getTheme());
                 SwingUtilities.updateComponentTreeUI(main);
                 
@@ -104,7 +111,7 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                 main.setLocationRelativeTo(null);
                 main.setTitle("Main Menu");
                 main.setResizable(false);
-                main.setSize(700,460);
+                main.setSize(mx,my);
                 main.setVisible(true);
                                
                 main.btnAdmin.setName("btnAdmin");
@@ -120,7 +127,11 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                 
                 break;
             case 1:
-                
+                int cx=400;
+                int cy=450;
+                conf.back.setSize(cx,cy);
+                Image confback=Singleton_menus.configback.getImage();
+                conf.back.setIcon(new ImageIcon (confback.getScaledInstance(cx, cy,java.awt.Image.SCALE_SMOOTH)));
                 theme_class.selectedtheme(Config_class.getinstance().getTheme());
                 SwingUtilities.updateComponentTreeUI(this.conf);
                 
@@ -129,7 +140,7 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                 conf.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 conf.setTitle("Configuration");
                 conf.setResizable(false);
-                conf.setSize(400, 450);
+                conf.setSize(cx, cy);
                 conf.setLocationRelativeTo(null);
                 conf.setVisible(true);
                 BLL_Config.load();

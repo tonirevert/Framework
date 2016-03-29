@@ -24,6 +24,7 @@ import static Modules.Client.Model.Classes.Singleton_client.cl;
 import Modules.Client.Model.Classes.miniSimpleTableModel_client;
 import Modules.Client.Model.DAO.DAO_client;
 import Modules.Client.View.Create_client;
+import Modules.Client.View.List_client;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -425,6 +426,38 @@ public class BLL_client {
                 }
         }//End delete_file
     
+                /**
+        * Used to list a row from the table on pager admin
+        */
+     public static boolean list_client() {
+        String dni;
+        Client_class cluser=null;
+        int selection, inicio, selection1;
+        boolean correct;
+        
+        int n=((miniSimpleTableModel_client) Pager_client.pagerTable.getModel()).getRowCount();
+        if (n != 0) {
+                 inicio=(pagina.currentPageIndex-1)*pagina.itemsPerPage; //nos situamos al inicio de la página en cuestión
+                selection=Pager_client.pagerTable.getSelectedRow(); //nos situamos en la fila
+                selection1=inicio+selection; //nos situamos en la fila correspondiente de esa página
+            if (selection1 == -1) {
+                PauseNoselect();
+                correct = false;
+            } else {
+                dni = (String) Pager_client.pagerTable.getModel().getValueAt(selection1, 0);
+                cluser = new Client_class(dni);
+                new ClientController(new List_client(),3).Init(3);
+                List_client.StringArea.setText(Singleton_client.cli.get(searchclientMod(cluser)).toString());
+                correct = true;
+
+            }
+        } else {
+            PauseEmpty();
+            correct = false;
+        }
+        return correct;
+    }
+        
     public static void autosaveClient(){
         json.autosavejsonclient();
     }

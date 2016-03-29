@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modules.Admin.View;
+package Modules.Reg_user.View;
 
 /**
  *
  * @author antonio
  */
-public class List_admin extends javax.swing.JFrame {
+public class List_ruser extends javax.swing.JFrame {
 
     /**
      * Creates new form List_admin
      */
-    public List_admin() {
+    public List_ruser() {
         initComponents();
         
     }
@@ -33,7 +33,6 @@ public class List_admin extends javax.swing.JFrame {
         back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

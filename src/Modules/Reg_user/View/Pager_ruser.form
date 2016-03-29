@@ -338,20 +338,22 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="AddAdmin" min="-2" max="-2" attributes="0"/>
+                  <Component id="AddRuser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="ModAdmin" min="-2" max="-2" attributes="0"/>
+                  <Component id="ModRuser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="DelAdmin" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="pagerInfo" min="-2" pref="462" max="-2" attributes="0"/>
+                  <Component id="DelRuser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="ListRuser" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                  <Component id="pagerInfo" min="-2" pref="462" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnsavejson" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnsavetxt" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnsavexml" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -359,15 +361,16 @@
           <Group type="103" groupAlignment="1" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="pagerInfo" min="-2" pref="42" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="btnsavejson" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnsavetxt" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnsavexml" alignment="0" max="32767" attributes="0"/>
-                          <Component id="AddAdmin" alignment="0" max="32767" attributes="0"/>
-                          <Component id="ModAdmin" alignment="0" max="32767" attributes="0"/>
-                          <Component id="DelAdmin" alignment="0" max="32767" attributes="0"/>
+                          <Component id="AddRuser" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ModRuser" alignment="0" max="32767" attributes="0"/>
+                          <Component id="DelRuser" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ListRuser" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -376,7 +379,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="AddAdmin">
+        <Component class="javax.swing.JLabel" name="AddRuser">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -384,7 +387,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="ModAdmin">
+        <Component class="javax.swing.JLabel" name="ModRuser">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -392,7 +395,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="DelAdmin">
+        <Component class="javax.swing.JLabel" name="DelRuser">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -435,6 +438,13 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="ListRuser">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Modules/Admin/View/img/list.png"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

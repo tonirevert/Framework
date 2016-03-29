@@ -52,10 +52,6 @@ import javax.swing.table.TableRowSorter;
  * @author antonio
  */
 public class AdminController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
-
-        ImageIcon icon = new ImageIcon("src/Modules/Admin/View/img/wood_3.jpg");
-        Image img=icon.getImage();
-        Image newimg = img.getScaledInstance(650, 500, java.awt.Image.SCALE_SMOOTH);
         
     public static Create_admin create;
     public static Modify_admin edit;
@@ -140,7 +136,11 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         pagNext,
         pagLast,
         pagLinks,
-        pagReturn
+        pagReturn,
+        
+        //List admin
+        listWindow,
+        listbtnReturn
     }
     
     public enum Property{
@@ -164,7 +164,8 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 int cx=650;
                 int cy=500;
                 create.back.setSize(cx,cy);
-                create.back.setIcon(new ImageIcon (newimg));
+                Image crback=Singleton_admin.backCrMo.getImage();
+                create.back.setIcon(new ImageIcon(crback.getScaledInstance(cx,cy, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_admin.window="create";
                 create.setTitle("Create Admin");////////////////////////////////////////////////////////////////////////
                 create.saving.setVisible(false);
@@ -263,13 +264,14 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 create.btncancelCreateadmin.setName("createbtnCancel");
                 create.btncancelCreateadmin.addMouseListener(this);
                 
-                break;//End case 0
+                break;//End case 0 create admin
                 
             case 1://Modify admin
                 int ex=650;
                 int ey=500;
                 edit.back.setSize(ex,ey);
-                edit.back.setIcon(new ImageIcon (newimg));
+                Image edback=Singleton_admin.backCrMo.getImage();
+                edit.back.setIcon(new ImageIcon(edback.getScaledInstance(ex, ey, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_admin.window="modify";
                 edit.setTitle("Modify Admin");////////////////////////////////////////////////////////////////////////
                 edit.saving.setVisible(false);
@@ -349,7 +351,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 
                 edit.btncancelEditadmin.setName("editbtnCancel");
                 edit.btncancelEditadmin.addMouseListener(this);
-                break;//End case 1
+                break;//End case 1 edit admin
                 
             case 2://Pager admin
                 pager.setTitle("Admin management list");
@@ -381,6 +383,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.AddAdmin.setToolTipText("Add a new admin user");
                 pager.ModAdmin.setToolTipText("Modify selected admin user");
                 pager.DelAdmin.setToolTipText("Delete selected admin user");
+                pager.ListAdmin.setToolTipText("Click to list the selected user");
                 pager.btnsavejson.setToolTipText("Save users to JSON");
                 pager.btnsavetxt.setToolTipText("Save users to TXT");
                 pager.btnsavexml.setToolTipText("Save users to XML");
@@ -455,12 +458,25 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 break;//End case 2 Pager admin
                 
             case 3:
+                int lx=550;
+                int ly=413;
+                list.back.setSize(lx,ly);
+                Image lsback=Singleton_admin.backList.getImage();
+                List_admin.back.setIcon(new ImageIcon(lsback.getScaledInstance(lx, ly, java.awt.Image.SCALE_SMOOTH)));
                 list.setTitle("Admin data list");
                 list.StringArea.setEditable(false);
                 list.setLocationRelativeTo(null);
-                list.setSize(400,300);
+                list.setSize(lx,ly);
                 list.setResizable(false);
                 list.setVisible(true);
+                
+                list.setName("listWindow");
+                list.addWindowListener(this);
+                list.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                
+                list.btnReturn.setName("listbtnReturn");
+                list.btnReturn.addMouseListener(this);
+        
                 break;//End case 3 List admin
             
         }
@@ -771,11 +787,13 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 break;
                 
             case ListAdmin:
-                BLL_admin.list_admin();
+                if(true==BLL_admin.list_admin()){
+                pager.dispose();
+                }
                 break;
                 
             case DelAdmin:
-                        BLL_admin.delete_file();
+                BLL_admin.delete_file();
                 break;
                 
             case btnsavejson:
@@ -836,6 +854,12 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.dispose();
                 new MenuController(new Mainmenu(),0).Init(0);
                 break;
+                
+                ////Events from list Admin
+            case listbtnReturn:
+                list.dispose();
+                new AdminController(new Pager_admin(),2).Init(2);
+                break;
          }
         
 
@@ -861,21 +885,22 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 ////Events from pager admin
             case AddAdmin:
                 pager.AddAdmin.setIcon(Singleton_admin.addicon_over);
-                pager.pagerInfo.setText("Click to add new Admin user");
+                pager.pagerInfo.setText("Click to add new user");
                 break;
                 
             case ModAdmin:
                 pager.ModAdmin.setIcon(Singleton_admin.editicon_over);
-                pager.pagerInfo.setText("Click to modify selected Admin user");    
+                pager.pagerInfo.setText("Click to modify selected user");    
                 break;
                 
             case DelAdmin:
                 pager.DelAdmin.setIcon(Singleton_admin.delicon_over);
-                pager.pagerInfo.setText("Click to delete selected Admin user");
+                pager.pagerInfo.setText("Click to delete selected user");
                 break;
                 
             case ListAdmin:
-                
+                pager.ListAdmin.setIcon(Singleton_admin.lsicon_over);
+                pager.pagerInfo.setText("Click to list selected user");
                 break;
                 
             case btnsavejson:
@@ -925,7 +950,8 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 break;
                 
             case ListAdmin:
-                
+                pager.ListAdmin.setIcon(Singleton_admin.lsicon);
+                pager.pagerInfo.setText("");
                 break;
                 
             case btnsavejson:
@@ -1176,6 +1202,11 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
             case pagerWindow:
                      pager.dispose();
                      new MenuController(new Mainmenu(),0).Init(0);
+                break;
+                
+            case listWindow:
+                     list.dispose(); 
+                     new AdminController(new Pager_admin(),2).Init(2);
                 break;
         }//End switch case
     }//End Windows Closing

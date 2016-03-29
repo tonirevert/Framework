@@ -5,10 +5,6 @@
  */
 package Modules.Menu.View;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 /**
  *
  * @author antonio
@@ -22,11 +18,6 @@ public class Mainmenu extends javax.swing.JFrame {
      * Creates new form Mainmenu
      */
     public Mainmenu() {
-        ImageIcon icon = new ImageIcon("src/Modules/Menu/View/img/back.jpg");
-        Image img=icon.getImage();
-        Image newimg = img.getScaledInstance(700, 460, java.awt.Image.SCALE_SMOOTH);
-        setContentPane(new JLabel(new ImageIcon (newimg)));
-
         initComponents();
     }
 
@@ -44,6 +35,7 @@ public class Mainmenu extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
         btnAdmin = new javax.swing.JButton();
         btnConfig = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,11 +69,15 @@ public class Mainmenu extends javax.swing.JFrame {
         btnConfig.setToolTipText("Click to enter Configuration");
         getContentPane().add(btnConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 80, 80));
 
+        back.setText("back");
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JLabel back;
     public javax.swing.JButton btnAdmin;
     public javax.swing.JButton btnClient;
     public javax.swing.JLabel btnConfig;

@@ -12,6 +12,8 @@ public class Singleton_ruser {
 	public static Reg_user_class ru;
                 public static String DNI=" ";
                 public static String window="";
+                public static ImageIcon backCrMo = new ImageIcon("src/Modules/Reg_user/View/img/wood_3.jpg");
+                public static ImageIcon backList = new ImageIcon("src/Modules/Reg_user/View/img/wood.jpg");
 	public static ImageIcon ok = new ImageIcon("src/Modules/Reg_user/View/img/ok.png");
                 public static ImageIcon no_ok = new ImageIcon("src/Modules/Reg_user/View/img/not_ok.png");
                 public static ImageIcon exclamation = new ImageIcon("src/Modules/Reg_user/View/img/excl.png");
@@ -23,6 +25,8 @@ public class Singleton_ruser {
                 public static ImageIcon editicon_over = new ImageIcon("src/Modules/Reg_user/View/img/edit_over.png");
                 public static ImageIcon delicon = new ImageIcon("src/Modules/Reg_user/View/img/minus_no_over.png");
                 public static ImageIcon delicon_over = new ImageIcon("src/Modules/Reg_user/View/img/minus_over.png");
+                public static ImageIcon lsicon = new ImageIcon("src/Modules/Reg_user/View/img/list.png");
+                public static ImageIcon lsicon_over = new ImageIcon("src/Modules/Reg_user/View/img/list_over.png");
                 public static ImageIcon jsonicon = new ImageIcon("src/Modules/Reg_user/View/img/json_no_over.png");
                 public static ImageIcon jsonicon_over = new ImageIcon("src/Modules/Reg_user/View/img/json_over.png");
                 public static ImageIcon txticon = new ImageIcon("src/Modules/Reg_user/View/img/txt_no_over.png");

@@ -16,6 +16,7 @@ import Modules.Reg_user.Model.Utils.Files_lib.txt;
 import Modules.Reg_user.Model.Utils.Files_lib.xml;
 import Modules.Reg_user.Model.Utils.pager.pagina;
 import Modules.Reg_user.View.Create_ruser;
+import Modules.Reg_user.View.List_ruser;
 import Modules.Reg_user.View.Modify_ruser;
 import Modules.Reg_user.View.Pager_ruser;
 import java.awt.Color;
@@ -428,7 +429,40 @@ public class BLL_ruser {
 //       ((miniSimpleTableModel_admin)TABLA.getModel()).cargar();
 
     }
-    
+
+        /**
+        * Used to list a row from the table on pager reg user
+        */
+     public static boolean list_ruser() {
+        String dni;
+        Reg_user_class ruser=null;
+        int selection, inicio, selection1;
+        boolean correct;
+        
+        int n=((miniSimpleTableModel_ruser) Pager_ruser.pagerTable.getModel()).getRowCount();
+        if (n != 0) {
+                 inicio=(pagina.currentPageIndex-1)*pagina.itemsPerPage; //nos situamos al inicio de la página en cuestión
+                selection=Pager_ruser.pagerTable.getSelectedRow(); //nos situamos en la fila
+                selection1=inicio+selection; //nos situamos en la fila correspondiente de esa página
+            if (selection1 == -1) {
+                PauseNoselect();
+                correct = false;
+            } else {
+                dni = (String) Pager_ruser.pagerTable.getModel().getValueAt(selection1, 0);
+                ruser=new Reg_user_class(dni);
+                new RuserController(new List_ruser(),3).Init(3);
+                List_ruser.StringArea.setText(Singleton_ruser.rus.get(searchruserMod(ruser)).toString());
+                correct = true;
+
+            }
+        } else {
+            PauseEmpty();
+            correct = false;
+        }
+        return correct;
+    }
+        
+        
     public static void autosaveRuser(){
         json.autosavejsonruser();
     }

@@ -20,6 +20,7 @@ import Modules.Menu.View.Mainmenu;
 import static Modules.Reg_user.Model.Classes.Singleton_ruser.defaultavatar;
 import Modules.Reg_user.Model.Classes.miniSimpleTableModel_ruser;
 import Modules.Reg_user.View.Create_ruser;
+import Modules.Reg_user.View.List_ruser;
 import Modules.Reg_user.View.Modify_ruser;
 import Modules.Reg_user.View.Pager_ruser;
 import java.awt.Color;
@@ -51,13 +52,10 @@ import javax.swing.table.TableRowSorter;
  */
 public class RuserController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
 
-        ImageIcon icon = new ImageIcon("src/Modules/Reg_user/View/img/wood_3.jpg");
-        Image img=icon.getImage();
-        Image newimg = img.getScaledInstance(650, 500, java.awt.Image.SCALE_SMOOTH);
-        
     public static Create_ruser create;
     public static Modify_ruser edit;
     public static Pager_ruser pager;
+    public static List_ruser list;
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new miniSimpleTableModel_ruser());
     public static AutocompleteJComboBox comboRuser = null;
     public String comb="";
@@ -75,13 +73,17 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
             case 2:
                 pager=(Pager_ruser)frame;
                 break;
+                
+            case 3:
+                list=(List_ruser)frame;
+                break;
         }
                 
     }
                
     public enum Action{
         
-        //Create admin buttons and fields:
+        //Create reg user buttons and fields:
         createWindow,
         createfieldDNI,
         createfieldName,
@@ -98,7 +100,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
         createbtnReset,
         createbtnCancel,
         
-        //Edit admin buttons and fields
+        //Edit reg user buttons and fields
         editWindow,
         editfieldName,
         editfieldSurname,
@@ -113,11 +115,12 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
         editbtnSave,
         editbtnCancel,
         
-        //Pager admin buttons and fields
+        //Pager reg user buttons and fields
         pagerWindow,
-        AddAdmin,
-        ModAdmin,
-        DelAdmin,
+        AddRuser,
+        ModRuser,
+        DelRuser,
+        ListRuser,
         btnsavejson,
         btnsavetxt,
         btnsavexml,
@@ -133,7 +136,11 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
         pagNext,
         pagLast,
         pagLinks,
-        pagReturn
+        pagReturn,
+        
+        //List reg user
+        listWindow,
+        listbtnReturn
     }
     
     public enum Property{
@@ -147,17 +154,18 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     
     /**
      * Initialize the frames
-     * @param i  0 for create admin, 1 for modify admin, 2 for admin pager
+     * @param i  0 for create reg user, 1 for modify reg user, 2 for reg user pager
      */
     public void Init(int i){
         
         switch(i){
             
-            case 0://Create admin
+            case 0://Create reg user
                 int cx=650;
                 int cy=500;
                 create.back.setSize(cx,cy);
-                create.back.setIcon(new ImageIcon (newimg));
+                Image crback=Singleton_ruser.backCrMo.getImage();
+                create.back.setIcon(new ImageIcon(crback.getScaledInstance(cx,cy, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_ruser.window="create";
                 create.setTitle("Create Reg. user");////////////////////////////////////////////////////////////////////////
                 create.saving.setVisible(false);
@@ -246,11 +254,12 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 
                 break;//End case 0
                 
-            case 1://Modify admin
+            case 1://Modify reg user
                 int ex=650;
                 int ey=500;
                 edit.back.setSize(ex,ey);
-                edit.back.setIcon(new ImageIcon (newimg));
+                Image edback=Singleton_ruser.backCrMo.getImage();
+                edit.back.setIcon(new ImageIcon(edback.getScaledInstance(ex, ey, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_ruser.window="modify";
                 edit.setTitle("Modify Reg. user");////////////////////////////////////////////////////////////////////////
                 edit.saving.setVisible(false);
@@ -328,7 +337,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 edit.btncancelEditruser.addMouseListener(this);
                 break;//End case 1
                 
-            case 2://Pager admin
+            case 2://Pager reg user
                 pager.setTitle("Reg. user management list");
                 pager.setLocationRelativeTo(null);
                 pager.setResizable(false);
@@ -355,9 +364,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 pager.jPanel3.setLayout(new java.awt.BorderLayout());
                 pager.jPanel3.add(comboRuser);
                                
-                pager.AddAdmin.setToolTipText("Add a new admin user");
-                pager.ModAdmin.setToolTipText("Modify selected admin user");
-                pager.DelAdmin.setToolTipText("Delete selected admin user");
+                pager.AddRuser.setToolTipText("Add a new admin user");
+                pager.ModRuser.setToolTipText("Modify selected admin user");
+                pager.DelRuser.setToolTipText("Delete selected admin user");
                 pager.btnsavejson.setToolTipText("Save users to JSON");
                 pager.btnsavetxt.setToolTipText("Save users to TXT");
                 pager.btnsavexml.setToolTipText("Save users to XML");
@@ -376,14 +385,17 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 pager.addWindowListener(this);
                 pager.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 
-                pager.AddAdmin.setName("AddAdmin");
-                pager.AddAdmin.addMouseListener(this);
+                pager.AddRuser.setName("AddRuser");
+                pager.AddRuser.addMouseListener(this);
                 
-                pager.ModAdmin.setName("ModAdmin");
-                pager.ModAdmin.addMouseListener(this);
+                pager.ModRuser.setName("ModRuser");
+                pager.ModRuser.addMouseListener(this);
                 
-                pager.DelAdmin.setName("DelAdmin");
-                pager.DelAdmin.addMouseListener(this);
+                pager.DelRuser.setName("DelRuser");
+                pager.DelRuser.addMouseListener(this);
+                
+                pager.ListRuser.setName("ListRuser");
+                pager.ListRuser.addMouseListener(this);
                 
                 pager.btnsavejson.setName("btnsavejson");
                 pager.btnsavejson.addMouseListener(this);
@@ -426,7 +438,29 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 pager.pagReturn.setName("pagReturn");
                 pager.pagReturn.addMouseListener(this);
                 
-                break;//End case 2 Pager admin
+                break;//End case 2 Pager reg user
+                
+            case 3:
+                int lx=550;
+                int ly=413;
+                list.back.setSize(lx,ly);
+                Image lsback=Singleton_ruser.backList.getImage();
+                List_ruser.back.setIcon(new ImageIcon(lsback.getScaledInstance(lx, ly, java.awt.Image.SCALE_SMOOTH)));
+                list.setTitle("Admin data list");
+                list.StringArea.setEditable(false);
+                list.setLocationRelativeTo(null);
+                list.setSize(lx,ly);
+                list.setResizable(false);
+                list.setVisible(true);
+                
+                list.setName("listWindow");
+                list.addWindowListener(this);
+                list.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                
+                list.btnReturn.setName("listbtnReturn");
+                list.btnReturn.addMouseListener(this);
+        
+                break;//End case 3 List reg user
             
         }
         
@@ -722,12 +756,12 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 break;
                 
                 ////Events from pager admin
-            case AddAdmin:
+            case AddRuser:
                 pager.dispose();
                 new RuserController(new Create_ruser(),0).Init(0);
                 break;
                 
-            case ModAdmin:
+            case ModRuser:
                 boolean modify;
                 modify = BLL_ruser.edit_ruser();
                 if (modify == true) {
@@ -735,8 +769,14 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 }
                 break;
                 
-            case DelAdmin:
+            case DelRuser:
                     BLL_ruser.delete_file();
+                break;
+                
+            case ListRuser:
+                if(true==BLL_ruser.list_ruser()){
+                    pager.dispose();
+                }
                 break;
                 
             case btnsavejson:
@@ -797,6 +837,12 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 pager.dispose();
                 new MenuController(new Mainmenu(),0).Init(0);
                 break;
+                
+                ////Events from list Reg user
+            case listbtnReturn:
+                list.dispose();
+                new RuserController(new Pager_ruser(),2).Init(2);
+                break;
          }
         
 
@@ -820,19 +866,24 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
 
         switch (Action.valueOf(e.getComponent().getName())){
                 ////Events from pager admin
-            case AddAdmin:
-                pager.AddAdmin.setIcon(Singleton_ruser.addicon_over);
-                pager.pagerInfo.setText("Click to add new Admin user");
+            case AddRuser:
+                pager.AddRuser.setIcon(Singleton_ruser.addicon_over);
+                pager.pagerInfo.setText("Click to add new user");
                 break;
                 
-            case ModAdmin:
-                pager.ModAdmin.setIcon(Singleton_ruser.editicon_over);
-                pager.pagerInfo.setText("Click to modify selected Admin user");    
+            case ModRuser:
+                pager.ModRuser.setIcon(Singleton_ruser.editicon_over);
+                pager.pagerInfo.setText("Click to modify selected user");    
                 break;
                 
-            case DelAdmin:
-                pager.DelAdmin.setIcon(Singleton_ruser.delicon_over);
-                pager.pagerInfo.setText("Click to delete selected Admin user");
+            case DelRuser:
+                pager.DelRuser.setIcon(Singleton_ruser.delicon_over);
+                pager.pagerInfo.setText("Click to delete selected user");
+                break;
+                
+            case ListRuser:
+                pager.ListRuser.setIcon(Singleton_ruser.lsicon_over);
+                pager.pagerInfo.setText("Click to list selected user");
                 break;
                 
             case btnsavejson:
@@ -866,18 +917,23 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
 
         switch (Action.valueOf(e.getComponent().getName())){
                 ////Events from pager admin
-            case AddAdmin:
-                pager.AddAdmin.setIcon(Singleton_ruser.addicon);
+            case AddRuser:
+                pager.AddRuser.setIcon(Singleton_ruser.addicon);
                 pager.pagerInfo.setText("");
                 break;
                 
-            case ModAdmin:
-                pager.ModAdmin.setIcon(Singleton_ruser.editicon);
+            case ModRuser:
+                pager.ModRuser.setIcon(Singleton_ruser.editicon);
                 pager.pagerInfo.setText("");    
                 break;
                 
-            case DelAdmin:
-                pager.DelAdmin.setIcon(Singleton_ruser.delicon);
+            case DelRuser:
+                pager.DelRuser.setIcon(Singleton_ruser.delicon);
+                pager.pagerInfo.setText("");
+                break;
+                
+            case ListRuser:
+                pager.ListRuser.setIcon(Singleton_ruser.lsicon);
                 pager.pagerInfo.setText("");
                 break;
                 
@@ -957,12 +1013,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 create.areaInfo.setText("Input the activity");
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
-                
-//            case createfieldKarma:
-//                create.areaInfo.setText("Input the karma (in text)");
-//                create.areaInfo.setBackground(Color.decode("#d6d6d6"));
-//                break;
-                
+                                
                 ////Events from Modify admin:
                 
             case editfieldName:
@@ -1004,11 +1055,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 edit.editareaInfo.setText("Input the activity");
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
-                
-//            case editfieldKarma:
-//                edit.editareaInfo.setText("Input the karma (in text)");
-//                edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
-//                break;
+
          }
     }
 
@@ -1051,10 +1098,6 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 create.areaInfo.setText("");
                 break;
                 
-//            case createfieldKarma:
-//                create.areaInfo.setText("");
-//                break;
-                
                 ////Events from Modify admin:
                 
             case editfieldName:
@@ -1089,9 +1132,6 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 edit.editareaInfo.setText("");
                 break;
                 
-//            case editfieldKarma:
-//                create.areaInfo.setText("");
-//                break;
          }
     }
     
@@ -1147,6 +1187,11 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
             case pagerWindow:
                      pager.dispose();
                      new MenuController(new Mainmenu(),0).Init(0);
+                break;
+                
+            case listWindow:
+                    list.dispose();
+                    new RuserController(new Pager_ruser(),2).Init(2);
                 break;
         }//End switch case
     }//End Windows Closing

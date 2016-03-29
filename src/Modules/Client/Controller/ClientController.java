@@ -14,6 +14,7 @@ import Modules.Client.Model.Utils.pager.AutocompleteJComboBox;
 import Modules.Client.Model.Utils.pager.StringSearchable;
 import Modules.Client.Model.Utils.pager.pagina;
 import Modules.Client.View.Create_client;
+import Modules.Client.View.List_client;
 import Modules.Client.View.Modify_client;
 import Modules.Client.View.Pager_client;
 import static Modules.Client.View.Pager_client.jComboBox1;
@@ -49,14 +50,11 @@ import javax.swing.table.TableRowSorter;
  * @author antonio
  */
 public class ClientController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
-
-        ImageIcon icon = new ImageIcon("src/Modules/Client/View/img/wood_3.jpg");
-        Image img=icon.getImage();
-        Image newimg = img.getScaledInstance(650, 500, java.awt.Image.SCALE_SMOOTH);
         
     public static Create_client create;
     public static Modify_client edit;
     public static Pager_client pager;
+    public static List_client list;
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new miniSimpleTableModel_client());
     public static AutocompleteJComboBox comboClient = null;
     public String comb="";
@@ -73,6 +71,10 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 
             case 2:
                 pager=(Pager_client)frame;
+                break;
+                
+            case 3:
+                list=(List_client)frame;
                 break;
         }
                 
@@ -117,6 +119,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         AddClient,
         ModClient,
         DelClient,
+        ListClient,
         btnsavejson,
         btnsavetxt,
         btnsavexml,
@@ -132,7 +135,11 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         pagNext,
         pagLast,
         pagLinks,
-        pagReturn
+        pagReturn,
+        
+        //List client
+        listWindow,
+        listbtnReturn
     }
     
     public enum Property{
@@ -156,7 +163,8 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 int cx=650;
                 int cy=500;
                 create.back.setSize(cx,cy);
-                create.back.setIcon(new ImageIcon (newimg));
+                Image crback=Singleton_client.backCrMo.getImage();
+                create.back.setIcon(new ImageIcon(crback.getScaledInstance(cx,cy, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_client.window="create";
                 create.setTitle("Create Client");////////////////////////////////////////////////////////////////////////
                 create.saving.setVisible(false);
@@ -254,12 +262,14 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 create.btncancelCreateadmin.setName("createbtnCancel");
                 create.btncancelCreateadmin.addMouseListener(this);
                 
-                break;//End case 0
+                break;//End case 0 create client
                 
             case 1://Modify client
                 int ex=650;
                 int ey=500;
                 edit.back.setSize(ex,ey);
+                Image edback=Singleton_client.backCrMo.getImage();
+                edit.back.setIcon(new ImageIcon(edback.getScaledInstance(ex, ey, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_client.window="modify";
                 edit.setTitle("Modify Client");////////////////////////////////////////////////////////////////////////
                 edit.saving.setVisible(false);
@@ -345,7 +355,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 
                 edit.btncancelEditclient.setName("editbtnCancel");
                 edit.btncancelEditclient.addMouseListener(this);
-                break;//End case 1
+                break;//End case 1 edit client
                 
             case 2://Pager client
                 pager.setTitle("Client management list");
@@ -404,6 +414,9 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 pager.DelClient.setName("DelClient");
                 pager.DelClient.addMouseListener(this);
                 
+                pager.ListClient.setName("ListClient");
+                pager.ListClient.addMouseListener(this);
+                
                 pager.btnsavejson.setName("btnsavejson");
                 pager.btnsavejson.addMouseListener(this);
                 
@@ -445,7 +458,29 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 pager.pagReturn.setName("pagReturn");
                 pager.pagReturn.addMouseListener(this);
                 
-                break;//End case 2 Pager admin
+                break;//End case 2 Pager client
+                
+            case 3:
+                int lx=550;
+                int ly=413;
+                list.back.setSize(lx,ly);
+                Image lsback=Singleton_client.backList.getImage();
+                List_client.back.setIcon(new ImageIcon(lsback.getScaledInstance(lx, ly, java.awt.Image.SCALE_SMOOTH)));
+                list.setTitle("Client data list");
+                list.StringArea.setEditable(false);
+                list.setLocationRelativeTo(null);
+                list.setSize(lx,ly);
+                list.setResizable(false);
+                list.setVisible(true);
+                
+                list.setName("listWindow");
+                list.addWindowListener(this);
+                list.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                
+                list.btnReturn.setName("listbtnReturn");
+                list.btnReturn.addMouseListener(this);
+        
+                break;//End case 3 List admin
             
         }
         
@@ -784,6 +819,12 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                         BLL_client.delete_file();
                 break;
                 
+            case ListClient:
+                if(true==BLL_client.list_client()){
+                    pager.dispose();
+                }
+                break;
+                
             case btnsavejson:
                 BLL_client.savejsonClient();
                 break;
@@ -835,6 +876,12 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 pager.dispose();
                 new MenuController(new Mainmenu(),0).Init(0);
                 break;
+                
+                ////Events from list Admin
+            case listbtnReturn:
+                list.dispose();
+                new ClientController(new Pager_client(),2).Init(2);
+                break;
          }
         
     }
@@ -871,7 +918,12 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 pager.pagerInfo.setText("Click to delete selected Client user");
                 break;
                 
-            case btnsavejson:
+            case ListClient:
+                pager.ListClient.setIcon(Singleton_client.lsicon_over);
+                pager.pagerInfo.setText("Click to list selected user");
+                break;
+                
+           case btnsavejson:
                 pager.btnsavejson.setIcon(Singleton_client.jsonicon_over);
                 pager.pagerInfo.setText("Save to JSON file format");
                 break;
@@ -917,7 +969,12 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 pager.pagerInfo.setText("");
                 break;
                 
-            case btnsavejson:
+            case ListClient:
+                pager.ListClient.setIcon(Singleton_client.lsicon);
+                pager.pagerInfo.setText("");
+                break;
+                
+           case btnsavejson:
                 pager.btnsavejson.setIcon(Singleton_client.jsonicon);
                 pager.pagerInfo.setText("");
                 break;

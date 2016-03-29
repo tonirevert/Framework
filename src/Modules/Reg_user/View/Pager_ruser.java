@@ -50,13 +50,14 @@ public class Pager_ruser extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        AddAdmin = new javax.swing.JLabel();
-        ModAdmin = new javax.swing.JLabel();
-        DelAdmin = new javax.swing.JLabel();
+        AddRuser = new javax.swing.JLabel();
+        ModRuser = new javax.swing.JLabel();
+        DelRuser = new javax.swing.JLabel();
         btnsavejson = new javax.swing.JLabel();
         btnsavetxt = new javax.swing.JLabel();
         btnsavexml = new javax.swing.JLabel();
         pagerInfo = new javax.swing.JTextArea();
+        ListRuser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -212,14 +213,14 @@ public class Pager_ruser extends javax.swing.JFrame {
 
         getContentPane().add(jPanel6, java.awt.BorderLayout.CENTER);
 
-        AddAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        AddAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/add_no_over.png"))); // NOI18N
+        AddRuser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        AddRuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/add_no_over.png"))); // NOI18N
 
-        ModAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ModAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/edit_no_over.png"))); // NOI18N
+        ModRuser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ModRuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/edit_no_over.png"))); // NOI18N
 
-        DelAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        DelAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/minus_no_over.png"))); // NOI18N
+        DelRuser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        DelRuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/minus_no_over.png"))); // NOI18N
 
         btnsavejson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/json_no_over.png"))); // NOI18N
 
@@ -232,40 +233,45 @@ public class Pager_ruser extends javax.swing.JFrame {
         pagerInfo.setRows(1);
         pagerInfo.setBorder(javax.swing.BorderFactory.createTitledBorder("Info:"));
 
+        ListRuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/list.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(AddAdmin)
+                .addComponent(AddRuser)
                 .addGap(18, 18, 18)
-                .addComponent(ModAdmin)
+                .addComponent(ModRuser)
                 .addGap(18, 18, 18)
-                .addComponent(DelAdmin)
-                .addGap(27, 27, 27)
-                .addComponent(pagerInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DelRuser)
                 .addGap(31, 31, 31)
+                .addComponent(ListRuser)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(pagerInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnsavejson)
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
                 .addComponent(btnsavetxt)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(btnsavexml)
-                .addGap(50, 50, 50))
+                .addGap(22, 22, 22))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(pagerInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(btnsavejson, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnsavetxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnsavexml, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(AddAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ModAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(DelAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(AddRuser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ModRuser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DelRuser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ListRuser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(19, 19, 19))
         );
 
@@ -276,9 +282,10 @@ public class Pager_ruser extends javax.swing.JFrame {
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JLabel AddAdmin;
-    public static javax.swing.JLabel DelAdmin;
-    public static javax.swing.JLabel ModAdmin;
+    public static javax.swing.JLabel AddRuser;
+    public static javax.swing.JLabel DelRuser;
+    public static javax.swing.JLabel ListRuser;
+    public static javax.swing.JLabel ModRuser;
     public static javax.swing.JLabel btnsavejson;
     public static javax.swing.JLabel btnsavetxt;
     public static javax.swing.JLabel btnsavexml;

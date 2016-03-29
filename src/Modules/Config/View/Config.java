@@ -5,11 +5,6 @@
  */
 package Modules.Config.View;
 
-import Modules.Config.DAO.DAO_Config;
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 /**
  *
  * @author antonio
@@ -20,10 +15,6 @@ public class Config extends javax.swing.JFrame {
      * Creates new form Config
      */
     public Config() {
-        ImageIcon icon = new ImageIcon("src/Modules/Menu/View/img/blue.jpg");
-        Image img=icon.getImage();
-        Image newimg = img.getScaledInstance(400, 450, java.awt.Image.SCALE_SMOOTH);
-        setContentPane(new JLabel(new ImageIcon (newimg)));
         initComponents();
         
 	
@@ -53,6 +44,7 @@ public class Config extends javax.swing.JFrame {
         labelDecimals = new javax.swing.JLabel();
         comboDecimals = new javax.swing.JComboBox<>();
         btnResetConf = new javax.swing.JButton();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -128,10 +120,15 @@ public class Config extends javax.swing.JFrame {
         getContentPane().add(btnResetConf);
         btnResetConf.setBounds(160, 340, 90, 29);
 
+        back.setText("back");
+        getContentPane().add(back);
+        back.setBounds(0, 0, 30, 15);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JLabel back;
     public static javax.swing.JButton btnCancelConf;
     public static javax.swing.JButton btnResetConf;
     public static javax.swing.JButton btnSaveConf;
