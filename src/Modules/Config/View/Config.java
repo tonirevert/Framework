@@ -53,39 +53,39 @@ public class Config extends javax.swing.JFrame {
 
         labelDateform.setText("Date format:");
         getContentPane().add(labelDateform);
-        labelDateform.setBounds(60, 36, 110, 15);
+        labelDateform.setBounds(50, 36, 130, 15);
 
         comboDateform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dd/MM/yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "yyyy/MM/dd" }));
-        comboDateform.setToolTipText("Choose the date format");
+        comboDateform.setToolTipText("");
         getContentPane().add(comboDateform);
-        comboDateform.setBounds(170, 30, 120, 25);
+        comboDateform.setBounds(180, 30, 120, 25);
 
         labelCurrency.setText("Currency:");
         getContentPane().add(labelCurrency);
-        labelCurrency.setBounds(60, 80, 110, 20);
+        labelCurrency.setBounds(50, 80, 130, 20);
 
         comboCurrency.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Euro", "Dollar", "Pound" }));
-        comboCurrency.setToolTipText("Choose the currency type");
+        comboCurrency.setToolTipText("");
         getContentPane().add(comboCurrency);
-        comboCurrency.setBounds(170, 79, 120, 25);
+        comboCurrency.setBounds(180, 79, 120, 25);
 
         labelLanguage.setText("Language:");
         getContentPane().add(labelLanguage);
-        labelLanguage.setBounds(60, 130, 110, 15);
+        labelLanguage.setBounds(50, 130, 130, 15);
 
         comboLanguage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "English", "Spanish", "Valencian" }));
-        comboLanguage.setToolTipText("Choose the language");
+        comboLanguage.setToolTipText("");
         getContentPane().add(comboLanguage);
-        comboLanguage.setBounds(170, 130, 120, 25);
+        comboLanguage.setBounds(180, 130, 120, 25);
 
         labelFileform.setText("File format:");
         getContentPane().add(labelFileform);
-        labelFileform.setBounds(60, 180, 110, 15);
+        labelFileform.setBounds(50, 180, 130, 15);
 
         comboFileform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JSON", "TXT", "XML" }));
-        comboFileform.setToolTipText("Choose the file format");
+        comboFileform.setToolTipText("");
         getContentPane().add(comboFileform);
-        comboFileform.setBounds(170, 180, 120, 25);
+        comboFileform.setBounds(180, 180, 120, 25);
 
         btnSaveConf.setText("Save");
         btnSaveConf.setToolTipText("Save configuration");
@@ -99,21 +99,21 @@ public class Config extends javax.swing.JFrame {
 
         labelTheme.setText("Theme:");
         getContentPane().add(labelTheme);
-        labelTheme.setBounds(60, 230, 110, 15);
+        labelTheme.setBounds(50, 230, 130, 15);
 
         comboTheme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metal", "Windows", "Motif", "Nimbus", " " }));
-        comboTheme.setToolTipText("Choose the theme");
+        comboTheme.setToolTipText("");
         getContentPane().add(comboTheme);
-        comboTheme.setBounds(170, 230, 120, 25);
+        comboTheme.setBounds(180, 230, 120, 25);
 
         labelDecimals.setText("Decimals:");
         getContentPane().add(labelDecimals);
-        labelDecimals.setBounds(60, 280, 110, 15);
+        labelDecimals.setBounds(50, 280, 130, 15);
 
         comboDecimals.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 decimal", "2 decimals", "3 decimals" }));
         comboDecimals.setToolTipText("Choose the decimal format");
         getContentPane().add(comboDecimals);
-        comboDecimals.setBounds(170, 280, 120, 25);
+        comboDecimals.setBounds(180, 280, 120, 25);
 
         btnResetConf.setText("Reset");
         btnResetConf.setToolTipText("Reset to defaults");

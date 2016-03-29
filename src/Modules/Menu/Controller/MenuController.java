@@ -5,6 +5,7 @@
  */
 package Modules.Menu.Controller;
 
+import Classes.Singleton_app;
 import static Modules.Menu.Classes.Singleton_menus.adminicon;
 import static Modules.Menu.Classes.Singleton_menus.adminicon_over;
 import static Modules.Menu.Classes.Singleton_menus.clienticon;
@@ -104,12 +105,26 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                 main.back.setIcon(new ImageIcon(mback.getScaledInstance(mx, my, java.awt.Image.SCALE_SMOOTH)));
                 theme_class.selectedtheme(Config_class.getinstance().getTheme());
                 SwingUtilities.updateComponentTreeUI(main);
+                main.setTitle("Main Menu");
                 
+                //Translations:
+                main.setTitle(Singleton_app.lang.getProperty("mm_title"));
+                main.btnAdmin.setText(Singleton_app.lang.getProperty("mm_admin"));
+                main.btnAdmin.setToolTipText(Singleton_app.lang.getProperty("mm_admint"));
+                main.btnClient.setText(Singleton_app.lang.getProperty("mm_client"));
+                main.btnClient.setToolTipText(Singleton_app.lang.getProperty("mm_clientt"));
+                main.btnReguser.setText(Singleton_app.lang.getProperty("mm_ruser"));
+                main.btnReguser.setToolTipText(Singleton_app.lang.getProperty("mm_rusert"));
+                main.btnConfig.setToolTipText(Singleton_app.lang.getProperty("mm_conft"));
+                main.btnExit.setText(Singleton_app.lang.getProperty("mm_exit"));
+                main.btnExit.setToolTipText(Singleton_app.lang.getProperty("mm_exitt"));
+                
+                //Actions:
                 main.setName("mainMenu");
                 main.addWindowListener(this);
                 main.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 main.setLocationRelativeTo(null);
-                main.setTitle("Main Menu");
+                
                 main.setResizable(false);
                 main.setSize(mx,my);
                 main.setVisible(true);
@@ -134,11 +149,26 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                 conf.back.setIcon(new ImageIcon (confback.getScaledInstance(cx, cy,java.awt.Image.SCALE_SMOOTH)));
                 theme_class.selectedtheme(Config_class.getinstance().getTheme());
                 SwingUtilities.updateComponentTreeUI(this.conf);
+                conf.setTitle("Configuration");
+                
+                //Translation:
+                conf.labelDateform.setText(Singleton_app.lang.getProperty("co_dateform"));
+                conf.labelCurrency.setText(Singleton_app.lang.getProperty("co_currency"));
+                conf.labelLanguage.setText(Singleton_app.lang.getProperty("co_language"));
+                conf.labelFileform.setText(Singleton_app.lang.getProperty("co_fileform"));
+                conf.labelTheme.setText(Singleton_app.lang.getProperty("co_theme"));
+                conf.labelDecimals.setText(Singleton_app.lang.getProperty("co_decformat"));
+                conf.comboDateform.setToolTipText(Singleton_app.lang.getProperty("co_datetool"));
+                conf.comboCurrency.setToolTipText(Singleton_app.lang.getProperty("co_currtool"));
+                conf.comboLanguage.setToolTipText(Singleton_app.lang.getProperty("co_langtool"));
+                conf.comboFileform.setToolTipText(Singleton_app.lang.getProperty("co_filetool"));
+                conf.comboTheme.setToolTipText(Singleton_app.lang.getProperty("co_themetool"));
+                conf.comboDecimals.setToolTipText(Singleton_app.lang.getProperty("co_dectool"));
                 
                 conf.setName("configMenu");
                 conf.addWindowListener(this);
                 conf.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-                conf.setTitle("Configuration");
+                
                 conf.setResizable(false);
                 conf.setSize(cx, cy);
                 conf.setLocationRelativeTo(null);
@@ -195,7 +225,7 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                case btnExit:
                     BLL_admin.autosaveAdmin();
                     BLL_client.autosaveClient();
-                    JOptionPane.showMessageDialog(null,"Leaving application...");
+                    JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
                     main.dispose();
                     System.exit(0);
                 break;
@@ -287,7 +317,7 @@ public class MenuController implements ActionListener, MouseListener, WindowList
         switch(MenuController.Action.valueOf(e.getComponent().getName())){
             
             case mainMenu:
-                JOptionPane.showMessageDialog(null, "Leaving the aplication...","Leaving",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
                 System.exit(0);
                 break;
                 

@@ -119,10 +119,10 @@ public class Admin_class extends User_class implements Serializable{
 		StringBuffer out=new StringBuffer();
 		
 		out.append(super.toString());
-		out.append(Singleton_app.lang.getProperty("a_contdate")+this.getCont_date().toString(1)+"\n");
-		out.append(Singleton_app.lang.getProperty("a_antiquity")+this.getAntiquity()+"\n");
-		out.append(Singleton_app.lang.getProperty("a_salary")+Currency.autocurrency(this.getSalary())+"\n");
-		out.append(Singleton_app.lang.getProperty("a_activity")+this.getActivity()+"\n");
+		out.append(Singleton_app.lang.getProperty("a_contdate")+" "+this.getCont_date().toString(1)+"\n");
+		out.append(Singleton_app.lang.getProperty("a_antiquity")+" "+this.getAntiquity()+"\n");
+		out.append(Singleton_app.lang.getProperty("a_salary")+" "+Currency.autocurrency(this.getSalary())+"\n");
+		out.append(Singleton_app.lang.getProperty("a_activity")+" "+this.getActivity()+"\n");
 		
 		return out.toString();
 	}

@@ -213,7 +213,7 @@ public class Create_admin extends javax.swing.JFrame {
 
         labelState.setText("State: Connected?");
         getContentPane().add(labelState);
-        labelState.setBounds(310, 170, 140, 15);
+        labelState.setBounds(310, 170, 160, 15);
 
         buttonGroupState.add(radioStateYes);
         radioStateYes.setText("Yes");
@@ -233,7 +233,7 @@ public class Create_admin extends javax.swing.JFrame {
 
         labeldateContract.setText("Contract date:");
         getContentPane().add(labeldateContract);
-        labeldateContract.setBounds(310, 210, 110, 15);
+        labeldateContract.setBounds(310, 210, 120, 15);
 
         fieldActivity.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldActivity);
@@ -241,7 +241,7 @@ public class Create_admin extends javax.swing.JFrame {
 
         labelActivity.setText("Activity:");
         getContentPane().add(labelActivity);
-        labelActivity.setBounds(310, 250, 90, 15);
+        labelActivity.setBounds(310, 250, 120, 15);
 
         checkActivity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkActivity);
@@ -269,7 +269,7 @@ public class Create_admin extends javax.swing.JFrame {
 
         btncancelCreateadmin.setText("Cancel");
         getContentPane().add(btncancelCreateadmin);
-        btncancelCreateadmin.setBounds(380, 400, 90, 29);
+        btncancelCreateadmin.setBounds(380, 400, 105, 29);
 
         btnresetCreateadmin.setText("Reset");
         getContentPane().add(btnresetCreateadmin);
@@ -326,7 +326,7 @@ public class Create_admin extends javax.swing.JFrame {
     public static javax.swing.JLabel labelName;
     public static javax.swing.JLabel labelPassword;
     public static javax.swing.JLabel labelPassword2;
-    private javax.swing.JLabel labelState;
+    public static javax.swing.JLabel labelState;
     public static javax.swing.JLabel labelSurname;
     public static javax.swing.JLabel labelUser;
     public static javax.swing.JLabel labeldateBirth;

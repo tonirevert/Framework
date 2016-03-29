@@ -57,7 +57,7 @@ public class Mainmenu extends javax.swing.JFrame {
 
         btnExit.setText("Exit");
         btnExit.setToolTipText("Click to exit the aplication");
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 60, -1));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 80, -1));
 
         btnAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Menu/View/img/admin.png"))); // NOI18N
         btnAdmin.setText("Admin users");

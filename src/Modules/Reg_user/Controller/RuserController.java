@@ -5,6 +5,7 @@
  */
 package Modules.Reg_user.Controller;
 
+import Classes.Singleton_app;
 import Modules.Reg_user.Controller.RuserController.Action;
 import Modules.Reg_user.Model.BLL.BLL_ruser;
 import Modules.Reg_user.Model.Classes.Singleton_ruser;
@@ -179,6 +180,26 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 create.avatar.setIcon(defaultavatar);
                 create.setVisible(true);
                 
+                //Translation:
+                create.setTitle(Singleton_app.lang.getProperty("r_wcreate"));
+                create.setTitle(Singleton_app.lang.getProperty("a_wcreate"));
+                create.labelDNI.setText(Singleton_app.lang.getProperty("u_idcard"));
+                create.labelName.setText(Singleton_app.lang.getProperty("u_name"));
+                create.labelSurname.setText(Singleton_app.lang.getProperty("u_surname"));
+                create.labelMobile.setText(Singleton_app.lang.getProperty("u_mobile"));
+                create.labelUser.setText(Singleton_app.lang.getProperty("u_user"));
+                create.labelPassword.setText(Singleton_app.lang.getProperty("u_password"));
+                create.labelPassword2.setText(Singleton_app.lang.getProperty("u_verify"));
+                create.labeldateBitrh.setText(Singleton_app.lang.getProperty("u_birthday"));
+                create.labelState.setText(Singleton_app.lang.getProperty("u_state"));
+                create.labelActivity.setText(Singleton_app.lang.getProperty("r_activity"));
+                
+                create.btnsaveCreateruser.setText(Singleton_app.lang.getProperty("w_create"));
+                create.btnsaveCreateruser.setText(Singleton_app.lang.getProperty("w_Reset"));
+                create.btnsaveCreateruser.setText(Singleton_app.lang.getProperty("w_Cancel"));
+                create.btnSearch.setText(Singleton_app.lang.getProperty("w_search"));
+                
+                //Actions:
                 create.setName("createWindow");
                 create.addWindowListener(this);
                 create.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -272,7 +293,24 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 edit.setLocationRelativeTo(null);
                 edit.setVisible(true);
 
+                //Translation:
+                edit.setTitle(Singleton_app.lang.getProperty("r_wedit"));
+                edit.labelDNI.setText(Singleton_app.lang.getProperty("u_idcard"));
+                edit.labelName.setText(Singleton_app.lang.getProperty("u_name"));
+                edit.labelSurname.setText(Singleton_app.lang.getProperty("u_surname"));
+                edit.labelMobile.setText(Singleton_app.lang.getProperty("u_mobile"));
+                edit.labelUser.setText(Singleton_app.lang.getProperty("u_user"));
+                edit.labelPassword.setText(Singleton_app.lang.getProperty("u_password"));
+                edit.labelPassword2.setText(Singleton_app.lang.getProperty("u_verify"));
+                edit.labeldateBirth.setText(Singleton_app.lang.getProperty("u_birthday"));
+                edit.labelState.setText(Singleton_app.lang.getProperty("u_state"));
+                edit.labelActivity.setText(Singleton_app.lang.getProperty("r_activity"));
                 
+                edit.btnsaveEditruser.setText(Singleton_app.lang.getProperty("w_save"));
+                edit.btncancelEditruser.setText(Singleton_app.lang.getProperty("w_save"));
+                edit.btnSearch.setText(Singleton_app.lang.getProperty("w_search"));
+                
+                //Action:
                 edit.setName("editWindow");
                 edit.addWindowListener(this);
                 edit.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -363,7 +401,11 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 comboRuser = new AutocompleteJComboBox(searchable);
                 pager.jPanel3.setLayout(new java.awt.BorderLayout());
                 pager.jPanel3.add(comboRuser);
-                               
+                             
+                //Translation:
+                pager.setTitle(Singleton_app.lang.getProperty("r_wlist"));
+                
+                //Action:
                 pager.AddRuser.setToolTipText("Add a new admin user");
                 pager.ModRuser.setToolTipText("Modify selected admin user");
                 pager.DelRuser.setToolTipText("Delete selected admin user");
@@ -709,7 +751,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                         create.saving.setVisible(true);
                         delay.setRepeats(false);
                         delay.start();
-                        create.areaInfo.setText("User created correctly");
+                        create.areaInfo.setText(Singleton_app.lang.getProperty("w_ucreated"));
                         create.areaInfo.setBackground(Color.green);
                 }
                 break;
@@ -742,10 +784,10 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                     delay.setRepeats(false);
                     delay.start();
                     BLL_ruser.autosaveRuser();
-                    edit.editareaInfo.setText("User saved correctly");
+                    edit.editareaInfo.setText(Singleton_app.lang.getProperty("w_usaved"));
                     edit.editareaInfo.setBackground(Color.green);
                 }else{
-                    edit.editareaInfo.setText("User data incomplete, please revise it");
+                    edit.editareaInfo.setText(Singleton_app.lang.getProperty("w_udatinco"));
                     edit.editareaInfo.setBackground(Color.red);
                 }
                 break;
@@ -799,7 +841,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 break;
                 
             case entriesCombo:
-                System.out.println("framework_v2.Modules.Admin.Controller.AdminController.mouseClicked()");
+//                System.out.println("framework_v2.Modules.Admin.Controller.AdminController.mouseClicked()");
                 pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
                 pagina.currentPageIndex = 1;
                 pagina.initLinkBox();
@@ -970,89 +1012,89 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
         
          switch (Action.valueOf(e.getComponent().getName())) {
               case createfieldDNI:
-                create.areaInfo.setText("Input a ID card number");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_idinfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldName:
-                create.areaInfo.setText("Input a name");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_nainfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldSurname:
-                create.areaInfo.setText("Input a surname");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_suinfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldEmail:
-                create.areaInfo.setText("Input a e-mail address");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_eminfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
             
             case createfieldMobile:
-                create.areaInfo.setText("Input a mobile number like 346XXXXXXXX");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_moinfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldUser:
-                create.areaInfo.setText("Input a user name");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_usinfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldPassword:
-                create.areaInfo.setText("Input a password like Az123456 (need a capital letter) 8 letters");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_painfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldVerify:
-                create.areaInfo.setText("Verify your password");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_veinfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldActivity:
-                create.areaInfo.setText("Input the activity");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_acinfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
-                                
-                ////Events from Modify admin:
+                
+                ////Events from Modify Registered user:
                 
             case editfieldName:
-                edit.editareaInfo.setText("Input a name");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_nainfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case editfieldSurname:
-                edit.editareaInfo.setText("Input a surname");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_suinfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case editfieldEmail:
-                edit.editareaInfo.setText("Input a e-mail address");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_eminfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
             
             case editfieldMobile:
-                edit.editareaInfo.setText("Input a mobile number like 346XXXXXXXX");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_moinfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case editfieldUser:
-                edit.editareaInfo.setText("Input a user name");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_usinfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case editfieldPassword:
-                edit.editareaInfo.setText("Input a password like Az123456 (need a capital letter) 8 letters");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_painfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case editfieldVerify:
-                edit.editareaInfo.setText("Verify your password");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_veinfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case editfieldActivity:
-                edit.editareaInfo.setText("Input the activity");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_acinfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
 
@@ -1098,7 +1140,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 create.areaInfo.setText("");
                 break;
                 
-                ////Events from Modify admin:
+                ////Events from Modify registered user:
                 
             case editfieldName:
                 edit.editareaInfo.setText("");

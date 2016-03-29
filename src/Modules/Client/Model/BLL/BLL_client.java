@@ -5,6 +5,7 @@
  */
 package Modules.Client.Model.BLL;
 
+import Classes.Singleton_app;
 import Modules.Client.Controller.ClientController;
 import Modules.Client.Model.Utils.Files_lib.json;
 import Modules.Client.Model.Utils.Files_lib.txt;
@@ -38,7 +39,7 @@ import java.util.logging.Logger;
 public class BLL_client {
     
     /**
-     * Used to show a message on the Pager admin info area
+     * Used to show a message on the Pager client info area
      */
     public static void PauseNoselect() {
         Timer delay = new Timer(2000, new ActionListener() {
@@ -52,7 +53,7 @@ public class BLL_client {
         
         delay.setRepeats(false);
         delay.start();
-        Pager_client.pagerInfo.setText("No user selected!");
+        Pager_client.pagerInfo.setText(Singleton_app.lang.getProperty("bll_nosel"));
         Pager_client.pagerInfo.setBackground(Color.red);
     }
     
@@ -71,12 +72,12 @@ public class BLL_client {
         
         delay.setRepeats(false);
         delay.start();
-        Pager_client.pagerInfo.setText("List empty!");
+        Pager_client.pagerInfo.setText(Singleton_app.lang.getProperty("bll_lsempty"));
         Pager_client.pagerInfo.setBackground(Color.red);
     }
     
     /**
-     * Used to show a message on the Pager admin info area
+     * Used to show a message on the Pager client info area
      */
      public static void PauseIncomplete() {
         Timer delay = new Timer(2000, new ActionListener() {
@@ -88,7 +89,7 @@ public class BLL_client {
         });
         delay.setRepeats(false);
         delay.start();
-        Create_client.areaInfo.setText("User data incomplete, please revise it!");
+        Create_client.areaInfo.setText(Singleton_app.lang.getProperty("bll_incomp"));
         Create_client.areaInfo.setBackground(Color.red);
     }
     
@@ -106,7 +107,7 @@ public class BLL_client {
     }
     
     /**
-     * Used to check the create admin fields
+     * Used to check the create client fields
      * @param type to choose the action
      */
     public static void askClientdata(String type){
@@ -282,7 +283,7 @@ public class BLL_client {
         }else{
             Singleton_client.cli.add(client);
             autosaveClient();
-            Create_client.areaInfo.setText("User created correctly");
+            Create_client.areaInfo.setText(Singleton_app.lang.getProperty("bll_created"));
             Create_client.areaInfo.setBackground(Color.green);
             created=true;
         }
@@ -394,7 +395,7 @@ public class BLL_client {
                         dni = (String) pagerTable.getModel().getValueAt(selection1, 0);
                         Singleton_client.cl = new Client_class(dni);
                         pos = BLL_client.searchclientMod((Client_class) cl);
-                        int opc = JOptionPane.showConfirmDialog(null, "Delete user with ID Card: " + dni+"?",
+                        int opc = JOptionPane.showConfirmDialog(null, Singleton_app.lang.getProperty("bll_remove") + dni+"?",
                                 "Info", JOptionPane.WARNING_MESSAGE);
 
                         if (opc == 0) {

@@ -208,7 +208,7 @@ public class Modify_client extends javax.swing.JFrame {
 
         labeldateBith.setText("Birth date:");
         getContentPane().add(labeldateBith);
-        labeldateBith.setBounds(310, 15, 90, 15);
+        labeldateBith.setBounds(310, 15, 110, 15);
 
         checkDatebirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatebirth);
@@ -347,7 +347,7 @@ public class Modify_client extends javax.swing.JFrame {
     public static javax.swing.JTextField editfieldUser;
     public static javax.swing.JTextField fieldDNI;
     public static javax.swing.JLabel labelAvatar;
-    private javax.swing.JLabel labelClientType;
+    public static javax.swing.JLabel labelClientType;
     public static javax.swing.JLabel labelDNI;
     public static javax.swing.JLabel labelEmail;
     public static javax.swing.JLabel labelMobile;

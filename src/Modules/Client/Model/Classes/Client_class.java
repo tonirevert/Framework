@@ -132,11 +132,11 @@ public class Client_class extends User_class implements Serializable{
 		StringBuffer out=new StringBuffer();
 		
 		out.append(super.toString());
-		out.append(Singleton_app.lang.getProperty("c_regdate")+this.getReg_date().toString(1)+"\n");
-		out.append(Singleton_app.lang.getProperty("c_antique")+this.getAntique()+"\n");
-		out.append(Singleton_app.lang.getProperty("c_shopping")+Currency.autocurrency(this.getShopping())+"\n");
-		out.append(Singleton_app.lang.getProperty("c_premium")+this.isPremium()+"\n");
-		out.append(Singleton_app.lang.getProperty("c_clitype")+this.getClient_type()+"\n");
+		out.append(Singleton_app.lang.getProperty("c_regdate")+" "+this.getReg_date().toString(1)+"\n");
+		out.append(Singleton_app.lang.getProperty("c_antique")+" "+this.getAntique()+"\n");
+		out.append(Singleton_app.lang.getProperty("c_shopping")+" "+Currency.autocurrency(this.getShopping())+"\n");
+		out.append(Singleton_app.lang.getProperty("c_premium")+" "+this.isPremium()+"\n");
+		out.append(Singleton_app.lang.getProperty("c_clitype")+" "+this.getClient_type()+"\n");
 				
 		return out.toString();
 	}

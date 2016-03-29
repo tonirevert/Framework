@@ -182,26 +182,42 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 create.avatar.setIcon(defaultavatar);
                 create.setVisible(true);
                 
+                //Translation:
+                create.setTitle(Singleton_app.lang.getProperty("a_wcreate"));
+                create.labelDNI.setText(Singleton_app.lang.getProperty("u_idcard"));
+                create.labelName.setText(Singleton_app.lang.getProperty("u_name"));
+                create.labelSurname.setText(Singleton_app.lang.getProperty("u_surname"));
+                create.labelMobile.setText(Singleton_app.lang.getProperty("u_mobile"));
+                create.labelUser.setText(Singleton_app.lang.getProperty("u_user"));
+                create.labelPassword.setText(Singleton_app.lang.getProperty("u_password"));
+                create.labelPassword2.setText(Singleton_app.lang.getProperty("u_verify"));
+                create.labeldateBirth.setText(Singleton_app.lang.getProperty("u_birthday"));
+                create.labelState.setText(Singleton_app.lang.getProperty("u_state"));
+                create.labeldateContract.setText(Singleton_app.lang.getProperty("a_contdate"));
+                create.labelActivity.setText(Singleton_app.lang.getProperty("a_activity"));
                 
+                create.btnsaveCreateadmin.setText(Singleton_app.lang.getProperty("w_create"));
+                create.btnresetCreateadmin.setText(Singleton_app.lang.getProperty("w_Reset"));
+                create.btncancelCreateadmin.setText(Singleton_app.lang.getProperty("w_Cancel"));
+                create.btnSearch.setText(Singleton_app.lang.getProperty("w_search"));
+                
+                //Actions:
                 create.setName("createWindow");
                 create.addWindowListener(this);
                 create.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 
-                create.labelDNI.setText(Singleton_app.lang.getProperty("u_idcard"));
                 create.fieldDNI.setActionCommand("createfieldDNI");
                 create.fieldDNI.setName("createfieldDNI");
                 create.fieldDNI.addFocusListener(this);
                 create.fieldDNI.addActionListener(this);
                 create.fieldDNI.addKeyListener(this);
                 
-                create.labelName.setText(Singleton_app.lang.getProperty("u_name"));
                 create.fieldName.setActionCommand("createfieldName");
                 create.fieldName.setName("createfieldName");
                 create.fieldName.addFocusListener(this);
                 create.fieldName.addActionListener(this);
                 create.fieldName.addKeyListener(this);
                 
-                create.labelSurname.setText(Singleton_app.lang.getProperty("u_surname"));
                 create.fieldSurname.setActionCommand("createfieldSurname");
                 create.fieldSurname.setName("createfieldSurname");
                 create.fieldSurname.addFocusListener(this);
@@ -214,21 +230,21 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 create.fieldEmail.addActionListener(this);
                 create.fieldEmail.addKeyListener(this);
                 
-                create.labelMobile.setText(Singleton_app.lang.getProperty("u_mobile"));
+                
                 create.fieldMobile.setActionCommand("createfieldMobile");
                 create.fieldMobile.setName("createfieldMobile");
                 create.fieldMobile.addFocusListener(this);
                 create.fieldMobile.addActionListener(this);
                 create.fieldMobile.addKeyListener(this);
                 
-                create.labelUser.setText(Singleton_app.lang.getProperty("u_user"));
+                
                 create.fieldUser.setActionCommand("createfieldUser");
                 create.fieldUser.setName("createfieldUser");
                 create.fieldUser.addFocusListener(this);
                 create.fieldUser.addActionListener(this);
                 create.fieldUser.addKeyListener(this);
                 
-                create.labelPassword.setText(Singleton_app.lang.getProperty("u_password"));
+                
                 create.fieldPassword.setActionCommand("createfieldPassword");
                 create.fieldPassword.setName("createfieldPassword");
                 create.fieldPassword.addFocusListener(this);
@@ -241,7 +257,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 create.fieldPassword2.addActionListener(this);
                 create.fieldPassword2.addKeyListener(this);
                 
-                create.labeldateBirth.setText(Singleton_app.lang.getProperty("u_birthday"));
+                
                 create.dateBirth.addPropertyChangeListener(this);
                 
                 create.btnSearch.setName("createbtnSearch");
@@ -286,7 +302,25 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 edit.setLocationRelativeTo(null);
                 edit.setVisible(true);
 
+                //Translation:
+                edit.setTitle(Singleton_app.lang.getProperty("a_wedit"));
+                edit.labelDNI.setText(Singleton_app.lang.getProperty("u_idcard"));
+                edit.labelName.setText(Singleton_app.lang.getProperty("u_name"));
+                edit.labelSurname.setText(Singleton_app.lang.getProperty("u_surname"));
+                edit.labelMobile.setText(Singleton_app.lang.getProperty("u_mobile"));
+                edit.labelUser.setText(Singleton_app.lang.getProperty("u_user"));
+                edit.labelPassword.setText(Singleton_app.lang.getProperty("u_password"));
+                edit.labelPassword2.setText(Singleton_app.lang.getProperty("u_verify"));
+                edit.labeldateBirth.setText(Singleton_app.lang.getProperty("u_birthday"));
+                edit.labelState.setText(Singleton_app.lang.getProperty("u_state"));
+                edit.labeldateContract.setText(Singleton_app.lang.getProperty("a_contdate"));
+                edit.labelActivity.setText(Singleton_app.lang.getProperty("a_activity"));
                 
+                edit.btnsaveEditadmin.setText(Singleton_app.lang.getProperty("w_save"));
+                edit.btncancelEditadmin.setText(Singleton_app.lang.getProperty("w_Cancel"));
+                edit.btnSearch.setText(Singleton_app.lang.getProperty("w_search"));
+                
+                //Action:
                 edit.setName("editWindow");
                 edit.addWindowListener(this);
                 edit.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -379,10 +413,14 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 comboAdmin = new AutocompleteJComboBox(searchable);
                 pager.jPanel3.setLayout(new java.awt.BorderLayout());
                 pager.jPanel3.add(comboAdmin);
-                               
-                pager.AddAdmin.setToolTipText("Add a new admin user");
-                pager.ModAdmin.setToolTipText("Modify selected admin user");
-                pager.DelAdmin.setToolTipText("Delete selected admin user");
+                
+                //Translation:
+                pager.setTitle(Singleton_app.lang.getProperty("a_wlist"));
+                
+                //Actions:
+                pager.AddAdmin.setToolTipText("Add a new user");
+                pager.ModAdmin.setToolTipText("Modify selected user");
+                pager.DelAdmin.setToolTipText("Delete selected user");
                 pager.ListAdmin.setToolTipText("Click to list the selected user");
                 pager.btnsavejson.setToolTipText("Save users to JSON");
                 pager.btnsavetxt.setToolTipText("Save users to TXT");
@@ -726,7 +764,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                         create.saving.setVisible(true);
                         delay.setRepeats(false);
                         delay.start();
-                        create.areaInfo.setText("User created correctly");
+                        create.areaInfo.setText(Singleton_app.lang.getProperty("w_ucreated"));
                         create.areaInfo.setBackground(Color.green);
                 }
                 break;
@@ -759,10 +797,10 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                     delay.setRepeats(false);
                     delay.start();
                     BLL_admin.autosaveAdmin();
-                    edit.editareaInfo.setText("User saved correctly");
+                    edit.editareaInfo.setText(Singleton_app.lang.getProperty("w_usaved"));
                     edit.editareaInfo.setBackground(Color.green);
                 }else{
-                    edit.editareaInfo.setText("User data incomplete, please revise it");
+                    edit.editareaInfo.setText(Singleton_app.lang.getProperty("w_udatinco"));
                     edit.editareaInfo.setBackground(Color.red);
                 }
                 break;
@@ -987,89 +1025,89 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         
          switch (Action.valueOf(e.getComponent().getName())) {
               case createfieldDNI:
-                create.areaInfo.setText("Input a ID card number");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_idinfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldName:
-                create.areaInfo.setText("Input a name");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_nainfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldSurname:
-                create.areaInfo.setText("Input a surname");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_suinfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldEmail:
-                create.areaInfo.setText("Input a e-mail address");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_eminfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
             
             case createfieldMobile:
-                create.areaInfo.setText("Input a mobile number like 346XXXXXXXX");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_moinfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldUser:
-                create.areaInfo.setText("Input a user name");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_usinfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldPassword:
-                create.areaInfo.setText("Input a password like Az123456 (need a capital letter) 8 letters");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_painfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldVerify:
-                create.areaInfo.setText("Verify your password");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_veinfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case createfieldActivity:
-                create.areaInfo.setText("Input the activity");
+                create.areaInfo.setText(Singleton_app.lang.getProperty("u_acinfo"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
                 ////Events from Modify admin:
                 
             case editfieldName:
-                edit.editareaInfo.setText("Input a name");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_nainfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case editfieldSurname:
-                edit.editareaInfo.setText("Input a surname");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_suinfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case editfieldEmail:
-                edit.editareaInfo.setText("Input a e-mail address");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_eminfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
             
             case editfieldMobile:
-                edit.editareaInfo.setText("Input a mobile number like 346XXXXXXXX");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_moinfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case editfieldUser:
-                edit.editareaInfo.setText("Input a user name");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_usinfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case editfieldPassword:
-                edit.editareaInfo.setText("Input a password like Az123456 (need a capital letter) 8 letters");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_painfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case editfieldVerify:
-                edit.editareaInfo.setText("Verify your password");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_veinfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
             case editfieldActivity:
-                edit.editareaInfo.setText("Input the activity");
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_acinfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
          }

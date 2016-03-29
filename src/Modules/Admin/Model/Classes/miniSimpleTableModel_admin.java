@@ -1,5 +1,6 @@
 package Modules.Admin.Model.Classes;
 import Classes.Date_class;
+import Classes.Singleton_app;
 import static Modules.Admin.Controller.AdminController.comboAdmin;
 import Modules.Admin.Model.Utils.pager.pagina;
 import Modules.Admin.View.Pager_admin;
@@ -10,7 +11,9 @@ import javax.swing.table.AbstractTableModel;
 public class miniSimpleTableModel_admin extends AbstractTableModel {
     public static ArrayList<Admin_class> datos = new ArrayList<Admin_class>();
     public static ArrayList<Admin_class> datosaux = new ArrayList<Admin_class>();
-    String[] columnas = {"ID Card", "Name", "Surname", "Cont. date","Salary"};
+    String[] columnas = {Singleton_app.lang.getProperty("min_idcard"),Singleton_app.lang.getProperty("min_name"),
+        Singleton_app.lang.getProperty("min_surname"), Singleton_app.lang.getProperty("min_cdate"),
+        Singleton_app.lang.getProperty("min_salary")};
 
     
     ////////////////////estos métodos son necesarios para que jtable funcione/////////////////////

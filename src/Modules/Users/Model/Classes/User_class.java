@@ -244,18 +244,18 @@ public abstract class User_class implements Comparable<User_class>, Serializable
 	 public String toString(){
 	 	StringBuffer out= new StringBuffer();
 	 	
-	 	out.append(Singleton_app.lang.getProperty("u_idcard")+this.getDni()+"\n");
-	 	out.append(Singleton_app.lang.getProperty("u_name")+this.getName()+"\n");
-	 	out.append(Singleton_app.lang.getProperty("u_surname")+this.getSurname()+"\n");
-	 	out.append(Singleton_app.lang.getProperty("u_birthday")+this.getBirthday().toString(1)+"\n");
-	 	out.append(Singleton_app.lang.getProperty("u_mobile")+this.getMobile()+"\n");
+	 	out.append(Singleton_app.lang.getProperty("u_idcard")+" "+this.getDni()+"\n");
+	 	out.append(Singleton_app.lang.getProperty("u_name")+" "+this.getName()+"\n");
+	 	out.append(Singleton_app.lang.getProperty("u_surname")+" "+this.getSurname()+"\n");
+	 	out.append(Singleton_app.lang.getProperty("u_birthday")+" "+this.getBirthday().toString(1)+"\n");
+	 	out.append(Singleton_app.lang.getProperty("u_mobile")+" "+this.getMobile()+"\n");
 	 	out.append("E-mail: "+this.getEmail()+"\n");
-	 	out.append(Singleton_app.lang.getProperty("u_user")+this.getUser()+"\n");
-	 	out.append(Singleton_app.lang.getProperty("u_password")+this.getPass()+"\n");
+	 	out.append(Singleton_app.lang.getProperty("u_user")+" "+this.getUser()+"\n");
+	 	out.append(Singleton_app.lang.getProperty("u_password")+" "+this.getPass()+"\n");
 	 	out.append("Avatar: "+this.getAvatar()+"\n");
-	 	out.append(Singleton_app.lang.getProperty("u_state")+this.isState()+"\n");
-	 	out.append(Singleton_app.lang.getProperty("u_age")+this.getAge()+"\n");
-	 	out.append(Singleton_app.lang.getProperty("u_benefit")+Currency.autocurrency(this.getBenefit())+"\n");
+	 	out.append(Singleton_app.lang.getProperty("u_state")+" "+this.isState()+"\n");
+	 	out.append(Singleton_app.lang.getProperty("u_age")+" "+this.getAge()+"\n");
+	 	out.append(Singleton_app.lang.getProperty("u_benefit")+" "+Currency.autocurrency(this.getBenefit())+"\n");
 
 	 	return out.toString();
 	 	

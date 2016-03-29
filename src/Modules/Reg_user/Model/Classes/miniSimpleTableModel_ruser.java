@@ -1,4 +1,5 @@
 package Modules.Reg_user.Model.Classes;
+import Classes.Singleton_app;
 import static Modules.Reg_user.Controller.RuserController.comboRuser;
 import Modules.Reg_user.Model.Utils.pager.pagina;
 import Modules.Reg_user.View.Pager_ruser;
@@ -9,7 +10,8 @@ import javax.swing.table.AbstractTableModel;
 public class miniSimpleTableModel_ruser extends AbstractTableModel {
     public static ArrayList<Reg_user_class> datos = new ArrayList<Reg_user_class>();
     public static ArrayList<Reg_user_class> datosaux = new ArrayList<Reg_user_class>();
-    String[] columnas = {"ID Card", "Name", "Surname", "Activity","Karma"};
+    String[] columnas = {Singleton_app.lang.getProperty("min_idcard"),Singleton_app.lang.getProperty("min_name"),
+        Singleton_app.lang.getProperty("min_surname"), Singleton_app.lang.getProperty("min_activt"),"Karma"};
 
     
     ////////////////////estos métodos son necesarios para que jtable funcione/////////////////////

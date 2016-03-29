@@ -1,6 +1,7 @@
 package Modules.Client.Model.Classes;
 
 import Classes.Date_class;
+import Classes.Singleton_app;
 import static Modules.Client.Controller.ClientController.comboClient;
 import Modules.Client.Model.Utils.pager.pagina;
 import Modules.Client.View.Pager_client;
@@ -11,7 +12,9 @@ import javax.swing.table.AbstractTableModel;
 public class miniSimpleTableModel_client extends AbstractTableModel {
     public static ArrayList<Client_class> datos = new ArrayList<Client_class>();
     public static ArrayList<Client_class> datosaux = new ArrayList<Client_class>();
-    String[] columnas = {"ID Card", "Name", "Surname", "Reg. date","Shopping"};
+    String[] columnas = {Singleton_app.lang.getProperty("min_idcard"),Singleton_app.lang.getProperty("min_name"),
+        Singleton_app.lang.getProperty("min_surname"), Singleton_app.lang.getProperty("min_regda"),
+        Singleton_app.lang.getProperty("min_shopp")};
 
     
     ////////////////////estos métodos son necesarios para que jtable funcione/////////////////////

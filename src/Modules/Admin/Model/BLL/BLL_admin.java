@@ -5,6 +5,7 @@
  */
 package Modules.Admin.Model.BLL;
 
+import Classes.Singleton_app;
 import Modules.Admin.Controller.AdminController;
 import Modules.Admin.Model.Utils.Files_lib.json;
 import Modules.Admin.Model.Classes.Admin_class;
@@ -52,7 +53,7 @@ public class BLL_admin {
         
         delay.setRepeats(false);
         delay.start();
-        Pager_admin.pagerInfo.setText("No user selected!");
+        Pager_admin.pagerInfo.setText(Singleton_app.lang.getProperty("bll_nosel"));
         Pager_admin.pagerInfo.setBackground(Color.red);
     }
     
@@ -71,7 +72,7 @@ public class BLL_admin {
         
         delay.setRepeats(false);
         delay.start();
-        Pager_admin.pagerInfo.setText("List empty!");
+        Pager_admin.pagerInfo.setText(Singleton_app.lang.getProperty("bll_lsempty"));
         Pager_admin.pagerInfo.setBackground(Color.red);
     }
     
@@ -88,7 +89,7 @@ public class BLL_admin {
         });
         delay.setRepeats(false);
         delay.start();
-        Create_admin.areaInfo.setText("User data incomplete, please revise it!");
+        Create_admin.areaInfo.setText(Singleton_app.lang.getProperty("bll_incomp"));
         Create_admin.areaInfo.setBackground(Color.red);
     }
     
@@ -188,35 +189,29 @@ public class BLL_admin {
             
             case "dni":
                 correct = DAO_admin.askDniMod();
-                
                 break;
                 
             case "name":
                 correct = DAO_admin.askNameMod();
-                
                 break;
+                
             case "surname":
                 correct = DAO_admin.askSurnameMod();
-                
                 break;
             case "email":
                 correct = DAO_admin.askEmailMod();
-                
                 break;
                 
             case "mobile":
                 correct = DAO_admin.askMobileMod();
-                
                 break;
                 
             case "user":
                 correct = DAO_admin.askUserMod();
-                
                 break;
                 
             case "password":
                 correct = DAO_admin.askPasswordMod();
-                
                 break;
                 
             case "password2":
@@ -225,22 +220,18 @@ public class BLL_admin {
                 
             case "birthdate":
                 correct= DAO_admin.askBirthMod();
-                
                 break;
                 
             case "avatar":
                 route = DAO_admin.askAvatarMod();
-                
                 break;
                 
             case "datecontract":
                 correct = DAO_admin.askDatecontractMod();
-                
                 break;
                 
             case "activity":
                 correct = DAO_admin.askActivityMod();
-                
                 break;
             
         }
@@ -297,7 +288,7 @@ public class BLL_admin {
         }else{
             Singleton_admin.adm.add(admin);
             autosaveAdmin();
-            Create_admin.areaInfo.setText("User created correctly");
+            Create_admin.areaInfo.setText(Singleton_app.lang.getProperty("bll_created"));
             Create_admin.areaInfo.setBackground(Color.green);
             created=true;
         }
@@ -409,7 +400,7 @@ public class BLL_admin {
                 dni = (String) pagerTable.getModel().getValueAt(selection1, 0);
                 Singleton_admin.ad = new Admin_class(dni);
                 pos = BLL_admin.searchadminMod((Admin_class) ad);
-                int opc = JOptionPane.showConfirmDialog(null, "Delete user with ID Card: " + dni+"?",
+                int opc = JOptionPane.showConfirmDialog(null, Singleton_app.lang.getProperty("bll_remove") + dni+"?",
                         "Info", JOptionPane.WARNING_MESSAGE);
 
                 if (opc == 0) {

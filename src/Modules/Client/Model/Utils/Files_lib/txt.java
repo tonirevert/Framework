@@ -5,6 +5,7 @@
  */
 package Modules.Client.Model.Utils.Files_lib;
 
+import Classes.Singleton_app;
 import Modules.Client.Model.Classes.Client_class;
 import Modules.Client.Model.Classes.Singleton_client;
 import Modules.Config.Classes.Config_class;
@@ -45,13 +46,13 @@ public class txt {
 				ObjectOutputStream o=new ObjectOutputStream(fo);
 				o.writeObject(Singleton_client.cli);
 				o.close();
-//				JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("clitxtsavedok"),Singleton_app.lang.getProperty("savedfiletitle"),
-//						JOptionPane.INFORMATION_MESSAGE);
-                                                                JOptionPane.showMessageDialog(null,"File TXT saved correctly");
+				JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("clitxtsavedok"),Singleton_app.lang.getProperty("savedfiletitle"),
+						JOptionPane.INFORMATION_MESSAGE);
+//                                                                JOptionPane.showMessageDialog(null,"File TXT saved correctly");
 			}
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwritxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
-                                                JOptionPane.showMessageDialog(null,"Error saving TXT file");
+			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwritxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//                                                JOptionPane.showMessageDialog(null,"Error saving TXT file");
 		}
 	}//End save TXT client
 	
@@ -85,8 +86,8 @@ public class txt {
 				o.close();
 				
 			} catch (Exception e) {
-//				JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwritxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
-                                                                JOptionPane.showMessageDialog(null,"Error auto-saving TXT  file");
+				JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwritxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//                                                                JOptionPane.showMessageDialog(null,"Error auto-saving TXT  file");
 			}
 		}
 	}//End auto save TXT client
@@ -118,8 +119,8 @@ public class txt {
 			oi.close();
 			
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopetxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
-                                                JOptionPane.showMessageDialog(null,"Error auto-loading TXT  file");
+			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopetxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//                                                JOptionPane.showMessageDialog(null,"Error auto-loading TXT  file");
 		}
 	}//End auto load TXT client
 	
@@ -147,8 +148,8 @@ public class txt {
 			}
 			
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopetxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
-                                                JOptionPane.showMessageDialog(null,"Error loading TXT file");
+			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopetxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//                                                JOptionPane.showMessageDialog(null,"Error loading TXT file");
 		}
 		
 	}//End load TXT client

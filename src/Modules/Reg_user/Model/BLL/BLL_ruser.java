@@ -5,6 +5,7 @@
  */
 package Modules.Reg_user.Model.BLL;
 
+import Classes.Singleton_app;
 import Modules.Reg_user.Controller.RuserController;
 import Modules.Reg_user.Model.Utils.Files_lib.json;
 import Modules.Reg_user.Model.Classes.Reg_user_class;
@@ -52,7 +53,7 @@ public class BLL_ruser {
         
         delay.setRepeats(false);
         delay.start();
-        Pager_ruser.pagerInfo.setText("No user selected!");
+        Pager_ruser.pagerInfo.setText(Singleton_app.lang.getProperty("bll_nosel"));
         Pager_ruser.pagerInfo.setBackground(Color.red);
     }
     
@@ -71,7 +72,7 @@ public class BLL_ruser {
         
         delay.setRepeats(false);
         delay.start();
-        Pager_ruser.pagerInfo.setText("List empty!");
+        Pager_ruser.pagerInfo.setText(Singleton_app.lang.getProperty("bll_lsempty"));
         Pager_ruser.pagerInfo.setBackground(Color.red);
     }
     
@@ -88,7 +89,7 @@ public class BLL_ruser {
         });
         delay.setRepeats(false);
         delay.start();
-        Create_ruser.areaInfo.setText("User data incomplete, please revise it!");
+        Create_ruser.areaInfo.setText(Singleton_app.lang.getProperty("bll_incomp"));
         Create_ruser.areaInfo.setBackground(Color.red);
     }
     
@@ -285,7 +286,7 @@ public class BLL_ruser {
         }else{
             Singleton_ruser.rus.add(ruser);
             autosaveRuser();
-            Create_ruser.areaInfo.setText("User created correctly");
+            Create_ruser.areaInfo.setText(Singleton_app.lang.getProperty("bll_created"));
             Create_ruser.areaInfo.setBackground(Color.green);
             created=true;
         }
@@ -397,7 +398,7 @@ public class BLL_ruser {
                 dni = (String) pagerTable.getModel().getValueAt(selection1, 0);
                 Singleton_ruser.ru = new Reg_user_class(dni);
                 pos = BLL_ruser.searchruserMod((Reg_user_class) ru);
-                int opc = JOptionPane.showConfirmDialog(null, "Delete user with ID Card: " + dni+"?",
+                int opc = JOptionPane.showConfirmDialog(null, Singleton_app.lang.getProperty("bll_remove") + dni+"?",
                         "Info", JOptionPane.WARNING_MESSAGE);
 
                 if (opc == 0) {

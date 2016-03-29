@@ -1,6 +1,7 @@
 package Modules.Admin.Model.Utils.Files_lib;
 
 
+import Classes.Singleton_app;
 import Modules.Admin.Model.Classes.Singleton_admin;
 import Modules.Admin.Model.Classes.Admin_class;
 import Modules.Config.Classes.Config_class;
@@ -51,13 +52,13 @@ public class json {
 	        	  fileXml.write(json.toString());
 	        	  fileXml.close();
 	        	  
-//	        	  JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("admjsonsavedok"), Singleton_app.lang.getProperty("savedfiletitle"),
-//						JOptionPane.INFORMATION_MESSAGE);
-                                 JOptionPane.showMessageDialog(null,"File JSON saved correctly");
+	        	  JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("admjsonsavedok"), Singleton_app.lang.getProperty("savedfiletitle"),
+						JOptionPane.INFORMATION_MESSAGE);
+//                                 JOptionPane.showMessageDialog(null,"File JSON saved correctly");
 	          }
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!", JOptionPane.INFORMATION_MESSAGE);
-                                                JOptionPane.showMessageDialog(null,"Error saving JSON file");
+			JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//                                                JOptionPane.showMessageDialog(null,"Error saving JSON file");
 		}
 		
 	}//End save JSON admin
@@ -97,9 +98,9 @@ public class json {
 	        	fileXml.close();
 	        	
 			} catch (Exception e) {
-//				JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!",
-//						JOptionPane.INFORMATION_MESSAGE);
-                                                                JOptionPane.showMessageDialog(null,"Error auto-saving JSON file");
+				JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!",
+						JOptionPane.INFORMATION_MESSAGE);
+//                                                                JOptionPane.showMessageDialog(null,"Error auto-saving JSON file");
 			}        
 		} else{
 			File path = new File(PATH);
@@ -146,8 +147,8 @@ public class json {
 			
 			
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!", JOptionPane.INFORMATION_MESSAGE);
-                                                JOptionPane.showMessageDialog(null,"Error auto-loading JSON file");
+			JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//                                                JOptionPane.showMessageDialog(null,"Error auto-loading JSON file");
 		}
 	}//End auto load admin JSON
 	
@@ -186,9 +187,9 @@ public class json {
 			}
 			
 		} catch (Exception e){
-//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopejson"), "Error!",
-//					JOptionPane.INFORMATION_MESSAGE);
-                                                JOptionPane.showMessageDialog(null,"Error loading JSON file");
+			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopejson"), "Error!",
+					JOptionPane.INFORMATION_MESSAGE);
+//                                                JOptionPane.showMessageDialog(null,"Error loading JSON file");
 		}
 	}
 	

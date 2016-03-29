@@ -78,9 +78,9 @@ public class Create_client extends javax.swing.JFrame {
         labelRegister = new javax.swing.JLabel();
         labelClientType = new javax.swing.JLabel();
         fieldClientType = new javax.swing.JTextField();
-        btnsaveCreateadmin = new javax.swing.JButton();
-        btncancelCreateadmin = new javax.swing.JButton();
-        btnresetCreateadmin = new javax.swing.JButton();
+        btnsaveCreateclient = new javax.swing.JButton();
+        btncancelCreateclient = new javax.swing.JButton();
+        btnresetCreateclient = new javax.swing.JButton();
         checkClientType = new javax.swing.JLabel();
         dateRegistration = new com.toedter.calendar.JDateChooser();
         checkDatebirth = new javax.swing.JLabel();
@@ -257,17 +257,17 @@ public class Create_client extends javax.swing.JFrame {
         getContentPane().add(fieldClientType);
         fieldClientType.setBounds(430, 250, 114, 25);
 
-        btnsaveCreateadmin.setText("Save");
-        getContentPane().add(btnsaveCreateadmin);
-        btnsaveCreateadmin.setBounds(160, 400, 80, 29);
+        btnsaveCreateclient.setText("Save");
+        getContentPane().add(btnsaveCreateclient);
+        btnsaveCreateclient.setBounds(160, 400, 80, 29);
 
-        btncancelCreateadmin.setText("Cancel");
-        getContentPane().add(btncancelCreateadmin);
-        btncancelCreateadmin.setBounds(380, 400, 90, 29);
+        btncancelCreateclient.setText("Cancel");
+        getContentPane().add(btncancelCreateclient);
+        btncancelCreateclient.setBounds(380, 400, 90, 29);
 
-        btnresetCreateadmin.setText("Reset");
-        getContentPane().add(btnresetCreateadmin);
-        btnresetCreateadmin.setBounds(270, 400, 90, 29);
+        btnresetCreateclient.setText("Reset");
+        getContentPane().add(btnresetCreateclient);
+        btnresetCreateclient.setBounds(270, 400, 90, 29);
 
         checkClientType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkClientType);
@@ -334,9 +334,9 @@ public class Create_client extends javax.swing.JFrame {
     public static javax.swing.JLabel avatar;
     public static javax.swing.JLabel back;
     public static javax.swing.JButton btnSearch;
-    public static javax.swing.JButton btncancelCreateadmin;
-    public static javax.swing.JButton btnresetCreateadmin;
-    public static javax.swing.JButton btnsaveCreateadmin;
+    public static javax.swing.JButton btncancelCreateclient;
+    public static javax.swing.JButton btnresetCreateclient;
+    public static javax.swing.JButton btnsaveCreateclient;
     private javax.swing.ButtonGroup buttonGroupPremium;
     private javax.swing.ButtonGroup buttonGroupState;
     public static javax.swing.JLabel checkClientType;
@@ -364,7 +364,7 @@ public class Create_client extends javax.swing.JFrame {
     public static javax.swing.JTextField fieldSurname;
     public static javax.swing.JTextField fieldUser;
     public static javax.swing.JLabel labelAvatar;
-    private javax.swing.JLabel labelClientType;
+    public static javax.swing.JLabel labelClientType;
     public static javax.swing.JLabel labelDNI;
     public static javax.swing.JLabel labelEmail;
     public static javax.swing.JLabel labelMobile;

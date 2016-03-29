@@ -2,6 +2,7 @@ package Modules.Admin.Model.Utils.Files_lib;
 
 
 
+import Classes.Singleton_app;
 import Modules.Admin.Model.Classes.Admin_class;
 import Modules.Config.Classes.Config_class;
 import Modules.Admin.Model.Classes.Singleton_admin;
@@ -41,13 +42,13 @@ public class txt {
 				ObjectOutputStream o=new ObjectOutputStream(fo);
 				o.writeObject(Singleton_admin.adm);
 				o.close();
-//				JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("admtxtsavedok"),Singleton_app.lang.getProperty("savedfiletitle"),
-//						JOptionPane.INFORMATION_MESSAGE);
-                                                                 JOptionPane.showMessageDialog(null,"File TXT saved correctly");
+				JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("admtxtsavedok"),Singleton_app.lang.getProperty("savedfiletitle"),
+						JOptionPane.INFORMATION_MESSAGE);
+//                                                                 JOptionPane.showMessageDialog(null,"File TXT saved correctly");
 			}
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwritxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
-                                                JOptionPane.showMessageDialog(null,"Error saving TXT file");
+			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwritxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//                                                JOptionPane.showMessageDialog(null,"Error saving TXT file");
 		}
 	}//End save TXT admin
 	
@@ -81,8 +82,8 @@ public class txt {
 				o.close();
 				
 			} catch (Exception e) {
-//				JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwritxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
-                                                                JOptionPane.showMessageDialog(null,"Error auto-saving TXT  file");
+				JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwritxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//                                                                JOptionPane.showMessageDialog(null,"Error auto-saving TXT  file");
 			}
 		}
 	}//End auto save TXT admin
@@ -114,8 +115,8 @@ public class txt {
 			oi.close();
 			
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopetxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
-                                                JOptionPane.showMessageDialog(null,"Error auto-loading TXT  file");
+			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopetxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//                                                JOptionPane.showMessageDialog(null,"Error auto-loading TXT  file");
 		}
 	}//End auto load TXT admin
 	
@@ -143,8 +144,8 @@ public class txt {
 			}
 			
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopetxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
-                                                JOptionPane.showMessageDialog(null,"Error loading TXT file");
+			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopetxt"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//                                                JOptionPane.showMessageDialog(null,"Error loading TXT file");
 		}
 		
 	}//End load txt admin

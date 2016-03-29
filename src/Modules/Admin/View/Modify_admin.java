@@ -186,7 +186,7 @@ public class Modify_admin extends javax.swing.JFrame {
 
         labeldateBirth.setText("Birth date:");
         getContentPane().add(labeldateBirth);
-        labeldateBirth.setBounds(310, 15, 90, 15);
+        labeldateBirth.setBounds(310, 15, 120, 15);
 
         checkDatebirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatebirth);
@@ -206,7 +206,7 @@ public class Modify_admin extends javax.swing.JFrame {
 
         labelState.setText("State: Connected?");
         getContentPane().add(labelState);
-        labelState.setBounds(310, 170, 140, 15);
+        labelState.setBounds(310, 170, 160, 15);
 
         buttonGroupState.add(radioStateYes);
         radioStateYes.setText("Yes");
@@ -226,7 +226,7 @@ public class Modify_admin extends javax.swing.JFrame {
 
         labeldateContract.setText("Contract date:");
         getContentPane().add(labeldateContract);
-        labeldateContract.setBounds(310, 210, 110, 15);
+        labeldateContract.setBounds(310, 210, 120, 15);
 
         checkDatecontract.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatecontract);
@@ -238,7 +238,7 @@ public class Modify_admin extends javax.swing.JFrame {
 
         labelActivity.setText("Activity:");
         getContentPane().add(labelActivity);
-        labelActivity.setBounds(310, 250, 90, 15);
+        labelActivity.setBounds(310, 250, 120, 15);
 
         checkActivity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkActivity);
@@ -262,11 +262,11 @@ public class Modify_admin extends javax.swing.JFrame {
 
         btnsaveEditadmin.setText("Save");
         getContentPane().add(btnsaveEditadmin);
-        btnsaveEditadmin.setBounds(160, 400, 80, 29);
+        btnsaveEditadmin.setBounds(160, 400, 105, 29);
 
         btncancelEditadmin.setText("Cancel");
         getContentPane().add(btncancelEditadmin);
-        btncancelEditadmin.setBounds(380, 400, 90, 29);
+        btncancelEditadmin.setBounds(380, 400, 105, 29);
 
         back.setText("back");
         getContentPane().add(back);

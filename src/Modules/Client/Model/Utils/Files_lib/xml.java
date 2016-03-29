@@ -5,6 +5,7 @@
  */
 package Modules.Client.Model.Utils.Files_lib;
 
+import Classes.Singleton_app;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.Annotations;
 import Modules.Client.Model.Classes.Client_class;
@@ -61,15 +62,15 @@ public class xml {
 				fileXml.close();
 				osw.close();
 				os.close();
-//				JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("clixmlsavedok"),Singleton_app.lang.getProperty("savedfiletitle"),
-//						JOptionPane.INFORMATION_MESSAGE);
-                                                                JOptionPane.showMessageDialog(null,"File XML saved correctly");
+				JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("clixmlsavedok"),Singleton_app.lang.getProperty("savedfiletitle"),
+						JOptionPane.INFORMATION_MESSAGE);
+//                                                                JOptionPane.showMessageDialog(null,"File XML saved correctly");
 			}
 			
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwrixml"), "Error!",
-//					JOptionPane.INFORMATION_MESSAGE);
-                                                JOptionPane.showMessageDialog(null,"Error saving XML file");
+			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwrixml"), "Error!",
+					JOptionPane.INFORMATION_MESSAGE);
+//                                                JOptionPane.showMessageDialog(null,"Error saving XML file");
 		}
 	}//End save XML client
 	
@@ -111,9 +112,9 @@ public class xml {
 				fileXml.write(xml.toString());
 				fileXml.close();
 			} catch (Exception e) {
-//				 JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwrixml"), "Error",
-//						JOptionPane.INFORMATION_MESSAGE);
-                                                                 JOptionPane.showMessageDialog(null,"Error saving XML file");
+				 JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problwrixml"), "Error",
+						JOptionPane.INFORMATION_MESSAGE);
+//                                                                 JOptionPane.showMessageDialog(null,"Error saving XML file");
 			}
 		} else{
 			File path = new File(PATH);
@@ -149,8 +150,8 @@ public class xml {
 				Singleton_client.cli=(ArrayList<Client_class>) xstream.fromXML(new FileReader(PATH));
 			}
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopexml"), "Error!", JOptionPane.INFORMATION_MESSAGE);
-                                                JOptionPane.showMessageDialog(null,"Error loading from the XML file");
+			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopexml"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//                                                JOptionPane.showMessageDialog(null,"Error loading from the XML file");
 		}
 	}//End auto load XML client
 	
@@ -175,8 +176,8 @@ public class xml {
 				Singleton_client.cli=(ArrayList <Client_class>)xstream.fromXML(new FileReader(path));
 			}
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopexml"), "Error!", JOptionPane.INFORMATION_MESSAGE);
-                                                JOptionPane.showMessageDialog(null,"Error loading XML file");
+			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("problopexml"), "Error!", JOptionPane.INFORMATION_MESSAGE);
+//                                                JOptionPane.showMessageDialog(null,"Error loading XML file");
 		}
 	}//End load XML client
 }
