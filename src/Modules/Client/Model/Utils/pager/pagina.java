@@ -24,13 +24,13 @@ public class pagina {
     public static int currentPageIndex = 1;
     public static int itemsPerPage = 5;
     public static int maxPageIndex;
-    public static String option="client";
+    public static String option="user";
 
     public static void inicializa() {
 //        String option="admin";
         int rowCount = 0;
         switch (option) {
-            case "client":
+            case "user":
                 rowCount = ((miniSimpleTableModel_client) Modules.Client.View.Pager_client.pagerTable.getModel()).getRowCount();
                 break;
 
@@ -42,7 +42,7 @@ public class pagina {
         
         box.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
         switch (option) {
-            case "client":
+            case "user":
                 Pager_client.pagLinks.setLayout(new BorderLayout());
                 Pager_client.pagLinks.add(pagina.box);
                 break;
@@ -52,7 +52,7 @@ public class pagina {
 
     public static void initLinkBox() {
         switch (option) {
-            case "client":
+            case "user":
                 Modules.Client.Controller.ClientController.sorter.setRowFilter(new RowFilter<TableModel, Integer>() {
                     @Override
                     public boolean include(RowFilter.Entry<? extends TableModel, ? extends Integer> entry) {
@@ -73,7 +73,7 @@ public class pagina {
 
         int rowCount = 0;
         switch (option) {
-            case "admin":
+            case "user":
                 rowCount = ((miniSimpleTableModel_client) Modules.Client.View.Pager_client.pagerTable.getModel()).getRowCount();
                 break;
 
@@ -89,7 +89,7 @@ public class pagina {
         box.removeAll();
         if ((rowCount <= itemsPerPage) && (rowCount > 0)) { //caben todos los datos en la misma página
             switch (option) {
-                case "admin":
+                case "user":
                     //actualizar botones y caja: desactivarlos
                     Pager_client.pagFirst.setEnabled(false);
                     Pager_client.pagPrev.setEnabled(false);
@@ -111,7 +111,7 @@ public class pagina {
 
         } else if (rowCount == 0) { //no hay rdos
             switch (option) {
-                case "admin":
+                case "user":
                     //actualizar botones y caja: desactivarlos
                     Pager_client.pagFirst.setEnabled(false);
                     Pager_client.pagPrev.setEnabled(false);
@@ -133,7 +133,7 @@ public class pagina {
 
         } else if (rowCount > itemsPerPage) {
             switch (option) {
-                case "client":
+                case "user":
                     
                     Pager_client.pagFirst.setEnabled(currentPageIndex > 1);
                     Pager_client.pagPrev.setEnabled(currentPageIndex > 1);

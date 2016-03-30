@@ -101,11 +101,11 @@ public class Create_client extends javax.swing.JFrame {
         fieldDNI.setBackground(java.awt.Color.yellow);
         fieldDNI.setToolTipText("");
         getContentPane().add(fieldDNI);
-        fieldDNI.setBounds(130, 5, 148, 25);
+        fieldDNI.setBounds(130, 5, 148, 20);
 
         labelDNI.setText("ID Card:");
         getContentPane().add(labelDNI);
-        labelDNI.setBounds(25, 5, 105, 15);
+        labelDNI.setBounds(25, 5, 105, 14);
 
         checkDNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDNI);
@@ -113,11 +113,11 @@ public class Create_client extends javax.swing.JFrame {
 
         fieldName.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldName);
-        fieldName.setBounds(130, 40, 148, 25);
+        fieldName.setBounds(130, 40, 148, 20);
 
         labelName.setText("Name:");
         getContentPane().add(labelName);
-        labelName.setBounds(25, 40, 105, 15);
+        labelName.setBounds(25, 40, 105, 14);
 
         checkName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkName);
@@ -125,11 +125,11 @@ public class Create_client extends javax.swing.JFrame {
 
         fieldSurname.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldSurname);
-        fieldSurname.setBounds(130, 75, 150, 25);
+        fieldSurname.setBounds(130, 75, 150, 20);
 
         labelSurname.setText("Surname:");
         getContentPane().add(labelSurname);
-        labelSurname.setBounds(25, 75, 105, 15);
+        labelSurname.setBounds(25, 75, 105, 14);
 
         checkSurname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkSurname);
@@ -137,11 +137,11 @@ public class Create_client extends javax.swing.JFrame {
 
         fieldEmail.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldEmail);
-        fieldEmail.setBounds(130, 110, 150, 25);
+        fieldEmail.setBounds(130, 110, 150, 20);
 
         labelEmail.setText("e-mail:");
         getContentPane().add(labelEmail);
-        labelEmail.setBounds(25, 110, 105, 15);
+        labelEmail.setBounds(25, 110, 105, 14);
 
         checkEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkEmail);
@@ -149,11 +149,11 @@ public class Create_client extends javax.swing.JFrame {
 
         fieldMobile.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldMobile);
-        fieldMobile.setBounds(130, 145, 150, 25);
+        fieldMobile.setBounds(130, 145, 150, 20);
 
         labelMobile.setText("Mobile:");
         getContentPane().add(labelMobile);
-        labelMobile.setBounds(25, 145, 105, 15);
+        labelMobile.setBounds(25, 145, 105, 14);
 
         checkMobile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkMobile);
@@ -161,11 +161,11 @@ public class Create_client extends javax.swing.JFrame {
 
         fieldUser.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldUser);
-        fieldUser.setBounds(130, 180, 150, 25);
+        fieldUser.setBounds(130, 180, 150, 20);
 
         labelUser.setText("User:");
         getContentPane().add(labelUser);
-        labelUser.setBounds(25, 180, 105, 15);
+        labelUser.setBounds(25, 180, 105, 14);
 
         checkUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkUser);
@@ -173,11 +173,11 @@ public class Create_client extends javax.swing.JFrame {
 
         fieldPassword.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldPassword);
-        fieldPassword.setBounds(130, 215, 150, 25);
+        fieldPassword.setBounds(130, 215, 150, 20);
 
         labelPassword.setText("Password:");
         getContentPane().add(labelPassword);
-        labelPassword.setBounds(25, 215, 105, 15);
+        labelPassword.setBounds(25, 215, 105, 14);
 
         checkPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword);
@@ -185,11 +185,11 @@ public class Create_client extends javax.swing.JFrame {
 
         fieldPassword2.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldPassword2);
-        fieldPassword2.setBounds(130, 250, 150, 25);
+        fieldPassword2.setBounds(130, 250, 150, 20);
 
         labelPassword2.setText("Verify:");
         getContentPane().add(labelPassword2);
-        labelPassword2.setBounds(25, 250, 105, 15);
+        labelPassword2.setBounds(25, 250, 105, 14);
 
         checkPassword2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword2);
@@ -197,11 +197,11 @@ public class Create_client extends javax.swing.JFrame {
 
         fieldShopping.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldShopping);
-        fieldShopping.setBounds(130, 285, 150, 25);
+        fieldShopping.setBounds(130, 285, 150, 20);
 
         labelShopping.setText("Shopping:");
         getContentPane().add(labelShopping);
-        labelShopping.setBounds(25, 285, 105, 15);
+        labelShopping.setBounds(25, 285, 105, 14);
 
         checkShopping.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkShopping);
@@ -214,60 +214,60 @@ public class Create_client extends javax.swing.JFrame {
         dateBirth.setName("createdateBirth"); // NOI18N
         dateBirth.setOpaque(false);
         getContentPane().add(dateBirth);
-        dateBirth.setBounds(430, 15, 140, 27);
+        dateBirth.setBounds(430, 15, 140, 20);
         dateBirth.getAccessibleContext().setAccessibleName(getName());
         dateBirth.getAccessibleContext().setAccessibleDescription(getName());
 
         labeldateBirth.setText("Birth date:");
         getContentPane().add(labeldateBirth);
-        labeldateBirth.setBounds(310, 15, 90, 15);
+        labeldateBirth.setBounds(310, 15, 90, 14);
 
         btnSearch.setText("Search");
         getContentPane().add(btnSearch);
-        btnSearch.setBounds(380, 90, 90, 29);
+        btnSearch.setBounds(380, 90, 90, 23);
 
         labelAvatar.setText("Avatar:");
         getContentPane().add(labelAvatar);
-        labelAvatar.setBounds(310, 90, 90, 15);
+        labelAvatar.setBounds(310, 90, 90, 14);
 
         labelState.setText("State: Connected?");
         getContentPane().add(labelState);
-        labelState.setBounds(310, 170, 140, 15);
+        labelState.setBounds(310, 170, 140, 14);
 
         buttonGroupState.add(radioStateYes);
         radioStateYes.setText("Yes");
         getContentPane().add(radioStateYes);
-        radioStateYes.setBounds(470, 170, 60, 22);
+        radioStateYes.setBounds(470, 170, 60, 23);
 
         buttonGroupState.add(radioStateNo);
         radioStateNo.setSelected(true);
         radioStateNo.setText("No");
         getContentPane().add(radioStateNo);
-        radioStateNo.setBounds(530, 170, 60, 22);
+        radioStateNo.setBounds(530, 170, 60, 23);
 
         labelRegister.setText("Register date:");
         getContentPane().add(labelRegister);
-        labelRegister.setBounds(310, 210, 110, 15);
+        labelRegister.setBounds(310, 210, 110, 14);
 
         labelClientType.setText("Client type:");
         getContentPane().add(labelClientType);
-        labelClientType.setBounds(310, 250, 110, 15);
+        labelClientType.setBounds(310, 250, 110, 14);
 
         fieldClientType.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldClientType);
-        fieldClientType.setBounds(430, 250, 114, 25);
+        fieldClientType.setBounds(430, 250, 114, 20);
 
         btnsaveCreateclient.setText("Save");
         getContentPane().add(btnsaveCreateclient);
-        btnsaveCreateclient.setBounds(160, 400, 80, 29);
+        btnsaveCreateclient.setBounds(160, 400, 80, 23);
 
         btncancelCreateclient.setText("Cancel");
         getContentPane().add(btncancelCreateclient);
-        btncancelCreateclient.setBounds(380, 400, 90, 29);
+        btncancelCreateclient.setBounds(380, 400, 100, 23);
 
         btnresetCreateclient.setText("Reset");
         getContentPane().add(btnresetCreateclient);
-        btnresetCreateclient.setBounds(270, 400, 90, 29);
+        btnresetCreateclient.setBounds(270, 400, 90, 23);
 
         checkClientType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkClientType);
@@ -276,7 +276,7 @@ public class Create_client extends javax.swing.JFrame {
         dateRegistration.setMaxSelectableDate(new java.util.Date(4102444875000L));
         dateRegistration.setMinSelectableDate(new java.util.Date(-2208984241000L));
         getContentPane().add(dateRegistration);
-        dateRegistration.setBounds(430, 210, 140, 27);
+        dateRegistration.setBounds(430, 210, 140, 20);
 
         checkDatebirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatebirth);
@@ -302,18 +302,18 @@ public class Create_client extends javax.swing.JFrame {
 
         labelPremium.setText("Is premium?");
         getContentPane().add(labelPremium);
-        labelPremium.setBounds(310, 290, 110, 15);
+        labelPremium.setBounds(310, 290, 110, 14);
 
         buttonGroupPremium.add(radioPremiumYes);
         radioPremiumYes.setText("Yes");
         getContentPane().add(radioPremiumYes);
-        radioPremiumYes.setBounds(440, 290, 60, 22);
+        radioPremiumYes.setBounds(440, 290, 60, 23);
 
         buttonGroupPremium.add(radioPremiumNo);
         radioPremiumNo.setSelected(true);
         radioPremiumNo.setText("No");
         getContentPane().add(radioPremiumNo);
-        radioPremiumNo.setBounds(500, 290, 60, 22);
+        radioPremiumNo.setBounds(500, 290, 60, 23);
 
         areaInfo.setColumns(2);
         areaInfo.setRows(1);
@@ -323,7 +323,7 @@ public class Create_client extends javax.swing.JFrame {
 
         back.setText("back");
         getContentPane().add(back);
-        back.setBounds(0, 0, 30, 15);
+        back.setBounds(0, 0, 22, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

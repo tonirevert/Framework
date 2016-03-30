@@ -19,6 +19,7 @@ import Modules.Admin.View.Create_admin;
 import Modules.Admin.View.List_admin;
 import Modules.Admin.View.Modify_admin;
 import Modules.Admin.View.Pager_admin;
+
 import static Modules.Admin.View.Pager_admin.jComboBox1;
 import static Modules.Admin.View.Pager_admin.pagerTable;
 import Modules.Config.Classes.Config_class;
@@ -167,7 +168,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 Image crback=Singleton_admin.backCrMo.getImage();
                 create.back.setIcon(new ImageIcon(crback.getScaledInstance(cx,cy, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_admin.window="create";
-                create.setTitle("Create Admin");////////////////////////////////////////////////////////////////////////
                 create.saving.setVisible(false);
                 create.setResizable(false);
                 create.setSize(cx,cy);
@@ -289,7 +289,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 Image edback=Singleton_admin.backCrMo.getImage();
                 edit.back.setIcon(new ImageIcon(edback.getScaledInstance(ex, ey, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_admin.window="modify";
-                edit.setTitle("Modify Admin");////////////////////////////////////////////////////////////////////////
                 edit.saving.setVisible(false);
                 BLL_admin.fill_admin(ad.getDni());
                 edit.fieldDNI.setEditable(false);
@@ -388,7 +387,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 break;//End case 1 edit admin
                 
             case 2://Pager admin
-                pager.setTitle("Admin management list");
                 pager.setLocationRelativeTo(null);
                 pager.setResizable(false);
                 pager.setVisible(true);
@@ -425,7 +423,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.btnsavejson.setToolTipText("Save users to JSON");
                 pager.btnsavetxt.setToolTipText("Save users to TXT");
                 pager.btnsavexml.setToolTipText("Save users to XML");
-                pager.pagerTable.setToolTipText("Click to choose one user");
+                pager.pagerTable.setToolTipText("Double click to choose one user");
                 pager.pagButtonpanel.setToolTipText("Use the buttons for navigate the pages");
                 pager.pagFirst.setToolTipText("Click to go to first page");
                 pager.pagPrev.setToolTipText("Click to go to previous page");
@@ -467,10 +465,12 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 comboAdmin.setActionCommand("comboAdmin");
                 comboAdmin.setName("comboAdmin");
                 comboAdmin.addActionListener(this);
+                comboAdmin.addMouseListener(this);
                 
                 jComboBox1.setActionCommand("entriesCombo");
                 jComboBox1.setName("entriesCombo");
                 jComboBox1.addActionListener(this);
+                jComboBox1.addMouseListener(this);
                 
                 pager.pagFirst.setName("pagFirst");
                 pager.pagFirst.addMouseListener(this);
@@ -963,6 +963,14 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
             case pagLinks:
                 pager.pagerInfo.setText("Click on the numbers to navigate pages");
                 break;
+                
+            case comboAdmin:
+                pager.pagerInfo.setText("");
+                break;
+                
+            case entriesCombo:
+                pager.pagerInfo.setText("");
+                break;
             
                         }
     }
@@ -1015,9 +1023,17 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.pagerInfo.setText("");
                 break;
                 
-        }
+            case comboAdmin:
+                pager.pagerInfo.setText("");
+                break;
+                
+            case entriesCombo:
+                pager.pagerInfo.setText("");
+                break;
+                
+        }//End switch / case
 
-    }
+    }//End mouse exited
     
     @Override
     public void focusGained(FocusEvent e) {

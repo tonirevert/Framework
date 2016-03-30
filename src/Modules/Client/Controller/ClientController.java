@@ -167,7 +167,6 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 Image crback=Singleton_client.backCrMo.getImage();
                 create.back.setIcon(new ImageIcon(crback.getScaledInstance(cx,cy, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_client.window="create";
-                create.setTitle("Create Client");////////////////////////////////////////////////////////////////////////
                 create.saving.setVisible(false);
                 create.setResizable(false);
                 create.setSize(cx,cy);
@@ -293,7 +292,6 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 Image edback=Singleton_client.backCrMo.getImage();
                 edit.back.setIcon(new ImageIcon(edback.getScaledInstance(ex, ey, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_client.window="modify";
-                edit.setTitle("Modify Client");////////////////////////////////////////////////////////////////////////
                 edit.saving.setVisible(false);
                 BLL_client.fill_client(cl.getDni());
                 edit.fieldDNI.setEditable(false);
@@ -323,7 +321,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 edit.labelPremium.setText(Singleton_app.lang.getProperty("c_premium"));
                 
                 edit.btnsaveEditclient.setText(Singleton_app.lang.getProperty("w_save"));
-                edit.btncancelEditclient.setText(Singleton_app.lang.getProperty("w_save"));
+                edit.btncancelEditclient.setText(Singleton_app.lang.getProperty("w_Cancel"));
                 edit.btnSearch.setText(Singleton_app.lang.getProperty("w_search"));
                 
                 //Actions:
@@ -400,7 +398,6 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 break;//End case 1 edit client
                 
             case 2://Pager client
-                pager.setTitle("Client management list");
                 pager.setLocationRelativeTo(null);
                 pager.setResizable(false);
                 pager.setVisible(true);
@@ -429,10 +426,15 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 //Translation:
                 pager.setTitle(Singleton_app.lang.getProperty("c_wlist"));
                 
+                pager.comboSearch.addItem(Singleton_app.lang.getProperty("min_idcard"));
+                pager.comboSearch.addItem(Singleton_app.lang.getProperty("min_name"));
+                pager.comboSearch.addItem(Singleton_app.lang.getProperty("min_surname"));
+
+                
                 //Actions:
-                pager.AddClient.setToolTipText("Add a new client user");
-                pager.ModClient.setToolTipText("Modify selected client user");
-                pager.DelClient.setToolTipText("Delete selected client user");
+                pager.AddClient.setToolTipText("Add a new user");
+                pager.ModClient.setToolTipText("Modify selected user");
+                pager.DelClient.setToolTipText("Delete selected user");
                 pager.btnsavejson.setToolTipText("Save users to JSON");
                 pager.btnsavetxt.setToolTipText("Save users to TXT");
                 pager.btnsavexml.setToolTipText("Save users to XML");
@@ -478,10 +480,12 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 comboClient.setActionCommand("comboClient");
                 comboClient.setName("comboClient");
                 comboClient.addActionListener(this);
+                comboClient.addMouseListener(this);
                 
                 jComboBox1.setActionCommand("entriesCombo");
                 jComboBox1.setName("entriesCombo");
                 jComboBox1.addActionListener(this);
+                jComboBox1.addMouseListener(this);
                 
                 pager.pagFirst.setName("pagFirst");
                 pager.pagFirst.addMouseListener(this);
@@ -992,9 +996,18 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
             case pagLinks:
                 pager.pagerInfo.setText("Click on the numbers to navigate pages");
                 break;
+                
+            case comboClient:
+                pager.pagerInfo.setText("");
+                break;
+                
+            case entriesCombo:
+                pager.pagerInfo.setText("");
+                break;
             
-                        }
-    }
+        }//End switch / case
+        
+    }//End mouse entered
 
     @Override
     public void mouseExited(MouseEvent e) {
@@ -1044,9 +1057,17 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 pager.pagerInfo.setText("");
                 break;
                 
-        }
+            case comboClient:
+                pager.pagerInfo.setText("");
+                break;
+                
+            case entriesCombo:
+                pager.pagerInfo.setText("");
+                break;
+                
+        }//End switch / case
 
-    }
+    }//End mouse exited
     
     @Override
     public void focusGained(FocusEvent e) {

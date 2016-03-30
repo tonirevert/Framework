@@ -129,11 +129,30 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
     public void filtrar() {
         datos.clear();
         int cont=0;
-
-        String nom=(String) ((JComboBox)comboClient).getSelectedItem();
-        if(nom!=null){
+        String name=(String) ((JComboBox)comboClient).getSelectedItem();
+        
+        switch(Pager_client.comboSearch.getSelectedIndex()){
+            
+            case 0:
+//                String name=(String) ((JComboBox)comboClient).getSelectedItem();
+        if(name!=null){
             for(int i=0;i<datosaux.size();i++) {
-                if(datosaux.get(i).getName().toLowerCase().startsWith(nom.toLowerCase())){
+                if(datosaux.get(i).getDni().toLowerCase().startsWith(name.toLowerCase())){
+                    addRow(datosaux.get(i));
+                    cont++;
+                }
+            }
+            Pager_client.pagAmount.setText(String.valueOf(cont));
+//            System.out.println("word selected: " + nom);
+            pagina.initLinkBox();
+        }                
+                break;
+                
+            case 1:
+//                String name=(String) ((JComboBox)comboClient).getSelectedItem();
+        if(name!=null){
+            for(int i=0;i<datosaux.size();i++) {
+                if(datosaux.get(i).getName().toLowerCase().startsWith(name.toLowerCase())){
                     addRow(datosaux.get(i));
                     cont++;
                 }
@@ -142,6 +161,26 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
 //            System.out.println("word selected: " + nom);
             pagina.initLinkBox();
         }
+                break;
+                
+            case 2:
+//                String name=(String) ((JComboBox)comboClient).getSelectedItem();
+        if(name!=null){
+            for(int i=0;i<datosaux.size();i++) {
+                if(datosaux.get(i).getSurname().toLowerCase().startsWith(name.toLowerCase())){
+                    addRow(datosaux.get(i));
+                    cont++;
+                }
+            }
+            Pager_client.pagAmount.setText(String.valueOf(cont));
+//            System.out.println("word selected: " + nom);
+            pagina.initLinkBox();
+        }
+                break;
+        }
+        
+        
+        
     }
 
     public void filtrarB(){
@@ -156,6 +195,8 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
                     cont++;
                 }
             }
+            Pager_client.pagAmount.setText(String.valueOf(cont));
+            pagina.initLinkBox();
         }
     }
     

@@ -13,7 +13,6 @@ import static Modules.Reg_user.Model.Classes.Singleton_ruser.ru;
 import Modules.Reg_user.Model.Utils.pager.AutocompleteJComboBox;
 import Modules.Reg_user.Model.Utils.pager.StringSearchable;
 import Modules.Reg_user.Model.Utils.pager.pagina;
-import static Modules.Reg_user.View.Pager_ruser.jComboBox1;
 import static Modules.Reg_user.View.Pager_ruser.pagerTable;
 import Modules.Config.Classes.Config_class;
 import Modules.Menu.Controller.MenuController;
@@ -23,6 +22,7 @@ import Modules.Reg_user.Model.Classes.miniSimpleTableModel_ruser;
 import Modules.Reg_user.View.Create_ruser;
 import Modules.Reg_user.View.List_ruser;
 import Modules.Reg_user.View.Modify_ruser;
+import static Modules.Reg_user.View.Pager_ruser.jComboBox1;
 import Modules.Reg_user.View.Pager_ruser;
 import java.awt.Color;
 import java.awt.Image;
@@ -168,7 +168,6 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 Image crback=Singleton_ruser.backCrMo.getImage();
                 create.back.setIcon(new ImageIcon(crback.getScaledInstance(cx,cy, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_ruser.window="create";
-                create.setTitle("Create Reg. user");////////////////////////////////////////////////////////////////////////
                 create.saving.setVisible(false);
                 create.setResizable(false);
                 create.setSize(cx,cy);
@@ -282,7 +281,6 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 Image edback=Singleton_ruser.backCrMo.getImage();
                 edit.back.setIcon(new ImageIcon(edback.getScaledInstance(ex, ey, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_ruser.window="modify";
-                edit.setTitle("Modify Reg. user");////////////////////////////////////////////////////////////////////////
                 edit.saving.setVisible(false);
                 BLL_ruser.fill_ruser(ru.getDni());
                 edit.fieldDNI.setEditable(false);
@@ -307,7 +305,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 edit.labelActivity.setText(Singleton_app.lang.getProperty("r_activity"));
                 
                 edit.btnsaveEditruser.setText(Singleton_app.lang.getProperty("w_save"));
-                edit.btncancelEditruser.setText(Singleton_app.lang.getProperty("w_save"));
+                edit.btncancelEditruser.setText(Singleton_app.lang.getProperty("w_Cancel"));
                 edit.btnSearch.setText(Singleton_app.lang.getProperty("w_search"));
                 
                 //Action:
@@ -406,9 +404,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 pager.setTitle(Singleton_app.lang.getProperty("r_wlist"));
                 
                 //Action:
-                pager.AddRuser.setToolTipText("Add a new admin user");
-                pager.ModRuser.setToolTipText("Modify selected admin user");
-                pager.DelRuser.setToolTipText("Delete selected admin user");
+                pager.AddRuser.setToolTipText("Add a new user");
+                pager.ModRuser.setToolTipText("Modify selected user");
+                pager.DelRuser.setToolTipText("Delete selected user");
                 pager.btnsavejson.setToolTipText("Save users to JSON");
                 pager.btnsavetxt.setToolTipText("Save users to TXT");
                 pager.btnsavexml.setToolTipText("Save users to XML");
@@ -454,10 +452,12 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 comboRuser.setActionCommand("comboRuser");
                 comboRuser.setName("comboRuser");
                 comboRuser.addActionListener(this);
+                comboRuser.addMouseListener(this);
                 
                 jComboBox1.setActionCommand("entriesCombo");
                 jComboBox1.setName("entriesCombo");
                 jComboBox1.addActionListener(this);
+                jComboBox1.addMouseListener(this);
                 
                 pager.pagFirst.setName("pagFirst");
                 pager.pagFirst.addMouseListener(this);
@@ -950,6 +950,14 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
             case pagLinks:
                 pager.pagerInfo.setText("Click on the numbers to navigate pages");
                 break;
+                
+            case comboRuser:
+                pager.pagerInfo.setText("");
+                break;
+                
+            case entriesCombo:
+                pager.pagerInfo.setText("");
+                break;
             
                         }
     }
@@ -999,6 +1007,14 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 break;
                 
             case pagLinks:
+                pager.pagerInfo.setText("");
+                break;
+                
+            case comboRuser:
+                pager.pagerInfo.setText("");
+                break;
+                
+            case entriesCombo:
                 pager.pagerInfo.setText("");
                 break;
                 
