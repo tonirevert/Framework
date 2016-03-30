@@ -4,7 +4,7 @@ package Modules.Admin.Model.Utils.Files_lib;
 import Classes.Singleton_app;
 import Modules.Admin.Model.Classes.Singleton_admin;
 import Modules.Admin.Model.Classes.Admin_class;
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileReader;

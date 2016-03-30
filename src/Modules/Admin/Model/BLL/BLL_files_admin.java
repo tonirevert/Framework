@@ -7,7 +7,7 @@ package Modules.Admin.Model.BLL;
 
 import Classes.Singleton_app;
 import Modules.Admin.Model.Classes.Singleton_admin;
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import Modules.Admin.Model.Utils.Files_lib.json;
 import Modules.Admin.Model.Utils.Files_lib.txt;
 import Modules.Admin.Model.Utils.Files_lib.xml;

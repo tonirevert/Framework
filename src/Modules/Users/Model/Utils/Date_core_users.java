@@ -3,7 +3,7 @@ package Modules.Users.Model.Utils;
 
 import Classes.Date_class;
 import Classes.Singleton_app;
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import Utils.Functions;
 import Utils.Validate;
 import javax.swing.JOptionPane;

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modules.Config.BLL;
+package Modules.Config.Model.BLL;
 
-import Modules.Config.Utils.Files_lib.Funct_files_config;
-import Modules.Config.DAO.DAO_Config;
+import Modules.Config.Model.Utils.Files_lib.Funct_files_config;
+import Modules.Config.Model.DAO.DAO_Config;
 
 /**
  *

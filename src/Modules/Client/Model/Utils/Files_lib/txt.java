@@ -8,7 +8,7 @@ package Modules.Client.Model.Utils.Files_lib;
 import Classes.Singleton_app;
 import Modules.Client.Model.Classes.Client_class;
 import Modules.Client.Model.Classes.Singleton_client;
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

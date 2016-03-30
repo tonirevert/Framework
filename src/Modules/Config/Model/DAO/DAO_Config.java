@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modules.Config.DAO;
+package Modules.Config.Model.DAO;
 
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import Modules.Config.View.Config;
 
 /**

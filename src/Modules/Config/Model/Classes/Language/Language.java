@@ -1,4 +1,4 @@
-package Modules.Config.Classes.Language;
+package Modules.Config.Model.Classes.Language;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -32,11 +32,9 @@ public class Language extends Properties{
 		this.lang = lang;
 		switch(lang){
 	    case "en":
-//	    	System.out.println("set language en");
 	        getProperties("english.properties");
 	        break;
 	    case "es":
-//	    	System.out.println("set language es");
 	        getProperties("spanish.properties");
 	        break;
 	    case "val":

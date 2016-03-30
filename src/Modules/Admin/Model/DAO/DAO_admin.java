@@ -5,7 +5,7 @@
  */
 package Modules.Admin.Model.DAO;
 
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import Classes.Date_class;
 import Modules.Admin.Model.BLL.BLL_admin;
 import Modules.Admin.Model.Classes.Admin_class;

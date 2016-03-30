@@ -1,6 +1,6 @@
 
 
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import Modules.Menu.Controller.MenuController;
 import Modules.Menu.View.Mainmenu;
 

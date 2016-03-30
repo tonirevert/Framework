@@ -134,7 +134,6 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
         switch(Pager_client.comboSearch.getSelectedIndex()){
             
             case 0:
-//                String name=(String) ((JComboBox)comboClient).getSelectedItem();
         if(name!=null){
             for(int i=0;i<datosaux.size();i++) {
                 if(datosaux.get(i).getDni().toLowerCase().startsWith(name.toLowerCase())){
@@ -143,13 +142,11 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
                 }
             }
             Pager_client.pagAmount.setText(String.valueOf(cont));
-//            System.out.println("word selected: " + nom);
             pagina.initLinkBox();
         }                
                 break;
                 
             case 1:
-//                String name=(String) ((JComboBox)comboClient).getSelectedItem();
         if(name!=null){
             for(int i=0;i<datosaux.size();i++) {
                 if(datosaux.get(i).getName().toLowerCase().startsWith(name.toLowerCase())){
@@ -158,13 +155,11 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
                 }
             }
             Pager_client.pagAmount.setText(String.valueOf(cont));
-//            System.out.println("word selected: " + nom);
             pagina.initLinkBox();
         }
                 break;
                 
             case 2:
-//                String name=(String) ((JComboBox)comboClient).getSelectedItem();
         if(name!=null){
             for(int i=0;i<datosaux.size();i++) {
                 if(datosaux.get(i).getSurname().toLowerCase().startsWith(name.toLowerCase())){
@@ -173,15 +168,11 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
                 }
             }
             Pager_client.pagAmount.setText(String.valueOf(cont));
-//            System.out.println("word selected: " + nom);
             pagina.initLinkBox();
         }
                 break;
-        }
-        
-        
-        
-    }
+        }//End switch / case
+    }//End filtrar
 
     public void filtrarB(){
         datos.clear();

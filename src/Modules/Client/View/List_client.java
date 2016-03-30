@@ -42,8 +42,8 @@ public class List_client extends javax.swing.JFrame {
         StringArea.setEditable(false);
         StringArea.setColumns(20);
         StringArea.setRows(5);
-        StringArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Admin:"));
-        getContentPane().add(StringArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 468, 290));
+        StringArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Client:"));
+        getContentPane().add(StringArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 468, 300));
 
         back.setText("back");
         getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

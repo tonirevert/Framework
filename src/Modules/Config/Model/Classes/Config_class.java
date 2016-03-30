@@ -1,5 +1,6 @@
-package Modules.Config.Classes;
-import Modules.Config.Utils.Files_lib.Funct_files_config;
+package Modules.Config.Model.Classes;
+import Modules.Config.Model.Classes.theme_class;
+import Modules.Config.Model.Utils.Files_lib.Funct_files_config;
 import Modules.Admin.Model.Classes.Singleton_admin;
 import Modules.Admin.Model.Classes.Admin_class;
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import Modules.Admin.Model.BLL.BLL_admin;
 import Modules.Client.Model.BLL.BLL_client;
 import Modules.Client.Model.Classes.Client_class;
 import Modules.Client.Model.Classes.Singleton_client;
-import Modules.Config.Classes.Language.Language;
+import Modules.Config.Model.Classes.Language.Language;
 import Modules.Reg_user.Model.BLL.BLL_ruser;
 import Modules.Reg_user.Model.Classes.Reg_user_class;
 import Modules.Reg_user.Model.Classes.Singleton_ruser;

@@ -5,7 +5,7 @@
  */
 package Modules.Reg_user.Model.DAO;
 
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import Classes.Date_class;
 import Modules.Reg_user.Model.BLL.BLL_ruser;
 import Modules.Reg_user.Model.Classes.Reg_user_class;

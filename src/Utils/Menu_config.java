@@ -1,8 +1,8 @@
 package Utils;
 
 import Classes.Singleton_app;
-import Modules.Config.Classes.theme_class;
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.theme_class;
+import Modules.Config.Model.Classes.Config_class;
 
 
 

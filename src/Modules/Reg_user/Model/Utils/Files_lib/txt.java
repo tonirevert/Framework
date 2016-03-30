@@ -6,7 +6,7 @@
 package Modules.Reg_user.Model.Utils.Files_lib;
 
 import Classes.Singleton_app;
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import Modules.Reg_user.Model.Classes.Reg_user_class;
 import Modules.Reg_user.Model.Classes.Singleton_ruser;
 import java.io.File;

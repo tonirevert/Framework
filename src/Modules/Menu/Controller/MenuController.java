@@ -20,9 +20,9 @@ import Modules.Admin.View.Pager_admin;
 import Modules.Client.Controller.ClientController;
 import Modules.Client.Model.BLL.BLL_client;
 import Modules.Client.View.Pager_client;
-import Modules.Config.BLL.BLL_Config;
-import Modules.Config.Classes.Config_class;
-import Modules.Config.Classes.theme_class;
+import Modules.Config.Model.BLL.BLL_Config;
+import Modules.Config.Model.Classes.Config_class;
+import Modules.Config.Model.Classes.theme_class;
 import Modules.Config.View.Config;
 import Modules.Menu.Classes.Singleton_menus;
 import static Modules.Menu.Controller.MenuController.Action.btnAdmin;
@@ -164,6 +164,21 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                 conf.comboFileform.setToolTipText(Singleton_app.lang.getProperty("co_filetool"));
                 conf.comboTheme.setToolTipText(Singleton_app.lang.getProperty("co_themetool"));
                 conf.comboDecimals.setToolTipText(Singleton_app.lang.getProperty("co_dectool"));
+                
+                conf.comboLanguage.removeAllItems();
+                conf.comboLanguage.addItem(Singleton_app.lang.getProperty("co_langenglish"));
+                conf.comboLanguage.addItem(Singleton_app.lang.getProperty("co_langspanish"));
+                conf.comboLanguage.addItem(Singleton_app.lang.getProperty("co_langvalencian"));
+                
+                conf.comboCurrency.removeAllItems();
+                conf.comboCurrency.addItem(Singleton_app.lang.getProperty("co_cureuro"));
+                conf.comboCurrency.addItem(Singleton_app.lang.getProperty("co_curdollar"));
+                conf.comboCurrency.addItem(Singleton_app.lang.getProperty("co_curpound"));
+                
+                conf.comboDecimals.removeAllItems();
+                conf.comboDecimals.addItem(Singleton_app.lang.getProperty("co_1decimal"));
+                conf.comboDecimals.addItem(Singleton_app.lang.getProperty("co_2deciaml"));
+                conf.comboDecimals.addItem(Singleton_app.lang.getProperty("co_3deciaml"));
                 
                 conf.btnSaveConf.setText(Singleton_app.lang.getProperty("w_save"));
                 conf.btnResetConf.setText(Singleton_app.lang.getProperty("w_Reset"));

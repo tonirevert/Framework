@@ -155,6 +155,8 @@ public class Pager_ruser extends javax.swing.JFrame {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
+        comboSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Card", "Name", "Surname" }));
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(

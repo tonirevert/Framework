@@ -5,7 +5,7 @@
  */
 package Modules.Client.Model.DAO;
 
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import Classes.Date_class;
 import Modules.Client.Model.BLL.BLL_client;
 import Modules.Client.Model.Classes.Client_class;

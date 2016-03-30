@@ -10,7 +10,7 @@ import Modules.Client.Model.Classes.Singleton_client;
 import Modules.Client.Model.Utils.Files_lib.json;
 import Modules.Client.Model.Utils.Files_lib.txt;
 import Modules.Client.Model.Utils.Files_lib.xml;
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import javax.swing.JOptionPane;
 
 /**

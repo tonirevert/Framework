@@ -1,4 +1,4 @@
-package Modules.Config.Classes;
+package Modules.Config.Model.Classes;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;

@@ -1,6 +1,6 @@
 package Utils;
 
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 
 
 
@@ -40,7 +40,7 @@ public class Validate {
 	private static final String validage = "[0-9]{1,2}$";
 	private static final String valiantiquity = "[0-9]{1,2}$";
 	private static final String validsalary= "([0-9]{1,4}.[0-9]{0,2})$";
-	private static final String validshopping= "([0-9]{1,4}.[0-9]{0,2})$";
+        private static final String validshopping= "^-?[0-9]+([.][0-9]*)?$";
 	private static final String validactivity = "[0-9]{0,9}$";
                 private static final String validcltype = "^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ\\s]{3,}$";
                 private static final String valkarm = "^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ\\s]{3,}$";

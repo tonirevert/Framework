@@ -19,10 +19,9 @@ import Modules.Admin.View.Create_admin;
 import Modules.Admin.View.List_admin;
 import Modules.Admin.View.Modify_admin;
 import Modules.Admin.View.Pager_admin;
-
 import static Modules.Admin.View.Pager_admin.jComboBox1;
 import static Modules.Admin.View.Pager_admin.pagerTable;
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import Modules.Menu.Controller.MenuController;
 import Modules.Menu.View.Mainmenu;
 import java.awt.Color;
@@ -414,25 +413,33 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 
                 //Translation:
                 pager.setTitle(Singleton_app.lang.getProperty("a_wlist"));
+                pager.labelSearch.setText(Singleton_app.lang.getProperty("pa_search"));
+                pager.labelEntries.setText(Singleton_app.lang.getProperty("pa_shoentr"));
+                pager.pagReturn.setText(Singleton_app.lang.getProperty("pa_return"));
+                
+                pager.comboSearch.removeAllItems();
+                pager.comboSearch.addItem(Singleton_app.lang.getProperty("min_idcard"));
+                pager.comboSearch.addItem(Singleton_app.lang.getProperty("min_name"));
+                pager.comboSearch.addItem(Singleton_app.lang.getProperty("min_surname"));
                 
                 //Actions:
-                pager.AddAdmin.setToolTipText("Add a new user");
-                pager.ModAdmin.setToolTipText("Modify selected user");
-                pager.DelAdmin.setToolTipText("Delete selected user");
-                pager.ListAdmin.setToolTipText("Click to list the selected user");
-                pager.btnsavejson.setToolTipText("Save users to JSON");
-                pager.btnsavetxt.setToolTipText("Save users to TXT");
-                pager.btnsavexml.setToolTipText("Save users to XML");
-                pager.pagerTable.setToolTipText("Double click to choose one user");
-                pager.pagButtonpanel.setToolTipText("Use the buttons for navigate the pages");
-                pager.pagFirst.setToolTipText("Click to go to first page");
-                pager.pagPrev.setToolTipText("Click to go to previous page");
-                pager.pagNext.setToolTipText("Click to go to next page");
-                pager.pagLast.setToolTipText("Click to go to last page");
-                pager.pagLinks.setToolTipText("Click on the numbers for navigate the pages");
-                pager.pagReturn.setToolTipText("Click to return to the previous menu");
-                jComboBox1.setToolTipText("Click to change the amount of users per page");
-                this.comboAdmin.setToolTipText("Click to user search");
+                pager.AddAdmin.setToolTipText(Singleton_app.lang.getProperty("pa_adduser"));
+                pager.ModAdmin.setToolTipText(Singleton_app.lang.getProperty("pa_modiuser"));
+                pager.DelAdmin.setToolTipText(Singleton_app.lang.getProperty("pa_remouser"));
+                pager.ListAdmin.setToolTipText(Singleton_app.lang.getProperty("pa_listuser"));
+                pager.btnsavejson.setToolTipText(Singleton_app.lang.getProperty("pa_savjson"));
+                pager.btnsavetxt.setToolTipText(Singleton_app.lang.getProperty("pa_savtxt"));
+                pager.btnsavexml.setToolTipText(Singleton_app.lang.getProperty("pa_savxml"));
+                pager.pagerTable.setToolTipText(Singleton_app.lang.getProperty("pa_clichoose"));
+                pager.pagButtonpanel.setToolTipText(Singleton_app.lang.getProperty("pa_usebutt"));
+                pager.pagFirst.setToolTipText(Singleton_app.lang.getProperty("pa_clifisrt"));
+                pager.pagPrev.setToolTipText(Singleton_app.lang.getProperty("pa_cliprev"));
+                pager.pagNext.setToolTipText(Singleton_app.lang.getProperty("pa_clinext"));
+                pager.pagLast.setToolTipText(Singleton_app.lang.getProperty("pa_clilast"));
+                pager.pagLinks.setToolTipText(Singleton_app.lang.getProperty("pa_clinumb"));
+                pager.pagReturn.setToolTipText(Singleton_app.lang.getProperty("pa_cliretu"));
+                jComboBox1.setToolTipText(Singleton_app.lang.getProperty("pa_cliamou"));
+                this.comboAdmin.setToolTipText(Singleton_app.lang.getProperty("pa_searchu"));
                 
                 pager.setName("pagerWindow");
                 pager.addWindowListener(this);
@@ -512,6 +519,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 list.addWindowListener(this);
                 list.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 
+                list.btnReturn.setText(Singleton_app.lang.getProperty("pa_return"));
                 list.btnReturn.setName("listbtnReturn");
                 list.btnReturn.addMouseListener(this);
         
@@ -923,53 +931,53 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 ////Events from pager admin
             case AddAdmin:
                 pager.AddAdmin.setIcon(Singleton_admin.addicon_over);
-                pager.pagerInfo.setText("Click to add new user");
+                pager.pagerInfo.setText(Singleton_app.lang.getProperty("pa_adduser"));
                 break;
                 
             case ModAdmin:
                 pager.ModAdmin.setIcon(Singleton_admin.editicon_over);
-                pager.pagerInfo.setText("Click to modify selected user");    
+                pager.pagerInfo.setText(Singleton_app.lang.getProperty("pa_modiuser"));
                 break;
                 
             case DelAdmin:
                 pager.DelAdmin.setIcon(Singleton_admin.delicon_over);
-                pager.pagerInfo.setText("Click to delete selected user");
+                pager.pagerInfo.setText(Singleton_app.lang.getProperty("pa_remouser"));
                 break;
                 
             case ListAdmin:
                 pager.ListAdmin.setIcon(Singleton_admin.lsicon_over);
-                pager.pagerInfo.setText("Click to list selected user");
+                pager.pagerInfo.setText(Singleton_app.lang.getProperty("pa_listuser"));
                 break;
                 
             case btnsavejson:
                 pager.btnsavejson.setIcon(Singleton_admin.jsonicon_over);
-                pager.pagerInfo.setText("Save to JSON file format");
+                pager.pagerInfo.setText(Singleton_app.lang.getProperty("pa_savjson"));
                 break;
                 
             case btnsavetxt:
                 pager.btnsavetxt.setIcon(Singleton_admin.txticon_over);
-                pager.pagerInfo.setText("Save to TXT file format");
+                pager.pagerInfo.setText(Singleton_app.lang.getProperty("pa_savtxt"));
                 break;
                 
             case btnsavexml:
                 pager.btnsavexml.setIcon(Singleton_admin.xmlicon_over);
-                pager.pagerInfo.setText("Save to XML file format");
+                pager.pagerInfo.setText(Singleton_app.lang.getProperty("pa_savxml"));
                 break;
                 
             case pagerTable:
-                pager.pagerInfo.setText("Select one user");
+                pager.pagerInfo.setText(Singleton_app.lang.getProperty("pa_clichoose"));
                 break;
                 
             case pagLinks:
-                pager.pagerInfo.setText("Click on the numbers to navigate pages");
+                pager.pagerInfo.setText(Singleton_app.lang.getProperty("pa_clinumb"));
                 break;
                 
             case comboAdmin:
-                pager.pagerInfo.setText("");
+                pager.pagerInfo.setText(Singleton_app.lang.getProperty("pa_searchu"));
                 break;
                 
             case entriesCombo:
-                pager.pagerInfo.setText("");
+                pager.pagerInfo.setText(Singleton_app.lang.getProperty("pa_cliamou"));
                 break;
             
                         }

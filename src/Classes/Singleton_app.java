@@ -1,7 +1,7 @@
 package Classes;
 
-import Modules.Config.Classes.Language.Language;
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Language.Language;
+import Modules.Config.Model.Classes.Config_class;
 
 
 

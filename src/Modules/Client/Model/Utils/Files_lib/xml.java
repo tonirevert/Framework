@@ -10,7 +10,7 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.Annotations;
 import Modules.Client.Model.Classes.Client_class;
 import Modules.Client.Model.Classes.Singleton_client;
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileReader;

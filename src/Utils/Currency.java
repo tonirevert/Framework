@@ -1,6 +1,6 @@
 package Utils;
 
-import Modules.Config.Classes.Config_class;
+import Modules.Config.Model.Classes.Config_class;
 
 
 

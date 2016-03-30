@@ -129,19 +129,49 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
         datos.clear();
         int cont=0;
 
-        String nom=(String) ((JComboBox)comboAdmin).getSelectedItem();
-        if(nom!=null){
-            for(int i=0;i<datosaux.size();i++) {
-                if(datosaux.get(i).getName().toLowerCase().startsWith(nom.toLowerCase())){
-                    addRow(datosaux.get(i));
-                    cont++;
+        String name=(String) ((JComboBox)comboAdmin).getSelectedItem();
+        
+        switch(Pager_admin.comboSearch.getSelectedIndex()){
+            case 0:
+                if(name!=null){
+                    for(int i=0;i<datosaux.size();i++) {
+                        if(datosaux.get(i).getDni().toLowerCase().startsWith(name.toLowerCase())){
+                            addRow(datosaux.get(i));
+                            cont++;
+                        }
+                    }
+                    Pager_admin.pagAmount.setText(String.valueOf(cont));
+                    pagina.initLinkBox();
+                }                
+                break;
+                
+            case 1:
+                if(name!=null){
+                    for(int i=0;i<datosaux.size();i++) {
+                        if(datosaux.get(i).getName().toLowerCase().startsWith(name.toLowerCase())){
+                            addRow(datosaux.get(i));
+                            cont++;
+                        }
+                    }
+                    Pager_admin.pagAmount.setText(String.valueOf(cont));
+                    pagina.initLinkBox();
                 }
-            }
-            Pager_admin.pagAmount.setText(String.valueOf(cont));
-//            System.out.println("word selected: " + nom);
-            pagina.initLinkBox();
-        }
-    }
+                break;
+                
+            case 2:
+                if(name!=null){
+                    for(int i=0;i<datosaux.size();i++) {
+                        if(datosaux.get(i).getSurname().toLowerCase().startsWith(name.toLowerCase())){
+                            addRow(datosaux.get(i));
+                            cont++;
+                        }
+                    }
+                    Pager_admin.pagAmount.setText(String.valueOf(cont));
+                    pagina.initLinkBox();
+                }
+                break;
+        }//End switch / case
+    }//End filtrar
 
     public void filtrarB(){
         datos.clear();
