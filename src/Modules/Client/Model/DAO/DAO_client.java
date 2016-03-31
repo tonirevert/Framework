@@ -7,6 +7,7 @@ package Modules.Client.Model.DAO;
 
 import Modules.Config.Model.Classes.Config_class;
 import Classes.Date_class;
+import Classes.Singleton_app;
 import Modules.Client.Model.BLL.BLL_client;
 import Modules.Client.Model.Classes.Client_class;
 import Modules.Client.Model.Classes.Singleton_client;
@@ -294,7 +295,7 @@ public class DAO_client {
             correct=false;
         }
        }catch(Exception e){
-            Create_client.areaInfo.setText("No birth date selected");
+            Create_client.areaInfo.setText(Singleton_app.lang.getProperty("dao_nobirth"));
             Create_client.checkDatebirth.setIcon(no_ok);
        }
         return correct;
@@ -378,7 +379,7 @@ public class DAO_client {
         }
         }catch(Exception e){
             Create_client.dateRegistration.setBackground(Color.yellow);
-            Create_client.areaInfo.setText("No contract date selected");
+            Create_client.areaInfo.setText(Singleton_app.lang.getProperty("dao_noreg"));
             Create_client.checkDateRegistration.setIcon(no_ok);
         }
         return correct;
@@ -767,7 +768,7 @@ public class DAO_client {
         }
        }catch(Exception e){
             Modify_client.editdateBirth.setBackground(Color.yellow);
-            Modify_client.editareaInfo.setText("No birth date selected");
+            Modify_client.editareaInfo.setText(Singleton_app.lang.getProperty("dao_nobirth"));
             Modify_client.checkDatebirth.setIcon(no_ok);
        }
         return correct;
@@ -840,7 +841,7 @@ public class DAO_client {
         }
         }catch(Exception e){
             Modify_client.editdateRegistration.setBackground(Color.yellow);
-            Modify_client.editareaInfo.setText("No contract date selected");
+            Modify_client.editareaInfo.setText(Singleton_app.lang.getProperty("dao_noreg"));
             Modify_client.checkDateRegistration.setIcon(no_ok);
         }
         return correct;

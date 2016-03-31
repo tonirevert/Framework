@@ -7,6 +7,7 @@ package Modules.Reg_user.Model.DAO;
 
 import Modules.Config.Model.Classes.Config_class;
 import Classes.Date_class;
+import Classes.Singleton_app;
 import Modules.Reg_user.Model.BLL.BLL_ruser;
 import Modules.Reg_user.Model.Classes.Reg_user_class;
 import Modules.Reg_user.Model.Classes.Singleton_ruser;
@@ -267,7 +268,7 @@ public class DAO_ruser {
             correct=false;
         }
        }catch(Exception e){
-            Create_ruser.areaInfo.setText("No birth date selected");
+            Create_ruser.areaInfo.setText(Singleton_app.lang.getProperty("dao_nobirth"));
             Create_ruser.checkDatebirth.setIcon(no_ok);
        }
         return correct;
@@ -644,7 +645,7 @@ public class DAO_ruser {
         }
        }catch(Exception e){
             Modify_ruser.editdateBirth.setBackground(Color.yellow);
-            Modify_ruser.editareaInfo.setText("No birth date selected");
+            Modify_ruser.editareaInfo.setText(Singleton_app.lang.getProperty("dao_nobirth"));
             Modify_ruser.checkDatebirth.setIcon(no_ok);
        }
         return correct;

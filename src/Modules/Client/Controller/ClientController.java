@@ -6,6 +6,7 @@
 package Modules.Client.Controller;
 
 import Classes.Singleton_app;
+import static Modules.Client.Controller.ClientController.pager;
 import Modules.Client.Model.BLL.BLL_client;
 import Modules.Client.Model.Classes.Singleton_client;
 import static Modules.Client.Model.Classes.Singleton_client.cl;

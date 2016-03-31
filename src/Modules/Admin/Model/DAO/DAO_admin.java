@@ -7,6 +7,7 @@ package Modules.Admin.Model.DAO;
 
 import Modules.Config.Model.Classes.Config_class;
 import Classes.Date_class;
+import Classes.Singleton_app;
 import Modules.Admin.Model.BLL.BLL_admin;
 import Modules.Admin.Model.Classes.Admin_class;
 import Modules.Admin.Model.Classes.Singleton_admin;
@@ -269,7 +270,7 @@ public class DAO_admin {
             correct=false;
         }
        }catch(Exception e){
-            Create_admin.areaInfo.setText("No birth date selected");
+            Create_admin.areaInfo.setText(Singleton_app.lang.getProperty("dao_nobirth"));
             Create_admin.checkDatebirth.setIcon(no_ok);
        }
         return correct;
@@ -352,7 +353,7 @@ public class DAO_admin {
         }
         }catch(Exception e){
             Create_admin.dateContract.setBackground(Color.yellow);
-            Create_admin.areaInfo.setText("No contract date selected");
+            Create_admin.areaInfo.setText(Singleton_app.lang.getProperty("dao_nocontr"));
             Create_admin.checkDatecontract.setIcon(no_ok);
         }
         return correct;
@@ -706,7 +707,7 @@ public class DAO_admin {
         }
        }catch(Exception e){
             Modify_admin.editdateBirth.setBackground(Color.yellow);
-            Modify_admin.editareaInfo.setText("No birth date selected");
+            Modify_admin.editareaInfo.setText(Singleton_app.lang.getProperty("dao_nobirth"));
             Modify_admin.checkDatebirth.setIcon(no_ok);
        }
         return correct;
@@ -725,7 +726,7 @@ public class DAO_admin {
         int option = dialog.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION){
             file=dialog.getSelectedFile().getPath();
-            routeAvataradmin=file;//toString? con el funciona
+            routeAvataradmin=file;
             Modify_admin.avatar.setIcon(new ImageIcon(file));
             ImageIcon icon = new ImageIcon(file);
             Image img=icon.getImage();
@@ -781,7 +782,7 @@ public class DAO_admin {
         }
         }catch(Exception e){
             Modify_admin.editdateContract.setBackground(Color.yellow);
-            Modify_admin.editareaInfo.setText("No contract date selected");
+            Modify_admin.editareaInfo.setText(Singleton_app.lang.getProperty("dao_nocontr"));
             Modify_admin.checkDatecontract.setIcon(no_ok);
         }
         return correct;
