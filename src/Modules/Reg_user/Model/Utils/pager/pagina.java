@@ -54,7 +54,7 @@ public class pagina {
     public static void initLinkBox() {
         switch (option) {
             case "user":
-                Modules.Admin.Controller.AdminController.sorter.setRowFilter(new RowFilter<TableModel, Integer>() {
+                Modules.Reg_user.Controller.RuserController.sorter.setRowFilter(new RowFilter<TableModel, Integer>() {
                     @Override
                     public boolean include(RowFilter.Entry<? extends TableModel, ? extends Integer> entry) {
                         int ti = currentPageIndex - 1;
