@@ -60,6 +60,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new miniSimpleTableModel_admin());
     public static AutocompleteJComboBox comboAdmin = null;
     public String comb="";
+//    public static List<String> myWords = new ArrayList<String>();
     
     public AdminController(JFrame frame, int i){
         switch(i){
@@ -127,6 +128,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         pagerTable,
         comboBoxChanged,
         comboBoxEdited,
+        comboSearch,
         comboAdmin,
         entriesCombo,
         jComboBox1,
@@ -389,7 +391,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.setLocationRelativeTo(null);
                 pager.setResizable(false);
                 pager.setVisible(true);
-                
+                Singleton_admin.window="pager";
                 pager.pagerTable.setModel( new miniSimpleTableModel_admin() );
                 ((miniSimpleTableModel_admin)pagerTable.getModel()).cargar();
                 pager.pagerTable.setFillsViewportHeight(true);
@@ -401,13 +403,13 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.pagAmount.setText(String.valueOf(Singleton_admin.adm.size()));
                 
                 List<String> myWords = new ArrayList<String>();
-                
                 for (int e=0;e<=Singleton_admin.adm.size()-1;e++) {
-                myWords.add(Singleton_admin.adm.get(e).getName());
+                myWords.add(Singleton_admin.adm.get(e).getDni());
                 }
-                
                 StringSearchable searchable = new StringSearchable(myWords);
                 comboAdmin = new AutocompleteJComboBox(searchable);
+
+                
                 pager.jPanel3.setLayout(new java.awt.BorderLayout());
                 pager.jPanel3.add(comboAdmin);
                 
@@ -469,8 +471,13 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pager.pagerTable.setName("pagerTable");
                 pager.pagerTable.addMouseListener(this);
                 
+//                pager.comboSearch.setActionCommand("comboSearch");
+//                pager.comboSearch.addActionListener(this);
+                
                 comboAdmin.setActionCommand("comboAdmin");
                 comboAdmin.setName("comboAdmin");
+//                comboAdmin.addPropertyChangeListener(this);
+//                comboAdmin.addFocusListener(this);
                 comboAdmin.addActionListener(this);
                 comboAdmin.addMouseListener(this);
                 
@@ -732,7 +739,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     
     @Override
     public void actionPerformed(ActionEvent e) {
-//        System.out.println(e.getActionCommand());
+//        System.out.println(f.getActionCommand());
         switch (Action.valueOf(e.getActionCommand())){
            
             case comboAdmin:
@@ -748,11 +755,52 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 pagina.initLinkBox();
                 break;
                 
+//            case comboSearch:
+//                System.out.println("Modules.Admin.Controller.AdminController.actionPerformed()");
+//                
+//                switch(pager.comboSearch.getSelectedIndex()){
+//                    
+//                    case 0:
+//
+//                        myWords.clear();
+//                        StringSearchable searchableDNI = new StringSearchable(myWords);
+//                        for (int f=0;f<=Singleton_admin.adm.size()-1;f++) {
+//                        myWords.add(Singleton_admin.adm.get(f).getDni());
+//                        }
+//                       comboAdmin = new AutocompleteJComboBox(searchableDNI);
+////                       comboAdmin.repaint();
+//                        break;
+//                        
+//                    case 1:
+//                        myWords.clear();
+//                        StringSearchable searchable = new StringSearchable(myWords);
+//                        comboAdmin = new AutocompleteJComboBox(searchable);
+//                        for (int f=0;f<=Singleton_admin.adm.size()-1;f++) {
+//                        myWords.add(Singleton_admin.adm.get(f).getName());
+//                        }
+////                        comboAdmin.repaint();
+//                        
+//                        break;
+//                        
+//                    case 2:
+////                        comboAdmin.setEnabled(true);
+//                        List<String> myWordsSurname = new ArrayList<String>();
+//                        StringSearchable searchableSurname = new StringSearchable(myWordsSurname);
+//                        comboAdmin = new AutocompleteJComboBox(searchableSurname);
+//                        for (int f=0;f<=Singleton_admin.adm.size()-1;f++) {
+//                        myWordsSurname.add(Singleton_admin.adm.get(f).getSurname());
+//                        }
+//                        
+//                        break;
+//                }
+//                
+//                break;
         }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+//        System.out.println(f.getComponent().getName());
         switch (Action.valueOf(e.getComponent().getName())){
             
             case createbtnSearch:
@@ -925,7 +973,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     @Override
     public void mouseEntered(MouseEvent e) {
         
-//        System.out.println(e.getComponent().getName());
+//        System.out.println(f.getComponent().getName());
 
         switch (Action.valueOf(e.getComponent().getName())){
                 ////Events from pager admin
@@ -979,7 +1027,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
             case entriesCombo:
                 pager.pagerInfo.setText(Singleton_app.lang.getProperty("pa_cliamou"));
                 break;
-            
+
                         }
     }
 
@@ -1038,14 +1086,14 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
             case entriesCombo:
                 pager.pagerInfo.setText("");
                 break;
-                
+
         }//End switch / case
 
     }//End mouse exited
     
     @Override
     public void focusGained(FocusEvent e) {
-//        System.out.println(e.getComponent().getName());
+//        System.out.println(f.getComponent().getName());
         
          switch (Action.valueOf(e.getComponent().getName())) {
               case createfieldDNI:
@@ -1134,6 +1182,11 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_acinfo"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
+                
+            case comboAdmin:
+                
+                
+                break;
          }
     }
 
@@ -1209,6 +1262,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
             case editfieldActivity:
                 edit.editareaInfo.setText("");
                 break;
+                
          }
     }
     
@@ -1237,7 +1291,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                     BLL_admin.modAdmindata("datecontract");
                     edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                     break;
-
             }//End switch case
         }//End if
     }//End of property Change

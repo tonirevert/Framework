@@ -3,6 +3,7 @@ package Modules.Client.Model.Classes;
 import Classes.Date_class;
 import Classes.Singleton_app;
 import static Modules.Client.Controller.ClientController.comboClient;
+import Modules.Client.Model.BLL.BLL_client;
 import Modules.Client.Model.Utils.pager.pagina;
 import Modules.Client.View.Pager_client;
 import java.util.ArrayList;
@@ -110,6 +111,8 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
     public void cargar() {
         datos.clear();
         datosaux.clear();
+        Singleton_client.cli.clear();
+        BLL_client.autoloadClient();
         
         Client_class client = null;
         java.util.Date date= new java.util.Date();
@@ -136,7 +139,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
             case 0:
         if(name!=null){
             for(int i=0;i<datosaux.size();i++) {
-                if(datosaux.get(i).getDni().toLowerCase().startsWith(name.toLowerCase())){
+                if(datosaux.get(i).getDni().startsWith(name.toLowerCase())){
                     addRow(datosaux.get(i));
                     cont++;
                 }

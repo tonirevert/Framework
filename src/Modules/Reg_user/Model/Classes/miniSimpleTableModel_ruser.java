@@ -1,6 +1,7 @@
 package Modules.Reg_user.Model.Classes;
 import Classes.Singleton_app;
 import static Modules.Reg_user.Controller.RuserController.comboRuser;
+import Modules.Reg_user.Model.BLL.BLL_ruser;
 import Modules.Reg_user.Model.Utils.pager.pagina;
 import Modules.Reg_user.View.Pager_ruser;
 import java.util.ArrayList;
@@ -107,6 +108,8 @@ public class miniSimpleTableModel_ruser extends AbstractTableModel {
     public void cargar() {
         datos.clear();
         datosaux.clear();
+        Singleton_ruser.rus.clear();
+        BLL_ruser.autoloadRuser();
         
         Reg_user_class ruser = null;
         java.util.Date date= new java.util.Date();
@@ -133,7 +136,7 @@ public class miniSimpleTableModel_ruser extends AbstractTableModel {
             case 0:
                 if(name!=null){
                     for(int i=0;i<datosaux.size();i++) {
-                        if(datosaux.get(i).getDni().toLowerCase().startsWith(name.toLowerCase())){
+                        if(datosaux.get(i).getDni().startsWith(name.toLowerCase())){
                             addRow(datosaux.get(i));
                             cont++;
                         }

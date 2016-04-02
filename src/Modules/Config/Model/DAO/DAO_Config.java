@@ -51,7 +51,7 @@ public class DAO_Config {
         Config.comboDateform.setSelectedIndex(filldateForm());
         Config.comboCurrency.setSelectedIndex(fillCurrency());
         Config.comboLanguage.setSelectedIndex(fillLanguage());
-//        Config.comboFileform.setSelectedIndex(fillFileform());
+        Config.comboFileform.setSelectedIndex(fillFileform());
         Config.comboTheme.setSelectedIndex(fillTheme());
         Config.comboDecimals.setSelectedIndex(fillDecimals());
         

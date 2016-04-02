@@ -391,7 +391,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 List<String> myWords = new ArrayList<String>();
                 
                 for (int e=0;e<=Singleton_ruser.rus.size()-1;e++) {
-                myWords.add(Singleton_ruser.rus.get(e).getName());
+                myWords.add(Singleton_ruser.rus.get(e).getDni());
                 }
                 
                 StringSearchable searchable = new StringSearchable(myWords);

@@ -2,6 +2,7 @@ package Modules.Admin.Model.Classes;
 import Classes.Date_class;
 import Classes.Singleton_app;
 import static Modules.Admin.Controller.AdminController.comboAdmin;
+import Modules.Admin.Model.BLL.BLL_admin;
 import Modules.Admin.Model.Utils.pager.pagina;
 import Modules.Admin.View.Pager_admin;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
     //Devuelve el valor del objeto en la fila y columna
     @Override
     public Object getValueAt(int row, int col) {
-
+//        System.out.println("ROW: "+row+" COL: "+col);
         Object dev = null;
         Admin_class fila = (Admin_class) datos.get(row);
 
@@ -109,6 +110,8 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
     public void cargar() {
         datos.clear();
         datosaux.clear();
+        Singleton_admin.adm.clear();
+        BLL_admin.autoloadAdmin();
         
         Admin_class admin = null;
         java.util.Date date= new java.util.Date();
@@ -135,7 +138,7 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
             case 0:
                 if(name!=null){
                     for(int i=0;i<datosaux.size();i++) {
-                        if(datosaux.get(i).getDni().toLowerCase().startsWith(name.toLowerCase())){
+                        if(datosaux.get(i).getDni().startsWith(name.toLowerCase())){
                             addRow(datosaux.get(i));
                             cont++;
                         }

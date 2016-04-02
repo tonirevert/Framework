@@ -416,11 +416,12 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 List<String> myWords = new ArrayList<String>();
                 
                 for (int e=0;e<=Singleton_client.cli.size()-1;e++) {
-                myWords.add(Singleton_client.cli.get(e).getName());
+                myWords.add(Singleton_client.cli.get(e).getDni());
                 }
                 
                 StringSearchable searchable = new StringSearchable(myWords);
                 comboClient = new AutocompleteJComboBox(searchable);
+                
                 pager.jPanel3.setLayout(new java.awt.BorderLayout());
                 pager.jPanel3.add(comboClient);
 
