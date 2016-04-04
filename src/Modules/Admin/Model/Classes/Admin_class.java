@@ -145,17 +145,17 @@ public class Admin_class extends User_class implements Serializable{
 			 switch(i){
 			 
 			 case 13:
-				 out.append(Singleton_app.lang.getProperty("a_contdate")+this.getCont_date().toString(1)+"\n");
+				 out.append(Singleton_app.lang.getProperty("a_contdate")+" "+this.getCont_date().toString(1)+"\n");
 				 break;
 			 case 14:
-				 out.append(Singleton_app.lang.getProperty("a_antiquity")+this.getAntiquity()+"\n");
+				 out.append(Singleton_app.lang.getProperty("a_antiquity")+" "+this.getAntiquity()+"\n");
 				 break;
 			 case 15:
-//				out.append(Singleton_app.lang.getProperty("a_salary:")+Currency.autocurrency(this.getSalary())+"\n");
+//				out.append(Singleton_app.lang.getProperty("a_salary:")+" "+Currency.autocurrency(this.getSalary())+"\n");
                                                                 out.append(Currency.autocurrency(this.getSalary()));
 				 break;
 			 case 16:
-				 out.append(Singleton_app.lang.getProperty("a_activity")+this.getActivity()+"\n");
+				 out.append(Singleton_app.lang.getProperty("a_activity")+" "+this.getActivity()+"\n");
 				 break;
 			 		 
 			 }

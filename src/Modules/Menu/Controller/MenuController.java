@@ -181,8 +181,11 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                 conf.comboDecimals.addItem(Singleton_app.lang.getProperty("co_3deciaml"));
                 
                 conf.btnSaveConf.setText(Singleton_app.lang.getProperty("w_save"));
+                conf.btnSaveConf.setToolTipText(Singleton_app.lang.getProperty("co_savetool"));
                 conf.btnResetConf.setText(Singleton_app.lang.getProperty("w_Reset"));
+                conf.btnResetConf.setToolTipText(Singleton_app.lang.getProperty("co_resetool"));
                 conf.btnCancelConf.setText(Singleton_app.lang.getProperty("w_Cancel"));
+                conf.btnCancelConf.setToolTipText(Singleton_app.lang.getProperty("co_cancel"));
                 
                 conf.setName("configMenu");
                 conf.addWindowListener(this);

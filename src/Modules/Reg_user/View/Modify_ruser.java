@@ -76,11 +76,11 @@ public class Modify_ruser extends javax.swing.JFrame {
         editfieldActivity = new javax.swing.JTextField();
         labelActivity = new javax.swing.JLabel();
         checkActivity = new javax.swing.JLabel();
-        saving = new javax.swing.JOptionPane();
         editareaInfo = new javax.swing.JTextArea();
         btnsaveEditruser = new javax.swing.JButton();
         btncancelEditruser = new javax.swing.JButton();
         back = new javax.swing.JLabel();
+        saving = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -193,7 +193,7 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         labeldateBirth.setText("Birth date:");
         getContentPane().add(labeldateBirth);
-        labeldateBirth.setBounds(310, 15, 90, 15);
+        labeldateBirth.setBounds(310, 15, 120, 15);
 
         checkDatebirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatebirth);
@@ -213,18 +213,18 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         labelState.setText("State: Connected?");
         getContentPane().add(labelState);
-        labelState.setBounds(310, 170, 140, 15);
+        labelState.setBounds(310, 170, 160, 15);
 
         buttonGroupState.add(radioStateYes);
         radioStateYes.setText("Yes");
         getContentPane().add(radioStateYes);
-        radioStateYes.setBounds(440, 170, 60, 22);
+        radioStateYes.setBounds(470, 170, 60, 22);
 
         buttonGroupState.add(radioStateNo);
         radioStateNo.setSelected(true);
         radioStateNo.setText("No");
         getContentPane().add(radioStateNo);
-        radioStateNo.setBounds(500, 170, 60, 22);
+        radioStateNo.setBounds(530, 170, 60, 22);
 
         editfieldActivity.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldActivity);
@@ -238,16 +238,6 @@ public class Modify_ruser extends javax.swing.JFrame {
         getContentPane().add(checkActivity);
         checkActivity.setBounds(580, 210, 23, 23);
 
-        saving.setBorder(null);
-        saving.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/Preloader_3.gif"))); // NOI18N
-        saving.setMessage("");
-        saving.setEnabled(false);
-        saving.setFocusable(false);
-        saving.setRequestFocusEnabled(false);
-        saving.setVerifyInputWhenFocusTarget(false);
-        getContentPane().add(saving);
-        saving.setBounds(260, 148, 130, 130);
-
         editareaInfo.setColumns(2);
         editareaInfo.setRows(1);
         editareaInfo.setBorder(javax.swing.BorderFactory.createTitledBorder("Info:"));
@@ -256,15 +246,25 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         btnsaveEditruser.setText("Save");
         getContentPane().add(btnsaveEditruser);
-        btnsaveEditruser.setBounds(160, 400, 80, 29);
+        btnsaveEditruser.setBounds(160, 400, 105, 29);
 
         btncancelEditruser.setText("Cancel");
         getContentPane().add(btncancelEditruser);
-        btncancelEditruser.setBounds(380, 400, 90, 29);
+        btncancelEditruser.setBounds(380, 400, 105, 29);
 
         back.setText("back");
         getContentPane().add(back);
         back.setBounds(0, 0, 30, 15);
+
+        saving.setBorder(null);
+        saving.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/modify.gif"))); // NOI18N
+        saving.setMessage("");
+        saving.setEnabled(false);
+        saving.setFocusable(false);
+        saving.setRequestFocusEnabled(false);
+        saving.setVerifyInputWhenFocusTarget(false);
+        getContentPane().add(saving);
+        saving.setBounds(260, 148, 130, 130);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -313,6 +313,6 @@ public class Modify_ruser extends javax.swing.JFrame {
     public static javax.swing.JLabel labeldateBirth;
     public static javax.swing.JRadioButton radioStateNo;
     public static javax.swing.JRadioButton radioStateYes;
-    public static javax.swing.JOptionPane saving;
+    public javax.swing.JOptionPane saving;
     // End of variables declaration//GEN-END:variables
 }

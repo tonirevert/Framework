@@ -245,7 +245,7 @@ public class Modify_admin extends javax.swing.JFrame {
         checkActivity.setBounds(580, 250, 23, 23);
 
         saving.setBorder(null);
-        saving.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/Preloader_3.gif"))); // NOI18N
+        saving.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/modify.gif"))); // NOI18N
         saving.setMessage("");
         saving.setEnabled(false);
         saving.setFocusable(false);

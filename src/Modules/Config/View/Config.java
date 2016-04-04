@@ -53,12 +53,12 @@ public class Config extends javax.swing.JFrame {
 
         labelDateform.setText("Date format:");
         getContentPane().add(labelDateform);
-        labelDateform.setBounds(50, 36, 130, 14);
+        labelDateform.setBounds(50, 36, 130, 15);
 
         comboDateform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dd/MM/yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "yyyy/MM/dd" }));
         comboDateform.setToolTipText("");
         getContentPane().add(comboDateform);
-        comboDateform.setBounds(180, 30, 120, 20);
+        comboDateform.setBounds(180, 30, 120, 25);
 
         labelCurrency.setText("Currency:");
         getContentPane().add(labelCurrency);
@@ -67,62 +67,62 @@ public class Config extends javax.swing.JFrame {
         comboCurrency.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Euro", "Dollar", "Pound" }));
         comboCurrency.setToolTipText("");
         getContentPane().add(comboCurrency);
-        comboCurrency.setBounds(180, 79, 120, 20);
+        comboCurrency.setBounds(180, 79, 120, 25);
 
         labelLanguage.setText("Language:");
         getContentPane().add(labelLanguage);
-        labelLanguage.setBounds(50, 130, 130, 14);
+        labelLanguage.setBounds(50, 130, 130, 15);
 
         comboLanguage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "English", "Spanish", "Valencian" }));
         comboLanguage.setToolTipText("");
         getContentPane().add(comboLanguage);
-        comboLanguage.setBounds(180, 130, 120, 20);
+        comboLanguage.setBounds(180, 130, 120, 25);
 
         labelFileform.setText("File format:");
         getContentPane().add(labelFileform);
-        labelFileform.setBounds(50, 180, 130, 14);
+        labelFileform.setBounds(50, 180, 130, 15);
 
         comboFileform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JSON", "TXT", "XML" }));
         comboFileform.setToolTipText("");
         getContentPane().add(comboFileform);
-        comboFileform.setBounds(180, 180, 120, 20);
+        comboFileform.setBounds(180, 180, 120, 25);
 
         btnSaveConf.setText("Save");
-        btnSaveConf.setToolTipText("Save configuration");
+        btnSaveConf.setToolTipText("");
         getContentPane().add(btnSaveConf);
-        btnSaveConf.setBounds(40, 340, 90, 23);
+        btnSaveConf.setBounds(40, 340, 100, 29);
 
         btnCancelConf.setText("Cancel");
-        btnCancelConf.setToolTipText("Cancel changes and return");
+        btnCancelConf.setToolTipText("");
         getContentPane().add(btnCancelConf);
-        btnCancelConf.setBounds(260, 340, 100, 23);
+        btnCancelConf.setBounds(260, 340, 105, 29);
 
         labelTheme.setText("Theme:");
         getContentPane().add(labelTheme);
-        labelTheme.setBounds(50, 230, 130, 14);
+        labelTheme.setBounds(50, 230, 130, 15);
 
         comboTheme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metal", "Windows", "Motif", "Nimbus", " " }));
         comboTheme.setToolTipText("");
         getContentPane().add(comboTheme);
-        comboTheme.setBounds(180, 230, 120, 20);
+        comboTheme.setBounds(180, 230, 120, 25);
 
         labelDecimals.setText("Decimals:");
         getContentPane().add(labelDecimals);
-        labelDecimals.setBounds(50, 280, 130, 14);
+        labelDecimals.setBounds(50, 280, 130, 15);
 
         comboDecimals.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 decimal", "2 decimals", "3 decimals" }));
         comboDecimals.setToolTipText("Choose the decimal format");
         getContentPane().add(comboDecimals);
-        comboDecimals.setBounds(180, 280, 120, 20);
+        comboDecimals.setBounds(180, 280, 120, 25);
 
         btnResetConf.setText("Reset");
-        btnResetConf.setToolTipText("Reset to defaults");
+        btnResetConf.setToolTipText("");
         getContentPane().add(btnResetConf);
-        btnResetConf.setBounds(150, 340, 90, 23);
+        btnResetConf.setBounds(155, 340, 90, 29);
 
         back.setText("back");
         getContentPane().add(back);
-        back.setBounds(0, 0, 22, 14);
+        back.setBounds(0, 0, 30, 15);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

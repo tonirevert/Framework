@@ -91,11 +91,11 @@ public class Modify_client extends javax.swing.JFrame {
         fieldDNI.setBackground(java.awt.Color.yellow);
         fieldDNI.setToolTipText("");
         getContentPane().add(fieldDNI);
-        fieldDNI.setBounds(130, 5, 148, 20);
+        fieldDNI.setBounds(130, 5, 148, 25);
 
         labelDNI.setText("ID Card:");
         getContentPane().add(labelDNI);
-        labelDNI.setBounds(25, 5, 105, 14);
+        labelDNI.setBounds(25, 5, 105, 15);
 
         checkDNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDNI);
@@ -103,11 +103,11 @@ public class Modify_client extends javax.swing.JFrame {
 
         editfieldName.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldName);
-        editfieldName.setBounds(130, 40, 148, 20);
+        editfieldName.setBounds(130, 40, 148, 25);
 
         labelName.setText("Name:");
         getContentPane().add(labelName);
-        labelName.setBounds(25, 40, 105, 14);
+        labelName.setBounds(25, 40, 105, 15);
 
         checkName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkName);
@@ -115,11 +115,11 @@ public class Modify_client extends javax.swing.JFrame {
 
         editfieldSurname.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldSurname);
-        editfieldSurname.setBounds(130, 75, 150, 20);
+        editfieldSurname.setBounds(130, 75, 150, 25);
 
         labelSurname.setText("Surname:");
         getContentPane().add(labelSurname);
-        labelSurname.setBounds(25, 75, 105, 14);
+        labelSurname.setBounds(25, 75, 105, 15);
 
         checkSurname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkSurname);
@@ -127,11 +127,11 @@ public class Modify_client extends javax.swing.JFrame {
 
         editfieldEmail.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldEmail);
-        editfieldEmail.setBounds(130, 110, 150, 20);
+        editfieldEmail.setBounds(130, 110, 150, 25);
 
         labelEmail.setText("e-mail:");
         getContentPane().add(labelEmail);
-        labelEmail.setBounds(25, 110, 105, 14);
+        labelEmail.setBounds(25, 110, 105, 15);
 
         checkEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkEmail);
@@ -139,11 +139,11 @@ public class Modify_client extends javax.swing.JFrame {
 
         editfieldMobile.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldMobile);
-        editfieldMobile.setBounds(130, 145, 150, 20);
+        editfieldMobile.setBounds(130, 145, 150, 25);
 
         labelMobile.setText("Mobile:");
         getContentPane().add(labelMobile);
-        labelMobile.setBounds(25, 145, 105, 14);
+        labelMobile.setBounds(25, 145, 105, 15);
 
         checkMobile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkMobile);
@@ -151,11 +151,11 @@ public class Modify_client extends javax.swing.JFrame {
 
         editfieldUser.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldUser);
-        editfieldUser.setBounds(130, 180, 150, 20);
+        editfieldUser.setBounds(130, 180, 150, 25);
 
         labelUser.setText("User:");
         getContentPane().add(labelUser);
-        labelUser.setBounds(25, 180, 105, 14);
+        labelUser.setBounds(25, 180, 105, 15);
 
         checkUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkUser);
@@ -163,11 +163,11 @@ public class Modify_client extends javax.swing.JFrame {
 
         editfieldPassword.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldPassword);
-        editfieldPassword.setBounds(130, 215, 150, 20);
+        editfieldPassword.setBounds(130, 215, 150, 25);
 
         labelPassword.setText("Password:");
         getContentPane().add(labelPassword);
-        labelPassword.setBounds(25, 215, 105, 14);
+        labelPassword.setBounds(25, 215, 105, 15);
 
         checkPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword);
@@ -175,21 +175,21 @@ public class Modify_client extends javax.swing.JFrame {
 
         editfieldPassword2.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldPassword2);
-        editfieldPassword2.setBounds(130, 250, 150, 20);
+        editfieldPassword2.setBounds(130, 250, 150, 25);
 
         labelPassword2.setText("Verify:");
         getContentPane().add(labelPassword2);
-        labelPassword2.setBounds(25, 250, 105, 14);
+        labelPassword2.setBounds(25, 250, 105, 15);
 
         checkPassword2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword2);
         checkPassword2.setBounds(280, 250, 23, 23);
         getContentPane().add(editfieldShopping);
-        editfieldShopping.setBounds(130, 285, 150, 20);
+        editfieldShopping.setBounds(130, 285, 150, 25);
 
         labelShopping.setText("Shopping:");
         getContentPane().add(labelShopping);
-        labelShopping.setBounds(25, 285, 105, 14);
+        labelShopping.setBounds(25, 285, 105, 15);
 
         checkShopping.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkShopping);
@@ -202,13 +202,13 @@ public class Modify_client extends javax.swing.JFrame {
         editdateBirth.setName("createdateBirth"); // NOI18N
         editdateBirth.setOpaque(false);
         getContentPane().add(editdateBirth);
-        editdateBirth.setBounds(430, 15, 140, 20);
+        editdateBirth.setBounds(430, 15, 140, 27);
         editdateBirth.getAccessibleContext().setAccessibleName(getName());
         editdateBirth.getAccessibleContext().setAccessibleDescription(getName());
 
         labeldateBith.setText("Birth date:");
         getContentPane().add(labeldateBith);
-        labeldateBith.setBounds(310, 15, 110, 14);
+        labeldateBith.setBounds(310, 15, 110, 15);
 
         checkDatebirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatebirth);
@@ -216,7 +216,7 @@ public class Modify_client extends javax.swing.JFrame {
 
         btnSearch.setText("Search");
         getContentPane().add(btnSearch);
-        btnSearch.setBounds(380, 90, 90, 23);
+        btnSearch.setBounds(380, 90, 90, 29);
 
         avatar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(avatar);
@@ -224,31 +224,31 @@ public class Modify_client extends javax.swing.JFrame {
 
         labelAvatar.setText("Avatar:");
         getContentPane().add(labelAvatar);
-        labelAvatar.setBounds(310, 90, 90, 14);
+        labelAvatar.setBounds(310, 90, 90, 15);
 
         labelState.setText("State: Connected?");
         getContentPane().add(labelState);
-        labelState.setBounds(310, 170, 140, 14);
+        labelState.setBounds(310, 170, 160, 15);
 
         buttonGroupState.add(radioStateYes);
         radioStateYes.setText("Yes");
         getContentPane().add(radioStateYes);
-        radioStateYes.setBounds(470, 170, 60, 23);
+        radioStateYes.setBounds(470, 170, 60, 22);
 
         buttonGroupState.add(radioStateNo);
         radioStateNo.setSelected(true);
         radioStateNo.setText("No");
         getContentPane().add(radioStateNo);
-        radioStateNo.setBounds(530, 170, 60, 23);
+        radioStateNo.setBounds(530, 170, 60, 22);
 
         editdateRegistration.setMaxSelectableDate(new java.util.Date(4102444865000L));
         editdateRegistration.setMinSelectableDate(new java.util.Date(-2208984251000L));
         getContentPane().add(editdateRegistration);
-        editdateRegistration.setBounds(430, 210, 140, 20);
+        editdateRegistration.setBounds(430, 210, 140, 27);
 
         labeldateReg.setText("Register date:");
         getContentPane().add(labeldateReg);
-        labeldateReg.setBounds(310, 210, 110, 14);
+        labeldateReg.setBounds(310, 210, 110, 15);
 
         checkDateRegistration.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDateRegistration);
@@ -256,11 +256,11 @@ public class Modify_client extends javax.swing.JFrame {
 
         editfieldClientType.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldClientType);
-        editfieldClientType.setBounds(430, 250, 114, 20);
+        editfieldClientType.setBounds(430, 250, 114, 25);
 
         labelClientType.setText("Client type:");
         getContentPane().add(labelClientType);
-        labelClientType.setBounds(310, 250, 110, 14);
+        labelClientType.setBounds(310, 250, 110, 15);
 
         checkClientType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkClientType);
@@ -268,29 +268,29 @@ public class Modify_client extends javax.swing.JFrame {
 
         labelPremium.setText("Is premium?");
         getContentPane().add(labelPremium);
-        labelPremium.setBounds(310, 290, 110, 14);
+        labelPremium.setBounds(310, 290, 120, 15);
 
         buttonGroupPremium.add(radioPremiumYes);
         radioPremiumYes.setText("Yes");
         getContentPane().add(radioPremiumYes);
-        radioPremiumYes.setBounds(440, 290, 60, 23);
+        radioPremiumYes.setBounds(440, 290, 60, 22);
 
         buttonGroupPremium.add(radioPremiumNo);
         radioPremiumNo.setSelected(true);
         radioPremiumNo.setText("No");
         getContentPane().add(radioPremiumNo);
-        radioPremiumNo.setBounds(500, 290, 60, 23);
+        radioPremiumNo.setBounds(500, 290, 60, 22);
 
         btnsaveEditclient.setText("Save");
         getContentPane().add(btnsaveEditclient);
-        btnsaveEditclient.setBounds(160, 400, 80, 23);
+        btnsaveEditclient.setBounds(160, 400, 105, 29);
 
         btncancelEditclient.setText("Cancel");
         getContentPane().add(btncancelEditclient);
-        btncancelEditclient.setBounds(380, 400, 100, 23);
+        btncancelEditclient.setBounds(380, 400, 105, 29);
 
         saving.setBorder(null);
-        saving.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/Preloader_3.gif"))); // NOI18N
+        saving.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/modify.gif"))); // NOI18N
         saving.setMessage("");
         saving.setEnabled(false);
         saving.setFocusable(false);
@@ -307,7 +307,7 @@ public class Modify_client extends javax.swing.JFrame {
 
         back.setText("back");
         getContentPane().add(back);
-        back.setBounds(0, 0, 22, 14);
+        back.setBounds(0, 0, 30, 15);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

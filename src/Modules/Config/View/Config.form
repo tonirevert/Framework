@@ -169,28 +169,28 @@
     <Component class="javax.swing.JButton" name="btnSaveConf">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>
-        <Property name="toolTipText" type="java.lang.String" value="Save configuration"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="40" y="340" width="90" height="-1"/>
+          <AbsoluteConstraints x="40" y="340" width="100" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="btnCancelConf">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancel"/>
-        <Property name="toolTipText" type="java.lang.String" value="Cancel changes and return"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="260" y="340" width="100" height="-1"/>
+          <AbsoluteConstraints x="260" y="340" width="105" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -267,14 +267,14 @@
     <Component class="javax.swing.JButton" name="btnResetConf">
       <Properties>
         <Property name="text" type="java.lang.String" value="Reset"/>
-        <Property name="toolTipText" type="java.lang.String" value="Reset to defaults"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="150" y="340" width="90" height="-1"/>
+          <AbsoluteConstraints x="155" y="340" width="90" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

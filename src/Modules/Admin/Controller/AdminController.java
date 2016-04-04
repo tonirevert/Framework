@@ -44,6 +44,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -194,6 +196,8 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 create.labelPassword2.setText(Singleton_app.lang.getProperty("u_verify"));
                 create.labeldateBirth.setText(Singleton_app.lang.getProperty("u_birthday"));
                 create.labelState.setText(Singleton_app.lang.getProperty("u_state"));
+                create.radioStateYes.setText(Singleton_app.lang.getProperty("booleanyes"));
+                create.radioStateNo.setText(Singleton_app.lang.getProperty("booleanno"));
                 create.labeldateContract.setText(Singleton_app.lang.getProperty("a_contdate"));
                 create.labelActivity.setText(Singleton_app.lang.getProperty("a_activity"));
                 
@@ -313,6 +317,8 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 edit.labelPassword2.setText(Singleton_app.lang.getProperty("u_verify"));
                 edit.labeldateBirth.setText(Singleton_app.lang.getProperty("u_birthday"));
                 edit.labelState.setText(Singleton_app.lang.getProperty("u_state"));
+                edit.radioStateYes.setText(Singleton_app.lang.getProperty("booleanyes"));
+                edit.radioStateNo.setText(Singleton_app.lang.getProperty("booleanno"));
                 edit.labeldateContract.setText(Singleton_app.lang.getProperty("a_contdate"));
                 edit.labelActivity.setText(Singleton_app.lang.getProperty("a_activity"));
                 
@@ -515,7 +521,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 list.back.setSize(lx,ly);
                 Image lsback=Singleton_admin.backList.getImage();
                 List_admin.back.setIcon(new ImageIcon(lsback.getScaledInstance(lx, ly, java.awt.Image.SCALE_SMOOTH)));
-                list.setTitle("Admin data list");
+                
                 list.StringArea.setEditable(false);
                 list.setLocationRelativeTo(null);
                 list.setSize(lx,ly);
@@ -526,6 +532,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 list.addWindowListener(this);
                 list.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 
+                list.setTitle(Singleton_app.lang.getProperty("li_admin"));
+                Border border = new TitledBorder (Singleton_app.lang.getProperty("admin"));
+                list.StringArea.setBorder(border);
                 list.btnReturn.setText(Singleton_app.lang.getProperty("pa_return"));
                 list.btnReturn.setName("listbtnReturn");
                 list.btnReturn.addMouseListener(this);
@@ -1127,7 +1136,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 break;
                 
             case createfieldPassword:
-                create.areaInfo.setText(Singleton_app.lang.getProperty("u_painfo"));
+                create.areaInfo.setText(Singleton_app.lang.getProperty("uc_inpasswd"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
@@ -1169,7 +1178,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 break;
                 
             case editfieldPassword:
-                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_painfo"));
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("uc_inpasswd"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 

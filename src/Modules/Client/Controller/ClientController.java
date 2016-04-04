@@ -44,6 +44,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -194,9 +196,13 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 create.labelShopping.setText(Singleton_app.lang.getProperty("c_shopping"));
                 create.labeldateBirth.setText(Singleton_app.lang.getProperty("u_birthday"));
                 create.labelState.setText(Singleton_app.lang.getProperty("u_state"));
+                create.radioStateYes.setText(Singleton_app.lang.getProperty("booleanyes"));
+                create.radioStateNo.setText(Singleton_app.lang.getProperty("booleanno"));
                 create.labelRegister.setText(Singleton_app.lang.getProperty("c_regdate"));
                 create.labelClientType.setText(Singleton_app.lang.getProperty("c_clitype"));
                 create.labelPremium.setText(Singleton_app.lang.getProperty("c_premium"));
+                create.radioPremiumYes.setText(Singleton_app.lang.getProperty("booleanyes"));
+                create.radioPremiumNo.setText(Singleton_app.lang.getProperty("booleanno"));
                 
                 create.btnsaveCreateclient.setText(Singleton_app.lang.getProperty("w_create"));
                 create.btnresetCreateclient.setText(Singleton_app.lang.getProperty("w_Reset"));
@@ -317,9 +323,13 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 edit.labelShopping.setText(Singleton_app.lang.getProperty("c_shopping"));
                 edit.labeldateBith.setText(Singleton_app.lang.getProperty("u_birthday"));
                 edit.labelState.setText(Singleton_app.lang.getProperty("u_state"));
+                edit.radioStateYes.setText(Singleton_app.lang.getProperty("booleanyes"));
+                edit.radioStateNo.setText(Singleton_app.lang.getProperty("booleanno"));
                 edit.labeldateReg.setText(Singleton_app.lang.getProperty("c_regdate"));
                 edit.labelClientType.setText(Singleton_app.lang.getProperty("c_clitype"));
                 edit.labelPremium.setText(Singleton_app.lang.getProperty("c_premium"));
+                edit.radioPremiumYes.setText(Singleton_app.lang.getProperty("booleanyes"));
+                edit.radioPremiumNo.setText(Singleton_app.lang.getProperty("booleanno"));
                 
                 edit.btnsaveEditclient.setText(Singleton_app.lang.getProperty("w_save"));
                 edit.btncancelEditclient.setText(Singleton_app.lang.getProperty("w_Cancel"));
@@ -523,7 +533,6 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 list.back.setSize(lx,ly);
                 Image lsback=Singleton_client.backList.getImage();
                 List_client.back.setIcon(new ImageIcon(lsback.getScaledInstance(lx, ly, java.awt.Image.SCALE_SMOOTH)));
-                list.setTitle("Client data list");
                 list.StringArea.setEditable(false);
                 list.setLocationRelativeTo(null);
                 list.setSize(lx,ly);
@@ -534,6 +543,10 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 list.addWindowListener(this);
                 list.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 
+                
+                list.setTitle(Singleton_app.lang.getProperty("li_client"));
+                Border border = new TitledBorder (Singleton_app.lang.getProperty("client"));
+                list.StringArea.setBorder(border);
                 list.btnReturn.setText(Singleton_app.lang.getProperty("pa_return"));
                 list.btnReturn.setName("listbtnReturn");
                 list.btnReturn.addMouseListener(this);
@@ -1113,7 +1126,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 break;
                 
             case createfieldPassword:
-                create.areaInfo.setText(Singleton_app.lang.getProperty("u_painfo"));
+                create.areaInfo.setText(Singleton_app.lang.getProperty("uc_inpasswd"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
@@ -1160,7 +1173,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 break;
                 
             case editfieldPassword:
-                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_painfo"));
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("uc_inpasswd"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 

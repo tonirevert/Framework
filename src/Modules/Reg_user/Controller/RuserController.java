@@ -44,6 +44,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -181,7 +183,6 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 
                 //Translation:
                 create.setTitle(Singleton_app.lang.getProperty("r_wcreate"));
-                create.setTitle(Singleton_app.lang.getProperty("a_wcreate"));
                 create.labelDNI.setText(Singleton_app.lang.getProperty("u_idcard"));
                 create.labelName.setText(Singleton_app.lang.getProperty("u_name"));
                 create.labelSurname.setText(Singleton_app.lang.getProperty("u_surname"));
@@ -191,11 +192,13 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 create.labelPassword2.setText(Singleton_app.lang.getProperty("u_verify"));
                 create.labeldateBitrh.setText(Singleton_app.lang.getProperty("u_birthday"));
                 create.labelState.setText(Singleton_app.lang.getProperty("u_state"));
+                create.radioStateYes.setText(Singleton_app.lang.getProperty("booleanyes"));
+                create.radioStateNo.setText(Singleton_app.lang.getProperty("booleanno"));
                 create.labelActivity.setText(Singleton_app.lang.getProperty("r_activity"));
                 
                 create.btnsaveCreateruser.setText(Singleton_app.lang.getProperty("w_create"));
-                create.btnsaveCreateruser.setText(Singleton_app.lang.getProperty("w_Reset"));
-                create.btnsaveCreateruser.setText(Singleton_app.lang.getProperty("w_Cancel"));
+                create.btnresetCreateruser.setText(Singleton_app.lang.getProperty("w_Reset"));
+                create.btncancelCreateruser.setText(Singleton_app.lang.getProperty("w_Cancel"));
                 create.btnSearch.setText(Singleton_app.lang.getProperty("w_search"));
                 
                 //Actions:
@@ -302,6 +305,8 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 edit.labelPassword2.setText(Singleton_app.lang.getProperty("u_verify"));
                 edit.labeldateBirth.setText(Singleton_app.lang.getProperty("u_birthday"));
                 edit.labelState.setText(Singleton_app.lang.getProperty("u_state"));
+                edit.radioStateYes.setText(Singleton_app.lang.getProperty("booleanyes"));
+                edit.radioStateNo.setText(Singleton_app.lang.getProperty("booleanno"));
                 edit.labelActivity.setText(Singleton_app.lang.getProperty("r_activity"));
                 
                 edit.btnsaveEditruser.setText(Singleton_app.lang.getProperty("w_save"));
@@ -401,6 +406,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                              
                 //Translation:
                 pager.setTitle(Singleton_app.lang.getProperty("r_wlist"));
+                pager.labelSearch.setText(Singleton_app.lang.getProperty("pa_search"));
+                pager.labelEntries.setText(Singleton_app.lang.getProperty("pa_shoentr"));
+                pager.pagReturn.setText(Singleton_app.lang.getProperty("pa_return"));
                 
                 pager.comboSearch.removeAllItems();
                 pager.comboSearch.addItem(Singleton_app.lang.getProperty("min_idcard"));
@@ -493,7 +501,6 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 list.back.setSize(lx,ly);
                 Image lsback=Singleton_ruser.backList.getImage();
                 List_ruser.back.setIcon(new ImageIcon(lsback.getScaledInstance(lx, ly, java.awt.Image.SCALE_SMOOTH)));
-                list.setTitle("Admin data list");
                 list.StringArea.setEditable(false);
                 list.setLocationRelativeTo(null);
                 list.setSize(lx,ly);
@@ -504,6 +511,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 list.addWindowListener(this);
                 list.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 
+                list.setTitle(Singleton_app.lang.getProperty("li_ruser"));
+                Border border = new TitledBorder (Singleton_app.lang.getProperty("ruser"));
+                list.StringArea.setBorder(border);
                 list.btnReturn.setText(Singleton_app.lang.getProperty("pa_return"));
                 list.btnReturn.setName("listbtnReturn");
                 list.btnReturn.addMouseListener(this);
@@ -1059,7 +1069,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 break;
                 
             case createfieldPassword:
-                create.areaInfo.setText(Singleton_app.lang.getProperty("u_painfo"));
+                create.areaInfo.setText(Singleton_app.lang.getProperty("uc_inpasswd"));
                 create.areaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 
@@ -1101,7 +1111,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 break;
                 
             case editfieldPassword:
-                edit.editareaInfo.setText(Singleton_app.lang.getProperty("u_painfo"));
+                edit.editareaInfo.setText(Singleton_app.lang.getProperty("uc_inpasswd"));
                 edit.editareaInfo.setBackground(Color.decode("#d6d6d6"));
                 break;
                 

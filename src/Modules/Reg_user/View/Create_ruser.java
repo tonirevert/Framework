@@ -198,7 +198,7 @@ public class Create_ruser extends javax.swing.JFrame {
 
         labeldateBitrh.setText("Birth date:");
         getContentPane().add(labeldateBitrh);
-        labeldateBitrh.setBounds(310, 15, 90, 15);
+        labeldateBitrh.setBounds(310, 15, 120, 15);
 
         checkDatebirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatebirth);
@@ -223,13 +223,13 @@ public class Create_ruser extends javax.swing.JFrame {
         buttonGroupState.add(radioStateYes);
         radioStateYes.setText("Yes");
         getContentPane().add(radioStateYes);
-        radioStateYes.setBounds(440, 170, 60, 22);
+        radioStateYes.setBounds(470, 170, 60, 22);
 
         buttonGroupState.add(radioStateNo);
         radioStateNo.setSelected(true);
         radioStateNo.setText("No");
         getContentPane().add(radioStateNo);
-        radioStateNo.setBounds(500, 170, 60, 22);
+        radioStateNo.setBounds(530, 170, 60, 22);
 
         fieldActivity.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldActivity);
@@ -261,15 +261,15 @@ public class Create_ruser extends javax.swing.JFrame {
 
         btnsaveCreateruser.setText("Save");
         getContentPane().add(btnsaveCreateruser);
-        btnsaveCreateruser.setBounds(160, 400, 80, 29);
+        btnsaveCreateruser.setBounds(140, 400, 100, 29);
 
         btncancelCreateruser.setText("Cancel");
         getContentPane().add(btncancelCreateruser);
-        btncancelCreateruser.setBounds(380, 400, 90, 29);
+        btncancelCreateruser.setBounds(380, 400, 105, 29);
 
         btnresetCreateruser.setText("Reset");
         getContentPane().add(btnresetCreateruser);
-        btnresetCreateruser.setBounds(270, 400, 90, 29);
+        btnresetCreateruser.setBounds(265, 400, 100, 29);
 
         back.setText("back");
         getContentPane().add(back);

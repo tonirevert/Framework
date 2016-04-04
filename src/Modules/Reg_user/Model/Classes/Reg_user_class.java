@@ -79,8 +79,8 @@ public class Reg_user_class extends User_class implements Serializable{
 		StringBuffer out=new StringBuffer();
 		
 		out.append(super.toString());
-		out.append(Singleton_app.lang.getProperty("r_activity")+this.getActivity()+"\n");
-		out.append(Singleton_app.lang.getProperty("r_karma")+this.getKarma()+"\n");
+		out.append(Singleton_app.lang.getProperty("r_activity")+" "+this.getActivity()+"\n");
+		out.append(Singleton_app.lang.getProperty("r_karma")+" "+this.getKarma()+"\n");
 				
 		return out.toString();
 	}
@@ -104,10 +104,10 @@ public class Reg_user_class extends User_class implements Serializable{
 		 
 			 switch(i){
 			 case 12:
-				 out.append(Singleton_app.lang.getProperty("r_activity")+this.getActivity()+"\n");
+				 out.append(Singleton_app.lang.getProperty("r_activity")+" "+this.getActivity()+"\n");
 				 break;
 			 case 13:
-				 out.append(Singleton_app.lang.getProperty("r_karma")+this.getKarma()+"\n");	 
+				 out.append(Singleton_app.lang.getProperty("r_karma")+" "+this.getKarma()+"\n");	 
 				 break;
 
 			 }

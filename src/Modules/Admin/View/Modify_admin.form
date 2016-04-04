@@ -572,7 +572,7 @@
           <Border info="null"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Modules/Admin/View/img/Preloader_3.gif"/>
+          <Image iconType="3" name="/Modules/Admin/View/img/modify.gif"/>
         </Property>
         <Property name="message" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="&quot;&quot;" type="code"/>

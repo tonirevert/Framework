@@ -265,7 +265,7 @@ public class Create_admin extends javax.swing.JFrame {
 
         btnsaveCreateadmin.setText("Save");
         getContentPane().add(btnsaveCreateadmin);
-        btnsaveCreateadmin.setBounds(160, 400, 80, 29);
+        btnsaveCreateadmin.setBounds(140, 400, 100, 29);
 
         btncancelCreateadmin.setText("Cancel");
         getContentPane().add(btncancelCreateadmin);
@@ -273,7 +273,7 @@ public class Create_admin extends javax.swing.JFrame {
 
         btnresetCreateadmin.setText("Reset");
         getContentPane().add(btnresetCreateadmin);
-        btnresetCreateadmin.setBounds(270, 400, 90, 29);
+        btnresetCreateadmin.setBounds(265, 400, 100, 29);
 
         checkDatecontract.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatecontract);
