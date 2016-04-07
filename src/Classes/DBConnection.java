@@ -38,7 +38,7 @@ public class DBConnection {
      * 
      * @param con 
      */
-    public void CloseConnction(Connection con) {
+    public void CloseConnection(Connection con) {
         try {
             if (con != null) {
                 con.close();

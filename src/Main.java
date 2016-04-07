@@ -1,8 +1,11 @@
 
 
+import Classes.DBConnection;
 import Modules.Config.Model.Classes.Config_class;
+import Modules.Dummy.Classes.DB_Dummy;
 import Modules.Menu.Controller.MenuController;
 import Modules.Menu.View.Mainmenu;
+import java.sql.SQLException;
 
 
 /*
@@ -17,9 +20,11 @@ import Modules.Menu.View.Mainmenu;
  */
 public class Main {
     
-    public static void main(String args[]) {
+    public static void main(String args[]) throws SQLException {
 
-        Config_class.getinstance();
-        new MenuController(new Mainmenu(), 0).Init(0);
+//        Config_class.getinstance();
+//        new MenuController(new Mainmenu(), 0).Init(0);
+        DB_Dummy.cargarAdmin();
+
     }
 }
