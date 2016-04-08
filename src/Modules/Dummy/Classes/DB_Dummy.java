@@ -24,11 +24,11 @@ public class DB_Dummy {
         PreparedStatement stmt = null;
         int resultado = 0;
 
-        String [] testdni={"48292470Z","48722473D","28554926N","26599039E","42470829H","32648520C","48520326D","28485527G","33582562D","21059874Q"};
+        String [] testdni={"12345678Z","48722473D","28554926N","26599039E","42470829H","32648520C","48520326D","28485527G","33582562D","21059874Q"};
         String [] testnames={"Antonio","Jose","Pepe","Marta","Manuel","Andreu","Angela","Jorge","Felipe","Iñaki"};
         String [] testsur={"Revert","Gonzalez","Fernandez","Moran","Sanchis","Tormo","Valls","Hinojosa","Calabuig","Bertomeu"};
         String [] birthdates={"24/05/1981","22/03/1987","23/02/1983","12/04/1973","20/05/1985","20/12/1986","14/03/1980","23/07/1989","25/11/1978","29/12/1977"};
-        String [] testmobile={"34651936114","34625896321","34632548985","34962388320","34962383904","34676025489","34696201458","34702963218","34620859624","34624125951"};
+        String [] testmobile={"34650936114","34625896321","34632548985","34962388320","34962383904","34676025489","34696201458","34702963218","34620859624","34624125951"};
         String [] testmail={"test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com"};
         String [] testuname={"Thorin","Glados","Frodo","Test4","Test5","Test6","Test7","Test8","Test9","Test10"};
         String [] testpasswd={"1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35"};
@@ -50,7 +50,7 @@ public class DB_Dummy {
                 state=0;
             }
             stmt = _con.prepareStatement("INSERT INTO prog.admin"
-                    + "(dni, name, surname, date_birthday, mobile, email, usuario, password, avatar, state, age, benefit, date_contract, antiquity, salary, activity)"
+                    + "(dni, name, surname, date_birthday, mobile, email, user, password, avatar, state, age, benefit, date_contract, antiquity, salary, activity)"
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             
             stmt.setString(1, admin.getDni());
@@ -64,10 +64,10 @@ public class DB_Dummy {
             stmt.setString(9, admin.getAvatar());
             stmt.setInt(10, state);
             stmt.setInt(11,admin.getAge());
-            stmt.setString(12, String.valueOf(admin.calc_benefit()));
+            stmt.setFloat(12, (float)admin.calc_benefit());
             stmt.setString(13, admin.getCont_date().toString());
             stmt.setInt(14, admin.getAntiquity());
-            stmt.setString(15,String.valueOf(admin.calc_salary()));
+            stmt.setFloat(15,(float)admin.calc_salary());
             stmt.setString(16, String.valueOf(admin.getActivity()));
 
             result=stmt.executeUpdate();

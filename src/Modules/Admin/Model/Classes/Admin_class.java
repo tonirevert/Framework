@@ -44,6 +44,11 @@ public class Admin_class extends User_class implements Serializable{
 		super.setBenefit(calc_benefit());
 		
 	}
+        
+                /**Empty Admin_class constructor*/
+                public Admin_class(){
+                }
+        
 	/**Primary key Admin_class constructor*/
 	public Admin_class (String dni){
 			super(dni);

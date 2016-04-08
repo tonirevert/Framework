@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 
 public class Singleton_admin {
 	public static ArrayList <Admin_class> adm;
+                public static Admin_class a;
 	public static Admin_class ad;
                 public static String list="";
                 public static String DNI=" ";

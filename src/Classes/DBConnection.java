@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
 public class DBConnection {
     
     /**
-     * 
-     * @return 
+     * Opens a connection to database
+     * @return a connection to database
      */
     public Connection OpenConnection() {
 
@@ -25,7 +25,7 @@ public class DBConnection {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String urlOdbc = "jdbc:mysql://127.0.0.1:3306/prog";
-            con = (Connection) (java.sql.DriverManager.getConnection(urlOdbc, "root", "185042"));
+            con = (Connection) (java.sql.DriverManager.getConnection(urlOdbc, "root", "12345"));
             
         } catch (Exception e) {
 
@@ -35,8 +35,8 @@ public class DBConnection {
     }
 
     /**
-     * 
-     * @param con 
+     * Closes a connection to database 
+     * @param con is the connection to close
      */
     public void CloseConnection(Connection con) {
         try {
