@@ -120,7 +120,7 @@ public class DAOBD_admin {
                 admin.setAntiquity(rs.getInt("antiquity"));
                 admin.setSalary(rs.getFloat("salary"));
                 admin.setActivity(rs.getInt("activity"));
-                
+                Singleton_admin.adm.add(admin);
             }
             
         }catch(SQLException e){
@@ -251,7 +251,6 @@ public class DAOBD_admin {
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Problems searching admin user!");
         }
-        
         
         return correct;
     }//End of search DNI

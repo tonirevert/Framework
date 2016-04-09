@@ -286,8 +286,10 @@ public class BLL_admin {
             PauseIncomplete();
             created=false;
         }else{
-            Singleton_admin.adm.add(admin);
-            autosaveAdmin();
+            Singleton_admin.a=admin;
+            BLLDB_admin.newAdminBLL();
+//            Singleton_admin.adm.add(admin);
+//            autosaveAdmin();
             Create_admin.areaInfo.setText(Singleton_app.lang.getProperty("bll_created"));
             Create_admin.areaInfo.setBackground(Color.green);
             created=true;

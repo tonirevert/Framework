@@ -18,7 +18,8 @@ import javax.swing.JOptionPane;
  * @author antonio
  */
 public class DB_Dummy {
-    public static void cargarAdmin() throws SQLException {
+    
+    public static void cargarAdmin(){
         Connection _con = null;
         DBConnection _conexion_DB = new DBConnection();
         PreparedStatement stmt = null;
@@ -41,7 +42,7 @@ public class DB_Dummy {
         int result;
         _con = _conexion_DB.OpenConnection();
         
-//        try{
+        try{
         for (int i = 0; i < 9; i++) {
             Admin_class admin = new Admin_class(testdni[i],testnames[i],testsur[i],new Date_class(birthdates[i]),testmobile[i],testmail[i],testuname[i],testpasswd[i],testavatar[i],testboolean[i],new Date_class(contdates[i]),30);
             if(admin.isState()==true){
@@ -75,17 +76,17 @@ public class DB_Dummy {
         }
         _conexion_DB.CloseConnection((com.mysql.jdbc.Connection) _con);
         
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//            JOptionPane.showMessageDialog(null, "Ha habido un problema al insertar un nuevo usuario!");
-//        } finally {
-//            if (stmt != null) {
-//                try {
-//                    stmt.close();
-//                } catch (SQLException ex) {
-//                    JOptionPane.showMessageDialog(null, "Ha habido un error Logger!");
-//                }
-//            }
-//        }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Ha habido un problema al insertar un nuevo usuario!");
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Ha habido un error Logger!");
+                }
+            }
+        }
     }
 }

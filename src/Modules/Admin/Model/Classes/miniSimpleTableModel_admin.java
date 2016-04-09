@@ -2,6 +2,7 @@ package Modules.Admin.Model.Classes;
 import Classes.Date_class;
 import Classes.Singleton_app;
 import static Modules.Admin.Controller.AdminController.comboAdmin;
+import Modules.Admin.Model.BLL.BLLDB_admin;
 import Modules.Admin.Model.BLL.BLL_admin;
 import Modules.Admin.Model.Utils.pager.pagina;
 import Modules.Admin.View.Pager_admin;
@@ -111,7 +112,8 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
         datos.clear();
         datosaux.clear();
         Singleton_admin.adm.clear();
-        BLL_admin.autoloadAdmin();
+//        BLL_admin.autoloadAdmin();
+        BLLDB_admin.loadAdminBLL();
         
         Admin_class admin = null;
         java.util.Date date= new java.util.Date();

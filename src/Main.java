@@ -22,9 +22,9 @@ public class Main {
     
     public static void main(String args[]) throws SQLException {
 
-//        Config_class.getinstance();
-//        new MenuController(new Mainmenu(), 0).Init(0);
-        DB_Dummy.cargarAdmin();
+        Config_class.getinstance();
+        new MenuController(new Mainmenu(), 0).Init(0);
+//        DB_Dummy.cargarAdmin();
 
     }
 }
