@@ -8,6 +8,7 @@ package Modules.Dummy.Classes;
 import Classes.DBConnection;
 import Classes.Date_class;
 import Modules.Admin.Model.Classes.Admin_class;
+import Modules.Admin.Model.Classes.Singleton_admin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -88,5 +89,67 @@ public class DB_Dummy {
                 }
             }
         }
-    }
+    }//End cargar Admin
+    
+    
+    public static void loadAdminArray(){
+        Connection _con = null;
+        DBConnection _conexion_DB = new DBConnection();
+        PreparedStatement stmt = null;
+        int state=0;
+        int result=0;
+        
+        
+        _con = _conexion_DB.OpenConnection();
+        
+        try{
+        for(int i=0;i<=Singleton_admin.adm.size()-1;i++){
+            
+             Admin_class admin =Singleton_admin.adm.get(i);
+            if(admin.isState()==true){
+                state=1;
+            }else{
+                state=0;
+            }
+            stmt = _con.prepareStatement("INSERT INTO prog.admin"
+                    + "(dni, name, surname, date_birthday, mobile, email, user, password, avatar, state, age, benefit, date_contract, antiquity, salary, activity)"
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            
+            stmt.setString(1, admin.getDni());
+            stmt.setString(2, admin.getName());
+            stmt.setString(3, admin.getSurname());
+            stmt.setString(4, admin.getBirthday().toString());
+            stmt.setString(5, admin.getMobile());
+            stmt.setString(6, admin.getEmail());
+            stmt.setString(7, admin.getUser());
+            stmt.setString(8, admin.getPass());
+            stmt.setString(9, admin.getAvatar());
+            stmt.setInt(10, state);
+            stmt.setInt(11,admin.getAge());
+            stmt.setFloat(12, (float)admin.calc_benefit());
+            stmt.setString(13, admin.getCont_date().toString());
+            stmt.setInt(14, admin.getAntiquity());
+            stmt.setFloat(15,(float)admin.calc_salary());
+            stmt.setString(16, String.valueOf(admin.getActivity()));
+
+            stmt.executeUpdate();
+            result=result+1;
+        }
+        _conexion_DB.CloseConnection((com.mysql.jdbc.Connection) _con);
+            JOptionPane.showMessageDialog(null, "Inserted: "+result+"users to database correctly!");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Ha habido un problema al insertar un nuevo usuario!");
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Ha habido un error Logger!");
+                }
+            }
+        }
+        
+}
+    
 }

@@ -25,6 +25,7 @@ public class Main {
         Config_class.getinstance();
         new MenuController(new Mainmenu(), 0).Init(0);
 //        DB_Dummy.cargarAdmin();
+//        DB_Dummy.loadAdminArray();
 
     }
 }

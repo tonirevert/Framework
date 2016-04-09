@@ -40,14 +40,17 @@ public class Config_class implements Serializable{
 private static Config_class instance;
 	
                 
-
+                /**
+                 * Class to have a app configuration 
+                 * @return an instance with the loaded configuration
+                 */
 	public static Config_class getinstance(){
                                 
                                 
 		if (instance == null){
 			instance = new Config_class();
                                                 instance = Funct_files_config.loadjsonconfig();                        
-                                                BLL_admin.autoloadAdmin();
+//                                                BLL_admin.autoloadAdmin();
                                                 BLL_client.autoloadClient();
                                                 BLL_ruser.autoloadRuser();
 //			instance = Funct_files_config.loadxmlconfig();

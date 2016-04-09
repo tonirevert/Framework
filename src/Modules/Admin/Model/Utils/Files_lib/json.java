@@ -92,10 +92,10 @@ public class json {
 				xstreamjson.alias("Admin_class", Admin_class.class);
 				
 				Gson gson = new Gson();
-	        	String json = gson.toJson(Singleton_admin.adm);
-	        	FileWriter fileXml = new FileWriter(PATH);
-	        	fileXml.write(json.toString());
-	        	fileXml.close();
+                                                                String json = gson.toJson(Singleton_admin.adm);
+                                                                FileWriter fileXml = new FileWriter(PATH);
+                                                                fileXml.write(json.toString());
+                                                                fileXml.close();
 	        	
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("problwrijson"), "Error!",

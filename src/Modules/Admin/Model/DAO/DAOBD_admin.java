@@ -146,11 +146,12 @@ public class DAOBD_admin {
         boolean correct=false;
         PreparedStatement stmt = null;
         int state=0;
+        int ok=0;
         
         try{
         
         stmt= con.prepareStatement("UPDATE prog.admin SET dni=?, name=?, surname=?, date_birthday=?, mobile=?, "
-                    + "email=?, user=?, password=?, avatar=?, state=?, age=?, benefit=?, date_contract=?, antiquity=?, salary=?, activity=?,"
+                    + "email=?, user=?, password=?, avatar=?, state=?, age=?, benefit=?, date_contract=?, antiquity=?, salary=?, activity=?"
                     + "WHERE dni=?");
         
             if(Singleton_admin.a.isState()==true){
@@ -175,11 +176,18 @@ public class DAOBD_admin {
             stmt.setInt(14, Singleton_admin.a.getAntiquity());
             stmt.setFloat(15,(float)Singleton_admin.a.calc_salary());
             stmt.setString(16, String.valueOf(Singleton_admin.a.getActivity()));
-            
             stmt.setString(17, Singleton_admin.a.getDni());
-            correct=stmt.execute();
+            
+            ok=stmt.executeUpdate();
+            
+            if(ok==1){
+                correct=true;
+            }else{
+                correct=false;
+            }
                             
         }catch (SQLException e){
+//            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Problem saving user");
         } finally{
             if(stmt==null){
@@ -190,7 +198,7 @@ public class DAOBD_admin {
                 }
             }
         }
-        
+//        System.out.println("DAOBD modify admin: "+correct);
         return correct;
         
     }//End of modify Admin
@@ -250,6 +258,21 @@ public class DAOBD_admin {
                     
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Problems searching admin user!");
+        }finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Logger error!");
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Logger error!");
+                }
+            }
         }
         
         return correct;

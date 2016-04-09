@@ -342,10 +342,12 @@ public class BLL_admin {
              if (admin== null){
             correct=false;
         }else{
-            Singleton_admin.adm.set(position,admin);
-            autosaveAdmin();
+              Singleton_admin.a=admin;
+              correct=BLLDB_admin.modifyAdminBLL();
+//            Singleton_admin.adm.set(position,admin);
+//            autosaveAdmin();
 //            resetFields();
-            correct=true;
+//            correct=true;
             position=-1;
             }
              return correct;
@@ -370,7 +372,8 @@ public class BLL_admin {
             } else {
                 dni = (String) Pager_admin.pagerTable.getModel().getValueAt(selection1, 0);
 
-                Singleton_admin.ad = new Admin_class(dni);
+//                Singleton_admin.ad = new Admin_class(dni);
+                Singleton_admin.a = new Admin_class(dni);
                 new AdminController(new Modify_admin(),1).Init(1);
                 correct = true;
 
@@ -400,25 +403,30 @@ public class BLL_admin {
                 PauseNoselect();
             } else {
                 dni = (String) pagerTable.getModel().getValueAt(selection1, 0);
-                Singleton_admin.ad = new Admin_class(dni);
-                pos = BLL_admin.searchadminMod((Admin_class) ad);
+//                Singleton_admin.ad = new Admin_class(dni);
+                Singleton_admin.a = new Admin_class(dni);
+                pos = BLL_admin.searchadminMod((Admin_class) Singleton_admin.a);
                 int opc = JOptionPane.showConfirmDialog(null, Singleton_app.lang.getProperty("bll_remove") + dni+"?",
                         "Info", JOptionPane.WARNING_MESSAGE);
 
                 if (opc == 0) {
                     ((miniSimpleTableModel_admin) pagerTable.getModel()).removeRow(selection1);
-                    ad = Singleton_admin.adm.get(pos);
-                            if(ad.getAvatar().equals(Singleton_admin.defaultavatar.toString())){
+//                    ad = Singleton_admin.adm.get(pos);
+                    Singleton_admin.a = Singleton_admin.adm.get(pos);
+//                            if(ad.getAvatar().equals(Singleton_admin.defaultavatar.toString())){
+                                if(Singleton_admin.a.getAvatar().equals(Singleton_admin.defaultavatar.toString())){
 
                             }else{try {
                                 //Deletes the file if exists
-                                Files.delete(Paths.get(ad.getAvatar()));
+//                                Files.delete(Paths.get(ad.getAvatar()));
+                                Files.delete(Paths.get(Singleton_admin.a.getAvatar()));
                         } catch (IOException ex) {
                             Logger.getLogger(BLL_admin.class.getName()).log(Level.SEVERE, null, ex);
                         }
                             }
-                    Singleton_admin.adm.remove(ad);
-                    autosaveAdmin();
+                    BLLDB_admin.deleteAdminBLL();
+//                    Singleton_admin.adm.remove(ad);
+//                    autosaveAdmin();
                 }
 
                 if (((miniSimpleTableModel_admin) pagerTable.getModel()).getRowCount() == 0) {

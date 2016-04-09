@@ -295,7 +295,8 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
                 edit.back.setIcon(new ImageIcon(edback.getScaledInstance(ex, ey, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_admin.window="modify";
                 edit.saving.setVisible(false);
-                BLL_admin.fill_admin(ad.getDni());
+//                BLL_admin.fill_admin(Singleton_admin.ad.getDni());
+                BLL_admin.fill_admin(Singleton_admin.a.getDni());
                 edit.fieldDNI.setEditable(false);
                 edit.setResizable(false);
                 edit.setSize(ex,ey);
