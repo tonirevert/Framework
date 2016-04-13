@@ -33,7 +33,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * BLL to use all the DAO functions
  * @author antonio
  */
 public class BLL_admin {
@@ -95,12 +95,15 @@ public class BLL_admin {
     
     public static int position=-1;
     
+    /**
+     * 
+     */
     public static void askDniClick(){
         DAO_admin.askDniClick();
     }
  
     /**
-     * 
+     * Used to reser all the fields in the create view
      */
     public static void resetFields(){
         DAO_admin.resetFields();
@@ -238,8 +241,8 @@ public class BLL_admin {
     }//End modAdmindata
     
     /**
-     * 
-     * @return 
+     * Used to search a user in the Array List
+     * @return the position of the user in the Array List
      */
     public static int searchadmin(){
 		Admin_class admin=null;
@@ -253,6 +256,10 @@ public class BLL_admin {
 		return -1;
 	}//End searchDniadmin admin
     
+    /**
+     * Used to search a Admin user in the Array List
+     * @return the position of the user in the Array List
+     */
     public static int searchDniadmin(){
         int out=0;
         Admin_class admin=null;
@@ -267,6 +274,11 @@ public class BLL_admin {
         
     }
     
+    /**
+     * 
+     * @param adm an Admin user to search for
+     * @return the position of the user in the Array List
+     */
     public static int searchadminMod(Admin_class adm){
         int aux=-1;
         for(int i=0; i<=(Singleton_admin.adm.size()-1);i++){
@@ -277,6 +289,10 @@ public class BLL_admin {
         return aux;
     }//End searchadminMod
     
+    /**
+     * Use the DAO create function and check's if user is created correctly
+     * @return boolean true if the the user is created correctly
+     */
     public static boolean create_admin(){
         Admin_class admin=null;
         admin=DAO_admin.create();
@@ -299,6 +315,11 @@ public class BLL_admin {
         
     }//End create_admin
     
+    /**
+     * Used to fill modify user window with the user data
+     * @param dni string with the desired dni to find and fill
+     * @return Admin user
+     */
     public static Admin_class fill_admin(String dni){
         Admin_class adm=new Admin_class(dni);
         
@@ -316,6 +337,10 @@ public class BLL_admin {
         return adm;
     }
 
+    /**
+     * Used to fill modify user window with the user data
+     * @return Admin user
+     */
     public static Admin_class fill_admin(){
         Admin_class adm=ad;
         
@@ -333,6 +358,10 @@ public class BLL_admin {
         return adm;
     }
     
+    /**
+     * Save the modified user into the database
+     * @return boolean with the result of the process
+     */
     public static boolean save_mod_admin(){
 
         boolean correct=false;
@@ -475,22 +504,37 @@ public class BLL_admin {
         return correct;
     }
         
+     /**
+      * Funciton to auto save user in json format
+      */
     public static void autosaveAdmin(){
         json.autosavejsonadmin();
     }
     
+    /**
+     * Funciton to auto load user in json format
+     */
     public static void autoloadAdmin(){
         json.autoloadjsonadmin();
     }
     
+    /**
+     * Funciton to save to json
+     */
     public static void savejsonAdmin(){
         json.savejsonadmin();
     }
     
+    /**
+     * Funciton to save to txt
+     */
     public static void savetxtAdmin(){
         txt.savetxtadmin();
     }
     
+    /**
+     * Funciton to save to xml
+     */
     public static void savexmlAdmin(){
         xml.savexmladmin();
     }

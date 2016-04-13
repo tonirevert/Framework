@@ -25,24 +25,24 @@ DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admin` (
-  `dni` varchar(9) CHARACTER SET latin1 NOT NULL,
-  `name` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `surname` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `date_birthday` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `mobile` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `email` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `user` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `password` varchar(200) CHARACTER SET latin1 NOT NULL,
-  `avatar` varchar(200) CHARACTER SET latin1 NOT NULL,
+  `dni` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
+  `name` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `surname` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `date_birthday` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `mobile` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `user` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `avatar` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `state` tinyint(1) NOT NULL DEFAULT '0',
   `age` int(4) NOT NULL,
   `benefit` float NOT NULL,
-  `date_contract` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `date_contract` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `antiquity` int(4) NOT NULL,
   `salary` float NOT NULL,
   `activity` int(10) NOT NULL,
   PRIMARY KEY (`dni`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

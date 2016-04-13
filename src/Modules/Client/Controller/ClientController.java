@@ -50,7 +50,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
- *
+ *Controller for Client users
  * @author antonio
  */
 public class ClientController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
@@ -63,6 +63,11 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     public static AutocompleteJComboBox comboClient = null;
     public String comb="";
     
+    /**
+     * Used to call the controller
+     * @param frame the name of the frame to use
+     * @param i  the case to use from switch options
+     */
     public ClientController(JFrame frame, int i){
         switch(i){
             case 0:
@@ -84,6 +89,9 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 
     }
                
+    /**
+     * Enumeration of Actions
+     */
     public enum Action{
         
         //Create admin buttons and fields:
@@ -146,6 +154,9 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         listbtnReturn
     }
     
+    /**
+     * Enumeration of Properties
+     */
     public enum Property{
         
         //JCalendar return properties
@@ -157,7 +168,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     
     /**
      * Initialize the frames
-     * @param i  0 for create admin, 1 for modify admin, 2 for admin pager
+     * @param i  0 for create client, 1 for modify client, 2 for client pager, 3 for list client user
      */
     public void Init(int i){
         
@@ -558,11 +569,17 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     }
     
     @Override
+    /**
+     * Not used
+     */
     public void keyTyped(KeyEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Used for actions when the a key is pressed
+     */
     public void keyPressed(KeyEvent e) {
         
         switch (Action.valueOf(e.getComponent().getName())) {
@@ -699,6 +716,9 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     }//End of keyPressed
 
     @Override
+    /**
+     * Used for actions when the a key is released
+     */
     public void keyReleased(KeyEvent e) {
         
          switch (Action.valueOf(e.getComponent().getName())) {
@@ -784,6 +804,9 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     }//End of keyReleased
     
     @Override
+    /**
+     * Used for actions performed
+     */
     public void actionPerformed(ActionEvent e) {
 //        System.out.println(e.getActionCommand());
         switch (Action.valueOf(e.getActionCommand())){
@@ -805,6 +828,9 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     }
 
     @Override
+    /**
+     * Used for actions when the mouse is clicked in the declared fields
+     */
     public void mouseClicked(MouseEvent e) {
         
         switch (Action.valueOf(e.getComponent().getName())){
@@ -959,16 +985,25 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void mousePressed(MouseEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void mouseReleased(MouseEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Used when the mouse enters in the declared values
+     */
     public void mouseEntered(MouseEvent e) {
         
 //        System.out.println(e.getComponent().getName());
@@ -1031,6 +1066,9 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     }//End mouse entered
 
     @Override
+    /**
+     * Used when the mouse exists in the declared values
+     */
     public void mouseExited(MouseEvent e) {
 
         switch (Action.valueOf(e.getComponent().getName())){
@@ -1091,6 +1129,9 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     }//End mouse exited
     
     @Override
+    /**
+     * Used when the declared fiels gains the focus
+     */
     public void focusGained(FocusEvent e) {
 //        System.out.println(e.getComponent().getName());
         
@@ -1195,6 +1236,9 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     }
 
     @Override
+    /**
+     * Used when the declared fiels losts the focus
+     */
     public void focusLost(FocusEvent e) {
         switch (Action.valueOf(e.getComponent().getName())) {
               case createfieldDNI:
@@ -1278,6 +1322,9 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     }
     
     @Override
+    /**
+     * Used for the property change of date fields
+     */
     public void propertyChange(PropertyChangeEvent evt) {
 //        System.out.println(evt.getPropertyName());
         
@@ -1308,11 +1355,17 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     }//End of property Change
     
     @Override
+    /**
+     * Not used
+     */
     public void windowOpened(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Used when a window is closed
+     */
     public void windowClosing(WindowEvent e) {
         
         switch(Action.valueOf(e.getComponent().getName())){
@@ -1335,21 +1388,33 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
     }//End Windows Closing
 
     @Override
+    /**
+     * Not used
+     */
     public void windowClosed(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void windowIconified(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void windowDeiconified(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void windowActivated(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

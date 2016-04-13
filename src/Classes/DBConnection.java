@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *Used to connect and disconnect to/from database
  * @author antonio
  */
 public class DBConnection {

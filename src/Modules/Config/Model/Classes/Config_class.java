@@ -1,5 +1,4 @@
 package Modules.Config.Model.Classes;
-import Modules.Config.Model.Classes.theme_class;
 import Modules.Config.Model.Utils.Files_lib.Funct_files_config;
 import Modules.Admin.Model.Classes.Singleton_admin;
 import Modules.Admin.Model.Classes.Admin_class;
@@ -7,7 +6,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import Classes.Singleton_app;
-import Modules.Admin.Model.BLL.BLL_admin;
 import Modules.Client.Model.BLL.BLL_client;
 import Modules.Client.Model.Classes.Client_class;
 import Modules.Client.Model.Classes.Singleton_client;
@@ -17,7 +15,10 @@ import Modules.Reg_user.Model.Classes.Reg_user_class;
 import Modules.Reg_user.Model.Classes.Singleton_ruser;
 
 
-
+/**
+ * Class to have a app configuration 
+ * @author antonio
+ */
 @SuppressWarnings("serial")
 @XStreamAlias("Config_class")
 public class Config_class implements Serializable{
@@ -41,7 +42,8 @@ private static Config_class instance;
 	
                 
                 /**
-                 * Class to have a app configuration 
+                 * Creates an instance if is null and loads the config file and
+                 * users client and reg user into the array lists.
                  * @return an instance with the loaded configuration
                  */
 	public static Config_class getinstance(){
@@ -78,7 +80,6 @@ private static Config_class instance;
 		Singleton_admin.adm = new ArrayList<Admin_class>();
 		Singleton_client.cli = new ArrayList<Client_class>();
 		Singleton_ruser.rus = new ArrayList<Reg_user_class>();
-		
 		theme_class.selectedtheme("Metal");
 		
 	}	
@@ -127,6 +128,11 @@ private static Config_class instance;
 		this.dummy = dummy;
 	}
 	
+        
+                /**
+                 * Used to list the current configuration using toString
+                 * @return A String with all the current configuration set
+                 */
 	public String toString(){
 		StringBuffer out=new StringBuffer();
 		

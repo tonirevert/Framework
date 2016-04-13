@@ -50,7 +50,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
- *
+ *Controller for Registered  users
  * @author antonio
  */
 public class RuserController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
@@ -63,6 +63,12 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     public static AutocompleteJComboBox comboRuser = null;
     public String comb="";
     
+    
+    /**
+     * Used to call the controller
+     * @param frame the name of the frame to use
+     * @param i  the case to use from switch options
+     */
     public RuserController(JFrame frame, int i){
         switch(i){
             case 0:
@@ -84,6 +90,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 
     }
                
+    /**
+     * Enumeration of Actions
+     */
     public enum Action{
         
         //Create reg user buttons and fields:
@@ -146,6 +155,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
         listbtnReturn
     }
     
+    /**
+     * Enumeration of Properties
+     */
     public enum Property{
         
         //JCalendar return properties
@@ -157,7 +169,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     
     /**
      * Initialize the frames
-     * @param i  0 for create reg user, 1 for modify reg user, 2 for reg user pager
+     * @param i  0 for create reg user, 1 for modify reg user, 2 for reg user pager, 3 for list reg user
      */
     public void Init(int i){
         
@@ -525,10 +537,16 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     }
     
     @Override
+    /**
+     * Not used
+     */
     public void keyTyped(KeyEvent e) {
     }
 
     @Override
+    /**
+     * Used for actions when the a key is pressed
+     */
     public void keyPressed(KeyEvent e) {
         switch (Action.valueOf(e.getComponent().getName())) {
             
@@ -650,6 +668,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     }//End of keyPressed
 
     @Override
+    /**
+     * Used for actions when the a key is released
+     */
     public void keyReleased(KeyEvent e) {
          switch (Action.valueOf(e.getComponent().getName())) {
             case createfieldDNI:
@@ -725,6 +746,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     }//End of keyReleased
     
     @Override
+    /**
+     * Used for actions performed
+     */
     public void actionPerformed(ActionEvent e) {
 //        System.out.println(e.getActionCommand());
         switch (Action.valueOf(e.getActionCommand())){
@@ -746,6 +770,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     }
 
     @Override
+    /**
+     * Used for actions when the mouse is clicked in the declared fields
+     */
     public void mouseClicked(MouseEvent e) {
         switch (Action.valueOf(e.getComponent().getName())){
             
@@ -906,14 +933,23 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void mousePressed(MouseEvent e) {
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void mouseReleased(MouseEvent e) {
     }
 
     @Override
+    /**
+     * Used when the mouse enters in the declared values
+     */
     public void mouseEntered(MouseEvent e) {
 //        System.out.println(e.getComponent().getName());
 
@@ -974,6 +1010,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     }
 
     @Override
+    /**
+     * Used when the mouse exists in the declared values
+     */
     public void mouseExited(MouseEvent e) {
 
         switch (Action.valueOf(e.getComponent().getName())){
@@ -1034,6 +1073,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     }
     
     @Override
+    /**
+     * Used when the declared fiels gains the focus
+     */
     public void focusGained(FocusEvent e) {
 //        System.out.println(e.getComponent().getName());
         
@@ -1129,6 +1171,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     }
 
     @Override
+    /**
+     * Used when the declared fiels losts the focus
+     */
     public void focusLost(FocusEvent e) {
         switch (Action.valueOf(e.getComponent().getName())) {
               case createfieldDNI:
@@ -1205,6 +1250,9 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     }
     
     @Override
+    /**
+     * Used for the property change of date fields
+     */
     public void propertyChange(PropertyChangeEvent evt) {
 //        System.out.println(evt.getPropertyName());
 
@@ -1235,10 +1283,16 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     }//End of property Change
     
     @Override
+    /**
+     * Not used
+     */
     public void windowOpened(WindowEvent e) {
     }
 
     @Override
+    /**
+     * Used when a window is closed
+     */
     public void windowClosing(WindowEvent e) {
         switch(Action.valueOf(e.getComponent().getName())){
             
@@ -1265,22 +1319,37 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
     }//End Windows Closing
 
     @Override
+    /**
+     * Not used
+     */
     public void windowClosed(WindowEvent e) {
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void windowIconified(WindowEvent e) {
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void windowDeiconified(WindowEvent e) {
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void windowActivated(WindowEvent e) {
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void windowDeactivated(WindowEvent e) {
     }
 }//End class Admin Controller

@@ -33,7 +33,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * BLL to use all the DAO functions
  * @author antonio
  */
 public class BLL_ruser {
@@ -95,12 +95,15 @@ public class BLL_ruser {
     
     public static int position=-1;
     
+    /**
+     * 
+     */
     public static void askDniClick(){
         DAO_ruser.askDniClick();
     }
  
     /**
-     * 
+     * Used to reser all the fields in the create view
      */
     public static void resetFields(){
         DAO_ruser.resetFields();
@@ -236,8 +239,8 @@ public class BLL_ruser {
     }//End modRuserdata
     
     /**
-     * 
-     * @return 
+     * Used to search a user in the Array List
+     * @return the position of the user in the Array List
      */
     public static int searchruser(){
 		Reg_user_class ruser=null;
@@ -251,6 +254,10 @@ public class BLL_ruser {
 		return -1;
 	}//End searchDniruser ruser
     
+    /**
+     * Used to search a user in the Array List
+     * @return the position of the user in the Array List
+     */
     public static int searchDniruser(){
         int out=0;
         Reg_user_class admin=null;
@@ -265,6 +272,11 @@ public class BLL_ruser {
         
     }
     
+    /**
+     * Used to search a Registered user in the Array List
+     * @param rus an Admin user to search for
+     * @return the position of the user in the Array List
+     */
     public static int searchruserMod(Reg_user_class rus){
         int aux=-1;
         for(int i=0; i<=(Singleton_ruser.rus.size()-1);i++){
@@ -275,6 +287,10 @@ public class BLL_ruser {
         return aux;
     }//End searchruserMod
     
+    /**
+     * Use the DAO create function and check's if user is created correctly
+     * @return boolean true if the the user is created correctly
+     */
     public static boolean create_ruser(){
         Reg_user_class ruser=null;
         ruser=DAO_ruser.create();
@@ -295,6 +311,11 @@ public class BLL_ruser {
         
     }//End create_ruser
     
+    /**
+     * Used to fill modify user window with the user data
+     * @param dni string with the desired dni to find and fill
+     * @return Reg user
+     */
     public static Reg_user_class fill_ruser(String dni){
         Reg_user_class rus=new Reg_user_class(dni);
         
@@ -312,6 +333,10 @@ public class BLL_ruser {
         return rus;
     }
 
+    /**
+     * Used to fill modify user window with the user data
+     * @return Reg user
+     */
     public static Reg_user_class fill_ruser(){
         Reg_user_class rus=ru;
         
@@ -329,6 +354,10 @@ public class BLL_ruser {
         return rus;
     }
     
+    /**
+     * Save the modified user into the database
+     * @return boolean with the result of the process
+     */
     public static boolean save_mod_ruser(){
 
         boolean correct=false;
@@ -463,23 +492,37 @@ public class BLL_ruser {
         return correct;
     }
         
-        
+    /**
+     * Funciton to auto save user in json format
+     */
     public static void autosaveRuser(){
         json.autosavejsonruser();
     }
     
+    /**
+     * Funciton to auto load user in json format
+     */
     public static void autoloadRuser(){
         json.autoloadjsonruser();
     }
     
+    /**
+     * Funciton to save to json
+     */
     public static void savejsonRuser(){
         json.savejsonruser();
     }
     
+    /**
+     * Funciton to save to txt
+     */
     public static void savetxtRuser(){
         txt.savetxtruser();
     }
     
+    /**
+     * Funciton to save to xml
+     */
     public static void savexmlRuser(){
         xml.savexmlruser();
     }

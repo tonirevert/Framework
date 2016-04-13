@@ -9,7 +9,6 @@ import Classes.Singleton_app;
 import Modules.Admin.Controller.AdminController.Action;
 import Modules.Admin.Model.BLL.BLL_admin;
 import Modules.Admin.Model.Classes.Singleton_admin;
-import static Modules.Admin.Model.Classes.Singleton_admin.ad;
 import static Modules.Admin.Model.Classes.Singleton_admin.defaultavatar;
 import Modules.Admin.Model.Classes.miniSimpleTableModel_admin;
 import Modules.Admin.Model.Utils.pager.AutocompleteJComboBox;
@@ -50,7 +49,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
- *
+ *Controller for Admin users
  * @author antonio
  */
 public class AdminController implements ActionListener, KeyListener, MouseListener, FocusListener,PropertyChangeListener, WindowListener{
@@ -64,6 +63,11 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     public String comb="";
 //    public static List<String> myWords = new ArrayList<String>();
     
+    /**
+     * Used to call the controller
+     * @param frame the name of the frame to use
+     * @param i  the case to use from switch options
+     */
     public AdminController(JFrame frame, int i){
         switch(i){
             case 0:
@@ -85,7 +89,10 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         }
                 
     }
-               
+    
+    /**
+     * Enumeration of Actions
+     */
     public enum Action{
         
         //Create admin buttons and fields:
@@ -147,6 +154,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
         listbtnReturn
     }
     
+    /**
+     * Enumeration of Properties
+     */
     public enum Property{
         
         //JCalendar return properties
@@ -158,7 +168,7 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     
     /**
      * Initialize the frames
-     * @param i  0 for create admin, 1 for modify admin, 2 for admin pager
+     * @param i  0 for create admin, 1 for modify admin, 2 for admin pager, 3 for list admin user
      */
     public void Init(int i){
         
@@ -547,11 +557,17 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     }
     
     @Override
+    /**
+     * Not used
+     */
     public void keyTyped(KeyEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Used for actions when the a key is pressed
+     */
     public void keyPressed(KeyEvent e) {
         switch (Action.valueOf(e.getComponent().getName())) {
             
@@ -673,6 +689,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     }//End of keyPressed
 
     @Override
+    /**
+     * Used for actions when the a key is released
+     */
     public void keyReleased(KeyEvent e) {
          switch (Action.valueOf(e.getComponent().getName())) {
             case createfieldDNI:
@@ -748,6 +767,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     }//End of keyReleased
     
     @Override
+    /**
+     * Used for actions performed
+     */
     public void actionPerformed(ActionEvent e) {
 //        System.out.println(f.getActionCommand());
         switch (Action.valueOf(e.getActionCommand())){
@@ -809,6 +831,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     }
 
     @Override
+    /**
+     * Used for actions when the mouse is clicked in the declared fields
+     */
     public void mouseClicked(MouseEvent e) {
 //        System.out.println(f.getComponent().getName());
         switch (Action.valueOf(e.getComponent().getName())){
@@ -971,16 +996,25 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void mousePressed(MouseEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void mouseReleased(MouseEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Used when the mouse enters in the declared values
+     */
     public void mouseEntered(MouseEvent e) {
         
 //        System.out.println(f.getComponent().getName());
@@ -1042,6 +1076,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     }
 
     @Override
+    /**
+     * Used when the mouse exists over in the declared values
+     */
     public void mouseExited(MouseEvent e) {
 
         switch (Action.valueOf(e.getComponent().getName())){
@@ -1102,6 +1139,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     }//End mouse exited
     
     @Override
+    /**
+     * Used when the declared fiels gains the focus
+     */
     public void focusGained(FocusEvent e) {
 //        System.out.println(f.getComponent().getName());
         
@@ -1201,6 +1241,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     }
 
     @Override
+    /**
+     * Used when the declared fiels losts the focus
+     */
     public void focusLost(FocusEvent e) {
         switch (Action.valueOf(e.getComponent().getName())) {
               case createfieldDNI:
@@ -1277,6 +1320,9 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     }
     
     @Override
+    /**
+     * Used for the property change of date fields
+     */
     public void propertyChange(PropertyChangeEvent evt) {
 //        System.out.println(evt.getPropertyName());
 
@@ -1306,11 +1352,17 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     }//End of property Change
     
     @Override
+    /**
+     * Not used
+     */
     public void windowOpened(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Used when a window is closed
+     */
     public void windowClosing(WindowEvent e) {
         switch(Action.valueOf(e.getComponent().getName())){
             
@@ -1342,21 +1394,33 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void windowIconified(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void windowDeiconified(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void windowActivated(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /**
+     * Not used
+     */
     public void windowDeactivated(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

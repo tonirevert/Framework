@@ -17,6 +17,10 @@ public class theme_class {
 //	com.sun.java.swing.plaf.gtk.GTKLookAndFeel
 	
 	
+                /**
+                 * Used to set the desired Look And Feel for the application
+                 * @param select Is the desired theme so select: (Metal, Windows, Motif, Nimbus)
+                 */
 	public static void selectedtheme(String select){
 		
 		try {

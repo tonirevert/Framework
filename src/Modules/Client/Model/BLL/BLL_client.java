@@ -33,7 +33,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * BLL to use all the DAO functions
  * @author antonio
  */
 public class BLL_client {
@@ -58,7 +58,7 @@ public class BLL_client {
     }
     
     /**
-     * Used to show a message on the Pager admin info area
+     * Used to show a message on the Pager client info area
      */
     public static void PauseEmpty() {
         Timer delay = new Timer(2000, new ActionListener() {
@@ -95,12 +95,15 @@ public class BLL_client {
     
     public static int position=-1;
     
+    /**
+     * 
+     */
     public static void askDniClick(){
         DAO_client.askDniClick();
     }
  
     /**
-     * 
+     * Used to reser all the fields in the create view
      */
     public static void resetFields(){
         DAO_client.resetFields();
@@ -170,7 +173,7 @@ public class BLL_client {
     }//End askAdmindata
     
     /**
-     * Used to check the modify admin fields
+     * Used to check the modify client fields
      * @param type to choose the action
      */
     public static void modClientdata(String type){
@@ -233,8 +236,8 @@ public class BLL_client {
     }//End modAdmindata
     
     /**
-     * 
-     * @return 
+     * Used to search a user in the Array List
+     * @return the position of the user in the Array List
      */
     public static int searchclient(){
 		Client_class client=null;
@@ -248,6 +251,10 @@ public class BLL_client {
 		return -1;
 	}//End searchDniadmin admin
     
+    /**
+     * Used to search a user in the Array List
+     * @return the position of the user in the Array List
+     */
     public static int searchDniclient(){
         int out=0;
         Client_class client=null;
@@ -262,6 +269,11 @@ public class BLL_client {
         
     }
     
+    /**
+     * Used to search a Client user in the Array List
+     * @param cli an Admin user to search for
+     * @return the position of the user in the Array List
+     */
     public static int searchclientMod(Client_class cli){
         int aux=-1;
         for(int i=0; i<=(Singleton_client.cli.size()-1);i++){
@@ -272,6 +284,10 @@ public class BLL_client {
         return aux;
     }//End searchadminMod
     
+    /**
+     * Use the DAO create function and check's if user is created correctly
+     * @return boolean true if the the user is created correctly
+     */
     public static boolean create_client(){
         Client_class client=null;
         client=DAO_client.create();
@@ -292,6 +308,11 @@ public class BLL_client {
         
     }//End create_admin
     
+    /**
+     * Used to fill modify user window with the user data
+     * @param dni string with the desired dni to find and fill
+     * @return Client user
+     */
     public static Client_class fill_client(String dni){
         Client_class cli=new Client_class(dni);
         
@@ -309,6 +330,10 @@ public class BLL_client {
         return cli;
     }
 
+    /**
+     * Used to fill modify user window with the user data
+     * @return Client user
+     */
     public static Client_class fill_client(){
         Client_class cli=cl;
         
@@ -326,6 +351,10 @@ public class BLL_client {
         return cli;
     }
     
+    /**
+     * Save the modified user into the database
+     * @return boolean with the result of the process
+     */
     public static boolean save_mod_client(){
 
         boolean correct=false;
@@ -345,7 +374,7 @@ public class BLL_client {
     }//End save mod client
 
         /**
-        * Used to edit a row from the table on pager admin
+        * Used to edit a row from the table on pager client
         */
      public static boolean edit_client() {
         String dni;
@@ -376,7 +405,7 @@ public class BLL_client {
     }
     
         /**
-        * Used to delete a row from the table on pager admin
+        * Used to delete a row from the table on pager client
         */
         public static void delete_file() {
                 String dni;
@@ -428,7 +457,7 @@ public class BLL_client {
         }//End delete_file
     
                 /**
-        * Used to list a row from the table on pager admin
+        * Used to list a row from the table on pager client
         */
      public static boolean list_client() {
         String dni;
@@ -459,22 +488,37 @@ public class BLL_client {
         return correct;
     }
         
+     /**
+      * Funciton to auto save user in json format
+      */
     public static void autosaveClient(){
         json.autosavejsonclient();
     }
     
+    /**
+     * Funciton to auto load user in json format
+     */
     public static void autoloadClient(){
         json.autoloadjsonclient();
     }
     
+    /**
+     * Funciton to save to json
+     */
     public static void savejsonClient(){
         json.savejsonclient();
     }
     
+    /**
+     * Funciton to save to txt
+     */
     public static void savetxtClient(){
         txt.savetxtclient();
     }
     
+    /**
+     * Funciton to save to xml
+     */
     public static void savexmlClient(){
         xml.savexmlclient();
     }

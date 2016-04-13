@@ -18,7 +18,7 @@ public class Language extends Properties{
 	        getProperties("spanish.properties");
 	        break;
 	    case "val":
-	    	getProperties("valencian.properties");
+                        getProperties("valencian.properties");
 	    	break;
 	    }
 	}

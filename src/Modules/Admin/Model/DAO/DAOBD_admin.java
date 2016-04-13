@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *Functions to work with Admin users from database, searching, inserting, loading and updating them
  * @author antonio
  */
 public class DAOBD_admin {

@@ -19,7 +19,10 @@ import Modules.Config.Model.Classes.Config_class;
 
 
 
-
+/**
+ * Functions to load and save the current configuration into files
+ * @author antonio
+ */
 @SuppressWarnings("deprecation")
 public class Funct_files_config {
 	private static final String ENCODING = "UTF-8";
@@ -74,10 +77,10 @@ public class Funct_files_config {
 				xstreamjson.alias("Config_class", Config_class.class);
 				
 				Gson gson = new Gson();
-	        	String json = gson.toJson(Singleton_app.conf);
-	        	FileWriter fileXml = new FileWriter(PATH);
-	        	fileXml.write(json.toString());
-	        	fileXml.close();
+                                                                String json = gson.toJson(Singleton_app.conf);
+                                                                FileWriter fileXml = new FileWriter(PATH);
+                                                                fileXml.write(json.toString());
+                                                                fileXml.close();
 	        	
 			} catch (Exception e) {
 //				e.printStackTrace();

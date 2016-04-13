@@ -101,7 +101,7 @@ public class BLLDB_admin {
     }//End delete Admin BLL
     
     /**
-     * 
+     * Used to search an Admin user from database
      * @return 
      */
     public static boolean SearchAdminBLL() {

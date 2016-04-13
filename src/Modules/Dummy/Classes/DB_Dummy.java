@@ -15,11 +15,14 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *Used to test the insert into function and to insert from Array List into database
  * @author antonio
  */
 public class DB_Dummy {
     
+    /**
+     * Insert 9 listed dummy into database
+     */
     public static void cargarAdmin(){
         Connection _con = null;
         DBConnection _conexion_DB = new DBConnection();
@@ -91,7 +94,9 @@ public class DB_Dummy {
         }
     }//End cargar Admin
     
-    
+    /**
+     * Inserts all users from Array List into database
+     */
     public static void loadAdminArray(){
         Connection _con = null;
         DBConnection _conexion_DB = new DBConnection();
