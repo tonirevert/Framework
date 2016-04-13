@@ -1,4 +1,5 @@
 package Modules.Config.Model.Classes;
+import Classes.DBConnection;
 import Modules.Config.Model.Utils.Files_lib.Funct_files_config;
 import Modules.Admin.Model.Classes.Singleton_admin;
 import Modules.Admin.Model.Classes.Admin_class;
@@ -58,6 +59,7 @@ private static Config_class instance;
 //			instance = Funct_files_config.loadxmlconfig();
 			theme_class.selectedtheme(Config_class.getinstance().getTheme());
 			Singleton_app.lang = new Language(Config_class.getinstance().getLanguage());
+                                                
 		}	
                                 
 			return instance;

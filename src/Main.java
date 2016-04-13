@@ -1,5 +1,6 @@
 
 
+import Classes.DBConnection;
 import Modules.Config.Model.Classes.Config_class;
 import Modules.Menu.Controller.MenuController;
 import Modules.Menu.View.Mainmenu;
@@ -21,6 +22,7 @@ public class Main {
     public static void main(String args[]) throws SQLException {
 
         Config_class.getinstance();
+        DBConnection.init_BasicDataSourceFactory();
         new MenuController(new Mainmenu(), 0).Init(0);
 //        DB_Dummy.cargarAdmin();
 //        DB_Dummy.loadAdminArray();

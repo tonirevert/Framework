@@ -7,7 +7,8 @@ package Modules.Admin.Model.BLL;
 
 import Classes.DBConnection;
 import Modules.Admin.Model.DAO.DAOBD_admin;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
+
 
 import javax.swing.JOptionPane;
 
@@ -25,15 +26,17 @@ public class BLLDB_admin {
     public static boolean newAdminBLL() {
 
             boolean correct;
-            Connection _con = null;
+            Connection con = null;
 
             DBConnection _connection_DB = new DBConnection();
+//
+//            con = _connection_DB.OpenConnection();
+            con=_connection_DB.getConnection();
 
-            _con = _connection_DB.OpenConnection();
+            correct = DAOBD_admin.newAdmin(con);
 
-            correct = DAOBD_admin.newAdmin(_con);
-
-            _connection_DB.CloseConnection((com.mysql.jdbc.Connection) _con);
+//            _connection_DB.CloseConnection((com.mysql.jdbc.Connection) con);
+            _connection_DB.releaseConnection(con);
 
             return correct;
         }
@@ -44,19 +47,20 @@ public class BLLDB_admin {
      */
     public static void loadAdminBLL() {
 
-            Connection _con = null;
+            Connection con = null;
             DBConnection _connection_DB = new DBConnection();
-
-            _con = _connection_DB.OpenConnection();
+//            con = _connection_DB.OpenConnection();
+            con=_connection_DB.getConnection();
             DAOBD_admin _adminDAO = new DAOBD_admin();
 
             try {
-                _adminDAO.loadAdmin(_con);//Recuperamos los empleados 
+                _adminDAO.loadAdmin(con);//Recuperamos los empleados 
 
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "An error happened Logger2!");
             }
-            _connection_DB.CloseConnection(_con);
+//            _connection_DB.CloseConnection(con);
+            _connection_DB.releaseConnection(con);
 
         }//End load Admin BLL
 
@@ -66,16 +70,17 @@ public class BLLDB_admin {
      */
     public static boolean modifyAdminBLL() {
             boolean correct=false;
-            Connection _con;
+            Connection con=null;
 
             DBConnection _connection_DB = new DBConnection();
 
-            _con = _connection_DB.OpenConnection();
+//            con = _connection_DB.OpenConnection();
+            con=_connection_DB.getConnection();
             DAOBD_admin _adminDAO = new DAOBD_admin();
 
-            correct=_adminDAO.modifyAdmin(_con);
-            _connection_DB.CloseConnection(_con);
-
+            correct=_adminDAO.modifyAdmin(con);
+//            _connection_DB.CloseConnection(con);
+            _connection_DB.releaseConnection(con);
             return correct;
 
         }//End modify Admin BLL
@@ -86,16 +91,20 @@ public class BLLDB_admin {
      */
     public static boolean deleteAdminBLL() {
 
-        Connection _con;
+        Connection con;
         boolean correct;
 
         DBConnection _connection_DB = new DBConnection();
 
-        _con = _connection_DB.OpenConnection();
+//        con = _connection_DB.OpenConnection();
+        con=_connection_DB.getConnection();
+        
         DAOBD_admin _adminDAO = new DAOBD_admin();
 
-        correct = _adminDAO.deleteAdmin(_con);
-        _connection_DB.CloseConnection(_con);
+        correct = _adminDAO.deleteAdmin(con);
+        
+        _connection_DB.releaseConnection(con);
+//        _connection_DB.CloseConnection(con);
 
         return correct;
     }//End delete Admin BLL
@@ -106,16 +115,20 @@ public class BLLDB_admin {
      */
     public static boolean SearchAdminBLL() {
 
-        Connection _con;
+        Connection con;
          boolean correct;
 
         DBConnection _connection_DB = new DBConnection();
 
-        _con = _connection_DB.OpenConnection();
+//        con = _connection_DB.OpenConnection();
+        con=_connection_DB.getConnection();
+        
         DAOBD_admin _adminDAO = new DAOBD_admin();
 
-        correct = _adminDAO.searchDNI(_con);
-        _connection_DB.CloseConnection(_con);
+        correct = _adminDAO.searchDNI(con);
+        
+        _connection_DB.releaseConnection(con);
+//        _connection_DB.CloseConnection(con);
 
         return correct;
     }
