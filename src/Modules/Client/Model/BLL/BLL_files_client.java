@@ -24,7 +24,7 @@ public class BLL_files_client {
 	 */
 	public static void saveclient(){
 		
-		if(Singleton_client.cli.size()!=0){
+		if(!Singleton_client.cli.isEmpty()){
 				switch (Config_class.getinstance().getFile_format()) {
 				case "json":
 					json.savejsonclient();
@@ -46,7 +46,7 @@ public class BLL_files_client {
 	 */
 	public static void loadclient(){
 				
-		if(Singleton_client.cli.size()!=0){
+		if(!Singleton_client.cli.isEmpty()){
 			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("savefirst"), "Info",JOptionPane.INFORMATION_MESSAGE);
 			saveclient();
 		}
@@ -70,7 +70,7 @@ public class BLL_files_client {
 	public static void autosaveall(){
 
 		
-		if(Singleton_client.cli.size()!=0){
+		if(!Singleton_client.cli.isEmpty()){
 			json.autosavejsonclient();
 			txt.autosavetxtclient();
 			xml.autosavexmlclient();

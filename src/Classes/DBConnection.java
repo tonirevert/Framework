@@ -7,7 +7,6 @@ package Classes;
 
 import static Classes.Singleton_app.dataSource;
 
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -83,7 +82,6 @@ public class DBConnection {
         propiedades.setProperty("maxOpenPreparedStatements", "10");
         
         try {
-//            propiedades.load(new FileInputStream("src/Classes/datasource_config.properties"));
             dataSource = (BasicDataSource) BasicDataSourceFactory.createDataSource(propiedades);
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,12 +95,14 @@ public class DBConnection {
      */
     public static Connection getConnection() {
         Connection connection=null;
+        
         try {
-            connection = (Connection) dataSource.getConnection();
+            connection = dataSource.getConnection();
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, e.toString());
         }
+        
         return connection;
     }
     

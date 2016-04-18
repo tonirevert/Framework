@@ -13,7 +13,7 @@ import java.sql.Connection;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * BLL to handle the actions with database
  * @author antonio
  */
 public class BLLDB_admin {
@@ -28,16 +28,12 @@ public class BLLDB_admin {
             boolean correct;
             Connection con = null;
 
-            DBConnection _connection_DB = new DBConnection();
-//
-//            con = _connection_DB.OpenConnection();
-            con=_connection_DB.getConnection();
+            con=DBConnection.getConnection();
 
             correct = DAOBD_admin.newAdmin(con);
 
-//            _connection_DB.CloseConnection((com.mysql.jdbc.Connection) con);
-            _connection_DB.releaseConnection(con);
-
+            DBConnection.releaseConnection(con);
+//            System.out.println(correct);
             return correct;
         }
     
@@ -48,9 +44,9 @@ public class BLLDB_admin {
     public static void loadAdminBLL() {
 
             Connection con = null;
-            DBConnection _connection_DB = new DBConnection();
-//            con = _connection_DB.OpenConnection();
-            con=_connection_DB.getConnection();
+
+            con=DBConnection.getConnection();
+            
             DAOBD_admin _adminDAO = new DAOBD_admin();
 
             try {
@@ -59,8 +55,8 @@ public class BLLDB_admin {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "An error happened Logger2!");
             }
-//            _connection_DB.CloseConnection(con);
-            _connection_DB.releaseConnection(con);
+
+            DBConnection.releaseConnection(con);
 
         }//End load Admin BLL
 
@@ -72,15 +68,14 @@ public class BLLDB_admin {
             boolean correct=false;
             Connection con=null;
 
-            DBConnection _connection_DB = new DBConnection();
-
-//            con = _connection_DB.OpenConnection();
-            con=_connection_DB.getConnection();
+            con=DBConnection.getConnection();
+            
             DAOBD_admin _adminDAO = new DAOBD_admin();
 
             correct=_adminDAO.modifyAdmin(con);
-//            _connection_DB.CloseConnection(con);
-            _connection_DB.releaseConnection(con);
+
+            DBConnection.releaseConnection(con);
+            
             return correct;
 
         }//End modify Admin BLL
@@ -94,17 +89,13 @@ public class BLLDB_admin {
         Connection con;
         boolean correct;
 
-        DBConnection _connection_DB = new DBConnection();
-
-//        con = _connection_DB.OpenConnection();
-        con=_connection_DB.getConnection();
+        con=DBConnection.getConnection();
         
         DAOBD_admin _adminDAO = new DAOBD_admin();
 
         correct = _adminDAO.deleteAdmin(con);
         
-        _connection_DB.releaseConnection(con);
-//        _connection_DB.CloseConnection(con);
+        DBConnection.releaseConnection(con);
 
         return correct;
     }//End delete Admin BLL
@@ -118,17 +109,13 @@ public class BLLDB_admin {
         Connection con;
          boolean correct;
 
-        DBConnection _connection_DB = new DBConnection();
-
-//        con = _connection_DB.OpenConnection();
-        con=_connection_DB.getConnection();
+        con=DBConnection.getConnection();
         
         DAOBD_admin _adminDAO = new DAOBD_admin();
 
         correct = _adminDAO.searchDNI(con);
         
-        _connection_DB.releaseConnection(con);
-//        _connection_DB.CloseConnection(con);
+        DBConnection.releaseConnection(con);
 
         return correct;
     }

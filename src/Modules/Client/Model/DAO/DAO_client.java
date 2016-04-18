@@ -35,11 +35,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  
 
 /**
- *
+ * DAO with verify , save and fill functions for create and edit windows
  * @author Antonio Revert
  */
 public class DAO_client {
     
+    /**
+     * Used to check the DNI of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askDni(){
         boolean correct =false;
 //        System.out.println(BLL_admin.searchDniadmin());
@@ -69,6 +73,10 @@ public class DAO_client {
         }
     }
     
+    /**
+     * Used to check the name of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askName(){
         boolean correct=false;
         
@@ -92,6 +100,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to check the surname of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askSurname(){
         boolean correct=false;
         if(Create_client.fieldSurname.getText().equals("")){
@@ -114,6 +126,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to check the email of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askEmail(){
         boolean correct=false;
         
@@ -137,6 +153,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to check the mobile number of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askMobile(){
         boolean correct=false;
         if(Create_client.fieldMobile.getText().equals("")){
@@ -158,6 +178,10 @@ public class DAO_client {
         return correct;
     }
 
+    /**
+     * Used to check the user name of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askUser(){
         boolean correct=false;
         
@@ -181,6 +205,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to check the password of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askPassword(){
         boolean correct=false;
         
@@ -197,6 +225,10 @@ public class DAO_client {
          return correct;
     }
     
+    /**
+     * Used to verify the password of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askPassword2(){
         boolean correct=false;
         
@@ -213,6 +245,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to check the shopping number is correct
+     * @return bollean true if ferification is correct
+     */
     public static boolean askShopping(){
         boolean correct=false;
         
@@ -228,6 +264,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to check if the radio button is yes or no
+     * @return bollean true if ferification is correct
+     */
     public static boolean askConnected(){
         boolean connected=false;
         if (Create_client.radioStateYes.isSelected()){
@@ -239,6 +279,10 @@ public class DAO_client {
             return connected;
     }
 
+    /**
+     * Used to check a String for the client type
+     * @return bollean true if ferification is correct
+     */
     public static boolean askCientType(){
         boolean correct=false;
         
@@ -262,7 +306,11 @@ public class DAO_client {
         return correct;
     }
 
-        public static boolean askPremium(){
+    /**
+     * Used to check if the Premium radio button is yes or no
+     * @return bollean true if ferification is correct
+     */
+   public static boolean askPremium(){
         boolean connected=false;
         if (Create_client.radioPremiumYes.isSelected()){
             connected=true;
@@ -273,6 +321,10 @@ public class DAO_client {
             return connected;
     }
     
+    /**
+     * Used to check the birth date from date picker
+     * @return bollean true if ferification is correct
+     */
     public static boolean askBirth(){
         boolean correct=false;
         Calendar birthdate;
@@ -301,6 +353,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to get the avatar and sets it into the window
+     * @return a String with the avatar route / name
+     */
     public static String askAvatar(){
         String route="";
         String file="";
@@ -334,6 +390,10 @@ public class DAO_client {
         return route;
     }
     
+    /**
+     * Used to check the registration date from date picker
+     * @return bollean true if ferification is correct
+     */
     public static boolean askDateRegistration(){
         boolean correct=false;
         int years=18;
@@ -385,6 +445,9 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Sets the create window fields to defauls (empty) state
+     */
     public static void resetFields(){
         Create_client.fieldDNI.setText("");
         Create_client.fieldName.setText("");
@@ -430,6 +493,11 @@ public class DAO_client {
         Create_client.dateRegistration.setDate(date);
     }//End reset fields
     
+    /**
+     * Function that checks all the create window fields and get the
+     * information from them
+     * @return a Client user with all the data from the fields
+     */
     public static Client_class create(){
         Client_class client;
         String dni="", name="", surname="", email="", mobile="", user="", password="", avatar="",clitype="";
@@ -517,9 +585,13 @@ public class DAO_client {
     }//En create admin
     
      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////                                                                EDIT ADMIN                                                                                     ////
+    ////                                                                EDIT CLIENT                                                                                     ////
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
+    /**
+     * Used to check the DNI of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askDniMod(){
         boolean correct =false;
         
@@ -536,6 +608,10 @@ public class DAO_client {
         return correct;
     }
   
+     /**
+     * Used to check the name of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
    public static boolean askNameMod(){
         boolean correct=false;
         
@@ -559,6 +635,10 @@ public class DAO_client {
         return correct;
     }
     
+   /**
+     * Used to check the surname of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askSurnameMod(){
         boolean correct=false;
         if(Modify_client.editfieldSurname.getText().equals("")){
@@ -581,6 +661,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to check the email of a user  in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askEmailMod(){
         boolean correct=false;
         
@@ -604,6 +688,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to check the mobile number of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askMobileMod(){
         boolean correct=false;
         if(Modify_client.editfieldMobile.getText().equals("")){
@@ -625,6 +713,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to check the user name of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askUserMod(){
         boolean correct=false;
         
@@ -648,6 +740,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to check the password of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askPasswordMod(){
         boolean correct=false;
         
@@ -671,6 +767,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to verify the password of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askPassword2Mod(){
         boolean correct=false;
         
@@ -688,7 +788,12 @@ public class DAO_client {
         return correct;
     }
     
-        public static boolean askShoppingMod(){
+    
+    /**
+     * Used to check the shopping number is correct
+     * @return bollean true if ferification is correct
+     */
+    public static boolean askShoppingMod(){
         boolean correct=false;
         
         if(Validate.valshopping(Modify_client.editfieldShopping.getText())==false){
@@ -703,6 +808,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to check if the radio button is yes or no in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askConnectedMod(){
         boolean connected=false;
         if (Modify_client.radioStateYes.isSelected()){
@@ -714,6 +823,10 @@ public class DAO_client {
             return connected;
     }
     
+    /**
+     * Used to check a String for the client type in the modify window
+     * @return bollean true if ferification is correct
+     */
         public static boolean askCientTypeMod(){
         boolean correct=false;
         
@@ -737,6 +850,11 @@ public class DAO_client {
         return correct;
     }
 
+        /**
+     * Used to check if the Premium radio button is yes or no
+     * in the modify window
+     * @return bollean true if ferification is correct
+     */
         public static boolean askPremiumMod(){
         boolean connected=false;
         if (Modify_client.radioPremiumYes.isSelected()){
@@ -748,6 +866,10 @@ public class DAO_client {
             return connected;
     }
        
+    /**
+     * Used to check the birth date from date picker in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askBirthMod(){
         boolean correct=false;
         Calendar birthdate;
@@ -774,6 +896,10 @@ public class DAO_client {
         return correct;
     }
     
+    /**
+     * Used to get the avatar and sets it into the modify window
+     * @return a String with the avatar route / name
+     */
      public static String askAvatarMod(){
         String route="";
         String file="";
@@ -806,6 +932,10 @@ public class DAO_client {
         return route;
     }
     
+     /**
+     * Used to check the registration date from date picker in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askDateRegistrationMod(){
         boolean correct=false;
         int years=18;
@@ -847,6 +977,11 @@ public class DAO_client {
         return correct;
     }
         
+    /**
+     * Function that checks all the modify window fields and get the
+     * information from them
+     * @return a Client user with all the data from the fields
+     */
     public static Client_class saveClientMod(){
         Client_class client;
         String dni="", name="", surname="", email="", mobile="", user="", password="", avatar="",clitype="";

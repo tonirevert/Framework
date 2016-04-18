@@ -36,11 +36,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  
 
 /**
- *
+ * DAO with verify , save and fill functions for create and edit windows
  * @author Antonio Revert
  */
 public class DAO_admin {
     
+    /**
+     * Used to check the DNI of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askDni(){
         boolean correct =false;
 //        System.out.println(BLL_admin.searchDniadmin());
@@ -70,6 +74,10 @@ public class DAO_admin {
         }
     }
     
+    /**
+     * Used to check the name of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askName(){
         boolean correct=false;
         
@@ -93,6 +101,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to check the surname of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askSurname(){
         boolean correct=false;
         if(Create_admin.fieldSurname.getText().equals("")){
@@ -115,6 +127,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to check the email of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askEmail(){
         boolean correct=false;
         
@@ -138,6 +154,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to check the mobile number of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askMobile(){
         boolean correct=false;
         if(Create_admin.fieldMobile.getText().equals("")){
@@ -159,6 +179,10 @@ public class DAO_admin {
         return correct;
     }
 
+    /**
+     * Used to check the user name of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askUser(){
         boolean correct=false;
         
@@ -182,6 +206,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to check the password of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askPassword(){
         boolean correct=false;
         
@@ -198,6 +226,10 @@ public class DAO_admin {
          return correct;
     }
     
+    /**
+     * Used to verify the password of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askPassword2(){
         boolean correct=false;
         
@@ -214,6 +246,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to check if the radio button is yes or no
+     * @return bollean true if ferification is correct
+     */
     public static boolean askConnected(){
         boolean connected=false;
         if (radioStateYes.isSelected()){
@@ -225,6 +261,10 @@ public class DAO_admin {
             return connected;
     }
 
+    /**
+     * Used to check the activity number is correct
+     * @return bollean true if ferification is correct
+     */
     public static boolean askActivity(){
         boolean correct=false;
         
@@ -248,6 +288,10 @@ public class DAO_admin {
         return correct;
     }
 
+    /**
+     * Used to check the birth date from date picker
+     * @return bollean true if ferification is correct
+     */
     public static boolean askBirth(){
         boolean correct=false;
         Calendar birthdate;
@@ -276,6 +320,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to get the avatar and sets it into the window
+     * @return a String with the avatar route / name
+     */
     public static String askAvatar(){
         String route="";
         String file="";
@@ -309,6 +357,10 @@ public class DAO_admin {
         return route;
     }
     
+    /**
+     * Used to check the contract date from date picker
+     * @return bollean true if ferification is correct
+     */
     public static boolean askDatecontract(){
         boolean correct=false;
         Calendar contract,birthdate;
@@ -359,6 +411,9 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Sets the create window fields to defauls (empty) state
+     */
     public static void resetFields(){
         Create_admin.fieldDNI.setText("");
         Create_admin.fieldName.setText("");
@@ -399,6 +454,11 @@ public class DAO_admin {
         Create_admin.dateContract.setDate(date);
     }//End reset fields
     
+    /**
+     * Function that checks all the create window fields and get the
+     * information from them
+     * @return an Admin user with all the data from the fields
+     */
     public static Admin_class create(){
         Admin_class admin;
         String dni="", name="", surname="", email="", mobile="", user="", password="", avatar="";
@@ -479,6 +539,10 @@ public class DAO_admin {
     ////                                                                EDIT ADMIN                                                                                     ////
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
+    /**
+     * Used to check the DNI of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askDniMod(){
         boolean correct =false;
         
@@ -501,6 +565,10 @@ public class DAO_admin {
         }
     }
     
+    /**
+     * Used to check the name of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
    public static boolean askNameMod(){
         boolean correct=false;
         
@@ -524,6 +592,10 @@ public class DAO_admin {
         return correct;
     }
     
+   /**
+     * Used to check the surname of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askSurnameMod(){
         boolean correct=false;
         if(Modify_admin.editfieldSurname.getText().equals("")){
@@ -546,6 +618,10 @@ public class DAO_admin {
         return correct;
     }
     
+     /**
+     * Used to check the email of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askEmailMod(){
         boolean correct=false;
         
@@ -569,6 +645,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to check the mobile number of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askMobileMod(){
         boolean correct=false;
         if(Modify_admin.editfieldMobile.getText().equals("")){
@@ -590,6 +670,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to check the user name of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askUserMod(){
         boolean correct=false;
         
@@ -613,6 +697,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to check the password of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askPasswordMod(){
         boolean correct=false;
         
@@ -636,6 +724,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to verify the password of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askPassword2Mod(){
         boolean correct=false;
         
@@ -653,6 +745,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to check if the radio button is yes or no in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askConnectedMod(){
         boolean connected=false;
         if (Modify_admin.radioStateYes.isSelected()){
@@ -664,6 +760,10 @@ public class DAO_admin {
             return connected;
     }
     
+    /**
+     * Used to check the activity number is correct in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askActivityMod(){
         boolean correct=false;
         
@@ -687,6 +787,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to check the birth date from date picker in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askBirthMod(){
         boolean correct=false;
         Calendar birthdate;
@@ -713,6 +817,10 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to get the avatar and sets it into the modify window
+     * @return a String with the avatar route / name
+     */
      public static String askAvatarMod(){
         String route="";
         String file="";
@@ -745,6 +853,10 @@ public class DAO_admin {
         return route;
     }
     
+    /**
+     * Used to check the contract date from date picker in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askDatecontractMod(){
         boolean correct=false;
         Calendar contract,birthdate;
@@ -821,6 +933,11 @@ public class DAO_admin {
         Modify_admin.editdateContract.setDate(date);
     }
     
+    /**
+     * Function that checks all the create window fields and get the
+     * information from them
+     * @return an Admin user with all the data from the fields
+     */
     public static Admin_class saveAdminMod(){
         Admin_class admin;
         String dni="", name="", surname="", email="", mobile="", user="", password="", avatar="";
@@ -889,6 +1006,10 @@ public class DAO_admin {
         
     }
     
+    /**
+     * Used to fill Modify Admin window with a admin data
+     * @param adm is a admin with all their data
+     */
     public static void fillAdminMod(Admin_class adm){
         Date dateBirth = new Date();
         Date dateCont = new Date();

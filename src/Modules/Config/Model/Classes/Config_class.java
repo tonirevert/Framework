@@ -43,7 +43,7 @@ private static Config_class instance;
 	
                 
                 /**
-                 * Creates an instance if is null and loads the config file and
+                 * Creates a configuration instance if is null and loads the config file and
                  * users client and reg user into the array lists.
                  * @return an instance with the loaded configuration
                  */
@@ -52,11 +52,10 @@ private static Config_class instance;
                                 
 		if (instance == null){
 			instance = new Config_class();
-                                                instance = Funct_files_config.loadjsonconfig();                        
-//                                                BLL_admin.autoloadAdmin();
+                                                instance = Funct_files_config.loadjsonconfig();
+//			instance = Funct_files_config.loadxmlconfig();
                                                 BLL_client.autoloadClient();
                                                 BLL_ruser.autoloadRuser();
-//			instance = Funct_files_config.loadxmlconfig();
 			theme_class.selectedtheme(Config_class.getinstance().getTheme());
 			Singleton_app.lang = new Language(Config_class.getinstance().getLanguage());
                                                 
@@ -68,7 +67,9 @@ private static Config_class instance;
 		
 		
 	
-	
+	/**
+                * Deafault configuration constructor
+                */
 	public Config_class(){
 		
 		this.date_format="dd/MM/yyyy";
@@ -79,6 +80,7 @@ private static Config_class instance;
 		this.decimals=2;
 		this.dummy=false;
 		
+                                DBConnection.init_BasicDataSourceFactory();
 		Singleton_admin.adm = new ArrayList<Admin_class>();
 		Singleton_client.cli = new ArrayList<Client_class>();
 		Singleton_ruser.rus = new ArrayList<Reg_user_class>();

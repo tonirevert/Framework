@@ -303,12 +303,12 @@ public class BLL_admin {
             created=false;
         }else{
             Singleton_admin.a=admin;
-            BLLDB_admin.newAdminBLL();
+            created=BLLDB_admin.newAdminBLL();
 //            Singleton_admin.adm.add(admin);
 //            autosaveAdmin();
             Create_admin.areaInfo.setText(Singleton_app.lang.getProperty("bll_created"));
             Create_admin.areaInfo.setBackground(Color.green);
-            created=true;
+//            created=true;
         }
         
         return created;
@@ -454,6 +454,7 @@ public class BLL_admin {
                         }
                             }
                     BLLDB_admin.deleteAdminBLL();
+                    Singleton_admin.adm.remove(Singleton_admin.a);
 //                    Singleton_admin.adm.remove(ad);
 //                    autosaveAdmin();
                 }

@@ -30,7 +30,7 @@ public class DAOBD_admin {
         
         PreparedStatement stmt = null;
         boolean correct=false;
-        int state=0;
+        int state=0,ok=0;
         
         try{
         
@@ -61,7 +61,14 @@ public class DAOBD_admin {
             stmt.setFloat(15,(float)Singleton_admin.a.calc_salary());
             stmt.setString(16, String.valueOf(Singleton_admin.a.getActivity()));
 
-            correct=stmt.execute();
+            ok=stmt.executeUpdate();
+            
+            if (ok==1){
+                correct=true;
+            }else{
+                correct=false;
+            }
+                
         
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null, "Problem saving user");
@@ -74,7 +81,7 @@ public class DAOBD_admin {
                 }
             }
         }
-        
+//        System.out.println("Modules.Admin.Model.DAO.DAOBD_admin.newAdmin()"+correct);
         return correct;
     }//End of new Admin
     
@@ -279,7 +286,7 @@ public class DAOBD_admin {
     }//End of search DNI
     
     /**
-     * 
+     * If an Admin is found this function gets their data
      * @param rs 
      */
     private void obtainAdmin(ResultSet rs){

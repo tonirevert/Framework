@@ -5,7 +5,10 @@ import Modules.Config.Model.Classes.Config_class;
 import org.apache.commons.dbcp.BasicDataSource;
 
 
-
+/**
+ * Singleton for the application configuration, connection to database and language
+ * @author antonio
+ */
 public class Singleton_app {
 
                 public static BasicDataSource dataSource=null;	

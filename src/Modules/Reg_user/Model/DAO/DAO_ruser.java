@@ -36,11 +36,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  
 
 /**
- *
+ * DAO with verify , save and fill functions for create and edit windows
  * @author Antonio Revert
  */
 public class DAO_ruser {
     
+    /**
+     * Used to check the DNI of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askDni(){
         boolean correct =false;
 //        System.out.println(BLL_admin.searchDniruser());
@@ -70,6 +74,10 @@ public class DAO_ruser {
         }
     }
     
+    /**
+     * Used to check the name of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askName(){
         boolean correct=false;
         
@@ -93,6 +101,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to check the surname of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askSurname(){
         boolean correct=false;
         if(Create_ruser.fieldSurname.getText().equals("")){
@@ -115,6 +127,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to check the email of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askEmail(){
         boolean correct=false;
         
@@ -138,6 +154,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to check the mobile number of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askMobile(){
         boolean correct=false;
         if(Create_ruser.fieldMobile.getText().equals("")){
@@ -159,6 +179,10 @@ public class DAO_ruser {
         return correct;
     }
 
+    /**
+     * Used to check the user name of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askUser(){
         boolean correct=false;
         
@@ -182,6 +206,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to check the password of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askPassword(){
         boolean correct=false;
         
@@ -198,6 +226,10 @@ public class DAO_ruser {
          return correct;
     }
     
+    /**
+     * Used to verify the password of a user
+     * @return bollean true if ferification is correct
+     */
     public static boolean askPassword2(){
         boolean correct=false;
         
@@ -214,6 +246,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to check if the radio button is yes or no
+     * @return bollean true if ferification is correct
+     */
     public static boolean askConnected(){
         boolean connected=false;
         if (radioStateYes.isSelected()){
@@ -225,6 +261,10 @@ public class DAO_ruser {
             return connected;
     }
 
+    /**
+     * Used to check the activity number is correct
+     * @return bollean true if ferification is correct
+     */
     public static boolean askActivity(){
         boolean correct=false;
         
@@ -248,6 +288,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to check the birth date from date picker
+     * @return bollean true if ferification is correct
+     */
     public static boolean askBirth(){
         boolean correct=false;
         Calendar birthdate;
@@ -274,6 +318,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to get the avatar and sets it into the window
+     * @return a String with the avatar route / name
+     */
     public static String askAvatar(){
         String route="";
         String file="";
@@ -307,6 +355,9 @@ public class DAO_ruser {
         return route;
     }
     
+    /**
+     * Sets the create window fields to defauls (empty) state
+     */
     public static void resetFields(){
         Create_ruser.fieldDNI.setText("");
         Create_ruser.fieldName.setText("");
@@ -346,6 +397,11 @@ public class DAO_ruser {
         Create_ruser.dateBirth.setDate(date);
     }//End reset fields
     
+    /**
+     * Function that checks all the create window fields and get the
+     * information from them
+     * @return an Registered user with all the data from the fields
+     */
     public static Reg_user_class create(){
         Reg_user_class ruser;
         String dni="", name="", surname="", email="", mobile="", user="", password="", avatar="",karma="";
@@ -414,9 +470,13 @@ public class DAO_ruser {
     }//En create admin
     
      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////                                                                EDIT ADMIN                                                                                     ////
+    ////                                                                EDIT REG USER                                                                                ////
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
+    /**
+     * Used to check the DNI of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askDniMod(){
         boolean correct =false;
         
@@ -439,6 +499,10 @@ public class DAO_ruser {
         }
     }
     
+     /**
+     * Used to check the name of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
    public static boolean askNameMod(){
         boolean correct=false;
         
@@ -462,6 +526,10 @@ public class DAO_ruser {
         return correct;
     }
     
+   /**
+     * Used to check the surname of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askSurnameMod(){
         boolean correct=false;
         if(Modify_ruser.editfieldSurname.getText().equals("")){
@@ -484,6 +552,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to check the email of a user  in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askEmailMod(){
         boolean correct=false;
         
@@ -507,6 +579,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to check the mobile number of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askMobileMod(){
         boolean correct=false;
         if(Modify_ruser.editfieldMobile.getText().equals("")){
@@ -528,6 +604,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to check the user name of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askUserMod(){
         boolean correct=false;
         
@@ -551,6 +631,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to check the password of a user  in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askPasswordMod(){
         boolean correct=false;
         
@@ -574,6 +658,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to verify the password of a user in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askPassword2Mod(){
         boolean correct=false;
         
@@ -591,6 +679,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to check if the radio button is yes or no in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askConnectedMod(){
         boolean connected=false;
         if (Modify_ruser.radioStateYes.isSelected()){
@@ -602,6 +694,10 @@ public class DAO_ruser {
             return connected;
     }
     
+    /**
+     * Used to check the activity number is correct in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askActivityMod(){
         boolean correct=false;
         
@@ -625,6 +721,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to check the birth date from date picker in the modify window
+     * @return bollean true if ferification is correct
+     */
     public static boolean askBirthMod(){
         boolean correct=false;
         Calendar birthdate;
@@ -651,6 +751,10 @@ public class DAO_ruser {
         return correct;
     }
     
+    /**
+     * Used to get the avatar and sets it into the modify window
+     * @return a String with the avatar route / name
+     */
      public static String askAvatarMod(){
         String route="";
         String file="";
@@ -683,6 +787,11 @@ public class DAO_ruser {
         return route;
     }
     
+     /**
+     * Function that checks all the modify window fields and get the
+     * information from them
+     * @return a Registered user with all the data from the fields
+     */
     public static Reg_user_class saveRuserMod(){
         Reg_user_class ruser;
         String dni="", name="", surname="", email="", mobile="", user="", password="", avatar="";
@@ -744,6 +853,10 @@ public class DAO_ruser {
         
     }
     
+    /**
+     * Used to fill Modify Registered user window with a reg user data
+     * @param rus is a reg user with all their data
+     */
     public static void fillRuserMod(Reg_user_class rus){
         Date dateBirth = new Date();
         Date_class birth=null;
@@ -771,8 +884,6 @@ public class DAO_ruser {
         Modify_ruser.avatar.setIcon(newIcon);
         Modify_ruser.avatar.setSize(100,100);
         Modify_ruser.avatar.setToolTipText(file);
-        
-
         
         if(rus.isState()==true){
             Modify_ruser.radioStateYes.setSelected(true);
