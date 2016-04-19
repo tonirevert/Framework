@@ -14,7 +14,7 @@ import Modules.Config.Model.Classes.Config_class;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Functions to work with files, saving and loading them into files
  * @author antonio
  */
 public class BLL_files_client {

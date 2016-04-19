@@ -138,7 +138,11 @@ public class Admin_class extends User_class implements Serializable{
 		return super.toString(dni)+"\n";
 	}
 	
-	/**Initialisation Admin_class personalised toString */
+	/**
+                  * Initialisation Admin_class personalised toString
+                  * @param i an integer with the desired output option
+                  * @return a String with the user data
+                  */
 	 public String toString(int i){
 		 StringBuffer out=new StringBuffer();
 		 

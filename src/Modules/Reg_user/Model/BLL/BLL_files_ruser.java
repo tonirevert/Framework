@@ -14,7 +14,7 @@ import Modules.Reg_user.Model.Utils.Files_lib.xml;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Functions to work with files, saving and loading them into files
  * @author antonio
  */
 public class BLL_files_ruser {
@@ -24,7 +24,7 @@ public class BLL_files_ruser {
 	 */
 	public static void saveruser(){
 		
-		if(Singleton_ruser.rus.size()!=0){
+		if(!Singleton_ruser.rus.isEmpty()){
 			
 				switch (Config_class.getinstance().getFile_format()) {
 				case "json":
@@ -47,7 +47,7 @@ public class BLL_files_ruser {
 	 */
 	public static void loadruser(){
 		
-		if(Singleton_ruser.rus.size()!=0){
+		if(!Singleton_ruser.rus.isEmpty()){
 			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("savefirst"), "Info",JOptionPane.INFORMATION_MESSAGE);
 			saveruser();
 		}
@@ -70,7 +70,7 @@ public class BLL_files_ruser {
 	 */
 	public static void autosaveall(){
 		
-		if(Singleton_ruser.rus.size()!=0){
+		if(!Singleton_ruser.rus.isEmpty()){
 			json.autosavejsonruser();
 			txt.autosavetxtruser();
 			xml.autosavexmlruser();

@@ -14,7 +14,7 @@ import Modules.Admin.Model.Utils.Files_lib.xml;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Functions to work with files, saving and loading them into files
  * @author antonio
  */
 public class BLL_files_admin {
@@ -24,7 +24,7 @@ public class BLL_files_admin {
 	 */
 	public static void saveadmin(){
 		
-		if(Singleton_admin.adm.size()!=0){
+		if(!Singleton_admin.adm.isEmpty()){
 			
 				switch (Config_class.getinstance().getFile_format()) {
 				case "json":
@@ -47,7 +47,7 @@ public class BLL_files_admin {
 	 */
 	public static void loadadmin(){
 		
-		if(Singleton_admin.adm.size()!=0){
+		if(!Singleton_admin.adm.isEmpty()){
 			JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("savefirst"), "Info",JOptionPane.INFORMATION_MESSAGE);
 			BLL_files_admin.saveadmin();
 		}
@@ -70,7 +70,7 @@ public class BLL_files_admin {
 	 */
 	public static void autosaveall(){
 		
-		if(Singleton_admin.adm.size()!=0){
+		if(!Singleton_admin.adm.isEmpty()){
 			json.autosavejsonadmin();
 			txt.autosavetxtadmin();
 			xml.autosavexmladmin();
