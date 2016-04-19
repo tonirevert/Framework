@@ -21,25 +21,25 @@ public abstract class User_class implements Comparable<User_class>, Serializable
 
 	/**Private attributes initialisation*/
 	@XStreamAlias("dni")
-	private String dni;
+	public String dni;
 	@XStreamAlias("name")
-	private String name;
+	public String name;
 	@XStreamAlias("surname")
-	private String surname;
+	public String surname;
 	@XStreamAlias("birthday")
-	private Date_class birthday;
+	public Date_class birthday;
 	@XStreamAlias("mobile")
-	private String mobile;
+	public String mobile;
 	@XStreamAlias("email")
-	private String email;
+	public String email;
 	@XStreamAlias("user")
-	private String user;
+	public String user;
 	@XStreamAlias("pass")
-	private String pass;
+	public String pass;
 	@XStreamAlias("avatar")
-	private String avatar;
+	public String avatar;
 	@XStreamAlias("state")
-	private boolean state;
+	public boolean state;
 	@XStreamAlias("age")
 	private int age;
 	@XStreamAlias("benefit")

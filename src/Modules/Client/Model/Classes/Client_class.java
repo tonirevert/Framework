@@ -7,6 +7,8 @@ import java.io.Serializable;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import Utils.Currency;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 
 
 
@@ -46,6 +48,54 @@ public class Client_class extends User_class implements Serializable{
 		super.setBenefit(calc_benefit());
 	}
 	
+                /**
+                 * 
+                 * @param dBObjectClient
+                 * @return 
+                 */
+                public Client_class Client_from_DB(DBObject dBObjectClient) {
+                            this.dni=(String) dBObjectClient.get("dni");
+                            this.name = (String)  dBObjectClient.get("name");
+                            this.surname = (String)  dBObjectClient.get("surname");
+                            this.birthday= (Date_class) dBObjectClient.get("birthday");
+                            this.mobile=(String) dBObjectClient.get("mobile");
+                            this.email=(String) dBObjectClient.get("email");
+                            this.user=(String) dBObjectClient.get("user");
+                            this.pass=(String) dBObjectClient.get("password");
+                            this.avatar=(String) dBObjectClient.get("avatar");
+                            this.state=(boolean) dBObjectClient.get("state");
+                            this.reg_date=(Date_class) dBObjectClient.get("reg_date");
+                            this.shopping=(double) dBObjectClient.get("shopping");
+                            this.premium=(boolean) dBObjectClient.get("premium");
+                            this.client_type=(String) dBObjectClient.get("client_type");
+        
+        
+                            return new Client_class(this.dni,this.name, this.surname,this.birthday,this.mobile,this.email,
+                                    this.user,this.pass,this.avatar,this.state,this.reg_date,this.shopping,this.premium,this.client_type);
+                }
+
+                /**
+                 * 
+                 * @return 
+                 */
+                public BasicDBObject Client_to_DB() {
+	BasicDBObject dBObjectClient = new BasicDBObject();
+	dBObjectClient.append("name", this.getName());
+	dBObjectClient.append("surname", this.getSurname());
+                dBObjectClient.append("birthday", this.getBirthday());
+                dBObjectClient.append("mobile", this.getMobile());
+                dBObjectClient.append("email", this.getEmail());
+                dBObjectClient.append("user", this.getUser());
+                dBObjectClient.append("password", this.getPass());
+                dBObjectClient.append("avatar", this.getAvatar());
+                dBObjectClient.append("state", this.isState());
+                dBObjectClient.append("reg_date", this.getReg_date());
+                dBObjectClient.append("shopping", this.getShopping());
+                dBObjectClient.append("premium", this.isPremium());
+                dBObjectClient.append("client_type", this.getClient_type());
+	return dBObjectClient;
+    }
+        
 	/**Primary key Client_class Constructor*/
 	public Client_class(String dni){
 		super(dni);
