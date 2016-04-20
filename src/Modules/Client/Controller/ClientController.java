@@ -852,7 +852,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                         create.saving.setVisible(true);
                         delay.setRepeats(false);
                         delay.start();
-                        BLL_client.autosaveClient();
+//                        BLL_client.autosaveClient();
                         create.areaInfo.setText(Singleton_app.lang.getProperty("w_ucreated"));
                         create.areaInfo.setBackground(Color.green);
                 }
@@ -867,7 +867,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 new ClientController(new Pager_client(),2).Init(2);
                 break;
                 
-                ////Events from Modify admin:
+                ////Events from Modify client:
                 
             case editbtnSearch:
                 BLL_client.modClientdata("avatar");
@@ -885,7 +885,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                     edit.saving.setVisible(true);
                     delay.setRepeats(false);
                     delay.start();
-                    BLL_client.autosaveClient();
+//                    BLL_client.autosaveClient();
                     edit.editareaInfo.setText(Singleton_app.lang.getProperty("w_usaved"));
                     edit.editareaInfo.setBackground(Color.green);
                 }else{
@@ -899,7 +899,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 new ClientController(new Pager_client(),2).Init(2);
                 break;
                 
-                ////Events from pager admin
+                ////Events from pager client
             case AddClient:
                 pager.dispose();
                 new ClientController(new Create_client(),0).Init(0);
@@ -975,7 +975,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 new MenuController(new Mainmenu(),0).Init(0);
                 break;
                 
-                ////Events from list Admin
+                ////Events from list Client
             case listbtnReturn:
                 list.dispose();
                 new ClientController(new Pager_client(),2).Init(2);

@@ -4,6 +4,7 @@ import Classes.Date_class;
 import Classes.Singleton_app;
 import static Modules.Client.Controller.ClientController.comboClient;
 import Modules.Client.Model.BLL.BLL_client;
+import Modules.Client.Model.DAO.DAO_client;
 import Modules.Client.Model.Utils.pager.pagina;
 import Modules.Client.View.Pager_client;
 import java.util.ArrayList;
@@ -112,7 +113,8 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
         datos.clear();
         datosaux.clear();
         Singleton_client.cli.clear();
-        BLL_client.autoloadClient();
+        BLL_client.load_Clients();
+//        BLL_client.autoloadClient();
         
         Client_class client = null;
         java.util.Date date= new java.util.Date();

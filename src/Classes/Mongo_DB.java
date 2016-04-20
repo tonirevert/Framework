@@ -6,15 +6,6 @@
 package Classes;
 
 
-import static Classes.Singleton_app.client;
-import static Classes.Singleton_app.collection;
-import static Classes.Singleton_app.db;
-import static Classes.Singleton_app.input;
-import static Classes.Singleton_app.machine;
-import static Classes.Singleton_app.nom_bd;
-import static Classes.Singleton_app.nom_table;
-import static Classes.Singleton_app.port;
-import static Classes.Singleton_app.prop;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.Mongo;
@@ -22,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Properties;
+import static jdk.nashorn.tools.ShellFunctions.input;
 
 
 /**

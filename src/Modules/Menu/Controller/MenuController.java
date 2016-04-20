@@ -5,6 +5,7 @@
  */
 package Modules.Menu.Controller;
 
+import Classes.Mongo_DB;
 import Classes.Singleton_app;
 import static Modules.Menu.Classes.Singleton_menus.adminicon;
 import static Modules.Menu.Classes.Singleton_menus.adminicon_over;
@@ -245,10 +246,11 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                break;
                
                case btnExit:
-                    BLL_admin.autosaveAdmin();
-                    BLL_client.autosaveClient();
+//                    BLL_admin.autosaveAdmin();
+//                    BLL_client.autosaveClient();
                     JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
                     main.dispose();
+                    Mongo_DB.disconnect();
                     System.exit(0);
                 break;
                 
@@ -340,6 +342,7 @@ public class MenuController implements ActionListener, MouseListener, WindowList
             
             case mainMenu:
                 JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
+                Mongo_DB.disconnect();
                 System.exit(0);
                 break;
                 

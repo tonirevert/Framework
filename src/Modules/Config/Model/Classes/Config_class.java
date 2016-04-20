@@ -1,5 +1,6 @@
 package Modules.Config.Model.Classes;
 import Classes.DBConnection;
+import Classes.Mongo_DB;
 import Modules.Config.Model.Utils.Files_lib.Funct_files_config;
 import Modules.Admin.Model.Classes.Singleton_admin;
 import Modules.Admin.Model.Classes.Admin_class;
@@ -54,7 +55,7 @@ private static Config_class instance;
 			instance = new Config_class();
                                                 instance = Funct_files_config.loadjsonconfig();
 //			instance = Funct_files_config.loadxmlconfig();
-                                                BLL_client.autoloadClient();
+//                                                BLL_client.autoloadClient();
                                                 BLL_ruser.autoloadRuser();
 			theme_class.selectedtheme(Config_class.getinstance().getTheme());
 			Singleton_app.lang = new Language(Config_class.getinstance().getLanguage());
@@ -81,6 +82,15 @@ private static Config_class instance;
 		this.dummy=false;
 		
                                 DBConnection.init_BasicDataSourceFactory();
+                                Singleton_app.mongo=new Mongo_DB();
+                                Singleton_app.nom_bd=Singleton_app.mongo.getNom_bd();
+                                Singleton_app.nom_table=Singleton_app.mongo.getNom_table();
+                                Singleton_app.client=Mongo_DB.connect();
+                                if(Singleton_app.client!=null){
+                                    Singleton_app.db=Singleton_app.mongo.getDb();
+                                    Singleton_app.collection=Singleton_app.mongo.getCollection();
+                                }
+                                                                                                
 		Singleton_admin.adm = new ArrayList<Admin_class>();
 		Singleton_client.cli = new ArrayList<Client_class>();
 		Singleton_ruser.rus = new ArrayList<Reg_user_class>();
