@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 public class Singleton_menus {
                 public static ImageIcon mainback = new ImageIcon("src/Modules/Menu/View/img/back.jpg");
                 public static ImageIcon configback = new ImageIcon("src/Modules/Menu/View/img/blue.jpg");
+                public static ImageIcon loginback = new ImageIcon("src/Modules/Menu/View/img/login.gif");
                 public static ImageIcon configicon = new ImageIcon("src/Modules/Menu/View/img/conf.png");
                 public static ImageIcon configicon_over = new ImageIcon("src/Modules/Menu/View/img/conf_over.gif");
                 public static ImageIcon adminicon = new ImageIcon("src/Modules/Menu/View/img/admin.png");

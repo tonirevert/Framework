@@ -7,6 +7,7 @@ import Modules.Client.Model.Classes.Singleton_client;
 import Modules.Client.Model.DAO.DAO_client;
 import Modules.Config.Model.Classes.Config_class;
 import Modules.Menu.Controller.MenuController;
+import Modules.Menu.View.Login;
 import Modules.Menu.View.Mainmenu;
 import java.sql.SQLException;
 
@@ -32,7 +33,8 @@ public class Main {
 //        }
 //        Mongo_DB.disconnect();
 
-        new MenuController(new Mainmenu(), 0).Init(0);
+        new MenuController(new Login(), 2).Init(2);
+//        new MenuController(new Mainmenu(), 0).Init(0);
 //        DB_Dummy.cargarAdmin();
 //        DB_Dummy.loadAdminArray();
 

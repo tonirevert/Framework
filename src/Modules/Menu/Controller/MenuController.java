@@ -16,10 +16,8 @@ import static Modules.Menu.Classes.Singleton_menus.configicon_over;
 import static Modules.Menu.Classes.Singleton_menus.rusericon;
 import static Modules.Menu.Classes.Singleton_menus.rusericon_over;
 import Modules.Admin.Controller.AdminController;
-import Modules.Admin.Model.BLL.BLL_admin;
 import Modules.Admin.View.Pager_admin;
 import Modules.Client.Controller.ClientController;
-import Modules.Client.Model.BLL.BLL_client;
 import Modules.Client.View.Pager_client;
 import Modules.Config.Model.BLL.BLL_Config;
 import Modules.Config.Model.Classes.Config_class;
@@ -29,12 +27,15 @@ import Modules.Menu.Classes.Singleton_menus;
 import static Modules.Menu.Controller.MenuController.Action.btnAdmin;
 import static Modules.Menu.Controller.MenuController.Action.btnConfig;
 import static Modules.Menu.Controller.MenuController.main;
+import Modules.Menu.View.Login;
 import Modules.Menu.View.Mainmenu;
 import Modules.Reg_user.Controller.RuserController;
 import Modules.Reg_user.View.Pager_ruser;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
@@ -50,10 +51,11 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
  *
  * @author antonio
  */
-public class MenuController implements ActionListener, MouseListener, WindowListener{
+public class MenuController implements ActionListener, MouseListener, KeyListener, WindowListener{
 
-    public static Mainmenu main;// = new Mainmenu();
-    public static Config conf;//= new Config();
+    public static Mainmenu main;
+    public static Config conf;
+    public static Login login;
     private JPanel panel;
     
     public MenuController(JFrame frame, int i){
@@ -64,6 +66,10 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                 
             case 1:
                 conf=(Config)frame;
+                break;
+                
+            case 2:
+                login=(Login)frame;
                 break;
         }
                 
@@ -87,7 +93,14 @@ public class MenuController implements ActionListener, MouseListener, WindowList
         configMenu,
         btnSaveConf,
         btnResetConf,
-        btnCancelConf
+        btnCancelConf,
+        
+        //Login buttons
+        loginMenu,
+        btnOkLogin,
+        btnResetLogin,
+        btnCancelLogin
+        
     }
     
     /**
@@ -205,8 +218,41 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                 conf.btnCancelConf.setName("btnCancelConf");
                 conf.btnCancelConf.addMouseListener(this);
                 
-                break;
+                break;//End of case 1
                 
+            case 2:
+                int lx=450;
+                int ly=300;
+//                login.back.setSize(lx,ly);
+//                Image logback=Singleton_menus.loginback.getImage();
+//                login.back.setIcon(new ImageIcon (logback.getScaledInstance(lx, ly,java.awt.Image.SCALE_SMOOTH)));
+
+                login.setTitle("Login");
+                
+                login.setName("loginMenu");
+                login.addWindowListener(this);
+                login.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                login.setLocationRelativeTo(null);
+                
+                login.setResizable(false);
+                login.setSize(lx,ly);
+                login.setVisible(true);
+                
+                login.fieldId.setName("fieldId");
+                login.fieldId.setActionCommand("fieldId");
+                login.fieldId.addKeyListener(this);
+                login.fieldPass.setName("fieldPass");
+                login.fieldPass.setActionCommand("fieldPass");
+                login.fieldPass.addKeyListener(this);
+                
+                login.btnOk.setName("btnOkLogin");
+                login.btnOk.addMouseListener(this);
+                login.btnReset.setName("btnResetLogin");
+                login.btnReset.addMouseListener(this);
+                login.btnCancel.setName("btnCancelLogin");
+                login.btnCancel.addMouseListener(this);
+                
+                break;
         }//End of switch case Init
         
     }//End of init
@@ -269,6 +315,20 @@ public class MenuController implements ActionListener, MouseListener, WindowList
                     new MenuController(new Mainmenu(), 0).Init(0);
                 break;
                 
+                case btnOkLogin:
+                    
+                    break;
+                
+                case btnResetLogin:
+                    
+                    break;
+                    
+                case btnCancelLogin:
+                    JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
+                    login.dispose();
+                    Mongo_DB.disconnect();
+                    System.exit(0);
+                    break;
        }
     }
 
@@ -331,6 +391,23 @@ public class MenuController implements ActionListener, MouseListener, WindowList
     }
     }
     
+    
+        @Override
+    public void keyTyped(KeyEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
         @Override
     public void windowOpened(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -349,6 +426,12 @@ public class MenuController implements ActionListener, MouseListener, WindowList
             case configMenu:
                 conf.dispose();
                 new MenuController(new Mainmenu(),0).Init(0);
+                break;
+                
+            case loginMenu:
+                JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
+                Mongo_DB.disconnect();
+                System.exit(0);
                 break;
         }
     }

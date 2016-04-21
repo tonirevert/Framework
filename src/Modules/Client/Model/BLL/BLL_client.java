@@ -298,7 +298,7 @@ public class BLL_client {
             created=false;
         }else{
             Singleton_client.cli.add(client);
-            BLL_client.insert_Client(client);
+            BLL_Mongo.insert_Client(client);
 //            autosaveClient();
             Create_client.areaInfo.setText(Singleton_app.lang.getProperty("bll_created"));
             Create_client.areaInfo.setBackground(Color.green);
@@ -365,7 +365,7 @@ public class BLL_client {
              if (client== null){
             correct=false;
         }else{
-                 BLL_client.update_Client(client);
+                 BLL_Mongo.update_Client(client);
 //                 Singleton_client.cli.set(position,client);
             
 //            autosaveClient();
@@ -444,7 +444,7 @@ public class BLL_client {
                                 }
                             }
                             Singleton_client.cli.remove(cl);
-                            BLL_client.remove_Client(cl);
+                            BLL_Mongo.remove_Client(cl);
 //                            autosaveClient();
                         }
 
@@ -527,49 +527,5 @@ public class BLL_client {
         xml.savexmlclient();
     }
     
-    
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-     ////                                                              CLIENT  MONGO DB                                                                            ////
-   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    public static void insert_Client(Client_class client){
-        DAO_client.insert_Client(client);
-    }
-    
-    public static void insert_Client(){
-        DAO_client.insert_Client(Singleton_client.cl);
-    }
-    
-    public static void load_Clients(){
-        DAO_client.load_Clients();
-    }
-    
-    public static Client_class load_Client_dni(String dni){
-        Client_class c=null;
-        
-        c=DAO_client.load_client_dni(dni);
-        
-                return c;
-    }
-    
-    public static void update_Client(Client_class client){
-        DAO_client.update_client(client);
-    }
-    
-    public static void update_Client(){
-        DAO_client.update_client();
-    }
-    
-    public static void remove_Client(Client_class client){
-        DAO_client.remove_client(client);
-    }
-    
-    public static void remove_Client(){
-        DAO_client.remove_client();
-    }
-    
-    public static void remove_Client_dni(String dni){
-        DAO_client.remove_client_dni(dni);
-    }
     
 }//End public class BLL_client

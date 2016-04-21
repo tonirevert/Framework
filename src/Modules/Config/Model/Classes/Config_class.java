@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import Classes.Singleton_app;
-import Modules.Client.Model.BLL.BLL_client;
 import Modules.Client.Model.Classes.Client_class;
 import Modules.Client.Model.Classes.Singleton_client;
 import Modules.Config.Model.Classes.Language.Language;
@@ -60,7 +59,7 @@ private static Config_class instance;
 			theme_class.selectedtheme(Config_class.getinstance().getTheme());
 			Singleton_app.lang = new Language(Config_class.getinstance().getLanguage());
                                                 
-		}	
+		}
                                 
 			return instance;
 			
