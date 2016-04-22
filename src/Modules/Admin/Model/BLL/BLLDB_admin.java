@@ -114,7 +114,7 @@ public class BLLDB_admin {
         DAOBD_admin _adminDAO = new DAOBD_admin();
 
         correct = _adminDAO.searchDNI(con);
-        
+//        System.out.println("correct: " +correct);
         DBConnection.releaseConnection(con);
 
         return correct;

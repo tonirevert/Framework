@@ -298,7 +298,7 @@ public class BLL_client {
             created=false;
         }else{
             Singleton_client.cli.add(client);
-            BLL_Mongo.insert_Client(client);
+            BLL_Mongo_client.insert_Client(client);
 //            autosaveClient();
             Create_client.areaInfo.setText(Singleton_app.lang.getProperty("bll_created"));
             Create_client.areaInfo.setBackground(Color.green);
@@ -365,7 +365,7 @@ public class BLL_client {
              if (client== null){
             correct=false;
         }else{
-                 BLL_Mongo.update_Client(client);
+                 BLL_Mongo_client.update_Client(client);
 //                 Singleton_client.cli.set(position,client);
             
 //            autosaveClient();
@@ -444,7 +444,7 @@ public class BLL_client {
                                 }
                             }
                             Singleton_client.cli.remove(cl);
-                            BLL_Mongo.remove_Client(cl);
+                            BLL_Mongo_client.remove_Client(cl);
 //                            autosaveClient();
                         }
 

@@ -264,12 +264,14 @@ public class DAOBD_admin {
             correct=true;
                     
         }catch(SQLException e){
+            correct=false;
             JOptionPane.showMessageDialog(null, "Problems searching admin user!");
         }finally {
             if (rs != null) {
                 try {
                     rs.close();
                 } catch (SQLException ex) {
+                    correct=false;
                     JOptionPane.showMessageDialog(null, "Logger error!");
                 }
             }
@@ -277,9 +279,16 @@ public class DAOBD_admin {
                 try {
                     stmt.close();
                 } catch (SQLException ex) {
+                    correct=false;
                     JOptionPane.showMessageDialog(null, "Logger error!");
                 }
             }
+        }
+        
+        if(Singleton_admin.a.getName()==null){
+            correct=false;
+        }else{
+            correct=true;
         }
         
         return correct;

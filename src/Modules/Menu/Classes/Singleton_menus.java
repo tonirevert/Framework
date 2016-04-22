@@ -23,4 +23,6 @@ public class Singleton_menus {
                 public static ImageIcon clienticon_over = new ImageIcon("src/Modules/Menu/View/img/client_over.png");
                 public static ImageIcon rusericon = new ImageIcon("src/Modules/Menu/View/img/reg_user.png");
                 public static ImageIcon rusericon_over = new ImageIcon("src/Modules/Menu/View/img/reg_user_over.png");
+                public static ImageIcon ok = new ImageIcon("src/Modules/Menu/View/img/ok.png");
+                public static ImageIcon no_ok = new ImageIcon("src/Modules/Menu/View/img/not_ok.png");
 }

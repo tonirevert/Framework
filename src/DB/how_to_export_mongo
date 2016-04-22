@@ -1,0 +1,8 @@
+https://docs.mongodb.org/v2.4/reference/program/mongoexport/
+
+ mongoexport --db prog --collection clients --out clients.json --journal
+
+
+https://docs.mongodb.org/v2.4/reference/program/mongoimport/#bin.mongoimport
+
+mongoimport --db prog --collection client --file clients.json

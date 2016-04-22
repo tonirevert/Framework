@@ -27,6 +27,8 @@ import Modules.Menu.Classes.Singleton_menus;
 import static Modules.Menu.Controller.MenuController.Action.btnAdmin;
 import static Modules.Menu.Controller.MenuController.Action.btnConfig;
 import static Modules.Menu.Controller.MenuController.main;
+import Modules.Menu.Model.BLL.BLL_Login;
+import Modules.Menu.Model.DAO.DAO_Login;
 import Modules.Menu.View.Login;
 import Modules.Menu.View.Mainmenu;
 import Modules.Reg_user.Controller.RuserController;
@@ -34,6 +36,8 @@ import Modules.Reg_user.View.Pager_ruser;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -45,13 +49,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
  *
  * @author antonio
  */
-public class MenuController implements ActionListener, MouseListener, KeyListener, WindowListener{
+public class MenuController implements ActionListener, MouseListener, KeyListener,FocusListener, WindowListener{
 
     public static Mainmenu main;
     public static Config conf;
@@ -97,6 +102,9 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
         
         //Login buttons
         loginMenu,
+        fieldId,
+        fieldPass,
+        showPass,
         btnOkLogin,
         btnResetLogin,
         btnCancelLogin
@@ -244,6 +252,9 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 login.fieldPass.setName("fieldPass");
                 login.fieldPass.setActionCommand("fieldPass");
                 login.fieldPass.addKeyListener(this);
+                login.fieldPass.setEchoChar('*');
+                login.showPass.setName("showPass");
+                login.showPass.addMouseListener(this);
                 
                 login.btnOk.setName("btnOkLogin");
                 login.btnOk.addMouseListener(this);
@@ -315,12 +326,31 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                     new MenuController(new Mainmenu(), 0).Init(0);
                 break;
                 
+                case showPass:
+                    BLL_Login.askUserdata("showpassword");
+                    break;
+                
                 case btnOkLogin:
-                    
+                    DAO_Login.tryLogin();
+////                    if(BLL_admin.create_admin()==true){
+//                    Timer delay = new Timer(2000, new ActionListener() {
+//                    @Override
+//                    public void actionPerformed(ActionEvent e) {
+//                        login.info.setText("");
+////                            create.dispose();
+////                            new AdminController(new Pager_admin(),2).Init(2);
+//                            }
+//                        });
+//
+////                        create.saving.setVisible(true);
+//                        delay.setRepeats(false);
+//                        delay.start();
+//                        login.info.setText("<html><font color=red>User or password incorrect!</font></html>");
+////                }
                     break;
                 
                 case btnResetLogin:
-                    
+                    BLL_Login.askUserdata("reset");
                     break;
                     
                 case btnCancelLogin:
@@ -399,12 +429,37 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
 
     @Override
     public void keyPressed(KeyEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch (Action.valueOf(e.getComponent().getName())) {
+            
+            case fieldId:
+                BLL_Login.askUserdata("dni");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    login.fieldPass.requestFocus();
+                }
+                break;
+        
+            case fieldPass:
+                BLL_Login.askUserdata("password");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    login.btnOk.requestFocus();
+                }
+                break;
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch (Action.valueOf(e.getComponent().getName())) {
+            
+            case fieldId:
+                BLL_Login.askUserdata("dni");
+                break;
+                
+            case fieldPass:
+                BLL_Login.askUserdata("password");
+                break;
+        
+        }
     }
     
     
@@ -413,6 +468,17 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
+        @Override
+    public void focusGained(FocusEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     @Override
     public void windowClosing(WindowEvent e) {
         switch(MenuController.Action.valueOf(e.getComponent().getName())){

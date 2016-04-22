@@ -27,28 +27,38 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        info = new javax.swing.JLabel();
+        checkPassword = new javax.swing.JLabel();
+        labelId = new javax.swing.JLabel();
         fieldId = new javax.swing.JTextField();
+        checkDNI = new javax.swing.JLabel();
+        labelPass = new javax.swing.JLabel();
+        fieldPass = new javax.swing.JPasswordField();
+        checkPass = new javax.swing.JLabel();
+        showPass = new javax.swing.JCheckBox();
+        info = new javax.swing.JLabel();
         btnOk = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
-        fieldPass = new javax.swing.JPasswordField();
+
+        checkPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("ID:");
+        labelId.setText("ID:");
 
-        jLabel2.setText("Password:");
+        checkDNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
+
+        labelPass.setText("Password:");
+
+        checkPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
+
+        showPass.setText("Show Password");
 
         btnOk.setText("OK");
 
         btnReset.setText("Reset");
 
         btnCancel.setText("Cancel");
-
-        fieldPass.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,13 +70,20 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(info, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addComponent(labelId)
+                            .addComponent(labelPass))
                         .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fieldId, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                            .addComponent(fieldPass))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(showPass)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(fieldId, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                                    .addComponent(fieldPass))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(checkDNI)
+                                    .addComponent(checkPass))))))
+                .addContainerGap(58, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(btnOk, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
@@ -80,14 +97,21 @@ public class Login extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(fieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(labelId)
+                                .addComponent(fieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(checkDNI))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelPass)
+                            .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(checkPass))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(showPass)
+                .addGap(9, 9, 9)
                 .addComponent(info, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -139,10 +163,14 @@ public class Login extends javax.swing.JFrame {
     public static javax.swing.JButton btnCancel;
     public static javax.swing.JButton btnOk;
     public static javax.swing.JButton btnReset;
+    public static javax.swing.JLabel checkDNI;
+    public static javax.swing.JLabel checkPass;
+    public static javax.swing.JLabel checkPassword;
     public static javax.swing.JTextField fieldId;
     public static javax.swing.JPasswordField fieldPass;
     public static javax.swing.JLabel info;
-    public static javax.swing.JLabel jLabel1;
-    public static javax.swing.JLabel jLabel2;
+    public static javax.swing.JLabel labelId;
+    public static javax.swing.JLabel labelPass;
+    public static javax.swing.JCheckBox showPass;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,7 +16,7 @@ import com.mongodb.DBCursor;
  *
  * @author antonio
  */
-public class DAO_Mongo {
+public class DAO_Mongo_client {
   
     
     public static void insert_Client(Client_class c){
