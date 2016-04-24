@@ -610,7 +610,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 BLL_ruser.askRuserdata("activity");
                 break;
                 
-                ////Events from Modify admin
+                ////Events from Modify registered user
             case editfieldName:
                 BLL_ruser.modRuserdata("name");
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){

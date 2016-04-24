@@ -26,6 +26,7 @@ import Modules.Client.Model.Classes.miniSimpleTableModel_client;
 import Modules.Client.Model.DAO.DAO_client;
 import Modules.Client.View.Create_client;
 import Modules.Client.View.List_client;
+import Modules.Menu.Classes.Singleton_menus;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -327,6 +328,20 @@ public class BLL_client {
             cli=Singleton_client.cli.get(position);
             DAO_client.fillClientMod(cli);
         }
+        
+        return cli;
+    }
+    
+        /**
+     * Used to fill modify user window with the user data
+     * @param dni string with the desired dni to find and fill
+     * @return Client user
+     */
+    public static Client_class fill_client(String dni, int i){
+        Client_class cli=Singleton_menus.cli;
+        
+            DAO_client.fillClientMod(cli);
+
         
         return cli;
     }

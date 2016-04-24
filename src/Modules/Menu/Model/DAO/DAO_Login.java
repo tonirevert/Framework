@@ -10,6 +10,8 @@ import Modules.Admin.Model.Classes.Admin_class;
 import Modules.Admin.Model.Classes.Singleton_admin;
 import Modules.Client.Model.BLL.BLL_Mongo_client;
 import Modules.Client.Model.Classes.Client_class;
+import Modules.Client.View.Modify_client;
+import Modules.Menu.Classes.Singleton_menus;
 import Modules.Reg_user.Model.Classes.Reg_user_class;
 import static Modules.Menu.Classes.Singleton_menus.no_ok;
 import static Modules.Menu.Classes.Singleton_menus.ok;
@@ -17,6 +19,10 @@ import Modules.Menu.Controller.MenuController;
 import static Modules.Menu.Controller.MenuController.login;
 import Modules.Menu.View.Login;
 import Modules.Menu.View.Mainmenu;
+import Modules.Reg_user.Model.BLL.BLL_ruser;
+import static Modules.Reg_user.Model.BLL.BLL_ruser.position;
+import Modules.Reg_user.Model.Classes.Singleton_ruser;
+import Modules.Reg_user.View.Modify_ruser;
 import Utils.Validate;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -111,6 +117,7 @@ public class DAO_Login {
         Client_class cli=null;
         Reg_user_class rus=null;
         String dni="",pass="";
+        int pos=0;
         boolean correct=false;
         boolean foundAdmin=false, foundClient=false, foundRuser=false, fiId=false, fiPass=false;
         
@@ -120,29 +127,52 @@ public class DAO_Login {
         if(fiId==true && fiPass==true){
             dni=Login.fieldId.getText();
             pass=Login.fieldPass.getText();
+            
+            //Start search admin user
             adm=new Admin_class(dni);
             Singleton_admin.a=adm;
             BLLDB_admin.SearchAdminBLL();
             if(Singleton_admin.a.getPass()!=null){
-                System.out.println("User found password: "+Singleton_admin.a.getPass());
+//                System.out.println("User found password: "+Singleton_admin.a.getPass());
                 if(Singleton_admin.a.getPass().equals(pass)){
                 login.dispose();
                 new MenuController(new Mainmenu(), 0).Init(0);
                 }else{
                     loginError2();
                 }
-            }else{
-                    System.out.println("Error 1");
-                loginError1();
+            }//End if admin users
             
-            
-            }//End if / else admin users
+            //Start search client user
+            cli=new Client_class(dni);
             cli=BLL_Mongo_client.load_Client_dni(dni);
-        }else if(cli.getName()!=null){
-            if(cli.getPass().equals(pass)){
-                
+            if(cli.getPass()!=null){
+                Singleton_menus.cli=cli;
+//                System.out.println(cli.getName());
+                if(cli.getPass().equals(pass)){
+                    login.dispose();
+                    new MenuController(new Modify_client(), 3).Init(3);
+                }else{
+                    loginError2();
+                }
+            }//End else if client
+            
+//            Singleton_ruser.ru=new Reg_user_class(dni);
+            pos=BLL_ruser.searchruser(dni);
+            if(pos!=-1){
+                Singleton_menus.rus=Singleton_ruser.rus.get(pos);
+                if(Singleton_menus.rus.getPass().equals(pass)){
+                    login.dispose();
+                    new MenuController(new Modify_ruser(),4).Init(4);
+//                    JOptionPane.showMessageDialog(null,rus.toString());
+                }else{
+                    loginError2();
+                }
+            }else{
+                System.out.println("Error 1");
+                loginError1();
             }
-        
+            
+            
         }else{
             out=null;
             System.out.println("Error 2");

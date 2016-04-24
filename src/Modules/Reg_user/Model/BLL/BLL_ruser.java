@@ -258,6 +258,21 @@ public class BLL_ruser {
      * Used to search a user in the Array List
      * @return the position of the user in the Array List
      */
+    public static int searchruser(String dni){
+		Reg_user_class ruser= new Reg_user_class(dni);
+		
+		for (int i = 0;i<=(Singleton_ruser.rus.size()-1);i++){
+			if((Singleton_ruser.rus.get(i)).equals(ruser) ){
+                                                return i;
+                                                }
+		}
+		return -1;
+	}//End searchDniruser ruser
+    
+    /**
+     * Used to search a user in the Array List
+     * @return the position of the user in the Array List
+     */
     public static int searchDniruser(){
         int out=0;
         Reg_user_class admin=null;

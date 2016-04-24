@@ -18,6 +18,9 @@ import static Modules.Menu.Classes.Singleton_menus.rusericon_over;
 import Modules.Admin.Controller.AdminController;
 import Modules.Admin.View.Pager_admin;
 import Modules.Client.Controller.ClientController;
+import Modules.Client.Model.BLL.BLL_client;
+import Modules.Client.Model.Classes.Singleton_client;
+import Modules.Client.View.Modify_client;
 import Modules.Client.View.Pager_client;
 import Modules.Config.Model.BLL.BLL_Config;
 import Modules.Config.Model.Classes.Config_class;
@@ -32,6 +35,9 @@ import Modules.Menu.Model.DAO.DAO_Login;
 import Modules.Menu.View.Login;
 import Modules.Menu.View.Mainmenu;
 import Modules.Reg_user.Controller.RuserController;
+import Modules.Reg_user.Model.BLL.BLL_ruser;
+import Modules.Reg_user.Model.Classes.Singleton_ruser;
+import Modules.Reg_user.View.Modify_ruser;
 import Modules.Reg_user.View.Pager_ruser;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -44,6 +50,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -56,12 +64,23 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
  *
  * @author antonio
  */
-public class MenuController implements ActionListener, MouseListener, KeyListener,FocusListener, WindowListener{
+public class MenuController implements ActionListener, MouseListener, KeyListener,FocusListener, WindowListener, PropertyChangeListener{
 
     public static Mainmenu main;
     public static Config conf;
     public static Login login;
+    public static Modify_client mod_cli;
+    public static Modify_ruser mod_rus;
     private JPanel panel;
+    
+    /**
+     * Disconnect from Mongo DB and exits the application with status 0
+     */
+    public void Exit(){
+        Mongo_DB.disconnect();
+        System.exit(0);
+        
+    }
     
     public MenuController(JFrame frame, int i){
         switch(i){
@@ -76,11 +95,19 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
             case 2:
                 login=(Login)frame;
                 break;
+                
+            case 3:
+                mod_cli=(Modify_client)frame;
+                break;
+                
+            case 4:
+                mod_rus=(Modify_ruser)frame;
+                break;
         }
                 
     }
 
-    
+        
     /**
      * 
      */
@@ -107,7 +134,36 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
         showPass,
         btnOkLogin,
         btnResetLogin,
-        btnCancelLogin
+        btnCancelLogin,
+        
+        //Edit Client
+        clientWindow,
+        clientfieldName,
+        clientfieldSurname,
+        clientfieldEmail,
+        clientfieldMobile,
+        clientfieldUser,
+        clientfieldPassword,
+        clientfieldVerify,
+        clientbtnSearch,
+        clientfieldShopping,
+        clientfieldClientType,
+        clientbtnSave,
+        clientbtnCancel,
+        
+        //Edit Reg user
+        ruserWindow,
+        ruserfieldName,
+        ruserfieldSurname,
+        ruserfieldEmail,
+        ruserfieldMobile,
+        ruserfieldUser,
+        ruserfieldPassword,
+        ruserfieldVerify,
+        ruserbtnSearch,
+        ruserfieldActivity,
+        ruserbtnSave,
+        ruserbtnCancel,
         
     }
     
@@ -257,23 +313,255 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 login.showPass.addMouseListener(this);
                 
                 login.btnOk.setName("btnOkLogin");
+                login.btnOk.setActionCommand("btnOkLogin");
+                login.btnOk.addKeyListener(this);
+                
                 login.btnOk.addMouseListener(this);
                 login.btnReset.setName("btnResetLogin");
                 login.btnReset.addMouseListener(this);
+                login.btnReset.addKeyListener(this);
+                
                 login.btnCancel.setName("btnCancelLogin");
                 login.btnCancel.addMouseListener(this);
+                login.btnCancel.addKeyListener(this);
                 
                 break;
+                
+            case 3://Modify client
+                int clix=650;
+                int cliy=500;
+                mod_cli.back.setSize(clix,cliy);
+                Image edcliback=Singleton_client.backCrMo.getImage();
+                mod_cli.back.setIcon(new ImageIcon(edcliback.getScaledInstance(clix, cliy, java.awt.Image.SCALE_SMOOTH)));
+                Singleton_client.window="modify";
+                mod_cli.saving.setVisible(false);
+                
+                BLL_client.fill_client(Singleton_menus.cli.getDni(),1);
+                mod_cli.fieldDNI.setEditable(false);
+                mod_cli.setResizable(false);
+                mod_cli.setSize(clix,cliy);
+                mod_cli.editdateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
+                mod_cli.editdateRegistration.setDateFormatString(Config_class.getinstance().getDate_format());
+                mod_cli.editdateBirth.getDateEditor().setEnabled(false);
+                mod_cli.editdateRegistration.getDateEditor().setEnabled(false);
+                mod_cli.setLocationRelativeTo(null);
+                mod_cli.editfieldShopping.setEditable(false);
+                mod_cli.radioPremiumNo.setEnabled(false);
+                mod_cli.radioPremiumYes.setEnabled(false);
+                mod_cli.editdateRegistration.setEnabled(false);
+                mod_cli.setVisible(true);
+
+                //Translation:
+                mod_cli.setTitle(Singleton_app.lang.getProperty("c_wedit"));
+                mod_cli.labelDNI.setText(Singleton_app.lang.getProperty("u_idcard"));
+                mod_cli.labelName.setText(Singleton_app.lang.getProperty("u_name"));
+                mod_cli.labelSurname.setText(Singleton_app.lang.getProperty("u_surname"));
+                mod_cli.labelMobile.setText(Singleton_app.lang.getProperty("u_mobile"));
+                mod_cli.labelUser.setText(Singleton_app.lang.getProperty("u_user"));
+                mod_cli.labelPassword.setText(Singleton_app.lang.getProperty("u_password"));
+                mod_cli.labelPassword2.setText(Singleton_app.lang.getProperty("u_verify"));
+                mod_cli.labelShopping.setText(Singleton_app.lang.getProperty("c_shopping"));
+                mod_cli.labeldateBith.setText(Singleton_app.lang.getProperty("u_birthday"));
+                mod_cli.labelState.setText(Singleton_app.lang.getProperty("u_state"));
+                mod_cli.radioStateYes.setText(Singleton_app.lang.getProperty("booleanyes"));
+                mod_cli.radioStateNo.setText(Singleton_app.lang.getProperty("booleanno"));
+                mod_cli.labeldateReg.setText(Singleton_app.lang.getProperty("c_regdate"));
+                mod_cli.labelClientType.setText(Singleton_app.lang.getProperty("c_clitype"));
+                mod_cli.labelPremium.setText(Singleton_app.lang.getProperty("c_premium"));
+                mod_cli.radioPremiumYes.setText(Singleton_app.lang.getProperty("booleanyes"));
+                mod_cli.radioPremiumNo.setText(Singleton_app.lang.getProperty("booleanno"));
+                
+                mod_cli.btnsaveEditclient.setText(Singleton_app.lang.getProperty("w_save"));
+                mod_cli.btncancelEditclient.setText(Singleton_app.lang.getProperty("exit"));
+                mod_cli.btnSearch.setText(Singleton_app.lang.getProperty("w_search"));
+                
+                //Actions:
+                mod_cli.setName("clientWindow");
+                mod_cli.addWindowListener(this);
+                mod_cli.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                        
+                mod_cli.editfieldName.setActionCommand("clientfieldName");
+                mod_cli.editfieldName.setName("clientfieldName");
+                mod_cli.editfieldName.addFocusListener(this);
+                mod_cli.editfieldName.addActionListener(this);
+                mod_cli.editfieldName.addKeyListener(this);
+                
+                mod_cli.editfieldSurname.setActionCommand("clientfieldSurname");
+                mod_cli.editfieldSurname.setName("clientfieldSurname");
+                mod_cli.editfieldSurname.addFocusListener(this);
+                mod_cli.editfieldSurname.addActionListener(this);
+                mod_cli.editfieldSurname.addKeyListener(this);
+                
+                mod_cli.editfieldEmail.setActionCommand("clientfieldEmail");
+                mod_cli.editfieldEmail.setName("clientfieldEmail");
+                mod_cli.editfieldEmail.addFocusListener(this);
+                mod_cli.editfieldEmail.addActionListener(this);
+                mod_cli.editfieldEmail.addKeyListener(this);
+                
+                mod_cli.editfieldMobile.setActionCommand("clientfieldMobile");
+                mod_cli.editfieldMobile.setName("clientfieldMobile");
+                mod_cli.editfieldMobile.addFocusListener(this);
+                mod_cli.editfieldMobile.addActionListener(this);
+                mod_cli.editfieldMobile.addKeyListener(this);
+                
+                mod_cli.editfieldUser.setActionCommand("clientfieldUser");
+                mod_cli.editfieldUser.setName("clientfieldUser");
+                mod_cli.editfieldUser.addFocusListener(this);
+                mod_cli.editfieldUser.addActionListener(this);
+                mod_cli.editfieldUser.addKeyListener(this);
+                
+                mod_cli.editfieldPassword.setActionCommand("clientfieldPassword");
+                mod_cli.editfieldPassword.setName("clientfieldPassword");
+                mod_cli.editfieldPassword.addFocusListener(this);
+                mod_cli.editfieldPassword.addActionListener(this);
+                mod_cli.editfieldPassword.addKeyListener(this);
+                
+                mod_cli.editfieldPassword2.setActionCommand("clientfieldVerify");
+                mod_cli.editfieldPassword2.setName("clientfieldVerify");
+                mod_cli.editfieldPassword2.addFocusListener(this);
+                mod_cli.editfieldPassword2.addActionListener(this);
+                mod_cli.editfieldPassword2.addKeyListener(this);
+                
+                mod_cli.editdateBirth.addPropertyChangeListener(this);
+                
+                mod_cli.btnSearch.setName("clientbtnSearch");
+                mod_cli.btnSearch.addMouseListener(this);
+                
+                mod_cli.editdateRegistration.addPropertyChangeListener(this);
+                
+                mod_cli.editfieldShopping.setActionCommand("clientfieldShopping");
+                mod_cli.editfieldShopping.setName("clientfieldShopping");
+                mod_cli.editfieldShopping.addFocusListener(this);
+                mod_cli.editfieldShopping.addActionListener(this);
+                mod_cli.editfieldShopping.addKeyListener(this);
+                
+                mod_cli.editfieldClientType.setActionCommand("clientfieldClientType");
+                mod_cli.editfieldClientType.setName("clientfieldClientType");
+                mod_cli.editfieldClientType.addFocusListener(this);
+                mod_cli.editfieldClientType.addActionListener(this);
+                mod_cli.editfieldClientType.addKeyListener(this);
+                
+                mod_cli.btnsaveEditclient.setName("clientbtnSave");
+                mod_cli.btnsaveEditclient.addMouseListener(this);
+                
+                mod_cli.btncancelEditclient.setName("clientbtnCancel");
+                mod_cli.btncancelEditclient.addMouseListener(this);
+                break;//End case modify client
+                
+            case 4://Modify reg user
+                int rusx=650;
+                int rusy=500;
+                mod_rus.back.setSize(rusx,rusy);
+                Image edrusback=Singleton_ruser.backCrMo.getImage();
+                mod_rus.back.setIcon(new ImageIcon(edrusback.getScaledInstance(rusx, rusy, java.awt.Image.SCALE_SMOOTH)));
+//                Singleton_ruser.window="modify";
+                mod_rus.saving.setVisible(false);
+                BLL_ruser.fill_ruser(Singleton_menus.rus.getDni());
+                mod_rus.fieldDNI.setEditable(false);
+                mod_rus.setResizable(false);
+                mod_rus.setSize(rusx,rusy);
+                mod_rus.editdateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
+                mod_rus.editdateBirth.getDateEditor().setEnabled(false);
+                mod_rus.editfieldActivity.setEditable(false);
+                mod_rus.setLocationRelativeTo(null);
+                mod_rus.setVisible(true);
+
+                //Translation:
+                mod_rus.setTitle(Singleton_app.lang.getProperty("r_wedit"));
+                mod_rus.labelDNI.setText(Singleton_app.lang.getProperty("u_idcard"));
+                mod_rus.labelName.setText(Singleton_app.lang.getProperty("u_name"));
+                mod_rus.labelSurname.setText(Singleton_app.lang.getProperty("u_surname"));
+                mod_rus.labelMobile.setText(Singleton_app.lang.getProperty("u_mobile"));
+                mod_rus.labelUser.setText(Singleton_app.lang.getProperty("u_user"));
+                mod_rus.labelPassword.setText(Singleton_app.lang.getProperty("u_password"));
+                mod_rus.labelPassword2.setText(Singleton_app.lang.getProperty("u_verify"));
+                mod_rus.labeldateBirth.setText(Singleton_app.lang.getProperty("u_birthday"));
+                mod_rus.labelState.setText(Singleton_app.lang.getProperty("u_state"));
+                mod_rus.radioStateYes.setText(Singleton_app.lang.getProperty("booleanyes"));
+                mod_rus.radioStateNo.setText(Singleton_app.lang.getProperty("booleanno"));
+                mod_rus.labelActivity.setText(Singleton_app.lang.getProperty("r_activity"));
+                
+                mod_rus.btnsaveEditruser.setText(Singleton_app.lang.getProperty("w_save"));
+                mod_rus.btncancelEditruser.setText(Singleton_app.lang.getProperty("exit"));
+                mod_rus.btnSearch.setText(Singleton_app.lang.getProperty("w_search"));
+                
+                //Action:
+                mod_rus.setName("ruserWindow");
+                mod_rus.addWindowListener(this);
+                mod_rus.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                        
+                mod_rus.editfieldName.setActionCommand("ruserfieldName");
+                mod_rus.editfieldName.setName("ruserfieldName");
+                mod_rus.editfieldName.addFocusListener(this);
+                mod_rus.editfieldName.addActionListener(this);
+                mod_rus.editfieldName.addKeyListener(this);
+                
+                mod_rus.editfieldSurname.setActionCommand("ruserfieldSurname");
+                mod_rus.editfieldSurname.setName("ruserfieldSurname");
+                mod_rus.editfieldSurname.addFocusListener(this);
+                mod_rus.editfieldSurname.addActionListener(this);
+                mod_rus.editfieldSurname.addKeyListener(this);
+                
+                mod_rus.editfieldEmail.setActionCommand("ruserfieldEmail");
+                mod_rus.editfieldEmail.setName("ruserfieldEmail");
+                mod_rus.editfieldEmail.addFocusListener(this);
+                mod_rus.editfieldEmail.addActionListener(this);
+                mod_rus.editfieldEmail.addKeyListener(this);
+                
+                mod_rus.editfieldMobile.setActionCommand("ruserfieldMobile");
+                mod_rus.editfieldMobile.setName("ruserfieldMobile");
+                mod_rus.editfieldMobile.addFocusListener(this);
+                mod_rus.editfieldMobile.addActionListener(this);
+                mod_rus.editfieldMobile.addKeyListener(this);
+                
+                mod_rus.editfieldUser.setActionCommand("ruserfieldUser");
+                mod_rus.editfieldUser.setName("ruserfieldUser");
+                mod_rus.editfieldUser.addFocusListener(this);
+                mod_rus.editfieldUser.addActionListener(this);
+                mod_rus.editfieldUser.addKeyListener(this);
+                
+                mod_rus.editfieldPassword.setActionCommand("ruserfieldPassword");
+                mod_rus.editfieldPassword.setName("ruserfieldPassword");
+                mod_rus.editfieldPassword.addFocusListener(this);
+                mod_rus.editfieldPassword.addActionListener(this);
+                mod_rus.editfieldPassword.addKeyListener(this);
+                
+                mod_rus.editfieldPassword2.setActionCommand("ruserfieldVerify");
+                mod_rus.editfieldPassword2.setName("ruserfieldVerify");
+                mod_rus.editfieldPassword2.addFocusListener(this);
+                mod_rus.editfieldPassword2.addActionListener(this);
+                mod_rus.editfieldPassword2.addKeyListener(this);
+                
+                mod_rus.editdateBirth.addPropertyChangeListener(this);
+                
+                mod_rus.btnSearch.setName("ruserbtnSearch");
+                mod_rus.btnSearch.addMouseListener(this);
+                
+                mod_rus.editfieldActivity.setActionCommand("ruserfieldActivity");
+                mod_rus.editfieldActivity.setName("ruserfieldActivity");
+                mod_rus.editfieldActivity.addFocusListener(this);
+                mod_rus.editfieldActivity.addActionListener(this);
+                mod_rus.editfieldActivity.addKeyListener(this);
+
+                mod_rus.btnsaveEditruser.setName("ruserbtnSave");
+                mod_rus.btnsaveEditruser.addMouseListener(this);
+                
+                mod_rus.btncancelEditruser.setName("ruserbtnCancel");
+                mod_rus.btncancelEditruser.addMouseListener(this);
+                break;
+                
         }//End of switch case Init
         
     }//End of init
     
     @Override
     public void actionPerformed(ActionEvent ae){
-        
+        System.out.println(ae.getActionCommand());
         switch (Action.valueOf(ae.getActionCommand())){
             
-          
+            case btnOkLogin:
+                BLL_Login.Try_Login();
+                break;
         }//End of switch case actionPerformed
         
     }
@@ -303,12 +591,11 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                break;
                
                case btnExit:
-//                    BLL_admin.autosaveAdmin();
+
 //                    BLL_client.autosaveClient();
                     JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
                     main.dispose();
-                    Mongo_DB.disconnect();
-                    System.exit(0);
+                    Exit();
                 break;
                 
                 case btnSaveConf:
@@ -331,22 +618,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                     break;
                 
                 case btnOkLogin:
-                    DAO_Login.tryLogin();
-////                    if(BLL_admin.create_admin()==true){
-//                    Timer delay = new Timer(2000, new ActionListener() {
-//                    @Override
-//                    public void actionPerformed(ActionEvent e) {
-//                        login.info.setText("");
-////                            create.dispose();
-////                            new AdminController(new Pager_admin(),2).Init(2);
-//                            }
-//                        });
-//
-////                        create.saving.setVisible(true);
-//                        delay.setRepeats(false);
-//                        delay.start();
-//                        login.info.setText("<html><font color=red>User or password incorrect!</font></html>");
-////                }
+                    BLL_Login.Try_Login();
                     break;
                 
                 case btnResetLogin:
@@ -356,8 +628,13 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 case btnCancelLogin:
                     JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
                     login.dispose();
-                    Mongo_DB.disconnect();
-                    System.exit(0);
+                    Exit();
+                    break;
+                    
+                case clientbtnCancel:
+                    JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
+                    mod_cli.dispose();
+                    Exit();
                     break;
        }
     }
@@ -429,6 +706,8 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
 
     @Override
     public void keyPressed(KeyEvent e) {
+//        System.out.println(e.getComponent().getName());
+//        System.out.println(e.getKeyCode());
         switch (Action.valueOf(e.getComponent().getName())) {
             
             case fieldId:
@@ -443,6 +722,138 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     login.btnOk.requestFocus();
                 }
+                break;
+                
+            case btnOkLogin:
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    BLL_Login.Try_Login();
+                }
+                break;
+                
+            case btnResetLogin:
+                    BLL_Login.askUserdata("reset");
+                    break;
+                    
+            case btnCancelLogin:
+                    JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
+                    login.dispose();
+                    Exit();
+                    break;
+                
+           //Client Window
+                
+            case clientfieldName:
+                BLL_client.modClientdata("name");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_cli.editfieldSurname.requestFocus();
+	}
+                break;
+                
+            case clientfieldSurname:
+                BLL_client.modClientdata("surname");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_cli.editfieldEmail.requestFocus();
+	}
+                break;
+                
+            case clientfieldEmail:
+                BLL_client.modClientdata("email");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_cli.editfieldMobile.requestFocus();
+	}
+                break;
+                
+            case clientfieldMobile:
+                BLL_client.modClientdata("mobile");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_cli.editfieldUser.requestFocus();
+	}
+                break;
+                
+            case clientfieldUser:
+                BLL_client.modClientdata("user");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_cli.editfieldPassword.requestFocus();
+	}
+                break;
+                
+            case clientfieldPassword:
+                BLL_client.modClientdata("password");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_cli.editfieldPassword2.requestFocus();
+	}
+                break;
+                
+            case clientfieldVerify:
+                BLL_client.modClientdata("password2");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_cli.editfieldShopping.requestFocus();
+	}
+                break;
+                
+            case clientfieldShopping:
+                BLL_client.modClientdata("shopping");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_cli.editfieldClientType.requestFocus();
+	}
+                break;
+                
+            case clientfieldClientType:
+                BLL_client.modClientdata("clienttype");
+                break;
+                
+                //Registered user window:
+            case ruserfieldName:
+                BLL_ruser.modRuserdata("name");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_rus.editfieldSurname.requestFocus();
+	}
+                break;
+                
+            case ruserfieldSurname:
+                BLL_ruser.modRuserdata("surname");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_rus.editfieldEmail.requestFocus();
+	}
+                break;
+                
+            case ruserfieldEmail:
+                BLL_ruser.modRuserdata("email");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_rus.editfieldMobile.requestFocus();
+	}
+                break;
+                
+            case ruserfieldMobile:
+                BLL_ruser.modRuserdata("mobile");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_rus.editfieldUser.requestFocus();
+	}
+                break;
+                
+            case ruserfieldUser:
+                BLL_ruser.modRuserdata("user");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_rus.editfieldPassword.requestFocus();
+	}
+                break;
+                
+            case ruserfieldPassword:
+                BLL_ruser.modRuserdata("password");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_rus.editfieldPassword2.requestFocus();
+	}
+                break;
+                
+            case ruserfieldVerify:
+                BLL_ruser.modRuserdata("password2");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    mod_rus.editfieldActivity.requestFocus();
+	}
+                break;
+                
+            case ruserfieldActivity:
+//                BLL_ruser.modRuserdata("activity");
                 break;
         }
     }
@@ -459,6 +870,76 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 BLL_Login.askUserdata("password");
                 break;
         
+           //Client Window
+                
+            case clientfieldName:
+                BLL_client.modClientdata("name");
+                break;
+                
+            case clientfieldSurname:
+                BLL_client.modClientdata("surname");
+                break;
+                
+            case clientfieldEmail:
+                BLL_client.modClientdata("email");
+                break;
+                
+            case clientfieldMobile:
+                BLL_client.modClientdata("mobile");
+                break;
+                
+            case clientfieldUser:
+                BLL_client.modClientdata("user");
+                break;
+                
+            case clientfieldPassword:
+                BLL_client.modClientdata("password");
+                break;
+                
+            case clientfieldVerify:
+                BLL_client.modClientdata("password2");
+                break;
+                
+            case clientfieldShopping:
+                BLL_client.modClientdata("shopping");
+                break;
+                
+            case clientfieldClientType:
+                BLL_client.modClientdata("clienttype");
+                break;
+                
+                //Registered user Window:
+            case ruserfieldName:
+                BLL_ruser.modRuserdata("name");
+                break;
+                
+            case ruserfieldSurname:
+                BLL_ruser.modRuserdata("surname");
+                break;
+                
+            case ruserfieldEmail:
+                BLL_ruser.modRuserdata("email");
+                break;
+                
+            case ruserfieldMobile:
+                BLL_ruser.modRuserdata("mobile");
+                break;
+                
+            case ruserfieldUser:
+                BLL_ruser.modRuserdata("user");
+                break;
+                
+            case ruserfieldPassword:
+                BLL_ruser.modRuserdata("password");
+                break;
+                
+            case ruserfieldVerify:
+                BLL_ruser.modRuserdata("password2");
+                break;
+                
+            case ruserfieldActivity:
+//                BLL_ruser.modRuserdata("activity");
+                break;
         }
     }
     
@@ -485,8 +966,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
             
             case mainMenu:
                 JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
-                Mongo_DB.disconnect();
-                System.exit(0);
+                Exit();
                 break;
                 
             case configMenu:
@@ -496,8 +976,17 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 
             case loginMenu:
                 JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
-                Mongo_DB.disconnect();
-                System.exit(0);
+                Exit();
+                break;
+                
+            case clientWindow:
+                JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
+                Exit();
+                break;
+                
+            case ruserWindow:
+                JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
+                Exit();
                 break;
         }
     }
@@ -524,6 +1013,11 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
 
     @Override
     public void windowDeactivated(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -38,4 +38,8 @@ public class BLL_Login {
                 break;
         }
     }//End of ask User data
+    
+    public static void Try_Login(){
+        DAO_Login.tryLogin();
+    }
 }

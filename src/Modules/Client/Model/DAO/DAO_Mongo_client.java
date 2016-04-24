@@ -57,8 +57,8 @@ public class DAO_Mongo_client {
     public static Client_class load_client_dni(String dni){
         DBCollection table=Singleton_app.collection;
         DBCursor cursor=null;
-        String out= "";
         Client_class c=new Client_class();
+//        System.out.println("Modules.Client.Model.DAO.DAO_Mongo_client.load_client_dni()");
         try{
             BasicDBObject query = new BasicDBObject();
             query.put("dni",dni);

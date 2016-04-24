@@ -94,7 +94,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
      */
     public enum Action{
         
-        //Create admin buttons and fields:
+        //Create client buttons and fields:
         createWindow,
         createfieldDNI,
         createfieldName,
@@ -111,7 +111,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         createbtnReset,
         createbtnCancel,
         
-        //Edit admin buttons and fields
+        //Edit client buttons and fields
         editWindow,
         editfieldName,
         editfieldSurname,
@@ -126,7 +126,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
         editbtnSave,
         editbtnCancel,
         
-        //Pager admin buttons and fields
+        //Pager client buttons and fields
         pagerWindow,
         AddClient,
         ModClient,

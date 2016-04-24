@@ -29,11 +29,11 @@ public class BLL_Mongo_client {
     }
     
     public static Client_class load_Client_dni(String dni){
-        Client_class c=null;
+        Client_class client=null;
         
-        c=DAO_Mongo_client.load_client_dni(dni);
-        
-                return c;
+        client=DAO_Mongo_client.load_client_dni(dni);
+//        System.out.println(client.toString());
+                return client;
     }
     
     public static void update_Client(Client_class client){

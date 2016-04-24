@@ -5,6 +5,8 @@
  */
 package Modules.Menu.Classes;
 
+import Modules.Client.Model.Classes.Client_class;
+import Modules.Reg_user.Model.Classes.Reg_user_class;
 import javax.swing.ImageIcon;
 
 /**
@@ -25,4 +27,6 @@ public class Singleton_menus {
                 public static ImageIcon rusericon_over = new ImageIcon("src/Modules/Menu/View/img/reg_user_over.png");
                 public static ImageIcon ok = new ImageIcon("src/Modules/Menu/View/img/ok.png");
                 public static ImageIcon no_ok = new ImageIcon("src/Modules/Menu/View/img/not_ok.png");
+                public static Client_class cli;
+                public static Reg_user_class rus;
 }
