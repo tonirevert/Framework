@@ -1071,7 +1071,7 @@ public class DAO_client {
         Date_class reg=null;
         Calendar calendarReg = Calendar.getInstance();
         String file="";
-        System.out.println("Modules.Client.Model.DAO.DAO_client.fillClientMod()");
+//        System.out.println("Modules.Client.Model.DAO.DAO_client.fillClientMod()");
         Modify_client.fieldDNI.setText(cli.getDni());
         Modify_client.editfieldName.setText(cli.getName());
         Modify_client.editfieldSurname.setText(cli.getSurname());

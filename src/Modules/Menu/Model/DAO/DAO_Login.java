@@ -20,13 +20,11 @@ import static Modules.Menu.Controller.MenuController.login;
 import Modules.Menu.View.Login;
 import Modules.Menu.View.Mainmenu;
 import Modules.Reg_user.Model.BLL.BLL_ruser;
-import static Modules.Reg_user.Model.BLL.BLL_ruser.position;
 import Modules.Reg_user.Model.Classes.Singleton_ruser;
 import Modules.Reg_user.View.Modify_ruser;
 import Utils.Validate;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -57,6 +55,15 @@ public class DAO_Login {
                         delay.setRepeats(false);
                         delay.start();
                         Login.info.setText("<html><font color=red>Password incorrect!</font></html>");
+    }
+    
+    public static void setLang(String Language){
+        
+        if(Language.equals("en")){
+            
+        }
+            
+        
     }
     
     /**
@@ -168,14 +175,14 @@ public class DAO_Login {
                     loginError2();
                 }
             }else{
-                System.out.println("Error 1");
+//                System.out.println("Error 1");
                 loginError1();
             }
             
             
         }else{
             out=null;
-            System.out.println("Error 2");
+//            System.out.println("Error 2");
             loginError1();
         }
         

@@ -285,7 +285,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 break;//End of case 1
                 
             case 2:
-                int lx=450;
+                int lx=400;
                 int ly=300;
 //                login.back.setSize(lx,ly);
 //                Image logback=Singleton_menus.loginback.getImage();
@@ -297,6 +297,10 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 login.addWindowListener(this);
                 login.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 login.setLocationRelativeTo(null);
+                
+                login.labelId.setText(Singleton_app.lang.getProperty("idcard"));
+                login.labelPass.setText(Singleton_app.lang.getProperty("u_password"));
+                login.showPass.setText(Singleton_app.lang.getProperty("log_showpass"));
                 
                 login.setResizable(false);
                 login.setSize(lx,ly);
@@ -427,13 +431,13 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 mod_cli.btnSearch.setName("clientbtnSearch");
                 mod_cli.btnSearch.addMouseListener(this);
                 
-                mod_cli.editdateRegistration.addPropertyChangeListener(this);
+//                mod_cli.editdateRegistration.addPropertyChangeListener(this);
                 
-                mod_cli.editfieldShopping.setActionCommand("clientfieldShopping");
-                mod_cli.editfieldShopping.setName("clientfieldShopping");
-                mod_cli.editfieldShopping.addFocusListener(this);
-                mod_cli.editfieldShopping.addActionListener(this);
-                mod_cli.editfieldShopping.addKeyListener(this);
+//                mod_cli.editfieldShopping.setActionCommand("clientfieldShopping");
+//                mod_cli.editfieldShopping.setName("clientfieldShopping");
+//                mod_cli.editfieldShopping.addFocusListener(this);
+//                mod_cli.editfieldShopping.addActionListener(this);
+//                mod_cli.editfieldShopping.addKeyListener(this);
                 
                 mod_cli.editfieldClientType.setActionCommand("clientfieldClientType");
                 mod_cli.editfieldClientType.setName("clientfieldClientType");
@@ -537,11 +541,11 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 mod_rus.btnSearch.setName("ruserbtnSearch");
                 mod_rus.btnSearch.addMouseListener(this);
                 
-                mod_rus.editfieldActivity.setActionCommand("ruserfieldActivity");
-                mod_rus.editfieldActivity.setName("ruserfieldActivity");
-                mod_rus.editfieldActivity.addFocusListener(this);
-                mod_rus.editfieldActivity.addActionListener(this);
-                mod_rus.editfieldActivity.addKeyListener(this);
+//                mod_rus.editfieldActivity.setActionCommand("ruserfieldActivity");
+//                mod_rus.editfieldActivity.setName("ruserfieldActivity");
+//                mod_rus.editfieldActivity.addFocusListener(this);
+//                mod_rus.editfieldActivity.addActionListener(this);
+//                mod_rus.editfieldActivity.addKeyListener(this);
 
                 mod_rus.btnsaveEditruser.setName("ruserbtnSave");
                 mod_rus.btnsaveEditruser.addMouseListener(this);
@@ -556,7 +560,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
     
     @Override
     public void actionPerformed(ActionEvent ae){
-        System.out.println(ae.getActionCommand());
+//        System.out.println(ae.getActionCommand());
         switch (Action.valueOf(ae.getActionCommand())){
             
             case btnOkLogin:
@@ -591,8 +595,6 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                break;
                
                case btnExit:
-
-//                    BLL_client.autosaveClient();
                     JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
                     main.dispose();
                     Exit();
@@ -631,9 +633,23 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                     Exit();
                     break;
                     
+                case clientbtnSave:
+                    
+                    break;
+                    
                 case clientbtnCancel:
                     JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
                     mod_cli.dispose();
+                    Exit();
+                    break;
+                    
+                case ruserbtnSave:
+                    
+                    break;
+                    
+                case ruserbtnCancel:
+                    JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
+                    mod_rus.dispose();
                     Exit();
                     break;
        }
@@ -981,11 +997,13 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 
             case clientWindow:
                 JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
+                mod_cli.dispose();
                 Exit();
                 break;
                 
             case ruserWindow:
                 JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
+                mod_rus.dispose();
                 Exit();
                 break;
         }

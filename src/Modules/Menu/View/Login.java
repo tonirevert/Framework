@@ -39,87 +39,50 @@ public class Login extends javax.swing.JFrame {
         btnOk = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        setEnglish = new javax.swing.JLabel();
+        setSpanish = new javax.swing.JLabel();
+        setValencian = new javax.swing.JLabel();
 
         checkPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelId.setText("ID:");
+        getContentPane().add(labelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 51, 100, -1));
+        getContentPane().add(fieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 46, 198, -1));
 
         checkDNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
+        getContentPane().add(checkDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 46, -1, -1));
 
         labelPass.setText("Password:");
+        getContentPane().add(labelPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 118, 100, -1));
+        getContentPane().add(fieldPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 113, 198, -1));
 
         checkPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Admin/View/img/not_ok.png"))); // NOI18N
+        getContentPane().add(checkPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 117, -1, -1));
 
         showPass.setText("Show Password");
+        getContentPane().add(showPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 146, 190, -1));
+        getContentPane().add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 177, 321, 36));
 
         btnOk.setText("OK");
+        getContentPane().add(btnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 95, -1));
 
         btnReset.setText("Reset");
+        getContentPane().add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 80, -1));
 
         btnCancel.setText("Cancel");
+        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 95, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(info, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelId)
-                            .addComponent(labelPass))
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(showPass)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(fieldId, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                                    .addComponent(fieldPass))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(checkDNI)
-                                    .addComponent(checkPass))))))
-                .addContainerGap(58, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(btnOk, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                .addGap(26, 26, 26)
-                .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(labelId)
-                                .addComponent(fieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(checkDNI))
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelPass)
-                            .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(checkPass))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(showPass)
-                .addGap(9, 9, 9)
-                .addComponent(info, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOk)
-                    .addComponent(btnReset)
-                    .addComponent(btnCancel))
-                .addGap(26, 26, 26))
-        );
+        setEnglish.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Menu/View/img/ukflag25px.png"))); // NOI18N
+        getContentPane().add(setEnglish, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+
+        setSpanish.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Menu/View/img/SpainFlag25px_2.png"))); // NOI18N
+        getContentPane().add(setSpanish, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
+
+        setValencian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Menu/View/img/Valflag25px_2.png"))); // NOI18N
+        getContentPane().add(setValencian, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -171,6 +134,9 @@ public class Login extends javax.swing.JFrame {
     public static javax.swing.JLabel info;
     public static javax.swing.JLabel labelId;
     public static javax.swing.JLabel labelPass;
+    public static javax.swing.JLabel setEnglish;
+    public static javax.swing.JLabel setSpanish;
+    public static javax.swing.JLabel setValencian;
     public static javax.swing.JCheckBox showPass;
     // End of variables declaration//GEN-END:variables
 }

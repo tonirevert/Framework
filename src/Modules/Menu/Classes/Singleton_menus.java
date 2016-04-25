@@ -27,6 +27,12 @@ public class Singleton_menus {
                 public static ImageIcon rusericon_over = new ImageIcon("src/Modules/Menu/View/img/reg_user_over.png");
                 public static ImageIcon ok = new ImageIcon("src/Modules/Menu/View/img/ok.png");
                 public static ImageIcon no_ok = new ImageIcon("src/Modules/Menu/View/img/not_ok.png");
+                public static ImageIcon seteng = new ImageIcon("src/Modules/Menu/View/img/ukflag25px.png");
+                public static ImageIcon unseteng = new ImageIcon("src/Modules/Menu/View/img/ukflag25px_2.png");
+                public static ImageIcon setspa = new ImageIcon("src/Modules/Menu/View/img/SpainFlag25px.png");
+                public static ImageIcon unsetspa = new ImageIcon("src/Modules/Menu/View/img/SpainFlag25px_2.png");
+                public static ImageIcon setval = new ImageIcon("src/Modules/Menu/View/img/Valflag25px.png");
+                public static ImageIcon unsetval = new ImageIcon("src/Modules/Menu/View/img/Valflag25px_2.png");
                 public static Client_class cli;
                 public static Reg_user_class rus;
 }
