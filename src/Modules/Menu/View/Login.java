@@ -64,16 +64,16 @@ public class Login extends javax.swing.JFrame {
 
         showPass.setText("Show Password");
         getContentPane().add(showPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 146, 190, -1));
-        getContentPane().add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 177, 321, 36));
+        getContentPane().add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 321, 36));
 
         btnOk.setText("OK");
-        getContentPane().add(btnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 95, -1));
+        getContentPane().add(btnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 100, -1));
 
         btnReset.setText("Reset");
         getContentPane().add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 80, -1));
 
         btnCancel.setText("Cancel");
-        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 95, -1));
+        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 105, -1));
 
         setEnglish.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Menu/View/img/ukflag25px.png"))); // NOI18N
         getContentPane().add(setEnglish, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));

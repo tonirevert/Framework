@@ -14,6 +14,7 @@ public class DAO_Dummy {
 
 	/**
 	 * Function for create dummy users
+                 * @param type a String indicating the type of the user to work with
 	 * @param quantity Used to choose the amount of Dummy to create
 	 */
 	public static void createDummys(String type, int quantity){

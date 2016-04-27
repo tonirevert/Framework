@@ -35,4 +35,5 @@ public class Singleton_menus {
                 public static ImageIcon unsetval = new ImageIcon("src/Modules/Menu/View/img/Valflag25px_2.png");
                 public static Client_class cli;
                 public static Reg_user_class rus;
+                public static int pos_rus=0;
 }

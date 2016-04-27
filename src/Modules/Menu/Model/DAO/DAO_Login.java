@@ -5,16 +5,25 @@
  */
 package Modules.Menu.Model.DAO;
 
+import Classes.Singleton_app;
 import Modules.Admin.Model.BLL.BLLDB_admin;
 import Modules.Admin.Model.Classes.Admin_class;
 import Modules.Admin.Model.Classes.Singleton_admin;
 import Modules.Client.Model.BLL.BLL_Mongo_client;
 import Modules.Client.Model.Classes.Client_class;
 import Modules.Client.View.Modify_client;
+import Modules.Config.Model.Classes.Config_class;
+import static Modules.Config.Model.DAO.DAO_Config.Language;
 import Modules.Menu.Classes.Singleton_menus;
 import Modules.Reg_user.Model.Classes.Reg_user_class;
 import static Modules.Menu.Classes.Singleton_menus.no_ok;
 import static Modules.Menu.Classes.Singleton_menus.ok;
+import static Modules.Menu.Classes.Singleton_menus.seteng;
+import static Modules.Menu.Classes.Singleton_menus.setspa;
+import static Modules.Menu.Classes.Singleton_menus.setval;
+import static Modules.Menu.Classes.Singleton_menus.unseteng;
+import static Modules.Menu.Classes.Singleton_menus.unsetspa;
+import static Modules.Menu.Classes.Singleton_menus.unsetval;
 import Modules.Menu.Controller.MenuController;
 import static Modules.Menu.Controller.MenuController.login;
 import Modules.Menu.View.Login;
@@ -42,7 +51,7 @@ public class DAO_Login {
              });
                         delay.setRepeats(false);
                         delay.start();
-                        Login.info.setText("<html><font color=red>Login or password incorrect!</font></html>");
+                        Login.info.setText(Singleton_app.lang.getProperty("log_error"));
     }
     
     public static void loginError2(){
@@ -54,16 +63,29 @@ public class DAO_Login {
              });
                         delay.setRepeats(false);
                         delay.start();
-                        Login.info.setText("<html><font color=red>Password incorrect!</font></html>");
+                        Login.info.setText(Singleton_app.lang.getProperty("log_error2"));
     }
     
     public static void setLang(String Language){
         
         if(Language.equals("en")){
-            
+            Login.setEnglish.setIcon(seteng);
+            Login.setSpanish.setIcon(unsetspa);
+            Login.setValencian.setIcon(unsetval);
+            Config_class.getinstance().setLanguage("en");
         }
-            
-        
+        else if(Language.equals("es")){
+            Login.setEnglish.setIcon(unseteng);
+            Login.setSpanish.setIcon(setspa);
+            Login.setValencian.setIcon(unsetval);
+            Config_class.getinstance().setLanguage("es");
+        }
+        else if(Language.equals("val")){
+            Login.setEnglish.setIcon(unseteng);
+            Login.setSpanish.setIcon(unsetspa);
+            Login.setValencian.setIcon(setval);
+            Config_class.getinstance().setLanguage("val");
+        }
     }
     
     /**
@@ -165,6 +187,7 @@ public class DAO_Login {
             
 //            Singleton_ruser.ru=new Reg_user_class(dni);
             pos=BLL_ruser.searchruser(dni);
+            Singleton_menus.pos_rus=pos;
             if(pos!=-1){
                 Singleton_menus.rus=Singleton_ruser.rus.get(pos);
                 if(Singleton_menus.rus.getPass().equals(pass)){

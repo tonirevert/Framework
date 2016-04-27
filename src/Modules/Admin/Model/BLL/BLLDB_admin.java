@@ -102,7 +102,7 @@ public class BLLDB_admin {
     
     /**
      * Used to search an Admin user from database
-     * @return 
+     * @return a boolean with the result state
      */
     public static boolean SearchAdminBLL() {
 

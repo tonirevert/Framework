@@ -62,7 +62,12 @@ public class Validate {
 
 		return resultado;
 	}
-	/**Validate name*/
+        
+                /**
+                 * Validate name
+                 * @param name
+                 * @return 
+                 */
 	public static boolean valname(String name) {
 		return name.matches(validname);
 	}

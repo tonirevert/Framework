@@ -71,7 +71,7 @@ public class DAO_Mongo_client {
                     
                 }
             }else{
-                System.out.println("NO DATA");
+//                System.out.println("NO DATA");
             }
         }finally{
             if(cursor!=null){

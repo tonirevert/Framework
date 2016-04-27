@@ -4,13 +4,6 @@ import java.time.LocalDate;
 import java.util.Random;
 
 import Classes.Date_class;
-import Modules.Admin.Model.Classes.Admin_class;
-import Modules.Admin.Model.Classes.Singleton_admin;
-import Modules.Client.Model.Classes.Client_class;
-import Modules.Client.Model.Classes.Singleton_client;
-import Modules.Reg_user.Model.Classes.Reg_user_class;
-import Modules.Reg_user.Model.Classes.Singleton_ruser;
-import Utils.*;
 
 
 public class Funct_Dummy {
@@ -241,50 +234,50 @@ public class Funct_Dummy {
 		return Integer.parseInt(mobile.toString());
 	}
 	
-	public static void Dummy_old() {
-		
-		
-		
-		String [] testdni={"48292470Z","48722473D","28554926N","26599039E","42470829H","32648520C","48520326D","28485527G","33582562D","21059874Q"};
-		String [] testnames={"Antonio","Jose","Pepe","Marta","Manuel","Andreu","Angela","Jorge","Felipe","Iñaki"};
-		String [] testsur={"Revert","Gonzalez","Fernandez","Moran","Sanchis","Tormo","Valls","Hinojosa","Calabuig","Bertomeu"};
-		String [] birthdates={"24/05/1981","22/03/1987","23/02/1983","12/04/1973","20/05/1985","20/12/1986","14/03/1980","23/07/1989","25/11/1978","29/12/1977"};
-		String [] testmobile={"34651936114","34625896321","34632548985","34962388320","34962383904","34676025489","34696201458","34702963218","34620859624","34624125951"};
-		String [] testmail={"test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com"};
-		String [] testuname={"Thorin","Glados","Frodo","Test4","Test5","Test6","Test7","Test8","Test9","Test10"};
-		String [] testpasswd={"1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35"};
-		String [] testavatar={"avatar","avatar","avatar","avatar","avatar","avatar","avatar","avatar","avatar","avatar"};
-		String [] contdates={"13/01/2016","20/04/2014","23/02/2000","27/09/2011","29/11/2015","20/01/2012","20/03/2014","25/03/2008","24/05/2009","26/07/2009"};
-		boolean[] testboolean={true,false,false,true,true,true,false,true,true,false};
-		String karma="";
-		int men=0;
-		String [] mendummy={"Create Admin Dummy's","Create Client Dummy's","Create Reg User Dummy's"};
-		
-				men = Funct_menus.menu_but(mendummy, "Choose type to create:", "Dummy creator");
-				switch(men){
-				case 0:
-					for(int i=0;i<=9;i++){
-						Singleton_admin.adm.add(new Admin_class(testdni[i],testnames[i],testsur[i],new Date_class(birthdates[i]),
-								testmobile[i],testmail[i],testuname[i],testpasswd[i],testavatar[i],true,
-								new Date_class(contdates[i]),30));
-					} //End for
-				break;
-		
-				case 1:
-					for(int i=0;i<=9;i++){
-						Singleton_client.cli.add(new Client_class(testdni[i],testnames[i],testsur[i],new Date_class(birthdates[i]),
-								testmobile[i],testmail[i],testuname[i],testpasswd[i],testavatar[i],true,
-								new Date_class(contdates[i]),200.00f,testboolean[i],"test"));
-					} //End for
-				break;
-						
-				case 2:
-					for(int i=0;i<=9;i++){
-						Singleton_ruser.rus.add(new Reg_user_class(testdni[i],testnames[i],testsur[i],new Date_class(birthdates[i]),
-								testmobile[i],testmail[i],testuname[i],testpasswd[i],testavatar[i],true,20,karma));
-					} //End for
-				break;
-				}
+//	public static void Dummy_old() {
+//		
+//		
+//		
+//		String [] testdni={"48292470Z","48722473D","28554926N","26599039E","42470829H","32648520C","48520326D","28485527G","33582562D","21059874Q"};
+//		String [] testnames={"Antonio","Jose","Pepe","Marta","Manuel","Andreu","Angela","Jorge","Felipe","Iñaki"};
+//		String [] testsur={"Revert","Gonzalez","Fernandez","Moran","Sanchis","Tormo","Valls","Hinojosa","Calabuig","Bertomeu"};
+//		String [] birthdates={"24/05/1981","22/03/1987","23/02/1983","12/04/1973","20/05/1985","20/12/1986","14/03/1980","23/07/1989","25/11/1978","29/12/1977"};
+//		String [] testmobile={"34651936114","34625896321","34632548985","34962388320","34962383904","34676025489","34696201458","34702963218","34620859624","34624125951"};
+//		String [] testmail={"test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com","test@test.com"};
+//		String [] testuname={"Thorin","Glados","Frodo","Test4","Test5","Test6","Test7","Test8","Test9","Test10"};
+//		String [] testpasswd={"1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35","1Grñfkei35"};
+//		String [] testavatar={"avatar","avatar","avatar","avatar","avatar","avatar","avatar","avatar","avatar","avatar"};
+//		String [] contdates={"13/01/2016","20/04/2014","23/02/2000","27/09/2011","29/11/2015","20/01/2012","20/03/2014","25/03/2008","24/05/2009","26/07/2009"};
+//		boolean[] testboolean={true,false,false,true,true,true,false,true,true,false};
+//		String karma="";
+//		int men=0;
+//		String [] mendummy={"Create Admin Dummy's","Create Client Dummy's","Create Reg User Dummy's"};
+//		
+//				men = Funct_menus.menu_but(mendummy, "Choose type to create:", "Dummy creator");
+//				switch(men){
+//				case 0:
+//					for(int i=0;i<=9;i++){
+//						Singleton_admin.adm.add(new Admin_class(testdni[i],testnames[i],testsur[i],new Date_class(birthdates[i]),
+//								testmobile[i],testmail[i],testuname[i],testpasswd[i],testavatar[i],true,
+//								new Date_class(contdates[i]),30));
+//					} //End for
+//				break;
+//		
+//				case 1:
+//					for(int i=0;i<=9;i++){
+//						Singleton_client.cli.add(new Client_class(testdni[i],testnames[i],testsur[i],new Date_class(birthdates[i]),
+//								testmobile[i],testmail[i],testuname[i],testpasswd[i],testavatar[i],true,
+//								new Date_class(contdates[i]),200.00f,testboolean[i],"test"));
+//					} //End for
+//				break;
+//						
+//				case 2:
+//					for(int i=0;i<=9;i++){
+//						Singleton_ruser.rus.add(new Reg_user_class(testdni[i],testnames[i],testsur[i],new Date_class(birthdates[i]),
+//								testmobile[i],testmail[i],testuname[i],testpasswd[i],testavatar[i],true,20,karma));
+//					} //End for
+//				break;
+//				}
 			
 //		for (int i=1;i<=30;i++){
 //		String dni= Main_Dummy.randomDni();
@@ -292,7 +285,7 @@ public class Funct_Dummy {
 //		}
 		
 			
-	}//End of Dummy
+//	}//End of Dummy
 		
 		
 

@@ -5,7 +5,8 @@ import javax.swing.JOptionPane;
 
 
 
-/**Functions to use them for project Exercise 2 from Subject 4 
+/**
+ * Functions to use them for project Exercise 2 from Subject 4 
  * @author Antonio Revert
  * @version 1.0, 09/11/15
  * 

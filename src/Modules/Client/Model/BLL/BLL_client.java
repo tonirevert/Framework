@@ -335,6 +335,7 @@ public class BLL_client {
         /**
      * Used to fill modify user window with the user data
      * @param dni string with the desired dni to find and fill
+     * @param i an integer to have other fill client
      * @return Client user
      */
     public static Client_class fill_client(String dni, int i){
@@ -392,8 +393,9 @@ public class BLL_client {
     }//End save mod client
 
         /**
-        * Used to edit a row from the table on pager client
-        */
+         * Used to edit a row from the table on pager client
+         * @return boolean with the result of the process
+         */
      public static boolean edit_client() {
         String dni;
         int selection, inicio, selection1;
@@ -460,7 +462,6 @@ public class BLL_client {
                             }
                             Singleton_client.cli.remove(cl);
                             BLL_Mongo_client.remove_Client(cl);
-//                            autosaveClient();
                         }
 
                         if (((miniSimpleTableModel_client) pagerTable.getModel()).getRowCount() == 0) {
@@ -477,6 +478,7 @@ public class BLL_client {
     
        /**
         * Used to list a row from the table on pager client
+        * @return boolean with the result of the process
         */
      public static boolean list_client() {
         String dni;

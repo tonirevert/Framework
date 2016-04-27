@@ -1,12 +1,5 @@
 package Modules.Dummy.Classes;
 
-import Classes.Singleton_app;
-import Modules.Config.Model.Classes.Config_class;
-import Modules.Dummy.DAO.DAO_Dummy;
-import Utils.Funct_menus;
-import Utils.Functions;
-import javax.swing.JOptionPane;
-
 
 
 public class BLL_files_Dummy {

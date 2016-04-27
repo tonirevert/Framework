@@ -28,8 +28,9 @@ public class Funct_files_config {
 	private static final String ENCODING = "UTF-8";
                 
                 /**
-	 * Used to auto load configuration data from JSON file format
-	 */
+                 * Used to auto load configuration data from JSON file format
+                 * @return the configuration loaded from the file
+                 */
 	public static Config_class loadjsonconfig(){
 			String PATH=null;
 			Config_class c=new Config_class();
@@ -94,8 +95,9 @@ public class Funct_files_config {
 	}//End auto save JSON Configuration
 	
                 /**
-	 * Used to auto load configuration data from XML file format
-	 */
+                 * Used to auto load configuration data from XML file format
+                 * @return the configuration loaded from the file
+                 */
                 public static Config_class loadxmlconfig(){
 		String PATH="";
 		Config_class c=new Config_class();

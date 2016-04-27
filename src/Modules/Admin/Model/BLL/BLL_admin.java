@@ -96,7 +96,7 @@ public class BLL_admin {
     public static int position=-1;
     
     /**
-     * 
+     * Not used deletes the default value from DNI field
      */
     public static void askDniClick(){
         DAO_admin.askDniClick();
@@ -383,8 +383,9 @@ public class BLL_admin {
     }
 
         /**
-        * Used to edit a row from the table on pager admin
-        */
+         * Used to edit a row from the table on pager admin
+         * @return boolean with the result of the process
+         */
      public static boolean edit_admin() {
         String dni;
         int selection, inicio, selection1;
@@ -474,8 +475,9 @@ public class BLL_admin {
     }
     
         /**
-        * Used to list a row from the table on pager admin
-        */
+         * Used to list a row from the table on pager admin
+         * @return boolean with the result of the process
+         */
      public static boolean list_admin() {
         String dni;
         Admin_class aduser=null;

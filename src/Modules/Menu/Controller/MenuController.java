@@ -39,6 +39,7 @@ import Modules.Reg_user.Model.BLL.BLL_ruser;
 import Modules.Reg_user.Model.Classes.Singleton_ruser;
 import Modules.Reg_user.View.Modify_ruser;
 import Modules.Reg_user.View.Pager_ruser;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -128,6 +129,9 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
         btnCancelConf,
         
         //Login buttons
+        setEnglish,
+        setSpanish,
+        setValencian,
         loginMenu,
         fieldId,
         fieldPass,
@@ -298,9 +302,20 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 login.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 login.setLocationRelativeTo(null);
                 
+                login.setEnglish.setName("setEnglish");
+                login.setEnglish.addMouseListener(this);
+                
+                login.setSpanish.setName("setSpanish");
+                login.setSpanish.addMouseListener(this);
+                
+                login.setValencian.setName("setValencian");
+                login.setValencian.addMouseListener(this);
+                
                 login.labelId.setText(Singleton_app.lang.getProperty("idcard"));
                 login.labelPass.setText(Singleton_app.lang.getProperty("u_password"));
                 login.showPass.setText(Singleton_app.lang.getProperty("log_showpass"));
+                login.btnOk.setText(Singleton_app.lang.getProperty("log_ok"));
+                login.btnCancel.setText(Singleton_app.lang.getProperty("w_Cancel"));
                 
                 login.setResizable(false);
                 login.setSize(lx,ly);
@@ -574,6 +589,32 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
     public void mouseClicked(MouseEvent e) {
        switch (Action.valueOf(e.getComponent().getName())){
            
+           case setEnglish:
+               BLL_Login.setLang("en");
+//                login.repaint(400, 300, 400, 300);
+//               login.dispose();
+//               new MenuController(new Login(), 2).Init(2);
+//               BLL_Login.setLang("en");
+               break;
+               
+           case setSpanish:
+               BLL_Login.setLang("es");
+//               login.revalidate();
+//               login.repaint(400, 300, 400, 300);
+//               login.repaint();
+//               login.dispose();
+//               new MenuController(new Login(), 2).Init(2);
+//               BLL_Login.setLang("es");
+               break;
+               
+           case setValencian:
+               BLL_Login.setLang("val");
+//               	login.repaint(400, 300, 400, 300);
+//               login.dispose();
+//               new MenuController(new Login(), 2).Init(2);
+//               BLL_Login.setLang("val");
+               break;
+           
            case btnAdmin:
                     main.dispose();
                     new AdminController(new Pager_admin(),2).Init(2);
@@ -633,8 +674,29 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                     Exit();
                     break;
                     
-                case clientbtnSave:
+                case clientbtnSearch:
+                    BLL_client.modClientdata("avatar");
+                    break;
                     
+                case clientbtnSave:
+                    if(BLL_client.save_mod_client()!=false){
+                        Timer delay = new Timer(3000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                mod_cli.saving.setVisible(false);
+                                mod_cli.editareaInfo.setText("");
+                                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                            }
+                        });
+                        mod_cli.saving.setVisible(true);
+                        delay.setRepeats(false);
+                        delay.start();
+                        mod_cli.editareaInfo.setText(Singleton_app.lang.getProperty("w_usaved"));
+                        mod_cli.editareaInfo.setBackground(Color.green);
+                    }else{
+                        mod_cli.editareaInfo.setText(Singleton_app.lang.getProperty("w_udatinco"));
+                        mod_cli.editareaInfo.setBackground(Color.red);
+                    }
                     break;
                     
                 case clientbtnCancel:
@@ -643,8 +705,31 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                     Exit();
                     break;
                     
-                case ruserbtnSave:
+                case ruserbtnSearch:
+                    BLL_ruser.modRuserdata("avatar");
+                    break;
                     
+                case ruserbtnSave:
+                    if(BLL_ruser.save_mod_ruser(Singleton_menus.pos_rus)!=false){
+                    Timer delay = new Timer(3000, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            mod_rus.saving.setVisible(false);
+                            mod_rus.editareaInfo.setText("");
+                            mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                        }
+                    });
+                    mod_rus.saving.setVisible(true);
+                    delay.setRepeats(false);
+                    delay.start();
+                    BLL_ruser.save_mod_ruser(Singleton_menus.pos_rus);
+                    BLL_ruser.autosaveRuser();
+                    mod_rus.editareaInfo.setText(Singleton_app.lang.getProperty("w_usaved"));
+                    mod_rus.editareaInfo.setBackground(Color.green);
+                }else{
+                    mod_rus.editareaInfo.setText(Singleton_app.lang.getProperty("w_udatinco"));
+                    mod_rus.editareaInfo.setBackground(Color.red);
+                }
                     break;
                     
                 case ruserbtnCancel:
@@ -968,12 +1053,188 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
     
         @Override
     public void focusGained(FocusEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch (Action.valueOf(e.getComponent().getName())) {
+            
+            //Client Window
+            case clientfieldName:
+                mod_cli.editareaInfo.setText(Singleton_app.lang.getProperty("u_nainfo"));
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldSurname:
+                mod_cli.editareaInfo.setText(Singleton_app.lang.getProperty("u_suinfo"));
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldEmail:
+                mod_cli.editareaInfo.setText(Singleton_app.lang.getProperty("u_eminfo"));
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+            
+            case clientfieldMobile:
+                mod_cli.editareaInfo.setText(Singleton_app.lang.getProperty("u_moinfo"));
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldUser:
+                mod_cli.editareaInfo.setText(Singleton_app.lang.getProperty("u_usinfo"));
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldPassword:
+                mod_cli.editareaInfo.setText(Singleton_app.lang.getProperty("uc_inpasswd"));
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldVerify:
+                mod_cli.editareaInfo.setText(Singleton_app.lang.getProperty("u_veinfo"));
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldShopping:
+                mod_cli.editareaInfo.setText(Singleton_app.lang.getProperty("c_shinfo"));
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldClientType:
+                mod_cli.editareaInfo.setText(Singleton_app.lang.getProperty("c_tyinfo"));
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            //Reg user Window
+            case ruserfieldName:
+                mod_rus.editareaInfo.setText(Singleton_app.lang.getProperty("u_nainfo"));
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case ruserfieldSurname:
+                mod_rus.editareaInfo.setText(Singleton_app.lang.getProperty("u_suinfo"));
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case ruserfieldEmail:
+                mod_rus.editareaInfo.setText(Singleton_app.lang.getProperty("u_eminfo"));
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+            
+            case ruserfieldMobile:
+                mod_rus.editareaInfo.setText(Singleton_app.lang.getProperty("u_moinfo"));
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case ruserfieldUser:
+                mod_rus.editareaInfo.setText(Singleton_app.lang.getProperty("u_usinfo"));
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case ruserfieldPassword:
+                mod_rus.editareaInfo.setText(Singleton_app.lang.getProperty("uc_inpasswd"));
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case ruserfieldVerify:
+                mod_rus.editareaInfo.setText(Singleton_app.lang.getProperty("u_veinfo"));
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case ruserfieldActivity:
+                mod_rus.editareaInfo.setText(Singleton_app.lang.getProperty("u_acinfo"));
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+        }
     }
 
     @Override
     public void focusLost(FocusEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch (Action.valueOf(e.getComponent().getName())) {
+            
+            //Client window
+            case clientfieldName:
+                mod_cli.editareaInfo.setText("");
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldSurname:
+                mod_cli.editareaInfo.setText("");
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldEmail:
+                mod_cli.editareaInfo.setText("");
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+            
+            case clientfieldMobile:
+                mod_cli.editareaInfo.setText("");
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldUser:
+                mod_cli.editareaInfo.setText("");
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldPassword:
+                mod_cli.editareaInfo.setText("");
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldVerify:
+                mod_cli.editareaInfo.setText("");
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldShopping:
+                mod_cli.editareaInfo.setText("");
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case clientfieldClientType:
+                mod_cli.editareaInfo.setText("");
+                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            //Reg user Window
+            case ruserfieldName:
+                mod_rus.editareaInfo.setText("");
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case ruserfieldSurname:
+                mod_rus.editareaInfo.setText("");
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case ruserfieldEmail:
+                mod_rus.editareaInfo.setText("");
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+            
+            case ruserfieldMobile:
+                mod_rus.editareaInfo.setText("");
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case ruserfieldUser:
+                mod_rus.editareaInfo.setText("");
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case ruserfieldPassword:
+                mod_rus.editareaInfo.setText("");
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case ruserfieldVerify:
+                mod_rus.editareaInfo.setText("");
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+                
+            case ruserfieldActivity:
+                mod_rus.editareaInfo.setText("");
+                mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                break;
+        }
     }
     
     @Override

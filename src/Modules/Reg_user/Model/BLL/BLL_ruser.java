@@ -256,6 +256,7 @@ public class BLL_ruser {
     
     /**
      * Used to search a user in the Array List
+     * @param dni a String with the DNI to search
      * @return the position of the user in the Array List
      */
     public static int searchruser(String dni){
@@ -391,8 +392,32 @@ public class BLL_ruser {
              return correct;
     }
 
+    /**
+     * Save the modified user into the database
+     * @param pos an integer with the position of the user in the Array List
+     * @return boolean with the result of the process
+     */
+    public static boolean save_mod_ruser(int pos){
+
+        boolean correct=false;
+        Reg_user_class ruser= null;
+
+            ruser=DAO_ruser.saveRuserMod();
+             if (ruser== null){
+            correct=false;
+        }else{
+            Singleton_ruser.rus.set(pos,ruser);
+            autosaveRuser();
+//            resetFields();
+            correct=true;
+            position=-1;
+            }
+             return correct;
+    }
+    
         /**
         * Used to edit a row from the table on pager ruser
+        * @return with the result of the process
         */
      public static boolean edit_ruser() {
         String dni;
@@ -477,6 +502,7 @@ public class BLL_ruser {
 
         /**
         * Used to list a row from the table on pager reg user
+        * @return a boolean with the result of the process
         */
      public static boolean list_ruser() {
         String dni;

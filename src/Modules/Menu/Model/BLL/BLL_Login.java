@@ -5,7 +5,9 @@
  */
 package Modules.Menu.Model.BLL;
 
+import Classes.Singleton_app;
 import Modules.Menu.Model.DAO.DAO_Login;
+import Modules.Menu.View.Login;
 
 /**
  *
@@ -13,6 +15,15 @@ import Modules.Menu.Model.DAO.DAO_Login;
  */
 public class BLL_Login {
     
+    public static void setLang(String Language){
+        
+        DAO_Login.setLang(Language);
+        Login.labelId.setText(Singleton_app.lang.getProperty("idcard"));
+        Login.labelPass.setText(Singleton_app.lang.getProperty("u_password"));
+        Login.showPass.setText(Singleton_app.lang.getProperty("log_showpass"));
+        Login.btnOk.setText(Singleton_app.lang.getProperty("log_ok"));
+        Login.btnCancel.setText(Singleton_app.lang.getProperty("w_Cancel"));
+    }
     
     public static void askUserdata(String type){
         boolean correct=false;

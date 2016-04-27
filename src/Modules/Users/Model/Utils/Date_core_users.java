@@ -16,7 +16,10 @@ import javax.swing.JOptionPane;
 *
 */
 
-/**Functions to work with dates, using the Date_class from Users->Utils*/
+/**
+ * Functions to work with dates, using the Date_class from Users-Utils
+ * @author antonio
+ */
 public class Date_core_users {
 
 	/**
@@ -280,8 +283,8 @@ public class Date_core_users {
         
 	/**
 	 * Array to test, but doesn't seem it works
-	 * @param type
-	 * @return
+	 * @param type the type of data to work with
+	 * @return an Array with the desired data
 	 */
 	public static Date_class[] admindates(String type){
 		Date_class[] date=new Date_class[2];
