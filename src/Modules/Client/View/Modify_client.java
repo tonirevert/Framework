@@ -82,6 +82,7 @@ public class Modify_client extends javax.swing.JFrame {
         saving = new javax.swing.JOptionPane();
         editareaInfo = new javax.swing.JTextArea();
         back = new javax.swing.JLabel();
+        btnLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -283,11 +284,11 @@ public class Modify_client extends javax.swing.JFrame {
 
         btnsaveEditclient.setText("Save");
         getContentPane().add(btnsaveEditclient);
-        btnsaveEditclient.setBounds(160, 400, 105, 31);
+        btnsaveEditclient.setBounds(120, 400, 105, 31);
 
         btncancelEditclient.setText("Cancel");
         getContentPane().add(btncancelEditclient);
-        btncancelEditclient.setBounds(380, 400, 105, 31);
+        btncancelEditclient.setBounds(400, 400, 105, 31);
 
         saving.setBorder(null);
         saving.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/modify.gif"))); // NOI18N
@@ -309,6 +310,10 @@ public class Modify_client extends javax.swing.JFrame {
         getContentPane().add(back);
         back.setBounds(0, 0, 26, 17);
 
+        btnLogout.setText("Log-out");
+        getContentPane().add(btnLogout);
+        btnLogout.setBounds(260, 400, 105, 31);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
             
@@ -316,6 +321,7 @@ public class Modify_client extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel avatar;
     public static javax.swing.JLabel back;
+    public static javax.swing.JButton btnLogout;
     public static javax.swing.JButton btnSearch;
     public static javax.swing.JButton btncancelEditclient;
     public static javax.swing.JButton btnsaveEditclient;

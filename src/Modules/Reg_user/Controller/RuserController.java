@@ -304,6 +304,7 @@ public class RuserController implements ActionListener, KeyListener, MouseListen
                 edit.editdateBirth.setDateFormatString(Config_class.getinstance().getDate_format());
                 edit.editdateBirth.getDateEditor().setEnabled(false);
                 edit.setLocationRelativeTo(null);
+                edit.btnLogout.setVisible(false);
                 edit.setVisible(true);
 
                 //Translation:

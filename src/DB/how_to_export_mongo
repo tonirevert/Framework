@@ -6,3 +6,9 @@ https://docs.mongodb.org/v2.4/reference/program/mongoexport/
 https://docs.mongodb.org/v2.4/reference/program/mongoimport/#bin.mongoimport
 
 mongoimport --db prog --collection client --file clients.json
+
+
+Export the entire database:
+https://nodeymongo.wordpress.com/2014/06/12/exportacion-e-importacion-de-datos-en-mongodb/
+
+mongodump -h 127.0.0.1:27017 -d prog -o /media/antonio/Comun/Prog/Framework_V2/src/DB

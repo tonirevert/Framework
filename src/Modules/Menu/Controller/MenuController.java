@@ -31,8 +31,8 @@ import static Modules.Menu.Controller.MenuController.Action.btnAdmin;
 import static Modules.Menu.Controller.MenuController.Action.btnConfig;
 import static Modules.Menu.Controller.MenuController.main;
 import Modules.Menu.Model.BLL.BLL_Login;
-import Modules.Menu.Model.DAO.DAO_Login;
 import Modules.Menu.View.Login;
+import Modules.Menu.View.Logout;
 import Modules.Menu.View.Mainmenu;
 import Modules.Reg_user.Controller.RuserController;
 import Modules.Reg_user.Model.BLL.BLL_ruser;
@@ -72,6 +72,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
     public static Login login;
     public static Modify_client mod_cli;
     public static Modify_ruser mod_rus;
+    public static Logout logout;
     private JPanel panel;
     
     /**
@@ -103,6 +104,10 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 
             case 4:
                 mod_rus=(Modify_ruser)frame;
+                break;
+                
+            case 5:
+                logout=(Logout)frame;
                 break;
         }
                 
@@ -153,6 +158,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
         clientfieldShopping,
         clientfieldClientType,
         clientbtnSave,
+        clientbtnLogout,
         clientbtnCancel,
         
         //Edit Reg user
@@ -167,6 +173,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
         ruserbtnSearch,
         ruserfieldActivity,
         ruserbtnSave,
+        ruserbtnLogout,
         ruserbtnCancel,
         
     }
@@ -368,6 +375,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 mod_cli.radioPremiumNo.setEnabled(false);
                 mod_cli.radioPremiumYes.setEnabled(false);
                 mod_cli.editdateRegistration.setEnabled(false);
+                mod_cli.btnLogout.setEnabled(true);
                 mod_cli.setVisible(true);
 
                 //Translation:
@@ -391,6 +399,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 mod_cli.radioPremiumNo.setText(Singleton_app.lang.getProperty("booleanno"));
                 
                 mod_cli.btnsaveEditclient.setText(Singleton_app.lang.getProperty("w_save"));
+                mod_cli.btnLogout.setText(Singleton_app.lang.getProperty("cli_logout"));
                 mod_cli.btncancelEditclient.setText(Singleton_app.lang.getProperty("exit"));
                 mod_cli.btnSearch.setText(Singleton_app.lang.getProperty("w_search"));
                 
@@ -463,6 +472,9 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 mod_cli.btnsaveEditclient.setName("clientbtnSave");
                 mod_cli.btnsaveEditclient.addMouseListener(this);
                 
+                mod_cli.btnLogout.setName("clientbtnLogout");
+                mod_cli.btnLogout.addMouseListener(this);
+                
                 mod_cli.btncancelEditclient.setName("clientbtnCancel");
                 mod_cli.btncancelEditclient.addMouseListener(this);
                 break;//End case modify client
@@ -501,6 +513,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 mod_rus.labelActivity.setText(Singleton_app.lang.getProperty("r_activity"));
                 
                 mod_rus.btnsaveEditruser.setText(Singleton_app.lang.getProperty("w_save"));
+                mod_rus.btnLogout.setText(Singleton_app.lang.getProperty("cli_logout"));
                 mod_rus.btncancelEditruser.setText(Singleton_app.lang.getProperty("exit"));
                 mod_rus.btnSearch.setText(Singleton_app.lang.getProperty("w_search"));
                 
@@ -565,8 +578,18 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 mod_rus.btnsaveEditruser.setName("ruserbtnSave");
                 mod_rus.btnsaveEditruser.addMouseListener(this);
                 
+                mod_rus.btnLogout.setName("ruserbtnLogout");
+                mod_rus.btnLogout.addMouseListener(this);
+                
                 mod_rus.btncancelEditruser.setName("ruserbtnCancel");
                 mod_rus.btncancelEditruser.addMouseListener(this);
+                break;
+                
+            case 5:
+                logout.setResizable(false);
+                logout.setLocationRelativeTo(null);
+                logout.labelOut.setText(Singleton_app.lang.getProperty("l_out"));
+                logout.setVisible(true);
                 break;
                 
         }//End of switch case Init
@@ -591,28 +614,14 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
            
            case setEnglish:
                BLL_Login.setLang("en");
-//                login.repaint(400, 300, 400, 300);
-//               login.dispose();
-//               new MenuController(new Login(), 2).Init(2);
-//               BLL_Login.setLang("en");
                break;
                
            case setSpanish:
                BLL_Login.setLang("es");
-//               login.revalidate();
-//               login.repaint(400, 300, 400, 300);
-//               login.repaint();
-//               login.dispose();
-//               new MenuController(new Login(), 2).Init(2);
-//               BLL_Login.setLang("es");
                break;
                
            case setValencian:
                BLL_Login.setLang("val");
-//               	login.repaint(400, 300, 400, 300);
-//               login.dispose();
-//               new MenuController(new Login(), 2).Init(2);
-//               BLL_Login.setLang("val");
                break;
            
            case btnAdmin:
@@ -683,9 +692,8 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                         Timer delay = new Timer(3000, new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                mod_cli.saving.setVisible(false);
-                                mod_cli.editareaInfo.setText("");
-                                mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                                mod_cli.dispose();
+                                new MenuController(new Login(), 2).Init(2);
                             }
                         });
                         mod_cli.saving.setVisible(true);
@@ -699,10 +707,23 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                     }
                     break;
                     
+                case clientbtnLogout:
+                     Timer delay2 = new Timer(3000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                logout.dispose();
+                                new MenuController(new Login(), 2).Init(2);
+                            }
+                        });
+                        mod_cli.dispose();
+                        new MenuController(new Logout(),5).Init(5);
+                        delay2.setRepeats(false);
+                        delay2.start();
+                    break;
+                    
                 case clientbtnCancel:
-                    JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
                     mod_cli.dispose();
-                    Exit();
+                    new MenuController(new Login(), 2).Init(2);
                     break;
                     
                 case ruserbtnSearch:
@@ -714,9 +735,8 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                     Timer delay = new Timer(3000, new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            mod_rus.saving.setVisible(false);
-                            mod_rus.editareaInfo.setText("");
-                            mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                            mod_rus.dispose();
+                            new MenuController(new Login(), 2).Init(2);
                         }
                     });
                     mod_rus.saving.setVisible(true);
@@ -732,10 +752,23 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 }
                     break;
                     
+                case ruserbtnLogout:
+                    Timer delay3 = new Timer(3000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                logout.dispose();
+                                new MenuController(new Login(), 2).Init(2);
+                            }
+                        });
+                        mod_rus.dispose();
+                        new MenuController(new Logout(),5).Init(5);
+                        delay3.setRepeats(false);
+                        delay3.start();
+                    break;
+                    
                 case ruserbtnCancel:
-                    JOptionPane.showMessageDialog(null,Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
                     mod_rus.dispose();
-                    Exit();
+                    new MenuController(new Login(), 2).Init(2);
                     break;
        }
     }

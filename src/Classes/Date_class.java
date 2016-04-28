@@ -60,7 +60,7 @@ public class Date_class implements Serializable{
 	/**
 	 * Constructor switch case to take in account the date format
 	 * @param date Gets a date from a string
-	 * @param format To change the date format
+	 * @param number Used to choose this constructor
 	 */
 	public Date_class(String date,int number){
 		String[] a_date=null;
@@ -141,52 +141,85 @@ public class Date_class implements Serializable{
 //		
 //	}
         
-        
-	/**Day getter for Date_class*/
+                /**
+                 * Day getter for Date_class
+                 * @return an integer with the day number
+                 */
 	public int getDay() {
 		return day;
 	}
 
-	/**Day setter for Date_class*/
+                /**
+                 * Day setter for Date_class
+                 * @param day an integer with the day to set
+                 */
 	public void setDay(int day) {
 		this.day = day;
 	}
 
-	/**Month getter for Date_class*/
+                /**
+                 * Month getter for Date_class
+                 * @return an integer with the month number
+                 */
 	public int getMonth() {
 		return month;
 	}
 
-	/**Month setter for Date_class*/
+                /**
+                 * Month setter for Date_class
+                 * @param month integer with the month to set
+                 */
 	public void setMonth(int month) {
 		this.month = month;
 	}
 
-	/**Year getter for Date_class*/
+                /**
+                 * Year getter for Date_class
+                 * @return an integer with the year
+                 */
 	public int getYear() {
 		return year;
 	}
 
-	/**Year setter for Date_class*/
+                /**
+                 * Year setter for Date_class
+                 * @param year an integer with the year to set
+                 */
 	public void setYear(int year) {
 		this.year = year;
 	}
 
-	/**Date getter for Date_class*/
+                /**
+                 * Date getter for Date_class
+                 * @return a String of the date
+                 */
 	public String getDate() {
 		return date;
 	}
-	/**Date setter for Date_class*/
+        
+                /**
+                 * Date setter for Date_class
+                 * @param date a String with the date to set
+                 */
 	public void setDate(String date) {
 		this.date = date;
 	}
-
+        
+                /**
+                 * toString to list the current date using a String
+                 * @return a String of the date
+                 */
 	public String toString(){
 		String d="";
 		d=this.date=getDate();
 		return d;
 	}
 	
+                /**
+                 * toString to list the current date using a String
+                 * @param number a integer to differentiate from the other toString
+                 * @return a String of the date, tacking into account the format configuration
+                 */
 	public String toString(int number){
 		String d="";
 		
@@ -212,6 +245,11 @@ public class Date_class implements Serializable{
 		return d;
 	}
 	
+                /**
+                 * Used to transform a Calendar into a String
+                 * @param date a Calendar object
+                 * @return a String of the input Calendar
+                 */
 	public static String CalendartoString(Calendar date){
 		String cal=sdf.format(date);
 	      return cal;
@@ -260,7 +298,10 @@ public class Date_class implements Serializable{
 		return "You are "+ p.getYears()+" years, " + p.getMonths() +" months, and " + p.getDays() +" days old. (" + p2 + " days total)";
 	}
 	
-	/**Returns a integer with the years from today*/
+                /**
+                 * Returns a integer with the years from today
+                 * @return an integer with the amount of years between this date and today
+                 */
 	public int intyearstoday(){
 		LocalDate today = LocalDate.now();
 		LocalDate date = LocalDate.of(this.year, this.month, this.day);
@@ -268,10 +309,14 @@ public class Date_class implements Serializable{
 		return p.getYears();
 	}
 	
+                /**
+                 * Used to take the actual date
+                 * @return a String with the date of today
+                 */
 	public String actualdate() {
-        Calendar date = Calendar.getInstance();
-        return sdf.format(date.getTime());    
-    }
+                        Calendar date = Calendar.getInstance();
+                        return sdf.format(date.getTime());    
+                }
 	
 	/**
 	 * Used to compare if a date is before, equal or after today
@@ -368,20 +413,20 @@ public class Date_class implements Serializable{
 	}
 	
 	/**
-	 * 
-	 * @param date
+	 * Compare dates to know if a date is after or before today
+	 * @param date parameter used only to differentiate this function from the otrher with the same name
 	 * @return Return an integer 0 if is before date, 
 	 * 1 if is equals to date, and 2 if is after
 	 */
 	public int Compare_today(String date) {
 		int out=0;
 		Calendar dat = Calendar.getInstance();
-        Calendar cal= this.StringtoCalendar();
+                                Calendar cal= this.StringtoCalendar();
 		sdf.format(dat.getTime());		
 		dat.set(Calendar.SECOND, 0);
-        dat.set(Calendar.MILLISECOND, 0);
-        dat.set(Calendar.HOUR,0);
-        dat.set(Calendar.MINUTE,0);
+                                dat.set(Calendar.MILLISECOND, 0);
+                                dat.set(Calendar.HOUR,0);
+                                dat.set(Calendar.MINUTE,0);
 		if (cal.before(dat)){
 			out=0;  //compareTo -1
 		}else if(cal.equals(dat)){
@@ -392,6 +437,10 @@ public class Date_class implements Serializable{
 		return out;
 	}
 	
+                /**
+                 * Used to check if a day is correct or not
+                 * @return a boolean with the result
+                 */
 	public boolean checkday(){
 		GregorianCalendar calendar = new GregorianCalendar();
 		int daymonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -407,6 +456,10 @@ public class Date_class implements Serializable{
 		}
 	}
 	
+                /**
+                 * Used to check if a month is correct or not
+                 * @return a boolean with the result
+                 */
 	public boolean checkmonth(){
 		if((this.month >=1) && (this.month <=12)){
 			return true;
@@ -415,6 +468,10 @@ public class Date_class implements Serializable{
 		}
 	}
 	
+                /**
+                 * Used to check if a year is correct or not
+                 * @return a boolean with the result
+                 */
 	public boolean checkyear(){
 		if ((this.year >= 1900) && (this.year <= 2100)){
 			return true;
@@ -424,7 +481,7 @@ public class Date_class implements Serializable{
 	}
 	
 	/**
-	 * Boolean to check if a date is correct or not
+	 * Method to check if a date is correct or not
 	 * @return true if date is correct and false if is incorrect
 	 */
 	public boolean checkdate2() {
@@ -442,6 +499,10 @@ public class Date_class implements Serializable{
 		return validdate;
 	}
 	
+                /**
+                 * Method to check if a date is correct or not
+	 * @return true if date is correct and false if is incorrect
+                 */
 	public boolean checkdate3(){
 		Calendar cal = Calendar.getInstance();
 		Date dat = null;
@@ -456,26 +517,30 @@ public class Date_class implements Serializable{
 		return validdate;
 	}
 	
+                /**
+                 * Method to check if a date is correct or not
+	 * @return true if date is correct and false if is incorrect
+                 */
 	public boolean checkdate() {
-        boolean ok = true;
-        GregorianCalendar date = new GregorianCalendar();
-        int daymonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+                        boolean ok = true;
+                        GregorianCalendar date = new GregorianCalendar();
+                        int daymonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-        if ((this.month < 1) || (this.month > 12)) {
-            ok = false;
-        }
+                        if ((this.month < 1) || (this.month > 12)) {
+                            ok = false;
+                        }
 
-        if (ok) {
-            date.set(this.year, this.month, this.day);
+                        if (ok) {
+                            date.set(this.year, this.month, this.day);
 
-            if (date.isLeapYear(this.year)) {
-                daymonth[2] = 29;
-            }
-            if ((this.day < 1) || (this.day > daymonth[this.month])) {
-                ok = false;
-            }
-        }
-        return ok;
-    }
+                            if (date.isLeapYear(this.year)) {
+                                daymonth[2] = 29;
+                            }
+                            if ((this.day < 1) || (this.day > daymonth[this.month])) {
+                                ok = false;
+                            }
+                        }
+                        return ok;
+                }
 
 }

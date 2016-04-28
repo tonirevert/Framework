@@ -81,6 +81,7 @@ public class Modify_ruser extends javax.swing.JFrame {
         btncancelEditruser = new javax.swing.JButton();
         back = new javax.swing.JLabel();
         saving = new javax.swing.JOptionPane();
+        btnLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -89,11 +90,11 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         fieldDNI.setBackground(java.awt.Color.yellow);
         getContentPane().add(fieldDNI);
-        fieldDNI.setBounds(130, 10, 148, 25);
+        fieldDNI.setBounds(130, 10, 148, 27);
 
         labelDNI.setText("ID Card:");
         getContentPane().add(labelDNI);
-        labelDNI.setBounds(25, 15, 105, 15);
+        labelDNI.setBounds(25, 15, 105, 17);
 
         checkDNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDNI);
@@ -101,11 +102,11 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         editfieldName.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldName);
-        editfieldName.setBounds(130, 50, 148, 25);
+        editfieldName.setBounds(130, 50, 148, 27);
 
         labelName.setText("Name:");
         getContentPane().add(labelName);
-        labelName.setBounds(25, 50, 105, 15);
+        labelName.setBounds(25, 50, 105, 17);
 
         checkName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkName);
@@ -113,12 +114,12 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         editfieldSurname.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldSurname);
-        editfieldSurname.setBounds(130, 90, 150, 25);
+        editfieldSurname.setBounds(130, 90, 150, 27);
         editfieldSurname.getAccessibleContext().setAccessibleName("editfieldSurname");
 
         labelSurname.setText("Surname:");
         getContentPane().add(labelSurname);
-        labelSurname.setBounds(25, 90, 105, 15);
+        labelSurname.setBounds(25, 90, 105, 17);
 
         checkSurname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkSurname);
@@ -126,11 +127,11 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         editfieldEmail.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldEmail);
-        editfieldEmail.setBounds(130, 130, 150, 25);
+        editfieldEmail.setBounds(130, 130, 150, 27);
 
         labelEmail.setText("e-mail:");
         getContentPane().add(labelEmail);
-        labelEmail.setBounds(25, 130, 105, 15);
+        labelEmail.setBounds(25, 130, 105, 17);
 
         checkEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkEmail);
@@ -138,11 +139,11 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         editfieldMobile.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldMobile);
-        editfieldMobile.setBounds(130, 170, 150, 25);
+        editfieldMobile.setBounds(130, 170, 150, 27);
 
         labelMobile.setText("Mobile:");
         getContentPane().add(labelMobile);
-        labelMobile.setBounds(25, 170, 105, 15);
+        labelMobile.setBounds(25, 170, 105, 17);
 
         checkMobile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkMobile);
@@ -150,11 +151,11 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         editfieldUser.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldUser);
-        editfieldUser.setBounds(130, 210, 150, 25);
+        editfieldUser.setBounds(130, 210, 150, 27);
 
         labelUser.setText("User:");
         getContentPane().add(labelUser);
-        labelUser.setBounds(25, 210, 105, 15);
+        labelUser.setBounds(25, 210, 105, 17);
 
         checkUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkUser);
@@ -162,11 +163,11 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         editfieldPassword.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldPassword);
-        editfieldPassword.setBounds(130, 250, 150, 25);
+        editfieldPassword.setBounds(130, 250, 150, 27);
 
         labelPassword.setText("Password:");
         getContentPane().add(labelPassword);
-        labelPassword.setBounds(25, 250, 105, 15);
+        labelPassword.setBounds(25, 250, 105, 17);
 
         checkPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword);
@@ -174,11 +175,11 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         editfieldPassword2.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldPassword2);
-        editfieldPassword2.setBounds(130, 290, 150, 25);
+        editfieldPassword2.setBounds(130, 290, 150, 27);
 
         labelPassword2.setText("Verify:");
         getContentPane().add(labelPassword2);
-        labelPassword2.setBounds(25, 290, 105, 15);
+        labelPassword2.setBounds(25, 290, 105, 17);
 
         checkPassword2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkPassword2);
@@ -193,7 +194,7 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         labeldateBirth.setText("Birth date:");
         getContentPane().add(labeldateBirth);
-        labeldateBirth.setBounds(310, 15, 120, 15);
+        labeldateBirth.setBounds(310, 15, 120, 17);
 
         checkDatebirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkDatebirth);
@@ -201,7 +202,7 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         btnSearch.setText("Search");
         getContentPane().add(btnSearch);
-        btnSearch.setBounds(380, 90, 90, 29);
+        btnSearch.setBounds(380, 90, 90, 31);
 
         avatar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(avatar);
@@ -209,11 +210,11 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         labelAvatar.setText("Avatar:");
         getContentPane().add(labelAvatar);
-        labelAvatar.setBounds(310, 90, 90, 15);
+        labelAvatar.setBounds(310, 90, 90, 17);
 
         labelState.setText("State: Connected?");
         getContentPane().add(labelState);
-        labelState.setBounds(310, 170, 160, 15);
+        labelState.setBounds(310, 170, 160, 17);
 
         buttonGroupState.add(radioStateYes);
         radioStateYes.setText("Yes");
@@ -228,11 +229,11 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         editfieldActivity.setBackground(java.awt.Color.yellow);
         getContentPane().add(editfieldActivity);
-        editfieldActivity.setBounds(430, 210, 114, 25);
+        editfieldActivity.setBounds(430, 210, 114, 27);
 
         labelActivity.setText("Activity:");
         getContentPane().add(labelActivity);
-        labelActivity.setBounds(310, 210, 90, 15);
+        labelActivity.setBounds(310, 210, 90, 17);
 
         checkActivity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Reg_user/View/img/not_ok.png"))); // NOI18N
         getContentPane().add(checkActivity);
@@ -246,15 +247,15 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         btnsaveEditruser.setText("Save");
         getContentPane().add(btnsaveEditruser);
-        btnsaveEditruser.setBounds(160, 400, 105, 29);
+        btnsaveEditruser.setBounds(120, 400, 105, 31);
 
         btncancelEditruser.setText("Cancel");
         getContentPane().add(btncancelEditruser);
-        btncancelEditruser.setBounds(380, 400, 105, 29);
+        btncancelEditruser.setBounds(400, 400, 105, 31);
 
         back.setText("back");
         getContentPane().add(back);
-        back.setBounds(0, 0, 30, 15);
+        back.setBounds(0, 0, 26, 17);
 
         saving.setBorder(null);
         saving.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Modules/Client/View/img/modify.gif"))); // NOI18N
@@ -266,6 +267,10 @@ public class Modify_ruser extends javax.swing.JFrame {
         getContentPane().add(saving);
         saving.setBounds(260, 148, 130, 130);
 
+        btnLogout.setText("Log-out");
+        getContentPane().add(btnLogout);
+        btnLogout.setBounds(260, 400, 105, 31);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
             
@@ -274,6 +279,7 @@ public class Modify_ruser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel avatar;
     public static javax.swing.JLabel back;
+    public static javax.swing.JButton btnLogout;
     public static javax.swing.JButton btnSearch;
     public static javax.swing.JButton btncancelEditruser;
     public static javax.swing.JButton btnsaveEditruser;

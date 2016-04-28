@@ -320,6 +320,7 @@ public class ClientController implements ActionListener, KeyListener, MouseListe
                 edit.editdateBirth.getDateEditor().setEnabled(false);
                 edit.editdateRegistration.getDateEditor().setEnabled(false);
                 edit.setLocationRelativeTo(null);
+                edit.btnLogout.setVisible(false);
                 edit.setVisible(true);
 
                 //Translation:

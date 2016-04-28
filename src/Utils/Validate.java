@@ -25,6 +25,10 @@ import Modules.Config.Model.Classes.Config_class;
  * 
  * */
 
+/**
+ * Class to validate strings
+ * @author antonio
+ */
 public class Validate {
 
 	private static final String validname = "^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ\\s]{3,}$"; //"^[a-zA-Z\\s\\D]*$" [A-Z][a-zA-Z]*\\D{3}
@@ -40,7 +44,7 @@ public class Validate {
 	private static final String validage = "[0-9]{1,2}$";
 	private static final String valiantiquity = "[0-9]{1,2}$";
 	private static final String validsalary= "([0-9]{1,4}.[0-9]{0,2})$";
-        private static final String validshopping= "^-?[0-9]+([.][0-9]*)?$";
+                private static final String validshopping= "^-?[0-9]+([.][0-9]*)?$";
 	private static final String validactivity = "[0-9]{0,9}$";
                 private static final String validcltype = "^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ\\s]{3,}$";
                 private static final String valkarm = "^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ\\s]{3,}$";
@@ -64,81 +68,144 @@ public class Validate {
 	}
         
                 /**
-                 * Validate name
-                 * @param name
-                 * @return 
+                 * Validate name and surname
+                 * @param name a String with the name or surname to check
+                 * @return a boolean with the result
                  */
 	public static boolean valname(String name) {
 		return name.matches(validname);
 	}
-	/**Validate email*/
+        
+                /**
+                 * Validate email
+                 * @param name a String with the email to check
+                 * @return a boolean with the result
+                 */
 	public static boolean valemail(String name) {
 		return name.matches(validemail);
 	}
-	/**Validate date*/
-	public static boolean valdate(String name){
-		return name.matches(validdate);
-	}
-	/**Validate mobile*/
-	public static boolean valmobile(String name){
-		return name.matches(validmobile);
-	}
-	/**Validate user name*/
-	public static boolean valuser(String name){
-		return name.matches(validuser);
-	}
-	/**Validate password*/
-	public static boolean valpass(String name){
-		return name.matches(validpass);
-	}
-	/**Validate age*/
-	public static boolean valage(String name){
-		return name.matches(validage);
-	}
-	/**Validate antiquity*/
-	public static boolean valantiquity(String name){
-		return name.matches(valiantiquity);
-	}
-	/**Validate salary*/
-	public static boolean valsalary(String name){
-		return name.matches(validsalary);
-	}
-	/**Validate shopping*/
-	public static boolean valshopping(String name){
-		return name.matches(validshopping);
-	}
-	/**Validate shopping*/
-	public static boolean valactivity(String name){
-		return name.matches(validactivity);
+	
+                /**
+                 * Validate date
+                 * @param date a String with the date to check
+                 * @return a boolean with the result
+                 */
+	public static boolean valdate(String date){
+		return date.matches(validdate);
 	}
 	
-                /**Validate client type*/
-                public static boolean valclitype(String name){
-		return name.matches(validcltype);
+                /**
+                 * Validate mobile
+                 * @param mobile a String with the mobile to check
+                 * @return a boolean with the result
+                 */
+	public static boolean valmobile(String mobile){
+		return mobile.matches(validmobile);
 	}
-        
-                public static boolean valkarma(String name){
-                                return name.matches(valkarm);
+	
+                /**
+                 * Validate user name
+                 * @param user a String with the username to check
+                 * @return a boolean with the result
+                 */
+	public static boolean valuser(String user){
+		return user.matches(validuser);
+	}
+	
+                /**
+                 * Validate password
+                 * @param pass a String with the password to check
+                 * @return a boolean with the result
+                 */
+	public static boolean valpass(String pass){
+		return pass.matches(validpass);
+	}
+	
+                /**
+                 * Validate age
+                 * @param age a String of the age
+                 * @return a boolean with the result
+                 */
+	public static boolean valage(String age){
+		return age.matches(validage);
+	}
+	
+                /**
+                 * Validate antiquity
+                 * @param antiquity a String of the antiquity
+                 * @return a boolean with the result
+                 */
+	public static boolean valantiquity(String antiquity){
+		return antiquity.matches(valiantiquity);
+	}
+	
+                /**
+                 * Validate salary
+                 * @param salary a String with the salary to check
+                 * @return a boolean with the result
+                 */
+	public static boolean valsalary(String salary){
+		return salary.matches(validsalary);
+	}
+	/**Validate shopping*/
+                /**
+                 * Validate shopping
+                 * @param shopping a String with the shopping to check
+                 * @return a boolean with the result
+                 */
+	public static boolean valshopping(String shopping){
+		return shopping.matches(validshopping);
+	}
+	
+                /**
+                 * Validate shopping
+                 * @param activity a String with the activity to check
+                 * @return a boolean with the result
+                 */
+	public static boolean valactivity(String activity){
+		return activity.matches(validactivity);
+	}
+	
+                /**
+                 * Validate client type
+                 * @param type a String with the client type to check
+                 * @return a boolean with the result
+                 */
+                public static boolean valclitype(String type){
+		return type.matches(validcltype);
+	}
+                
+                /**
+                 * Validate the karma
+                 * @param karma a String with the karma to check
+                 * @return a boolean with the result
+                 */
+                public static boolean valkarma(String karma){
+                                return karma.matches(valkarm);
                 }
                 
-                /**Validate dates*/
-	public static boolean newvaldate(String name){
+                /**
+                 * Validate dates tacking into account the format of config
+                 * @param date
+                 * @return a boolean with the result
+                 */
+	public static boolean newvaldate(String date){
 		//System.out.println("newvaldate: "+name);
 		boolean ok=false;
 		String format=Config_class.getinstance().getDate_format();
 		
 		switch(format){
 		case "dd/MM/yyyy":
-			ok=name.matches(validdate0);
+			ok=date.matches(validdate0);
 		break;
 		case "yyyy/MM/dd":
-			ok=name.matches(validdate1);
+			ok=date.matches(validdate1);
 		break;
 		case "dd-MM-yyyy":
-			ok=name.matches(validdate2);
+			ok=date.matches(validdate2);
 		break;
 		case "yyyy-MM-dd":
-			ok=name.matches(validdate3);
+			ok=date.matches(validdate3);
 		}
 		//System.out.println("ok newvalname: "+ok);
 		return ok;
