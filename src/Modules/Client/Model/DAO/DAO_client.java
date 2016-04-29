@@ -212,12 +212,12 @@ public class DAO_client {
     public static boolean askPassword(){
         boolean correct=false;
         
-         if(Validate.valpass(Create_client.fieldPassword.getText())==false){
+         if(Validate.valpass(String.valueOf(Create_client.fieldPassword.getPassword()))==false){
             Create_client.fieldPassword.setBackground(Color.yellow);
             Create_client.checkPassword.setIcon(no_ok);
             correct=false;
         }
-        else if(Validate.valpass(Create_client.fieldPassword.getText())==true){
+        else if(Validate.valpass(String.valueOf(Create_client.fieldPassword.getPassword()))==true){
             Create_client.fieldPassword.setBackground(Color.green);
             Create_client.checkPassword.setIcon(ok);
             correct=true;
@@ -232,7 +232,7 @@ public class DAO_client {
     public static boolean askPassword2(){
         boolean correct=false;
         
-        if(Create_client.fieldPassword.getText().equals(Create_client.fieldPassword2.getText()) && (Validate.valpass(Create_client.fieldPassword.getText())==true)){
+        if(String.valueOf(Create_client.fieldPassword.getPassword()).equals(String.valueOf(Create_client.fieldPassword2.getPassword())) && (Validate.valpass(String.valueOf(Create_client.fieldPassword.getPassword()))==true)){
                 Create_client.fieldPassword2.setBackground(Color.green);
                 Create_client.checkPassword2.setIcon(ok);
                 correct=true;
@@ -536,7 +536,7 @@ public class DAO_client {
             email=Create_client.fieldEmail.getText();
             mobile=Create_client.fieldMobile.getText();
             user=Create_client.fieldUser.getText();
-            password=Create_client.fieldPassword.getText();
+            password=String.valueOf(Create_client.fieldPassword.getPassword());
             shopping=Float.parseFloat(Create_client.fieldShopping.getText());
             clitype=Create_client.fieldClientType.getText();
             
@@ -747,17 +747,17 @@ public class DAO_client {
     public static boolean askPasswordMod(){
         boolean correct=false;
         
-        if(Modify_client.editfieldPassword.getText().equals("")){
+        if(String.valueOf(Modify_client.editfieldPassword.getPassword()).equals("")){
             Modify_client.editfieldPassword.setBackground(Color.yellow);
             Modify_client.checkPassword.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valpass(Modify_client.editfieldPassword.getText())==false){
+            if(Validate.valpass(String.valueOf(Modify_client.editfieldPassword.getPassword()))==false){
                 Modify_client.editfieldPassword.setBackground(Color.yellow);
                 Modify_client.checkPassword.setIcon(no_ok);
                 correct=false;
             }
-            else if(Validate.valpass(Modify_client.editfieldPassword.getText())==true){
+            else if(Validate.valpass(String.valueOf(Modify_client.editfieldPassword.getPassword()))==true){
                 Modify_client.editfieldPassword.setBackground(Color.green);
                 Modify_client.checkPassword.setIcon(ok);
                 correct=true;
@@ -774,7 +774,7 @@ public class DAO_client {
     public static boolean askPassword2Mod(){
         boolean correct=false;
         
-        if(Modify_client.editfieldPassword.getText().equals(Modify_client.editfieldPassword2.getText()) && (Validate.valpass(Modify_client.editfieldPassword2.getText())==true)){
+        if(String.valueOf(Modify_client.editfieldPassword.getPassword()).equals(String.valueOf(Modify_client.editfieldPassword2.getPassword())) && (Validate.valpass(String.valueOf(Modify_client.editfieldPassword.getPassword()))==true)){
             Modify_client.editfieldPassword2.setBackground(Color.green);
             Modify_client.checkPassword2.setIcon(ok);
             correct=true;    
@@ -1016,7 +1016,7 @@ public class DAO_client {
             email=Modify_client.editfieldEmail.getText();
             mobile=Modify_client.editfieldMobile.getText();
             user=Modify_client.editfieldUser.getText();
-            password=Modify_client.editfieldPassword.getText();
+            password=String.valueOf(Modify_client.editfieldPassword.getPassword());
             shopping=Float.parseFloat(Modify_client.editfieldShopping.getText());
             clitype=Modify_client.editfieldClientType.getText();
             

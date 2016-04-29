@@ -13,7 +13,6 @@ import Modules.Client.Model.BLL.BLL_Mongo_client;
 import Modules.Client.Model.Classes.Client_class;
 import Modules.Client.View.Modify_client;
 import Modules.Config.Model.Classes.Config_class;
-import static Modules.Config.Model.DAO.DAO_Config.Language;
 import Modules.Menu.Classes.Singleton_menus;
 import Modules.Reg_user.Model.Classes.Reg_user_class;
 import static Modules.Menu.Classes.Singleton_menus.no_ok;
@@ -42,6 +41,9 @@ import javax.swing.Timer;
  */
 public class DAO_Login {
     
+    /**
+     * Used to show a message using a delay in log-in window
+     */
     public static void loginError1(){
         Timer delay = new Timer(2000, new ActionListener() {
                     @Override
@@ -54,6 +56,9 @@ public class DAO_Login {
                         Login.info.setText(Singleton_app.lang.getProperty("log_error"));
     }
     
+    /**
+     * Used to show a message using a delay in log-in window
+     */
     public static void loginError2(){
         Timer delay = new Timer(2000, new ActionListener() {
                     @Override
@@ -66,25 +71,51 @@ public class DAO_Login {
                         Login.info.setText(Singleton_app.lang.getProperty("log_error2"));
     }
     
+    /**
+     * Used to change the language icons in log-in window
+     */
+    public static void setIcons(){
+        
+        switch(Config_class.getinstance().getLanguage()){
+        
+            case "en":
+                Login.setEnglish.setIcon(seteng);
+                Login.setSpanish.setIcon(unsetspa);
+                Login.setValencian.setIcon(unsetval);
+                break;
+                
+            case "es":
+                Login.setEnglish.setIcon(unseteng);
+                Login.setSpanish.setIcon(setspa);
+                Login.setValencian.setIcon(unsetval);
+                break;
+                
+            case "val":
+                Login.setEnglish.setIcon(unseteng);
+                Login.setSpanish.setIcon(unsetspa);
+                Login.setValencian.setIcon(setval);
+                break;
+    }
+        
+    }
+    
+    /**
+     * Used to set a new language configuration
+     * @param Language a String with the language to set, en for english, es for spanish, val for valencian
+     */
     public static void setLang(String Language){
         
         if(Language.equals("en")){
-            Login.setEnglish.setIcon(seteng);
-            Login.setSpanish.setIcon(unsetspa);
-            Login.setValencian.setIcon(unsetval);
             Config_class.getinstance().setLanguage("en");
+            setIcons();
         }
         else if(Language.equals("es")){
-            Login.setEnglish.setIcon(unseteng);
-            Login.setSpanish.setIcon(setspa);
-            Login.setValencian.setIcon(unsetval);
             Config_class.getinstance().setLanguage("es");
+            setIcons();
         }
         else if(Language.equals("val")){
-            Login.setEnglish.setIcon(unseteng);
-            Login.setSpanish.setIcon(unsetspa);
-            Login.setValencian.setIcon(setval);
             Config_class.getinstance().setLanguage("val");
+            setIcons();
         }
     }
     
@@ -111,8 +142,9 @@ public class DAO_Login {
      */
     public static boolean askPass(){
         boolean correct=false;
+        String pass="";
         
-         if(Validate.valpass(Login.fieldPass.getText())==true){
+         if(Validate.valpass(String.valueOf(Login.fieldPass.getPassword()))==true){
             Login.checkPass.setIcon(ok);
             correct=true;
         }else {
@@ -122,6 +154,9 @@ public class DAO_Login {
          return correct;
     }
     
+    /**
+     * Used to show the password in the log-in window
+     */
     public static void showPass(){
         if(Login.showPass.isSelected()==true){
             Login.fieldPass.setEchoChar((char)0);
@@ -138,8 +173,11 @@ public class DAO_Login {
         askPass();
         showPass();
     }
-    
-    public static boolean tryLogin(){
+   
+    /**
+     * Function to check the log-in of the users
+     */
+    public static void tryLogin(){
         
         Object out=null;
         Admin_class adm=null;
@@ -155,7 +193,8 @@ public class DAO_Login {
         
         if(fiId==true && fiPass==true){
             dni=Login.fieldId.getText();
-            pass=Login.fieldPass.getText();
+//            pass=Login.fieldPass.getText();
+            pass=String.valueOf(Login.fieldPass.getPassword());
             
             //Start search admin user
             adm=new Admin_class(dni);
@@ -167,7 +206,7 @@ public class DAO_Login {
                 login.dispose();
                 new MenuController(new Mainmenu(), 0).Init(0);
                 }else{
-                    loginError2();
+                    loginError1();
                 }
             }//End if admin users
             
@@ -181,7 +220,7 @@ public class DAO_Login {
                     login.dispose();
                     new MenuController(new Modify_client(), 3).Init(3);
                 }else{
-                    loginError2();
+                    loginError1();
                 }
             }//End else if client
             
@@ -195,7 +234,7 @@ public class DAO_Login {
                     new MenuController(new Modify_ruser(),4).Init(4);
 //                    JOptionPane.showMessageDialog(null,rus.toString());
                 }else{
-                    loginError2();
+                    loginError1();
                 }
             }else{
 //                System.out.println("Error 1");
@@ -210,6 +249,6 @@ public class DAO_Login {
         }
         
         out=adm;
-        return correct;
+//        return correct;
     }
-}
+}//End of DAO log-in

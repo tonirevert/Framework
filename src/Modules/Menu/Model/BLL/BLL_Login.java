@@ -25,6 +25,15 @@ public class BLL_Login {
         Login.btnCancel.setText(Singleton_app.lang.getProperty("w_Cancel"));
     }
     
+    public static void setIcons(){
+        DAO_Login.setIcons();
+        Login.labelId.setText(Singleton_app.lang.getProperty("idcard"));
+        Login.labelPass.setText(Singleton_app.lang.getProperty("u_password"));
+        Login.showPass.setText(Singleton_app.lang.getProperty("log_showpass"));
+        Login.btnOk.setText(Singleton_app.lang.getProperty("log_ok"));
+        Login.btnCancel.setText(Singleton_app.lang.getProperty("w_Cancel"));
+    }
+    
     public static void askUserdata(String type){
         boolean correct=false;
         String route="";

@@ -213,12 +213,12 @@ public class DAO_ruser {
     public static boolean askPassword(){
         boolean correct=false;
         
-         if(Validate.valpass(Create_ruser.fieldPassword.getText())==false){
+         if(Validate.valpass(String.valueOf(Create_ruser.fieldPassword.getPassword()))==false){
             Create_ruser.fieldPassword.setBackground(Color.yellow);
             Create_ruser.checkPassword.setIcon(no_ok);
             correct=false;
         }
-        else if(Validate.valpass(Create_ruser.fieldPassword.getText())==true){
+        else if(Validate.valpass(String.valueOf(Create_ruser.fieldPassword.getPassword()))==true){
             Create_ruser.fieldPassword.setBackground(Color.green);
             Create_ruser.checkPassword.setIcon(ok);
             correct=true;
@@ -233,7 +233,7 @@ public class DAO_ruser {
     public static boolean askPassword2(){
         boolean correct=false;
         
-        if(Create_ruser.fieldPassword.getText().equals(Create_ruser.fieldPassword2.getText()) && (Validate.valpass(Create_ruser.fieldPassword.getText())==true)){
+        if(String.valueOf(Create_ruser.fieldPassword.getPassword()).equals(String.valueOf(Create_ruser.fieldPassword2.getPassword())) && (Validate.valpass(String.valueOf(Create_ruser.fieldPassword.getPassword()))==true)){
                 Create_ruser.fieldPassword2.setBackground(Color.green);
                 Create_ruser.checkPassword2.setIcon(ok);
                 correct=true;
@@ -433,7 +433,7 @@ public class DAO_ruser {
             email=Create_ruser.fieldEmail.getText();
             mobile=Create_ruser.fieldMobile.getText();
             user=Create_ruser.fieldUser.getText();
-            password=Create_ruser.fieldPassword.getText();
+            password=String.valueOf(Create_ruser.fieldPassword.getPassword());
             activity=Integer.parseInt(Create_ruser.fieldActivity.getText());
             
             
@@ -638,17 +638,17 @@ public class DAO_ruser {
     public static boolean askPasswordMod(){
         boolean correct=false;
         
-        if(Modify_ruser.editfieldPassword.getText().equals("")){
+        if(String.valueOf(Modify_ruser.editfieldPassword.getPassword()).equals("")){
             Modify_ruser.editfieldPassword.setBackground(Color.yellow);
             Modify_ruser.checkPassword.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valpass(Modify_ruser.editfieldPassword.getText())==false){
+            if(Validate.valpass(String.valueOf(Modify_ruser.editfieldPassword.getPassword()))==false){
                 Modify_ruser.editfieldPassword.setBackground(Color.yellow);
                 Modify_ruser.checkPassword.setIcon(no_ok);
                 correct=false;
             }
-            else if(Validate.valpass(Modify_ruser.editfieldPassword.getText())==true){
+            else if(Validate.valpass(String.valueOf(Modify_ruser.editfieldPassword.getPassword()))==true){
                 Modify_ruser.editfieldPassword.setBackground(Color.green);
                 Modify_ruser.checkPassword.setIcon(ok);
                 correct=true;
@@ -665,7 +665,7 @@ public class DAO_ruser {
     public static boolean askPassword2Mod(){
         boolean correct=false;
         
-        if(Modify_ruser.editfieldPassword.getText().equals(Modify_ruser.editfieldPassword2.getText()) && (Validate.valpass(Modify_ruser.editfieldPassword2.getText())==true)){
+        if(String.valueOf(Modify_ruser.editfieldPassword.getPassword()).equals(String.valueOf(Modify_ruser.editfieldPassword2.getPassword())) && (Validate.valpass(String.valueOf(Modify_ruser.editfieldPassword.getPassword()))==true)){
             Modify_ruser.editfieldPassword2.setBackground(Color.green);
             Modify_ruser.checkPassword2.setIcon(ok);
             correct=true;    
@@ -823,7 +823,7 @@ public class DAO_ruser {
             email=Modify_ruser.editfieldEmail.getText();
             mobile=Modify_ruser.editfieldMobile.getText();
             user=Modify_ruser.editfieldUser.getText();
-            password=Modify_ruser.editfieldPassword.getText();
+            password=String.valueOf(Modify_ruser.editfieldPassword.getPassword());
             activity=Integer.parseInt(Modify_ruser.editfieldActivity.getText());
             
             if(ruseravatar==true){

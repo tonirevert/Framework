@@ -186,7 +186,7 @@ public class Validate {
                 
                 /**
                  * Validate dates tacking into account the format of config
-                 * @param date
+                 * @param date a String with the date to check
                  * @return a boolean with the result
                  */
 	public static boolean newvaldate(String date){

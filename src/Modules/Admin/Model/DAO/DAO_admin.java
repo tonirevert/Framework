@@ -213,12 +213,12 @@ public class DAO_admin {
     public static boolean askPassword(){
         boolean correct=false;
         
-         if(Validate.valpass(Create_admin.fieldPassword.getText())==false){
+         if(Validate.valpass(String.valueOf(Create_admin.fieldPassword.getPassword()))==false){
             Create_admin.fieldPassword.setBackground(Color.yellow);
             Create_admin.checkPassword.setIcon(no_ok);
             correct=false;
         }
-        else if(Validate.valpass(Create_admin.fieldPassword.getText())==true){
+        else if(Validate.valpass(String.valueOf(Create_admin.fieldPassword.getPassword()))==true){
             Create_admin.fieldPassword.setBackground(Color.green);
             Create_admin.checkPassword.setIcon(ok);
             correct=true;
@@ -233,7 +233,7 @@ public class DAO_admin {
     public static boolean askPassword2(){
         boolean correct=false;
         
-        if(Create_admin.fieldPassword.getText().equals(Create_admin.fieldPassword2.getText()) && (Validate.valpass(Create_admin.fieldPassword.getText())==true)){
+        if(String.valueOf(Create_admin.fieldPassword.getPassword()).equals(String.valueOf(Create_admin.fieldPassword2.getPassword())) && (Validate.valpass(String.valueOf(Create_admin.fieldPassword.getPassword()))==true)){
                 Create_admin.fieldPassword2.setBackground(Color.green);
                 Create_admin.checkPassword2.setIcon(ok);
                 correct=true;
@@ -494,7 +494,7 @@ public class DAO_admin {
             email=Create_admin.fieldEmail.getText();
             mobile=Create_admin.fieldMobile.getText();
             user=Create_admin.fieldUser.getText();
-            password=Create_admin.fieldPassword.getText();
+            password=String.valueOf(Create_admin.fieldPassword.getPassword());
             activity=Integer.parseInt(Create_admin.fieldActivity.getText());
             
             
@@ -704,17 +704,16 @@ public class DAO_admin {
     public static boolean askPasswordMod(){
         boolean correct=false;
         
-        if(Modify_admin.editfieldPassword.getText().equals("")){
+        if(String.valueOf(Modify_admin.editfieldPassword.getPassword()).equals("")){
             Modify_admin.editfieldPassword.setBackground(Color.yellow);
             Modify_admin.checkPassword.setIcon(no_ok);
             correct=false;
         }else{
-            if(Validate.valpass(Modify_admin.editfieldPassword.getText())==false){
+            if(Validate.valpass(String.valueOf(Modify_admin.editfieldPassword.getPassword()))==false){
                 Modify_admin.editfieldPassword.setBackground(Color.yellow);
                 Modify_admin.checkPassword.setIcon(no_ok);
                 correct=false;
-            }
-            else if(Validate.valpass(Modify_admin.editfieldPassword.getText())==true){
+        }else if(Validate.valpass(String.valueOf(Modify_admin.editfieldPassword.getPassword()))==true){
                 Modify_admin.editfieldPassword.setBackground(Color.green);
                 Modify_admin.checkPassword.setIcon(ok);
                 correct=true;
@@ -731,7 +730,7 @@ public class DAO_admin {
     public static boolean askPassword2Mod(){
         boolean correct=false;
         
-        if(Modify_admin.editfieldPassword.getText().equals(Modify_admin.editfieldPassword2.getText()) && (Validate.valpass(Modify_admin.editfieldPassword2.getText())==true)){
+        if(String.valueOf(Modify_admin.editfieldPassword.getPassword()).equals(String.valueOf(Modify_admin.editfieldPassword2.getPassword())) && (Validate.valpass(String.valueOf(Modify_admin.editfieldPassword.getPassword()))==true)){
             Modify_admin.editfieldPassword2.setBackground(Color.green);
             Modify_admin.checkPassword2.setIcon(ok);
             correct=true;    
@@ -900,6 +899,9 @@ public class DAO_admin {
         return correct;
     }
     
+    /**
+     * Used to reset of modification window
+     */
     public static void resetFieldsMod(){
         Modify_admin.fieldDNI.setText("");
         Modify_admin.editfieldName.setText("");
@@ -972,7 +974,7 @@ public class DAO_admin {
             email=Modify_admin.editfieldEmail.getText();
             mobile=Modify_admin.editfieldMobile.getText();
             user=Modify_admin.editfieldUser.getText();
-            password=Modify_admin.editfieldPassword.getText();
+            password=String.valueOf(Modify_admin.editfieldPassword.getPassword());
             activity=Integer.parseInt(Modify_admin.editfieldActivity.getText());
             
             if(adminavatar==true){

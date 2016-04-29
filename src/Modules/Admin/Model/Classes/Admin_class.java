@@ -29,8 +29,21 @@ public class Admin_class extends User_class implements Serializable{
 	@XStreamAlias("activity")
 	private int activity;
 	
-	
-	/**Complete Admin_class constructor initialisation*/
+                /**
+                 * Complete Admin_class constructor initialisation
+                 * @param dni a string with the user dni
+                 * @param name a string with the user name
+                 * @param surname a string with the user surname
+                 * @param birthday a string with the user birthday using Date class
+                 * @param mobile a string with the user mobile number
+                 * @param email a string with the user email address
+                 * @param user a string with the username
+                 * @param pass a string with the user password
+                 * @param avatar a string with the avatar location and name
+                 * @param state a boolean with the state of the user
+                 * @param cont_date a string with the user contract date using Date class
+                 * @param activity a integer with the amount of the activity of the user
+                 */
 	public Admin_class (String dni,String name,String surname,Date_class birthday,
 			String mobile,String email,String user,String pass, String avatar,boolean state,
 			Date_class cont_date, int activity){
@@ -50,10 +63,19 @@ public class Admin_class extends User_class implements Serializable{
                 }
         
 	/**Primary key Admin_class constructor*/
+                /**
+                 * Constructor with primary key
+                 * @param dni a DNI number to create a user
+                 */
 	public Admin_class (String dni){
 			super(dni);
-		}
-	/**Personalised constructor*/	
+	}
+	
+                /**
+                 * Personalised constructor
+                 * @param i an integer to choose the desired parameter
+                 * @param admin the object to use for create an admin
+                 */
 	public Admin_class(int i, Object admin){
 					
 			super(i,admin);
@@ -78,39 +100,69 @@ public class Admin_class extends User_class implements Serializable{
 			
 	} /*End personalised class*/
 		
-	
-	/**Contract date admin_class getter*/
+                /**
+                 * Contract date admin_class getter
+                 * @return a contract date (Date class) object from admin
+                 */
 	public Date_class getCont_date() {
 		return cont_date;
 	}
-	/**Contract date admin_class setter*/
+	
+                /**
+                 * Contract date admin_class setter
+                 * @param cont_date a Date class object to set the contract date
+                 */
 	public void setCont_date(Date_class cont_date) {
 		this.cont_date = cont_date;
 		this.setAntiquity(cont_date.intyearstoday());
 	}
-	/**Antiquity date admin_class getter*/
+	
+                /**
+                 * Antiquity date admin_class getter
+                 * @return an integer with the amount of years
+                 */
 	public int getAntiquity() {
 		return antiquity;
 	}
-	/**Antiquity date admin_class setter*/
+	
+                /**
+                 * Antiquity date admin_class setter
+                 * @param antiquy an integer with the aniquity to set
+                 */
 	public void setAntiquity(int antiquy) {
 		this.antiquity = antiquy;
 		this.setSalary(calc_salary());
 		super.setBenefit(calc_benefit());
 	}
-	/**Salary admin_class getter*/
+	
+                /**
+                 * Salary admin_class getter
+                 * @return a number in double type with the salary
+                 */
 	public double getSalary() {
 		return salary;
 	}
-	/**Salary admin_class setter*/
+	
+                /**
+                 * Salary admin_class setter
+                 * @param salary the salary to set in double format
+                 */
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	/**Activity admin_class getter*/
+	
+                /**
+                 * Activity admin_class getter
+                 * @return an integer with the activity of the user
+                 */
 	public int getActivity() {
 		return activity;
 	}
-	/**Activity admin_class setter*/
+	
+                /**
+                 * Activity admin_class setter
+                 * @param activity an integer with the activity of the user
+                 */
 	public void setActivity(int activity) {
 		this.activity = activity;
 		this.setSalary(calc_salary());
@@ -119,7 +171,10 @@ public class Admin_class extends User_class implements Serializable{
 	}
 	/*End of getters and setters*/
 	
-	/** Stores all the Admin_class attributes in one String*/
+                /**
+                 * Stores all the Admin_class attributes in one String
+                 * @return a String with all the data from the admin user
+                 */
 	public String toString(){
 		StringBuffer out=new StringBuffer();
 		
@@ -132,14 +187,18 @@ public class Admin_class extends User_class implements Serializable{
 		return out.toString();
 	}
 	
-	//**Initialisation Admin_class primary key toString */
+                /**
+                 * Initialisation Admin_class primary key toString
+                 * @param dni a String with a DNI number+letter
+                 * @return a String of the primary key
+                 */
 	public String toString(String dni){
 		
 		return super.toString(dni)+"\n";
 	}
 	
 	/**
-                  * Initialisation Admin_class personalised toString
+                  * Admin_class personalised toString
                   * @param i an integer with the desired output option
                   * @return a String with the user data
                   */

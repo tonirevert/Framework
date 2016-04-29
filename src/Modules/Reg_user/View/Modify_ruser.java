@@ -247,7 +247,7 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         btnsaveEditruser.setText("Save");
         getContentPane().add(btnsaveEditruser);
-        btnsaveEditruser.setBounds(120, 400, 105, 31);
+        btnsaveEditruser.setBounds(110, 400, 105, 31);
 
         btncancelEditruser.setText("Cancel");
         getContentPane().add(btncancelEditruser);
@@ -269,7 +269,7 @@ public class Modify_ruser extends javax.swing.JFrame {
 
         btnLogout.setText("Log-out");
         getContentPane().add(btnLogout);
-        btnLogout.setBounds(260, 400, 105, 31);
+        btnLogout.setBounds(232, 400, 150, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -324,6 +324,8 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 login.btnOk.setText(Singleton_app.lang.getProperty("log_ok"));
                 login.btnCancel.setText(Singleton_app.lang.getProperty("w_Cancel"));
                 
+                BLL_Login.setIcons();
+                
                 login.setResizable(false);
                 login.setSize(lx,ly);
                 login.setVisible(true);
@@ -375,7 +377,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 mod_cli.radioPremiumNo.setEnabled(false);
                 mod_cli.radioPremiumYes.setEnabled(false);
                 mod_cli.editdateRegistration.setEnabled(false);
-                mod_cli.btnLogout.setEnabled(true);
+                mod_cli.btnLogout.setVisible(true);
                 mod_cli.setVisible(true);
 
                 //Translation:

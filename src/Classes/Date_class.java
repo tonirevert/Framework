@@ -110,7 +110,7 @@ public class Date_class implements Serializable{
 	/**
 	 * Constructor switch case to take in account the date format
 	 * @param date Gets a date from a string
-	 * @param other Used to create dummy's
+	 * @param Dummy Used to create dummy's
 	 */
 	public Date_class(String date,String Dummy){
 		String[] a_date=null;

@@ -284,7 +284,7 @@ public class Modify_client extends javax.swing.JFrame {
 
         btnsaveEditclient.setText("Save");
         getContentPane().add(btnsaveEditclient);
-        btnsaveEditclient.setBounds(120, 400, 105, 31);
+        btnsaveEditclient.setBounds(110, 400, 105, 31);
 
         btncancelEditclient.setText("Cancel");
         getContentPane().add(btncancelEditclient);
@@ -312,7 +312,7 @@ public class Modify_client extends javax.swing.JFrame {
 
         btnLogout.setText("Log-out");
         getContentPane().add(btnLogout);
-        btnLogout.setBounds(260, 400, 105, 31);
+        btnLogout.setBounds(232, 400, 150, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

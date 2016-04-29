@@ -53,9 +53,9 @@ public class Client_class extends User_class implements Serializable{
                 }
 	
                 /**
-                 * 
-                 * @param dBObjectClient
-                 * @return 
+                 * Used to load a Client from a MySQL data base
+                 * @param dBObjectClient a dB object to get from data base
+                 * @return a Client class user with all the parameters set
                  */
                 public Client_class Client_from_DB(DBObject dBObjectClient) {
                             this.setDni((String)dBObjectClient.get("dni"));
@@ -81,8 +81,8 @@ public class Client_class extends User_class implements Serializable{
                 }
 
                 /**
-                 * 
-                 * @return 
+                 * Used to save a Client user to a My SQL data base
+                 * @return a DB Object with the data from a Client user
                  */
                 public BasicDBObject Client_to_DB() {
 	BasicDBObject dBObjectClient = new BasicDBObject();
@@ -105,88 +105,131 @@ public class Client_class extends User_class implements Serializable{
 	return dBObjectClient;
     }
         
-	/**Primary key Client_class Constructor*/
+                /**
+                 * Primary key Client_class Constructor
+                 * @param dni a String with a DNI number+letter primary key
+                 */
 	public Client_class(String dni){
 		super(dni);
 	}
 	
-	/**Personalized constructor initialization */
-	 public Client_class(int i, Object param){
+                /**
+                 * Personalized constructor initialization
+                 * @param i an integer to choose the desired parameter
+                 * @param client the object to use for create an client
+                 */
+	 public Client_class(int i, Object client){
 		 		 
 		 switch(i){
 		 
 		 case 16:
-			 this.reg_date=(Date_class)param;
+			 this.reg_date=(Date_class)client;
 			 break;
 		 case 17:
-			 this.antique=(int)param;
+			 this.antique=(int)client;
 			 break;
 		 case 18:
-			 this.shopping=(double)param;
+			 this.shopping=(double)client;
 			 break;
 		 case 19:
-			 this.premium=(boolean)param;
+			 this.premium=(boolean)client;
 			 break;
 		 case 20:
-			 this.client_type=(String)param;
+			 this.client_type=(String)client;
 			 break;
 		 
 		 }
 	 }
 	 /*End personalised constructor initialisation*/
 
-	/**Registration date Client getter*/
+                /**
+                 * Registration date Client getter
+                 * @return a registration date (Date class) object from client
+                 */
 	public Date_class getReg_date() {
 		return reg_date;
 	}
 
-	/**Registration date Client setter*/
+                /**
+                 * Registration date Client setter
+                 * @param reg_date a Date class object to set the registration date
+                 */
 	public void setReg_date(Date_class reg_date) {
 		this.reg_date = reg_date;
 		this.setAntique(reg_date.intyearstoday());
 	}
 
-	/**Antique Client getter*/
+                /**
+                 * Antique Client getter
+                 * @return an integer with the amount of years
+                 */
 	public int getAntique() {
 		return antique;
 	}
-	/**Antique Client setter*/
+	
+                /**
+                 * Antique Client setter
+                 * @param antique an integer with the aniquity to set
+                 */
 	public void setAntique(int antique) {
 		this.antique = antique;
 		
 	}
-	/**Shopping Client getter*/
+	
+                /**
+                 * Shopping Client getter
+                 * @return a number in double format with the amount of shopping
+                 */
 	public double getShopping() {
 		return shopping;
 	}
-	/**Shopping Client setter*/
+	
+                /**
+                 * Shopping Client setter
+                 * @param shopping a number in double format with the shopping to set
+                 */
 	public void setShopping(double shopping) {
 		this.shopping = shopping;
 	}
 
-	/**Premium String Client getter*/
+                /**
+                 * Premium String Client getter
+                 * @return a boolean if is premium or not
+                 */
 	public boolean isPremium() {
 		return premium;
 	}
 
-	/**Premium String Client setter*/
+                /**
+                 * Premium String Client setter
+                 * @param premium a boolean to set if is premium or not
+                 */
 	public void setPremium(boolean premium) {
 		this.premium = premium;
 		super.setBenefit(calc_benefit());
 	}
 
-	/**Client type String Client getter*/
+                /**
+                 * Client type String Client getter
+                 * @return a String with the type of Client
+                 */
 	public String getClient_type() {
 		return client_type;
 	}
 
-	/**Client type String Client setter*/
+                /**
+                 * Client type String Client setter
+                 * @param client_type a String with the type of Client
+                 */
 	public void setClient_type(String client_type) {
 		this.client_type = client_type;
 	}
 	/*End of CLient getters and setters declaration*/
 	
-	/** Stores all the Admin_class attributes in one String*/
+                /**
+                 * Stores all the Client class attributes in one String
+                 * @return a String with all the Client data
+                 */
 	public String toString(){
 		StringBuffer out=new StringBuffer();
 		
@@ -200,7 +243,11 @@ public class Client_class extends User_class implements Serializable{
 		return out.toString();
 	}
 	
-	//**Initialisation Client_class primary key toString */
+                /**
+                 * Initialisation Client_class primary key toString
+                 * @param dni a DNI numbers+letter
+                 * @return a String with the primary key of the user
+                 */
 	public String toString(String dni){
 			
 		return super.toString(dni)+"\n";
@@ -208,7 +255,11 @@ public class Client_class extends User_class implements Serializable{
 		}
 	/*End of Client_class primary key toString*/
 	
-	/**Initialisation Client_class personalised toString */
+                /**
+                 * Client_class personalised toString
+                 * @param i an integer with the desired output option
+                  * @return a String with the user data
+                 */
 	 public String toString(int i){
 		 StringBuffer out=new StringBuffer();
 		
@@ -242,6 +293,10 @@ public class Client_class extends User_class implements Serializable{
 	 }
 	/*End personalised toString */
 	
+                /**
+                 * Used to calculate the Client benefit
+                 * @return a number in double type with the benefit of the user
+                 */
 	 public double calc_benefit() {
 			
 			if (premium==true){
