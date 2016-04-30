@@ -36,4 +36,5 @@ public class Singleton_menus {
                 public static Client_class cli;
                 public static Reg_user_class rus;
                 public static int pos_rus=0;
+                public static String window="";
 }

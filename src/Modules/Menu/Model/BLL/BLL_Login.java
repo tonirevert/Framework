@@ -10,11 +10,15 @@ import Modules.Menu.Model.DAO.DAO_Login;
 import Modules.Menu.View.Login;
 
 /**
- *
+ * Used for the log-in window
  * @author antonio
  */
 public class BLL_Login {
     
+    /**
+     * * Used to set the log-in icons when a language icon is clicked
+     * @param Language the desired language to set: en, es, val
+     */
     public static void setLang(String Language){
         
         DAO_Login.setLang(Language);
@@ -25,6 +29,9 @@ public class BLL_Login {
         Login.btnCancel.setText(Singleton_app.lang.getProperty("w_Cancel"));
     }
     
+    /**
+     * Used to set the log-in icons in function of the configured language
+     */
     public static void setIcons(){
         DAO_Login.setIcons();
         Login.labelId.setText(Singleton_app.lang.getProperty("idcard"));
@@ -34,6 +41,10 @@ public class BLL_Login {
         Login.btnCancel.setText(Singleton_app.lang.getProperty("w_Cancel"));
     }
     
+    /**
+     * Used to check the log-in input fields
+     * @param type String with the parameter, dni, password
+     */
     public static void askUserdata(String type){
         boolean correct=false;
         String route="";
@@ -59,6 +70,9 @@ public class BLL_Login {
         }
     }//End of ask User data
     
+    /**
+     * Function to use try Login from DAO
+     */
     public static void Try_Login(){
         DAO_Login.tryLogin();
     }

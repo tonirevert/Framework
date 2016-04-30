@@ -1072,10 +1072,6 @@ public class DAO_admin {
         BLL_admin.modAdmindata("birthdate");
         BLL_admin.modAdmindata("datecontract");
         
-    }
-    
-    public static void listAdmin(){
-        
-    }
+    }//End of fill admin Mod
     
 }//End public class DAO_admin

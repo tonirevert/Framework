@@ -36,7 +36,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 /**
- *
+ * DAO to log-in in the application
  * @author antonio
  */
 public class DAO_Login {

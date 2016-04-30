@@ -13,11 +13,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Properties;
-import static jdk.nashorn.tools.ShellFunctions.input;
 
 
 /**
- *
+ * Used to create a connection to a Mongo DB
  * @author antonio
  */
 public class Mongo_DB {

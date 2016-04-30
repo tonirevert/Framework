@@ -84,6 +84,11 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
         
     }
     
+    /**
+     * Constructor for the desired frames
+     * @param frame name of the frame to initialize
+     * @param i  the option of the frame to initialize
+     */
     public MenuController(JFrame frame, int i){
         switch(i){
             case 0:
@@ -115,7 +120,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
 
         
     /**
-     * 
+     * Actions enumeration
      */
     public enum Action{
         
@@ -178,15 +183,23 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
         
     }
     
+    public enum Property{
+        
+        date,//Used for datebirth and date contract
+        background,//Used for datebirth and date contract
+        enabled,//Used for datebirth and date contract
+        ancestor//Used for datebirth and date contract
+    }
+    
     /**
-     * 
+     * Initialization of the windows
      * @param i  0 for main menu, 1 for config menu
      */
     public void Init(int i){
         
         switch(i){
             
-            case 0:
+            case 0://Main menu
                 int mx=700;
                 int my=460;
                 main.back.setSize(mx, my);
@@ -230,7 +243,8 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 main.btnExit.addMouseListener(this);
                 
                 break;
-            case 1:
+                
+            case 1://Config window
                 int cx=400;
                 int cy=450;
                 conf.back.setSize(cx,cy);
@@ -295,7 +309,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 
                 break;//End of case 1
                 
-            case 2:
+            case 2://Log-in window
                 int lx=400;
                 int ly=300;
 //                login.back.setSize(lx,ly);
@@ -363,7 +377,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 mod_cli.back.setIcon(new ImageIcon(edcliback.getScaledInstance(clix, cliy, java.awt.Image.SCALE_SMOOTH)));
                 Singleton_client.window="modify";
                 mod_cli.saving.setVisible(false);
-                
+                Singleton_menus.window="mod_cli";
                 BLL_client.fill_client(Singleton_menus.cli.getDni(),1);
                 mod_cli.fieldDNI.setEditable(false);
                 mod_cli.setResizable(false);
@@ -487,7 +501,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 mod_rus.back.setSize(rusx,rusy);
                 Image edrusback=Singleton_ruser.backCrMo.getImage();
                 mod_rus.back.setIcon(new ImageIcon(edrusback.getScaledInstance(rusx, rusy, java.awt.Image.SCALE_SMOOTH)));
-//                Singleton_ruser.window="modify";
+                Singleton_menus.window="mod_rus";
                 mod_rus.saving.setVisible(false);
                 BLL_ruser.fill_ruser(Singleton_menus.rus.getDni());
                 mod_rus.fieldDNI.setEditable(false);
@@ -724,8 +738,17 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                     break;
                     
                 case clientbtnCancel:
-                    mod_cli.dispose();
-                    new MenuController(new Login(), 2).Init(2);
+                    Timer delay3 = new Timer(3000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                logout.dispose();
+                                new MenuController(new Login(), 2).Init(2);
+                            }
+                        });
+                        mod_cli.dispose();
+                        new MenuController(new Logout(),5).Init(5);
+                        delay3.setRepeats(false);
+                        delay3.start();
                     break;
                     
                 case ruserbtnSearch:
@@ -755,7 +778,7 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                     break;
                     
                 case ruserbtnLogout:
-                    Timer delay3 = new Timer(3000, new ActionListener() {
+                    Timer delay4 = new Timer(3000, new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 logout.dispose();
@@ -764,13 +787,22 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                         });
                         mod_rus.dispose();
                         new MenuController(new Logout(),5).Init(5);
-                        delay3.setRepeats(false);
-                        delay3.start();
+                        delay4.setRepeats(false);
+                        delay4.start();
                     break;
                     
                 case ruserbtnCancel:
-                    mod_rus.dispose();
-                    new MenuController(new Login(), 2).Init(2);
+                    Timer delay5 = new Timer(3000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                logout.dispose();
+                                new MenuController(new Login(), 2).Init(2);
+                            }
+                        });
+                        mod_rus.dispose();
+                        new MenuController(new Logout(),5).Init(5);
+                        delay5.setRepeats(false);
+                        delay5.start();
                     break;
        }
     }
@@ -779,14 +811,12 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
     public void mousePressed(MouseEvent e) {
         
         switch (Action.valueOf(e.getComponent().getName())){
-               
          }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         switch (Action.valueOf(e.getComponent().getName())){
-               
          }
     }
 
@@ -837,7 +867,6 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
     
         @Override
     public void keyTyped(KeyEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -1082,7 +1111,6 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
     
         @Override
     public void windowOpened(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
@@ -1292,47 +1320,63 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 break;
                 
             case clientWindow:
-                JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
                 mod_cli.dispose();
-                Exit();
+                new MenuController(new Login(), 2).Init(2);
                 break;
                 
             case ruserWindow:
-                JOptionPane.showMessageDialog(null, Singleton_app.lang.getProperty("mm_leave"),"Info",JOptionPane.INFORMATION_MESSAGE);
                 mod_rus.dispose();
-                Exit();
+                new MenuController(new Login(), 2).Init(2);
                 break;
         }
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void windowIconified(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        if(Singleton_menus.window.equals("mod_cli")){
+//            System.out.println(Property.valueOf(evt.getPropertyName()));
+            switch (Property.valueOf(evt.getPropertyName())) {
+                
+                case date:
+                    BLL_client.modClientdata("birthdate");
+                    BLL_client.modClientdata("datereg");
+                    mod_cli.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                    break;
+            }
+            
+        }
+        else if(Singleton_menus.window.equals("mod_rus")){
+            
+            switch (Property.valueOf(evt.getPropertyName())) {
+                
+                case date:
+                    BLL_ruser.modRuserdata("birthdate");
+                    mod_rus.editareaInfo.setBackground(Color.decode("#d6d6d6"));
+                    break;
+            }
+            
+        }
     }
     
 }

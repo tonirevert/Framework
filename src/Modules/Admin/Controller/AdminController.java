@@ -561,7 +561,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
      * Not used
      */
     public void keyTyped(KeyEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -1000,7 +999,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
      * Not used
      */
     public void mousePressed(MouseEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -1008,7 +1006,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
      * Not used
      */
     public void mouseReleased(MouseEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -1356,7 +1353,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
      * Not used
      */
     public void windowOpened(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -1390,7 +1386,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
 
     @Override
     public void windowClosed(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -1398,7 +1393,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
      * Not used
      */
     public void windowIconified(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -1406,7 +1400,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
      * Not used
      */
     public void windowDeiconified(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -1414,7 +1407,6 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
      * Not used
      */
     public void windowActivated(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -1422,6 +1414,5 @@ public class AdminController implements ActionListener, KeyListener, MouseListen
      * Not used
      */
     public void windowDeactivated(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }//End class Admin Controller
