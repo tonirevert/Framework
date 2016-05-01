@@ -35,5 +35,4 @@ Modules.Reg_user.Model.Utils.Files_lib
 Modules.Reg_user.Model.Utils.pager
 Modules.Reg_user.View
 Modules.Users.Model.Classes
-Modules.Users.Model.Utils
 Utils

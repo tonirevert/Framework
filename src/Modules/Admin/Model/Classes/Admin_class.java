@@ -235,7 +235,7 @@ public class Admin_class extends User_class implements Serializable{
 	
 	 /**
 	 *Used to calculate the benefit for Admin using their Activity and Antiquity
-	 *@return A float benefit for Admin user
+	 *@return A double benefit for Admin user
 	 */
 	public double calc_benefit() {
 	
@@ -244,7 +244,7 @@ public class Admin_class extends User_class implements Serializable{
 	}
 	/**
 	 * Used to calculate the benefit for Admin using their benefit
-	 * @return A float salary for Admin user
+	 * @return A double salary for Admin user
 	 */
 	public double calc_salary(){
 		
