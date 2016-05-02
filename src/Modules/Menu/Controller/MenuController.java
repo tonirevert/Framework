@@ -1320,13 +1320,31 @@ public class MenuController implements ActionListener, MouseListener, KeyListene
                 break;
                 
             case clientWindow:
-                mod_cli.dispose();
-                new MenuController(new Login(), 2).Init(2);
+                Timer delay5 = new Timer(3000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                logout.dispose();
+                                new MenuController(new Login(), 2).Init(2);
+                            }
+                        });
+                        mod_cli.dispose();
+                        new MenuController(new Logout(),5).Init(5);
+                        delay5.setRepeats(false);
+                        delay5.start();
                 break;
                 
             case ruserWindow:
-                mod_rus.dispose();
-                new MenuController(new Login(), 2).Init(2);
+                Timer delay6 = new Timer(3000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                logout.dispose();
+                                new MenuController(new Login(), 2).Init(2);
+                            }
+                        });
+                        mod_rus.dispose();
+                        new MenuController(new Logout(),5).Init(5);
+                        delay6.setRepeats(false);
+                        delay6.start();
                 break;
         }
     }
